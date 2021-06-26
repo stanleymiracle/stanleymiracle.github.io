@@ -1,0 +1,33 @@
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: #CCCCCC;
+}
+
+h1 {
+	padding: 0pt 20pt 0pt 20pt;
+}
+
+table {
+	padding: 0pt 20pt 0pt 20pt;
+}
+
+li {
+    padding-bottom: 8pt;
+}
+
+
+td {
+	border: 2pt darkgrey dashed;
+	vertical-align:text-top;
+	padding: 10pt 20pt 10pt 20pt;
+}
+
+a {
+    text-decoration: none;
+    /*color: #00BFFF;*/
+}
+
+a:hover {
+	color: #EEEEEE;
+}

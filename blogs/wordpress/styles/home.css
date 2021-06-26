@@ -1,0 +1,47 @@
+body {
+    font-family: Helvetica, "Microsoft YaHei", Arial, sans-serif;
+    font-size: 18px;
+    background-color: #B3B3B3;
+}
+
+#tab-bar {
+    font-size: 0;
+}
+
+.tab-item {
+    font-size: 13pt;
+    display: inline-block;
+    padding: 10px 10px;
+    cursor: pointer; 
+}
+
+.title a {
+    display: block;
+}
+
+.title {
+    cursor: pointer;
+}
+
+li.title {
+    background-color: #CCCCCC;
+}
+
+li.title:hover {
+    background-color: #eee;
+}
+
+.panel {
+    border-radius: 0;
+}
+
+.panel-default > .panel-heading {
+	background-image: none;
+	background-color: #fff;
+}
+
+.navbar-default {
+	background-image: none;
+	background-color: #fff;
+  box-shadow: none;
+}

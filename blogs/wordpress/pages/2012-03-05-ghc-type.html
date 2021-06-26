@@ -1,0 +1,62 @@
+<html>
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="../styles/main.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+
+        <title>A bug in GHC's type system</title>
+
+        
+        <script type="text/javascript" src="../js/title.js"></script>
+    </head>
+
+    <body>
+        <div style="margin: 2% 5% 2% 5%">
+            <table>
+                <tr>
+                    <td width="60%">
+                        <div style="padding: 2% 8% 5% 8%; border: 1px solid LightGrey;">
+                            <h2 onclick="nightOn()">A bug in GHC's type system</h2>
+
+<p><img src="../imgs/rejected.jpg" /></p>
+
+<p>Several days ago, I implemented an experimental type inference system with first-class polymorphism. When comparing it with other systems, I found a possible bug in GHC's type system regarding universal quantification. The phenomemon was confirmed and reproduced by people at #haskell IRC channel for GHC versions above 7.01. The code that causes trouble is:</p>
+
+
+<pre>gen :: [forall a. a -> a]
+gen = [id]
+test1 = head gen 1</pre>
+
+<p>Obviously this program should typecheck, since:</p>
+
+<ul>
+    <li><code>id</code> has the type <code>forall a. a -> a</code>.</li>
+    <li>A list <code>gen</code> containing <code>id</code> should have type <code>[forall a. a -> a]</code>(as in the annotation).</li>
+    <li><code>head</code> has the type <code>forall a. [a] -> a</code>.</li>
+    <li><code>head gen</code> should have the type <code>forall a. a -> a</code>.</li>
+    <li><code>head gen</code> should be able to be applied to <code>1</code>.</li>
+</ul>
+
+<p>But GHC rejected this program for a strange reason.</p>
+
+<pre>Couldn't match expected type `t1 -> t0'
+with actual type `forall a. a -> a'
+Expected type: [t1 -> t0]
+Actual type: [forall a. a -> a]
+In the first argument of `head', namely `gen'
+In the expression: head gen 1</pre>
+
+<p>On the other hand, it works if (head gen) is bound at let:</p>
+
+<pre>test2 = let hg = head gen in hg 1</pre>
+
+<p>It doesn't break the soundness of the type system since it only rejects some correct programs, but this kind of pecularities of type systems can be painful when they add up. I guess this may be caused by the interaction between GHC's internal type system with the legacy let-polymorphism.</p>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

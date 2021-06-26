@@ -1,0 +1,228 @@
+<html>
+	<head>
+
+	<link type="text/css" rel="stylesheet" href="./styles/banner-styles.css"/>
+	<meta charset='utf-8'>
+
+	</head>
+
+<body>
+  <div id="container">
+    <h1><a href="http://github.com/yinwang0/ydiff">ydiff</a> </h1>
+
+    <div class="description">
+      a language-aware tool for comparing programs
+    </div>
+
+<p><a href="http://www.yinwang.org/resources/mk1-mk2.html"><img src="https://yinwang0.files.wordpress.com/2012/01/ydiff3.gif" alt="(Click on the above picture to see it in action. See the end of the post for more demos)" /></a></p>
+
+<p>ydiff is a language-aware tool for comparing programs. It supports
+multiple languages and has an extensible design. It is not yet ready
+for general release, although it is already an indispensible tool to
+me.</p>
+
+
+<p>ydiff is an open source project. You can follow its development on
+github: <a href="http://github.com/yinwang0/ydiff">yinwang0/ydiff</a>
+or get its source code from there. If you want to know more about it,
+welcome to read on and play with the interactive demos provided at the
+end of this page.</p>
+
+
+
+<h2>Why ydiff?</h2>
+
+<p>We very often want to know how our code is modified. This is
+normally done by using the diff program. While effective for finding
+differences between close revisions, the result from diff can be very
+hard to read for revisions over a long time span. The worst case is
+when the code is massively rearranged or refactored, where diff
+considers every line to have been changed.</p>
+
+
+<p>ydiff can help in this kind of situation. Different from line-based
+or character-based diff, ydiff is "language-based". It parses the
+programs and then performs structural comparison on the parse trees.
+In addition to the usual functionalities of diff, it has the following
+properties:</p>
+
+
+
+<ul>
+
+<li><strong>Language-awareness</strong>. ydiff truly understands
+language constructs and will not make non-sensical comparisons. For
+example it will never compare a string "10000" with an integer 10000
+even though they look similar. Also, it tries to find definitions with
+the same name before it attempts to destruct and compare definitions
+of different names.</li>
+
+
+<li><strong>Refactor detection</strong>. It can find renamed, moved,
+reordered, wrapped, lifted, combined or fragmented code. Refactored
+code can be detected however deep they are into the structures.</li>
+
+
+<li><strong>Format insensitivity</strong>. The comparison result will
+not be affected by linebreaks or whitespaces.</li>
+
+
+<li><strong>Comprehensible output</strong>. The output of ydiff is
+designed for human understanding. The interactive UI helps the user
+navigate and understand changes efficiently.</li>
+
+</ul>
+
+
+
+<p>These properties make ydiff helpful for understanding changes. It
+may also be possibly used for detecting plagiarism in programming
+classes or copyright infringement of code.</p>
+
+
+<h2>Why "ydiff"?</h2>
+
+<p>I wanted to use the name "&#955;diff", but having noticed how
+troublesome it is to type it from the command line, I decided to flip
+its first letter upside down.</p>
+
+
+
+<h2>Supported Languages</h2>
+
+<p>Currently ydiff supports the following languages:</p>
+
+<ul>
+<li>Scheme</li>
+<li>Emacs Lisp</li>
+<li>Python</li>
+<li>Javascript</li>
+<li>C++</li>
+</ul>
+
+<p>I will be adding more languages.</p>
+
+
+
+<h2>License</h2>
+<p>GPL v3</p>
+
+
+<h2>Authors</h2>
+
+<p>Yin Wang (yinwang0@gmail.com)</p>
+
+
+
+<h2>Demos</h2>
+
+<p>You are welcome to have a look at the demos. They are fun to play
+with. The demos are interactive HTML files. All program structures are
+in framed nodes, whose colors mean:</p>
+
+
+<ul>
+<li><span class="insertion">inserted</span></li>
+<li><span class="deletion">deleted</span></li>
+<li><span class="change">changed</span></li>
+<li><span class="move">moved</span></li>
+<li><span class="unchanged">unchanged</span></li>
+</ul>
+
+
+<p>The left and right windows are always locked in their relative
+position. A mouse click
+on <span class="change">changed</span>, <span class="move">moved</span>
+or <span class="unchanged">unchanged</span> nodes will highlight the
+matched nodes and scroll the other window to match. After that, the
+windows will be locked into their new relative position for browsing.</p>
+
+
+<p>Okay, here are the demos:</p>
+
+<ul>
+<li><a href="demos/mk-mk-c.html">Scheme</a></li>
+
+<p>Comparison of the
+original <a href="http://code.google.com/p/iucs-relational-research">miniKanren</a>
+from Professor Dan Friendman and the version I modified in order to
+support <em>condc</em>, a "negation operator", which fascinated me for
+quite some time. Pay attention to
+<code>unify</code>, whose major part is moved
+into <code>unify-good</code>, the righteous opponent
+of <code>unify-evil</code>.</p>
+
+
+
+
+<li><a href="demos/paredit20-paredit22.html">Emacs Lisp</a>
+
+<p>Comparison of two versions (v20 and v22) of Taylor Campbell's
+<a href="http://mumble.net/~campbell/emacs/paredit.el">paredit-mode</a>,
+a wonderful tool for editing Lisp programs.</p>
+</li>
+
+
+<li><a href="demos/pass1-pass2.html">Arbitrary S-expressions</a>
+
+<p>Trying to find a bug in an optimizing pass of my Scheme
+compiler by comparing the IRs.</p>
+</li>
+
+
+<li><a href="demos/demo1-demo2.html">Python</a>
+
+<p>Comparison of two implementations of a small list library that I
+wrote, which implements Lisp-style lists. The first implementation
+uses recursive procedures while the second uses Python's generator
+syntax and is iterative. Pay some attention to <code>append</code>,
+whose code is moved inside another function <code>appendAll</code>.</p>
+</li>
+
+
+
+<li><a href="demos/nav-nav-div.html">Javascript</a>
+
+<p>Comparison between two major revisions of the UI code of
+ydiff itself.</p>
+</li>
+
+
+
+<li><a href="demos/d8-3404-d8-8424.html">C++ demo1</a>
+and <a href="demos/simulator-mips-simulator-arm.html">C++ demo2</a>
+
+<p>There are two demos for C++. The first demo compares two versions
+of the d8 Javascript debugger from
+the <a href="http://v8.googlecode.com/">V8 project</a> (v3404 from 2009
+and the current v8424). The second demo compares V8's simulators for
+two different processors (MIPS and ARM).</p>
+
+<p>The d8 demo is especially interesting because by clicking on the
+lines of the method <code>Shell::Initialize</code> in the old version,
+it can be clearly observed that its body has been distributed into
+several procedures in the new version:</p>
+
+<pre>
+Shell::Initialize
+Shell::CreateGlobalTemplate
+Shell::RenewEvaluationContext
+Shell::InstallUtilityScript
+</pre>
+
+<p>Also the major part of <code>Shell::Main</code> is moved into the
+helper <code>Shell::RunMain</code>.</p>
+</li>
+
+
+</ul>
+
+
+    <div class="footer">
+      get the source code on GitHub : <a href="http://github.com/yinwang0/ydiff">yinwang0/ydiff</a>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<html>
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="../styles/main.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+
+        <title>PySonar: a type inferencer and indexer for Python</title>
+
+        
+        <script type="text/javascript" src="../js/title.js"></script>
+    </head>
+
+    <body>
+        <div style="margin: 2% 5% 2% 5%">
+            <table>
+                <tr>
+                    <td width="60%">
+                        <div style="padding: 2% 8% 5% 8%; border: 1px solid LightGrey;">
+                            <h2 onclick="nightOn()">PySonar: a type inferencer and indexer for Python</h2>
+<!-- http://www.yinwang.org/resources/demos/pysonar2/email/header.py.html -->
+<p><a href="../resources/header.py.html"><img src="../imgs/pysonar21.gif?w=300" alt="pysonar2" /></a></p>
+
+<p>PySonar is a type inferencer and indexer for Python. It includes a powerful type system and a sophisticated inter-procedural analysis. Compared to style-checking tools or IDEs, PySonar analyzes programs in deeper ways and produces more accurate results. PySonar resolves more names than typical IDEs. The current resolution rate is about 97% for Python's standard library.</p>
+
+<h3>Demos</h3>
+
+<p>To get a quick feel about what PySonar can do, here is a <a href="../resources/header.py.html">sample analysis result</a> for a small fraction of Python's standard library.</p>
+
+<h3>What's in there</h3>
+
+<ol>
+    <li><strong>A powerful type system. </strong>In addition to the usual types you can find in programming languages, PySonar's type system has <em>union types</em> and <em>intersection types --- </em>two of the most powerful elements I have found during my PL research. They are rarely found in programming languages. I know of only two languages with statically checked union types: <a href="http://docs.racket-lang.org/ts-guide/beginning.html#%28part._.Datatypes_and_.Unions%29">Typed Racket</a> and <a href="http://ceylon-lang.org/documentation/1.0/tour/types">Ceylon</a>. Different from these languages, PySonar can work without any type annotations. It infers all the types by doing inter-procedural analysis.</li>
+    <li><strong>Control-flow aware interprocedural analysis</strong>. Because Python has very dynamic and polymorphic semantics and doesn't contain type annotations, a modular type inference system such as the <a href="http://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system">Hindley-Milner system</a> will not work. I actually implemented a HM-like system in the first version of PySonar, but it didn't work well. As a consequence, all types are inferred by an inter-procedural analysis which follows the control-flow and some other aspects of the semantics.</li>
+    <li><strong><strong>Handling of Python's dynamism. </strong></strong>Static analysis for Python is hard because it has many dynamic features. They help make programs concise and flexible, but they also make automated reasoning about Python programs hard. Some of these features can be reasonably handled but some others not. For code that are undecidable, PySonar attempts to report all known possibilities. For example, it can infer union types which contains all possible types it can possibly have:
+    <p><a href="http://dl.dropbox.com/u/392085/presentation.py.html"><img class="aligncenter size-full wp-image-2180" src="../imgs/pysonar-union3.png?w=645" alt="" /></a></p>
+    </li>
+    <li><strong>High accuracy semantic indexing</strong><br />
+    PySonar can build code indexes that respects scopes and types. Because it performs inter-procedural analysis, it is often able to find the definitions of attributes inside function parameters. This works across functions, classes and modules. The following image shows that it can accurately locate the field <code>x.z</code> which refers to the "z"; fields in classes <code>B1</code> and <code>C1</code>, but not <code>A1</code>.
+    <p><img src="../imgs/pysonar-indexing.png?w=645"/></p>
+    </li>
+</ol>
+
+<h3>Availability</h3>
+
+<p>The code is open source from my <a href="https://github.com/yinwang0">GitHub repository</a>.</p>
+
+<h3>Users</h3>
+
+<p>Here are some of PySonar's users:</p>
+
+<ul>
+    <li><strong>Google</strong>. Google uses PySonar 1.0 to index millions of lines of Python code, serving internal code search and analysis services such as Grok and Code Search</li>
+    <li><a href="http://www.sourcegraph.com"><strong>SourceGraph</strong></a>. SourceGraph is a semantic code search engine. They use PySonar to index hundreds of thousands of opensource Python repositories. They started using PySonar 1.0 as the Python analysis for their site. I recently joined them and finished integrating PySonar 2.0</li>
+</ul>
+                		
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

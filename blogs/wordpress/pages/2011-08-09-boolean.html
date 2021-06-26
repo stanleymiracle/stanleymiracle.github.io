@@ -1,0 +1,46 @@
+<html>
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="../styles/main.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+
+        <title>Boolean Expression Simplification</title>
+
+       
+        <script type="text/javascript" src="../js/title.js"></script>
+    </head>
+
+    <body>
+        <div style="margin: 2% 5% 2% 5%">
+            <table>
+                <tr>
+                    <td width="60%">
+                        <div style="padding: 2% 8% 5% 8%; border: 1px solid LightGrey;">
+                            <h2 onclick="nightOn()">Boolean Expression Simplification</h2>
+		
+<p>A friend of mine posed an interesting question to me a few days ago. He was trying to make a search engine for an advertisement system where each advertisement belongs to several categories (or keywords). He would like to implement a search system that can efficiently find advertisements using a simple expression language containing boolean expressions. For example, he would like to have expressions like ((football or basketball) and baby). For efficiency, he would like that the boolean expressions be simplified before they are used to collect streams of data items.</p>
+
+<p>After a while, we decided that the boolean expressions should be converted into a sum of products (SoP) form so as to make the search efficient. So I made a prototype of the algorithm which can turn boolean expressions (containing and, or and not) into SoP form.</p>
+
+<p>It turns out to be quite simple if we do it recursively. The basic idea is to:</p>
+
+<ol>
+    <li>Push and into or.</li>
+    <li>Push not into and and or</li>
+    <li>Do (1) and (2) repeatedly until no more simplifications can be made.</li>
+</ol>
+
+<p>It is easy to see that we will have a SoP form after this transformation, because the rules (1) and (2) will be applicable if there are ands outside of ors, or there are nots outside of ands and nots. Thus we are assured to have a SoP form when this process terminates.</p>
+
+<p>The rest of the problem is how to represent the final result. I proposed to group and terms so as to reduce nesting. For example, the form (and (and a b) c) is not as good as (and a b c), because the latter contains the implicit information that a, b and c are interchangeable in their order of evaluation, so we may achieve accelerations in the algorithm by searching for keyword which contains fewer items first. This simplification in the result can be achieved with a rewriting procedure which is context-aware. We pass the context types into the recursive calls, and the recursion gives us different results in accordance with the context types.</p>
+
+<p>The algorithm for doing these simplifications is prototyped in Scheme: boolean-simp.ss</p>
+
+                		</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

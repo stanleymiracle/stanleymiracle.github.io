@@ -1,0 +1,98 @@
+html {
+    -webkit-text-size-adjust: none;
+}
+
+body {
+	font-family: "Ubuntu Mono", Arial, sans-serif;
+	background-color: #102E4E;
+	color: #EEEEEE;
+}
+
+h1 {
+	text-align: center;
+	padding: 10pt 20pt 10pt 20pt;
+}
+
+h3 {
+	text-align: left;
+	margin-top: 10pt;
+	padding: 10pt 10pt 10pt 10pt;
+	border: 2pt darkgrey dashed;
+}
+
+table {
+	padding: 10pt 20pt 10pt 20pt;
+	white-space: nowrap
+}
+
+li {
+    padding-bottom: 5pt;
+}
+
+td {
+	border: 2pt darkgrey dashed;
+	vertical-align:text-top;
+	padding: 10pt 20pt 10pt 20pt;
+}
+
+td.de {
+	border: 2pt darkgrey;
+	border-style: none none solid dashed;
+	vertical-align:text-top;
+	padding: 6pt 2pt 2pt 20pt;
+}
+
+td.en {
+	border: 2pt darkgrey;
+	border-style: none dashed solid none;
+	vertical-align:text-top;
+	padding: 6pt 20pt 2pt 2pt;
+}
+
+td.bottoml {
+	border: 2pt darkgrey;
+	border-style: none none dashed dashed;
+}
+td.bottomr {
+	border: 2pt darkgrey;
+	border-style: none dashed dashed none;
+}
+
+td u {
+	color: yellow;
+}
+
+mark.m {
+	background-color: #808080;
+	color: black;
+}
+
+mark.f {
+	background-color: yellow;
+	color: black;
+}
+
+mark.n {
+	background-color: #102E4E;
+	color: yellow;
+	border: 1px solid yellow;
+}
+
+a {
+    text-decoration: none;
+    color: #00BFFF;
+}
+
+a:hover {
+	color: #A9A9A9 	;
+}
+
+td.de i {
+  border-width: 1px;
+  border-style: none none solid none;
+}
+
+td.en i {
+  border-width: 1px;
+  border-style: none none solid none;
+}

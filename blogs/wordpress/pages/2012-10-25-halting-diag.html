@@ -1,0 +1,48 @@
+<html>
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="../styles/main.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+
+        <title>Undecidability Proof of Halting Problem without Diagonalization</title>
+
+        
+        <script type="text/javascript" src="../js/title.js"></script>
+    </head>
+
+    <body>
+        <div style="margin: 2% 5% 2% 5%">
+            <table>
+                <tr>
+                    <td width="60%">
+                        <div style="padding: 2% 8% 5% 8%; border: 1px solid LightGrey;">
+                            <h2 onclick="nightOn()">Undecidability Proof of Halting Problem without Diagonalization</h2>
+
+<p>As a TA for a graduate level Theory of Computation course, I dont understand why we have to teach the <a href="https://en.wikipedia.org/wiki/Cantor%27s_diagonal_argument">diagonalization</a> proof of the undecidability of the halting problem. It is much easier if we just use a normal argument about functions in a programming language. Basically, functions correspond to Turing machines in a theory of computation context. In order to improve the situation, I came up with a simpler formulation based on the view of Turing machines as functions.</p>
+
+<p>Suppose that we have this function Accept<code>(M,w)</code> which takes two arguments, a function <code>M</code> and its input <code>w</code>, and can tell you whether or not <code>M(w)</code> will output <code>True</code>. Basically, suppose that <code>Accept</code> is the <em>hypothetical solver</em> for the halting problem. To connect to usual theory of computing terminology, the fuction <code>M</code> corresponds to a Turing machine, <code>True</code> corresponds to reaching an <em>accept</em> state, and <code>False</code> corresponds to <em>reject</em> state. Note that although the argument M may go into infinite loops, never will <code>Accept</code>.  <code>Accept</code> always returns <code>True</code> or <code>False</code> in a finite amount of time.  <code>Accept</code> determines this without actually running <code>M</code> because <code>M</code> may go into an infinite loop and never return. This way of finding properties of programs without running them is usually called <em>static analysis</em>. It has the same essence as fortune-telling and all other sciences.</p>
+
+<p>Now we come to our simple contradiction: does the following expression (call it <code>F</code>) return <code>True</code> or <code>False</code>?</p>
+
+<pre><code>Accept(λm.not(Accept(m,m)), λm.not(Accept(m,m)))</code></pre>
+
+<p>It turns out that this question cannot be answered at all! If F returns True, then when we actually apply the function λm.not(Accept(m,m)) to the argument λm.not(Accept(m,m)), it should return True, right? But when we apply it, we get</p>
+
+<pre><code>not(Accept(λm.not(Accept(m,m)), λm.not(Accept(m,m))))</code></pre>
+
+<p>Notice that it is exactly the negation of the original expression F. This means that F should return False (because the actual run returns False). On the other hand, if F returns False, then when we actually apply the function on its argument, it will return True. Thus the contradiction. QED.</p>
+
+<p>Some may argue that Im implicitly using diagonalization here. Well, you can say that they are equivalent in effect, but the equivalence doesnt mean that diagonalization is a good word for describing what Im doing. Actually Im just making a loop in a circuit. I dont see the diagonal, then why call it that way? The diagonal argument and the loop argument may have the same essence, but they are very different in their comprehensibility. I feel that the loop way is a much easier to understand than diagonalization.</p>
+
+<p>An interesting final question may be, what is the connection between the above expressions with the <a href="2012-04-09-reinvent-y.html">Y combinator</a>?</p>
+
+<pre><code>λf.(λx.f(x x)) (λx.f(x x))</code></pre>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

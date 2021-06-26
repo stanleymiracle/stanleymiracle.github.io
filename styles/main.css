@@ -1,0 +1,34 @@
+
+body {
+	font-family: "Ubuntu Mono", "Dejavu Sans Mono", Consolas, Arial, sans-serif;
+	background-color: #102E4E;
+	color: #EEEEEE;
+}
+
+h1 {
+	text-align: center;
+	padding: 10pt 20pt 10pt 20pt;
+}
+
+table {
+	padding: 10pt 20pt 10pt 20pt;
+}
+
+li {
+    padding-bottom: 5pt;
+}
+
+td {
+	border: 3pt darkgrey dashed;
+	vertical-align:text-top;
+	padding: 10pt 20pt 10pt 20pt;
+}
+
+a {
+    text-decoration: none;
+    color: #00BFFF;
+}
+
+a:hover {
+	color: #FFBA75;
+}

@@ -1,0 +1,99 @@
+<html>
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="../styles/main.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+
+        <title>ydiff: a structural program comparison tool</title>
+
+        
+        <script type="text/javascript" src="../js/title.js"></script>
+    </head>
+
+    <body>
+        <div style="margin: 2% 5% 2% 5%">
+            <table>
+                <tr>
+                    <td width="60%">
+                        <div style="padding: 2% 8% 5% 8%; border: 1px solid LightGrey;">
+                            <h2 onclick="nightOn()">ydiff: a structural program comparison tool</h2>
+
+<p><a href="../resources/mk1-mk2.html"><img src="../imgs/ydiff3.gif" alt="(Click on the above picture to see it in action. See the end of the post for more demos)" /></a></p>
+
+<h3>Motivation</h3>
+
+<p>I have been imagining a world where programs are not represented as text, but as data structures. They will be edited not with text editors, but with <em>structural editors</em>, which create and manipulate the abstract syntax trees (AST) directly. In such a programming environment, the line-by-line diff utilities and version control tools will stop working, because there are no longer "lines" or "words" in programs.</p>
+
+<p>ydiff is a proof-of-concept for handling this situation. It is a diff tool designed for "structural programming".</p>
+
+<p>Currently ydiff takes pains to parse program text into ASTs, but hopefully in the future programs will be stored directly as data structures so that the parsing step can be skipped. This will enable this kind of tool to extend to all programming languages effortlessly.</p>
+
+<h3>Features</h3>
+
+<ul>
+    <li><strong>Language-aware</strong>. ydiff parses programs, understands basic language constructs and will not make non-sensical comparisons. For example it will not compare a string "10000" with an integer 10000 even though they look very similar. Also, it tries to match functions with the same name before it attempts to destruct and compare functions of different names.</li>
+    <li><strong>Format insensitive</strong>. The comparison result will not be affected by different number of white spaces, line breaks or indentation. For example, ydiff will not produce a large diff just because you surrounded a block of code with if (condition) {...}.</li>
+    <li><strong>Moved code detection</strong>. ydiff can find refactored code --- renamed, moved, reordered, wrapped, lifted, combined or fragmented code. Refactored code can be detected however deep they are into the structures.</li>
+    <li><strong>Human-friendly output</strong>. The output of ydiff is designed for human understanding. The interactive UI helps the user navigate and understand changes efficiently.</li>
+</ul>
+
+<p>These properties make ydiff helpful for understanding changes. It may also be possibly used for detecting plagiarism in programming classes or copyright infringement of code. For large-scale use cases you may be more interested in <a href="http://theory.stanford.edu/~aiken/moss">MOSS</a>, but ydiff is fundamentally more accurate because it parses programs.</p>
+
+<h3>Demos</h3>
+
+<p>Here are some interactive HTML demos with a pretty nice UI design. The left and right windows are always locked in their relative position. A mouse click on changed, moved or unchanged nodes will highlight the matched nodes and scroll the other window to match. After that, the windows will be locked into their new relative position for browsing.</p>
+
+<p>Okay, here are the demos.</p>
+
+<ul>
+    <li><a href="../resources/diff1-diff2.html">Scheme Demo1</a>. ydiff's algorithm diffing itself (between the first version on GitHub and the latest version).</li>
+    <li><a href="../resources/mk1-mk2.html">Scheme Demo 2</a>. Comparison of the original <a href="http://code.google.com/p/iucs-relational-research">miniKanren</a> from Professor Dan Friendman and the version I modified in order to support <em>condc</em>, a "negation operator". Pay attention to the function <code>unify</code>, whose major part is moved into <code>unify-good</code>.</li>
+    <li><a href="../resources/paredit20-paredit23.html">Emacs Lisp</a>. Comparison of two versions (v20 and v23) of Taylor Campbell's <a href="http://mumble.net/~campbell/emacs/paredit.el">paredit-mode</a>, a structural editing mode of emacs for Lisp programs.</li>
+    <li><a href="../resources/typed-clojure1-typed-clojure2.html">Clojure</a>. Compare the first commit of <a href="https://github.com/clojure/core.typed/blob/master/src/main/clojure/clojure/core/typed.clj">Typed Clojure</a> with its recent version.</li>
+    <li><a href="http://www.cs.indiana.edu/~yw21/demos/pass1-pass2.html">Arbitrary S-expressions</a>. Trying to find a bug in an optimizing pass of my Scheme compiler by comparing the IRs (represented as S-expressions).</li>
+    <li><a href="http://www.cs.indiana.edu/~yw21/demos/demo1-demo2.html">Python</a>. ydiff has a completely separate implementation in Python (named "PyDiff"), which can diff two Python programs. This is a comparison of two implementations of a small list library that I wrote, which implements Lisp-style lists. The first implementation uses recursive procedures while the second uses Python's generator syntax and is iterative. Pay some attention to <code>append</code>, whose code is moved inside another function <code>appendAll</code>.</li>
+    <li><a href="../resources/nav1-nav2.html">Javascript</a>. Comparison between two major revisions of the UI code of ydiff itself.</li>
+    <li>
+        <a href="../resources/d8-3404-d8-8424.html">C++ demo1</a> and <a href="../resources/simulator-mips-simulator-arm.html">C++ demo2</a>. There are two demos for C++. The first demo compares two versions of the d8 Javascript debugger from the <a href="http://v8.googlecode.com">V8 project</a>(v3404 from 2009 and v8424 from 2011). The second demo compares V8's simulators for two different processors (MIPS and ARM).The d8 demo is especially interesting because by clicking on the lines of the method <code>Shell::Initialize</code>in the old version, it can be clearly observed that its body has been distributed into several procedures in the new version:
+        <pre>Shell::Initialize
+        Shell::CreateGlobalTemplate
+        Shell::RenewEvaluationContext
+        Shell::InstallUtilityScript</pre>
+        <p>Also the major part of <code>Shell::Main</code> is moved into the helper <code>Shell::RunMain</code>.</p>
+    </li>
+</ul>
+
+<h3>Algorithms and Technical Details</h3>
+
+<p>There are basically two main ideas inside ydiff: Tree Editing Distance and Substructure Extraction, plus the use of the neat idea of parser combinators (similar to <a href="https://wiki.haskell.org/Parsec">Parsec</a>).</p>
+
+<ul>
+    <li><strong>Tree Editing Distance</strong>. Tree Editing Distance measures difference between two trees. In our case, it is the abstract syntax tree. When we encounter two trees, how do we compare them? If the first nodes of them appear to be the same, then we simply proceed to the next right? But what if the first nodes are different? There are three possibilities:
+    <ol>
+        <li>The programmer inserted a node into the first tree.</li>
+        <li>The programmer deleted a node from the first tree.</li>
+        <li>The programmer modified a node in the first tree.</li>
+    </ol>
+    <p>We have to consider those possibilities for each level of nodes, so this naturally becomes a dynamic programming problem. Normally dynamic programming is done by cleverly find out the order to evaluate the problem space, but ydiff uses another important technique: memoization. There is a two dimensional hash table which stores the delta (changes) of two nodes, indexed by the two nodes themselves. The dynamic programming is then done in a recursive way, instead of the usual iterative way. The hash table automatically reduces the cost of recursion to the magnitude of iteration, by avoiding redundant evaluation of the nodes that we already compared.</p>
+    </li>
+    <li><strong>Substructure Extraction</strong>. Tree Editing Distance can only find the edits insertions, deletions and modifications, but it cannot find refactorization of code. If a piece of code is lifted out of a scope, the Tree Editing Distance function will produce two big changes: a deletion of a big node (for example, an if-statement), and an insertion of a slightly smaller node (with the if (condition) { } wrap stripped off). Notice that although we only made a small change to the program, the resulting delta can be large. What we really want is that it shows a deletion of the wrap (if (condition) { }), but a movement of the parts inside the wrap. This is called Substructure Extraction.Substructure Extraction works by recursively compare the substructures of two nodes, finding possible matches between one node and the <i>subnodes</i> of another. This substructural comparison is only done on the pairs of the resulting insertions and deletions from the Tree Editing Distance function. This little trick captures almost all possible refactorizations between two programs, however deep they are. This is demonstrated in the following picture, where ydiff successfully detects the movement of the function <code>append</code> into another function <code>appendAll</code>.
+    <p><img src="../imgs/structure-extraction.png"/></p></li>
+    <li><strong>Parser Combinators</strong>. The parsers of ydiff are written with the help of a parser combinator library (in Scheme). In addition to the common features of <a href="https://wiki.haskell.org/Parsec">Parsec</a>, it detects left recursion and reports a stack trace of the left recursion, so that the parser writer can find the origin of left-recursion and fix the problem accordingly. This helps a lot when constructing the parsers. For examples, I constructed the JavaScript parser in one day, and the C++ parser in just two days. There are corner cases missing from the C++ parser and especially the macro part, but it parses significant pieces of code correctly (for example some code from Googles <a href="https://github.com/v8/v8/wiki">V8 project</a> code).</li>
+</ul>
+
+<h3>Get the code</h3>
+
+<p>ydiff is an open source project. You can follow its development on github: <a href="http://github.com/yinwang0/ydiff">yinwang0/ydiff</a> or get its source code from there.</p>
+
+<h3>Ideas about structural version control</h3>
+
+<p>I have thought about extending ydiff to a structural version control system and gave a talk on that. You can find the talk slides from <a href="2012-02-12-structual-vc.html">another post</a></p>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

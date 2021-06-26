@@ -1,0 +1,258 @@
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <link href="./styles/home.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+    <script type="text/javascript" src="./js/fun.js"></script>
+
+    <title>Surely I Am Joking</title>
+
+  </head>
+  　　
+  <body>
+
+<nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Surely I Am Joking</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" onclick="nightOn()">Night</a></li>
+                <li><a href="#" id="sort-on" onclick="sortOn()">Sort</a></li>
+                <li><a href="#" id="sort-off" onclick="sortOff()" style="display: none;">All</a></li>
+                <li class="active"><a href="#">Blog</a></li>
+                <li><a href="http://www.jianshu.com/users/b1dd2b2c87a8/latest_articles">简书</a></li>
+                <li><a href="http://www.yinwang.org/tweet.html">Tweet</a></li>
+                <li><a href="https://github.com/yinwang0">GitHub</a></li>
+                <li><a href="http://www.yinwang.org/blog-cn/2016/04/13/pay-blog">付费</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div style="margin: 5% 10% 2% 10%">
+    <table style="width: 100%">
+        <tr>
+            <td width="70%">
+                <div id="tab-bar" style="display: none;">
+                    <div id="programming-tab" class="tab-item" onclick="openTab('programming')">Programming</div>
+                    <div id="pl-tab" class="tab-item" onclick="openTab('pl')">PL</div>
+                    <div id="os-tab" class="tab-item" onclick="openTab('os')">OS</div>
+                    <div id="insight-tab" class="tab-item" onclick="openTab('insight')">Insight</div>
+                    <div id="design-tab" class="tab-item" onclick="openTab('design')">Design</div>
+                    <div id="car-tab" class="tab-item" onclick="openTab('car')">Car</div>
+                    <div id="temp-tab" class="tab-item" onclick="openTab('temp')">Temp</div>
+                </div>
+                <ul class="list-group">
+                    
+                    <li class="list-group-item title car">
+                        <a href="./pages/2016-03-22-self-driving-cars.html">Why self-driving cars are not going to happen</a>
+                    </li>
+                    
+                    <li class="list-group-item title car">
+                        <a href="./pages/2016-01-20-why-falcon-wing-doors-are-a-bad-idea.html">Why "Falcon Wing Doors" is a bad idea</a>
+                    </li>
+                    
+                    <li class="list-group-item title car">
+                        <a href="./pages/2016-01-16-some-observations-about-teslas-autopilot.html">Some observations about Tesla's Autopilot</a>
+                    </li>
+                    
+                    <li class="list-group-item title car">
+                        <a href="./pages/2015-12-11-tesla.html">Design Flaws of the Tesla Model S</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="./pages/2014-02-18-quotes.html">Three famous quotes</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="./pages/2014-02-03-rubysonar.html">RubySonar: a type inferencer and indexer for Ruby</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="./pages/2014-01-17-curry-howard.html">Programs may not be proofs</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2013-12-27-tests-and-static-analysis.html">Tests and static analysis</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2013-12-24-oop.html">On object-oriented programming</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2013-11-16-pure-fp-and-monads.html">Purely functional languages and monads</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="./pages/2013-07-06-psydiff.html">Psydiff: a structural comparison tool for Python</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2013-07-06-negation.html">A pure logic negation operator for miniKanren</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2013-06-03-null.html">Null reference may not be a mistake</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2013-04-08-const.html">How to reduce the contagious power of 'const'</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2013-04-05-database.html">Back to the future of databases</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2013-04-02-indexing.html">Why is indexing faster than binary search</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2013-03-31-purely-functional.html">On pureness</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="./pages/2013-03-27-pnp.html">A Concise Solution to the P=NP? Problem</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2012-10-25-halting.html">Undecidability Proof of the Halting Problem using Lambda Calculus</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2012-10-25-halting-diag.html">Undecidability Proof of Halting Problem without Diagonalization</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2012-10-19-type-inference.html">Let-polymorphism is Fundamentally Flawed</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="./pages/2012-10-13-texmacs.html">A mind map guide for TeXmacs</a>
+                    </li>
+
+                    <li class="list-group-item title programming">
+                        <a href="./pages/2012-10-09-oral-exam.html">My PhD Oral Exam Slides</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2012-09-16-what-is-a-Program.html">What is a Program?</a>
+                    </li>
+
+                    <li class="list-group-item title programming">
+                        <a href="./pages/2012-07-27-yin-yang-puzzle.html">Understanding the Yin-Yang Puzzle</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2012-04-26-propositions-as-programs.html">Propositions as programs</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2012-04-24-design-patterns.html">On software design patterns</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2012-04-17-concurrent-stack.html">Concurrent stack does not exist</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2012-04-09-reinvent-y.html">How to reinvent the Y combinator</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2012-03-22-reducibility.html">A reformulation of reducibility</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2012-03-19-objects.html">ADTs and objects</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2012-03-05-ghc-type.html">A bug in GHC's type system</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2012-03-04-point-free.html">On point-free programming</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2012-02-12-structual-vc.html">Towards Structural Version Control</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2012-01-16-decoupling-type-classes.html">Decoupling type classes</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2012-01-04-reg-alloc.html">The Essence of Register Allocation</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="./pages/2012-01-03-ydiff.html">ydiff: a structural program comparison tool</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming os">
+                        <a href="./pages/2011-09-04-boot-sector.html">A minimal boot sector tutorial</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2011-08-09-boolean.html">Boolean Expression Simplification</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2011-08-28-sum.html">Sum types and union types</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="./pages/2011-05-18-literate-programming.html">On literate programming</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2011-05-08-layout.html">Indentation-based syntax considered troublesome</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming os">
+                        <a href="./pages/2011-04-14-unix.html">Limitations of the Unix philosophy and the ultimate solution to parsing</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="./pages/2010-09-12-pysonar.html">PySonar: a type inferencer and indexer for Python</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming os">
+                        <a href="./pages/2010-05-28-linux-mem.html">On linux kernel memory addressing</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="./pages/2010-05-27-shared-mem.html">Shared Memory Mutliprocessing Is An Illusion</a>
+                    </li>
+                    
+                    
+                </ul>
+                
+            </td>
+
+            
+
+        </tr>
+    </table>
+</div>
+
+
+   
+  </body>
+
+</html>

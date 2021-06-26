@@ -1,0 +1,151 @@
+<html>
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="../styles/main.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+
+        <title>A reformulation of reducibility</title>
+
+        
+        <script type="text/javascript" src="../js/title.js"></script>
+    </head>
+
+    <body>
+        <div style="margin: 2% 5% 2% 5%">
+            <table>
+                <tr>
+                    <td width="60%">
+                        <div style="padding: 2% 8% 5% 8%; border: 1px solid LightGrey;">
+                            <h2 onclick="nightOn()">A reformulation of reducibility</h2>
+
+<p>I found the theory of computation books very imprecise about their descriptions of Turing machines and reductions. They usually start with something precise and mathematical, for example they would define a Turing machine as a 7-tuple, but after that, everything about decidability and reduction is described with impenetrable paragraphs in natural languages.</p>
+
+<p>I believe that the use of natural languages leads to most of the confusion in theory of computation because natural languages are inherently imprecise and ambiguous. There are too many ways to say the same thing. For example, you can find these sentences which mean exactly the same in the books:</p>
+
+<ul>
+    <li>"Run M on w"
+    <li>"Run M on input w"
+    <li>"Simulate M on w"
+</ul>
+
+<p>The pronouns and references are even more confusing. For example:</p>
+
+<blockquote><p>"Use the description of M and w to construct the TM M<sub>1</sub> <em>just</em> described."</p>
+</blockquote>
+
+<p>What is "just described", and do M and w here mean the same things as in the earlier paragraph?</p>
+
+<p>Another serious problem is that natural languages are very weak at representing the notion of "interpretation", which underlies much of theory of computation. For example, a Turing machine simulates another Turing machine, which again contains and simulates yet another one.</p>
+
+<p>After some thought, I found that we could use something precise such as mathematical notations combined with programming languages to describe the concepts. As an example, I'll show here how the notion of reduction can be defined precisely as a <a href="http://en.wikipedia.org/wiki/Homomorphism">homomorphism</a> which can be instantiated for reducing one problem to another.</p>
+
+<p><strong>Definition 1</strong> (reduction): A <em>reduction</em> (as in theory of computation) is a homomorphism (as in universal algebra):</p>
+
+<pre>
+Reduce(TM, I) = (TM', I')
+</pre>
+
+<p>satisfying the property</p>
+
+<pre>
+TM @ I = TM' @ I'
+</pre>
+
+<p>where</p>
+
+<ul>
+    <li><code>TM</code> = Turing machine which we reduce from
+    <li><code>TM'</code> = Turing machine which we reduce to
+    <li><code>I</code> = input string of TM
+    <li><code>I'</code> = input string of TM'
+    <li><code>@</code> = simulation, similar to the Scheme code <code>((eval TM) I)</code>
+    <li><code>TM @ I</code> = result from simulating TM on I (accept or reject)
+    <li><code>TM' @ I'</code> = result from simulating TM' on I' (accept or reject)
+</ul>
+
+<p>End of Definition 1.</p>
+
+<p>Notice that the simulation <code>(TM @ I)</code> may go into an infinite loop and never produce any result. Now I show how to use this homomorphism to describe the reduction from ATM ==> HALT, where</p>
+
+<ul>
+    <li><code>ATM</code> = the "acceptance problem" (deciding whether a Turing machine M accepts string w)
+    <li><code>HALT</code> = the "halting problem" (deciding whether a Turing machine M halts on string w)
+</ul>
+
+<p>For convenience, we let</p>
+
+<ul>
+    <li><code>D<sub>ATM</sub></code> = "the decider of ATM"
+    <li><code>D<sub>HALT</sub></code> = "the decider of HALT"
+</ul>
+
+<p>Now the reduction can be fully described by the following homomorphism:</p>
+
+<pre>
+Reduce(D<sub>ATM</sub>, (M,w)) = (D<sub>HALT</sub>, (M',w))
+where
+  M' = &lt;if (M @ w) then accept else loop&gt;
+satisfying
+  D<sub>ATM</sub> @ (M,w) = D<sub>HALT</sub> @ (M',w)
+</pre>
+
+<p>Yes, that's an all-inclusive formal proof that <code>HALT</code> is undecidable. It even includes the notion of "reduction" itself.</p>
+
+<p>Let me explain it a bit. The first line says that there exists a function (named <code>Reduce</code>) from the pair <code>(D<sub>ATM</sub>, (M,w))</code> to another pair <code>(D<sub>HALT</sub>, (M',w))</code>, where <code>M' = &lt;if (M @ w) then accept else loop&gt;</code> is a description of a Turing machine.</p>
+
+<p>Now let's look at the last line:</p>
+
+<pre>
+D<sub>ATM</sub> @ (M,w) = D<sub>HALT</sub> @ (M',w)
+</pre>
+
+<p>It says: if we have a decider for <code>HALT</code> (<code>D<sub>HALT</sub></code>), then we can use it to define <code>D<sub>ATM</sub></code>, thus deciding <code>ATM</code>.</p>
+
+<p>Why this is a valid defintion for <code>D<sub>ATM</sub></code>? This is because from the definition of <code>M'</code></p>
+
+<pre>
+&lt;if (M @ w) then accept else loop&gt;
+</pre>
+<p>we know that:</p>
+
+<ul>
+    <li>If <code>(M @ w)</code> <span style="color:blue;">accepts</span>, <code>M'</code>  accepts, thus <code>D<sub>HALT</sub> @ (M',w)</code>  <span style="color:blue;">accepts</span>
+    <li>If <code>(M @ w)</code> <span style="color:red;">rejects</span>, <code>M'</code>  loops, thus <code>D<sub>HALT</sub> @ (M',w)</code>  <span style="color:red;">rejects</span>
+    <li>If <code>(M @ w)</code> <span style="color:green;">loops</span>, <code>M'</code>  loops, thus <code>D<sub>HALT</sub> @ (M',w)</code>  <span style="color:red;">rejects</span>
+</ul>
+
+<p>Notice from the colored words that <code>D<sub>HALT</sub> @ (M',w)</code> will accept if and only if <code>M</code> accepts <code>w</code>. Thus this defines a decider for <code>ATM</code>.</p>
+
+<p>So if <code>D<sub>HALT</sub></code> exists, then we can have <code>D<sub>ATM</sub></code>. But this contradicts the fact that <code>D<sub>ATM</sub></code> cannot exist, so <code>D<sub>HALT</sub></code> must not exist.</p>
+
+<p>If you wonder how this proof corresponds to Definition 1, here is some details how it is instantiated:</p>
+
+<ul>
+    <li><code>TM = D<sub>ATM</sub></code> (nonexistent)
+    <li><code>TM' = D<sub>HALT</sub></code> (hypothetical)
+    <li><code>I = (M,w)</code> where <code>M</code> is the description of a Turing machine which we want to know whether it accepts input w.
+    <li><code>I' = (M',w)</code> where <code>M'</code> is <code>&lt;if (M @ w) then accept else loop&gt;</code>
+    <li><code>TM @ I = D<sub>ATM</sub> @ (M,w)</code> (running decider of <code>D<sub>ATM</sub></code> on input <code>(M,w)</code>)
+    <li><code>TM @ I' = D<sub>HALT</sub> @ (M',w)</code> (running decider of <code>D<sub>HALT</sub></code> on <code>(M',w)</code>)
+</ul>
+
+<p>This is a lot more concise, accurate and easier to understand than a paragraph:</p>
+
+<pre>
+F = "On input <M,w>:
+  1. Construct the following machine M'
+     M' = "On input x:
+        1. Run M on x.
+        2. If M accepts, accept.
+        3. If M rejects, enter a loop."
+  2. Output <M',w>."
+</pre>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

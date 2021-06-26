@@ -1,0 +1,74 @@
+<html>
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="../styles/main.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+
+        <title>A minimal boot sector tutorial | Surely I Am Joking</title>
+
+        
+        <script type="text/javascript" src="../js/title.js"></script>
+    </head>
+
+    <body>
+        <div style="margin: 2% 5% 2% 5%">
+            <table>
+                <tr>
+                    <td width="60%">
+                        <div style="padding: 2% 8% 5% 8%; border: 1px solid LightGrey;">
+                            <h2 onclick="nightOn()">A minimal boot sector tutorial</h2>
+
+<p><img src="../imgs/banner.png" /></p>
+
+<p>The natural first step of building an operating system is to find a way to run programs on &#8220;bare hardware&#8221;. The task turns out to be quite easy despite its daunting first impression. After researching on the net and trying out various tutorials, I found all of them overly complicated. Most of them assume interfacing with a C-like language and implementing a Unix-like system, but C and Unix are not the only story about operating systems design. A boot sector tutorial should teach nothing more than how to boot a computer.</p>
+
+<p>After learning the good parts from the tutorials and applying my own simplifications, I arrived at my first boot sector. It is very simple and does very little &#8212; it just boots the machine and displays a colorful banner &#8212; but it illustrates the only things you need to know for booting a computer.</p>
+
+<p>The code is very short &#8212; only 21 lines of code excluding comments and blank lines.</p>
+
+<pre>org 7C00H                      ; the program will be loaded at 7C00H
+
+start:
+  mov eax, string_start
+  mov ch, 1                    ; ch contains color of text
+  mov ebx, 0B8000H + 718H      ; B8000H is VGA memory
+                               ; 718H is offset to approx center
+
+print:
+  mov cl, [eax]                ; load char into cl
+  mov [ebx], cx                ; store [color:char] from cx into VGA
+  add ch, 1                    ; change color to (ch+1) mod 16
+  and ch, 0x0F
+  add eax, 1                   ; advance string pointer
+  add ebx, 2                   ; advance VGA pointer
+  cmp eax, string_end          ; until the end of string
+  jg stop
+  jmp print
+
+stop:
+  jmp stop                     ; infinite loop after printing
+
+  string_start db 'My colorful new OS!'
+  string_end equ $
+
+  times 510-($-$$) db 0        ; pad remainder of boot sector with 0s
+  dw 0xAA55                    ; standard PC boot signature
+</pre>
+
+<p>It is in <a href="http://www.nasm.us">NASM</a> syntax and needs nasm to be assembled into machine code. After that it can be booted by <a href="http://www.qemu.org">QEMU</a>, a processor emulator. The only two necessary command lines are (assuming the code is stored in a file named myfirst.asm):</p>
+
+
+<pre>nasm -f bin -o myfirst.bin myfirst.asm
+qemu -hda myfirst.bin
+</pre>
+
+<p>Of course, you can also burn the disk image (myfirst.bin) onto a CD and boot a real machine from it.</p>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

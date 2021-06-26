@@ -1,0 +1,317 @@
+<html>
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="../styles/main.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+
+        <title>Understanding the Yin-Yang Puzzle</title>
+
+       
+        <script type="text/javascript" src="../js/title.js"></script>
+    </head>
+
+    <body>
+        <div style="margin: 2% 5% 2% 5%">
+            <table>
+                <tr>
+                    <td width="60%">
+                        <div style="padding: 2% 8% 5% 8%; border: 1px solid LightGrey;">
+                            <h2 onclick="nightOn()">Understanding the Yin-Yang Puzzle</h2>
+		
+<p><img src="../imgs/yinyang.gif"/></p>
+
+<p>I have a friend who is a very fast learner. I introduced him to the Scheme programming language a few days ago and he soon digged into this <a href="http://stackoverflow.com/questions/2694679/how-does-the-yin-yang-puzzle-work">yin-yang puzzle</a>:</p>
+
+<pre><code>(let* ((yin
+        ((lambda (cc) (display #\@) cc) (call/cc (lambda (c) c))))
+       (yang
+        ((lambda (cc) (display #\*) cc) (call/cc (lambda (c) c)))))
+  (yin yang))
+</code></pre>
+
+<p>This program prints out the infinite string <code>@*@**@***@****@*****@******</code></p>
+
+<p>Why does this happen? This took me almost a full afternoon to figure out. It is always good to have friends who feed you with questions and challenges. Im going to document my finding here. I may want to make some animated slides (as is always a good idea) later, but for now a short note may suffice.</p>
+
+<h3>The Plan</h3>
+
+<p>You will probably never understand the program if you examine the contents of the stack. You need their high level semantic meaning to think clearly. The higher level meaning of the stack is the <strong>continuation</strong>. So instead of frightening you with the details of the stack, Im going to use functions to show the continuations explicitly.</p>
+
+<p>Also I will use a little bit of compiler optimizations along the way. The optimizations will simplify the program and show its deeper meanings.</p>
+
+<p>Here is an overall plan of this article:</p>
+
+<ol>
+    <li>Find the functional representations of the two continuations. Name them c1 and c1.</li>
+    <li>Plug in c1 and c2 into the places of the two call/ccs.</li>
+    <li>Simplify the program using compiler optimizations.</li>
+    <li>Perform behavioral analysis on the simplified program.</li>
+</ol>
+
+<h3>Transform and Remove Call/cc</h3>
+
+<p>So here we go. Lets repeat the original program here:</p>
+
+<pre><code>(let* ((yin
+        ((lambda (cc) (display #\@) cc) (call/cc (lambda (c) c))))   ; B1
+       (yang
+        ((lambda (cc) (display #\*) cc) (call/cc (lambda (c) c)))))  ; B2
+  (yin yang))</code></pre>
+
+<p>Note that there are two binding clauses, B1 and B2, each prints a char and binds a continuation to a variable.</p>
+
+<p>B1 binds yin to the current continuation of the first call/cc. Lets call this continuation c1. Its function representation is:</p>
+
+<pre><code>(lambda (k)
+  (let* ((yin
+          ((lambda (cc) (display #\@) cc) k))           
+         (yang
+          ((lambda (cc) (display #\*) cc) (call/cc (lambda (c) c)))))          
+    (yin yang)))</code></pre>
+
+<p>We can simplify it using some compiler optimization tricks. I will go very slowly here just in case you are not familiar with compiler optimizations.</p>
+
+<p>First, since Scheme is a strict language, k will be a pure value (with no side-effects), so we can lift the side-effect <code>(display #\@)</code> out:</p>
+
+<pre><code>(lambda (k)
+  (display #\@)
+  (let* ((yin
+          ((lambda (cc) cc) k))           
+         (yang
+          ((lambda (cc) (display #\*) cc) (call/cc (lambda (c) c)))))          
+    (yin yang)))</code></pre>
+
+<p>Now we can partial evaluate ((lambda (cc) cc) k) to k:</p>
+
+<pre><code>(lambda (k)
+  (display #\@)
+  (let* ((yin k)           
+         (yang
+          ((lambda (cc) (display #\*) cc) (call/cc (lambda (c) c)))))          
+    (yin yang)))</code></pre>
+
+<p>Then we can copy propagate the value of yin, k, to the body of let*, (yin yang). And now we have only one binding left:</p>
+
+<pre><code>(lambda (k)
+  (display #\@)
+  (let ((yang
+         ((lambda (cc) (display #\*) cc) (call/cc (lambda (c) c)))))
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^
+    (k yang)))</code></pre>
+
+<p>Now we try to figure out the underlined continuation. It should be:</p>
+
+<pre><code>(lambda (j)
+  (let ((yang
+         ((lambda (cc) (display #\*) cc) j)))
+    (k yang)))</code></pre>
+
+<p>You see why? Since the current continuation means what is going to happen with this value, it doesnt include the computation before it, namely <code>(display #\@)</code>. Now we do a similar optimization on this continuation: lifting out the side-effect <code>(display #\*)</code>, do some partial evaluation and copy propagation:</p>
+
+<p>The result of this inner continuation is:</p>
+
+<pre><code>(lambda (j)
+  (display #\*)
+  (k j))</code></pre>
+
+<p>Now we can plug it back:</p>
+
+<pre><code>(lambda (k)
+  (display #\@)
+  (let ((yang
+         ((lambda (cc) (display #\*) cc) 
+          (lambda (j)
+            (display #\*)
+            (k j)))))
+    (k yang)))</code></pre>
+
+<p>Do a similar sequence of optimizations: lifting out the first <code>(display #\*)</code>, partial evaluation, copy propagation. And we have the final result for the value of yin. Lets name it c1 with a definition:</p>
+
+<pre><code>(define c1
+ (lambda (k)
+   (display #\@)
+   (display #\*)
+   (k (lambda (j)
+        (display #\*)
+        (k j)))))</code></pre>
+
+<p>Now, the original program would look like the following. The program would have by now printed a @ before binding yin to c1, so we make a sequence and include the display term in the front of it.</p>
+
+<pre><code>(begin
+  (display #\@)
+  (let* ((yin c1)
+         (yang
+          ((lambda (cc) (display #\*) cc) (call/cc (lambda (c) c)))))
+    (yin yang)))</code></pre>
+
+<p>Try it. It will behave the same as the original program. Now we do another copy propagation to get rid of the first binding:</p>
+
+<pre><code>(begin
+  (display #\@)
+  (let ((yang
+         ((lambda (cc) (display #\*) cc) (call/cc (lambda (c) c)))))
+    (c1 yang)))</code></pre>
+
+<p>Since the call/cc here will not cause any side-effects (why?), we can lift <code>(display #\*)</code> out:</p>
+
+<pre><code>(begin
+  (display #\@)
+  (display #\*)
+  (let ((yang
+         ((lambda (cc) cc) (call/cc (lambda (c) c)))))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^
+    (c1 yang)))</code></pre>
+
+<p>Now we just have to find what this underlined continuation is, and it will become the value of yang. It is:</p>
+
+<pre><code>(lambda (k)
+  (let ((yang
+         ((lambda (cc) cc) k)))
+    (c1 yang)))</code></pre>
+
+<p>After our routine sequence of optimizations we have the value of yang. Lets define it as c2:</p>
+
+<pre><code>(define c2
+  (lambda (k)
+    (display #\*)
+    (c1 k)))</code></pre>
+
+<p>Plug c1 and c2 back into the original program:</p>
+
+<pre><code>(begin
+  (display #\@)
+  (display #\*)
+  (let* ((yin c1)
+         (yang c2))
+    (yin yang)))</code></pre>
+
+<p>And do a copy propagation:</p>
+
+<pre><code>(begin
+  (display #\@)
+  (display #\*)
+  (c1 c2))</code></pre>
+
+<h3>Transformed Program</h3>
+
+<p>Now we have our final transformed and optimized program. Lets put the definitions of c1 and c2 here for an overview:</p>
+
+<pre><code> (lambda (k)
+   (display #\@)
+   (display #\*)
+   (k (lambda (j)
+        (display #\*)
+        (k j)))))
+
+(define c2
+  (lambda (k)
+    (display #\*)
+    (c1 k)))
+
+(begin
+  (display #\@)
+  (display #\*)
+  (c1 c2))</code></pre>
+
+<p>For simplicity, lets inline c2 into the main program. Now c2 disappears.</p>
+
+<pre><code>(define c1
+ (lambda (k)
+   (display #\@)
+   (display #\*)
+   (k (lambda (j)
+        (display #\*)
+        (k j)))))
+
+(begin
+  (display #\@)
+  (display #\*)
+  (c1 (lambda (k)
+        (display #\*)
+        (c1 k))))</code></pre>
+
+<p>Try it. It will still work the same as the original program.</p>
+
+<h3>Behavioral Analysis</h3>
+
+<p>Now the program doesnt contain any call/ccs and is much easier to understand. Lets try to figure out how it executes:</p>
+
+<ol>
+    <li> First, <code>@*</code> will be printed, and we will invoke:
+<pre><code>(c1 (lambda (k)
+      (display #\*)
+      (c1 k)))</code></pre>
+    </li>
+    <li>Inside the invocation, <code>@*</code> will be printed by the body of c1, and k is now bound to <code>(lambda (k) (display #\*) (c1 k))</code>. So the program proceed to:
+<pre><code>((lambda (k)
+   (display #\*)
+   (c1 k))
+ (lambda (j)
+   (display #\*)
+   ((lambda (k)
+      (display #\*)
+      (c1 k)) 
+    j)))</code></pre>
+
+    <p>It will print a *, and becomes:</p>
+
+<pre><code>(c1
+ (lambda (j)
+   (display #\*)
+   ((lambda (k)
+      (display #\*)
+      (c1 k)) 
+    j)))</code></pre>
+
+    <p>Now we have seen <code>@*@**</code></p>
+    </li>
+    <li>Notice that we are back to a call to c1! This is a good sign of recursion. But this time the argument is different. If we simplify it a little, we get:
+<pre><code>(c1
+ (lambda (j)
+   (display #\*)
+   (display #\*)
+   (c1 j)))</code></pre>
+    </li>
+    <li>I think you see whats going on here. This time, c1 is called with
+<pre><code>(lambda (j)
+   (display #\*)
+   (display #\*)
+   (c1 j))</code></pre>
+
+   <p>which means When called, display TWO *s, and then behave like c1 on the argument. If we go on, the argument to c1 will be longer and longer, and each time with an additional <code>(display #\*)</code>. It will print <code>@***</code>, and then <code>@****</code>, and then <code>@*****</code>, and so on.</p>
+    </li>
+    <li>Lets introspect a bit. Which part of the program is responsible for creating the ever-longer displays, and why? It is this piece from the definition of c1:
+<pre><code>(k (lambda (j)
+     (display #\*)
+     (k j)))</code></pre>
+
+     <p>Here k is c1s argument. Notice that k is always of the form:</p>
+
+<pre><code>(lambda (j)
+   (display #\*)
+   (display #\*)
+   ...
+   (c1 j))</code></pre>
+
+   <p>When k is applied, it will print the corresonding number of *s inside it, and then behave like c1. The argument to k is:</p>
+
+<pre><code>(lambda (j)
+  (display #\*)
+  (k j))</code></pre>
+    
+    <p>What does this mean? It says: When called, print a * and then behave like k on the argument. This is how you get a new k, with one more display of *.</p>
+
+    <p>This will go on indifinitely. This is why you see the infinite string: <code>@*@**@***@****@*****@******</code></p>
+    </li>
+</ol>
+
+<p></p>
+
+                		</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

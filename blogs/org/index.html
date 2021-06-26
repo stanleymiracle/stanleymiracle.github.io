@@ -1,0 +1,921 @@
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <link href="./styles/home.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+    <script type="text/javascript" src="./js/fun.js"></script>
+
+    <title>当然我在扯淡</title>
+
+  </head>
+  　　
+  <body>
+
+<nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">当然我在扯淡</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" onclick="nightOn()">Night</a></li>
+                <li><a href="#" id="sort-on" onclick="sortOn()">Sort</a></li>
+                <li><a href="#" id="sort-off" onclick="sortOff()" style="display: none;">All</a></li>
+                <li class="active"><a href="#">博客</a></li>
+                <li><a href="https://github.com/yinwang0">GitHub</a></li>
+                <li><a href="http://www.yinwang.org/tweet.html">Tweet</a></li>
+                <li><a href="http://weibo.com/u/6347862377">微博</a></li>
+                <li><a href="http://www.yinwang.org/blog-cn/2017/10/13/weixin">公众号</a></li>
+                <li><a href="http://www.jianshu.com/users/b1dd2b2c87a8/latest_articles">简书</a></li>
+                <li><a href="http://www.yinwang.org/blog-cn/2016/04/13/pay-blog">付费</a></li>
+                <li><a href="http://www.yinwang.org/blog-cn/2017/05/04/contact">联系方式</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div style="margin: 5% 10% 2% 10%">
+    <table style="width: 100%;">
+        <tr>
+            <td width="70%">
+                <div id="tab-bar" style="display: none;">
+                    <div id="programming-tab" class="tab-item" onclick="openTab('programming')">Programming</div>
+                    <div id="pl-tab" class="tab-item" onclick="openTab('pl')">PL</div>
+                    <div id="os-tab" class="tab-item" onclick="openTab('os')">OS</div>
+                    <div id="insight-tab" class="tab-item" onclick="openTab('insight')">Insight</div>
+                    <div id="design-tab" class="tab-item" onclick="openTab('design')">Design</div>
+                    <div id="car-tab" class="tab-item" onclick="openTab('car')">Car</div>
+                    <div id="temp-tab" class="tab-item" onclick="openTab('temp')">Temp</div>
+                </div>
+                <ul class="list-group">
+
+                    <li class="list-group-item title insight design">
+                        <a href="pages/2017-11-09-iphone-x.html">iPhone-X</a>
+                    </li>
+
+                    <li class="list-group-item title insight design">
+                        <a href="pages/2017-11-04-alphago-zero.html">AlphaGo Zero 和强人工智能</a>
+                    </li>
+
+                    <li class="list-group-item title insight design">
+                        <a href="pages/2017-11-01-power-of-reasoning.html">理性的力量</a>
+                    </li>
+
+                    <li class="list-group-item title insight design">
+                        <a href="pages/2017-10-31-smart-house.html">智能家居</a>
+                    </li>
+
+                    <li class="list-group-item title insight design">
+                        <a href="pages/2017-10-31-steamer.html">不再发售『加湿器的秘密』</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-10-31-chinese-mom.html">中国式母亲</a>
+                    </li>
+
+                    <li class="list-group-item title insight design">
+                        <a href="pages/2017-10-24-heaters.html">美国家庭用什么取暖设备</a>
+                    </li>
+
+                    <li class="list-group-item title insight design">
+                        <a href="pages/2017-10-16-ergonomics.html">人体工学</a>
+                    </li>
+
+                    <li class="list-group-item title insight design">
+                        <a href="pages/2017-10-16-ergonomics-1.html">人体工学（草稿）</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-10-15-ciia1-shipped.html">CIIA 报告 No.1 发货完毕</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-10-13-weixin.html">微信公众号</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-10-11-ciia1-shipping.html">CIIA 报告 No.1 两天后开始发货</a>
+
+                    <li class="list-group-item title insight design">
+                        <a href="pages/2017-09-25-apple.html">教苹果设计师做设计（CIIA 报告 No.1 预告片）</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-09-05-plans.html">商业计划</a>
+                    </li>
+
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-08-19-zhihu-mitbbs.html">知乎和MITBBS</a>
+                    </li>
+
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-08-16-weibo.html">微博</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-08-14-travel-wisdom.html">旅行的智慧</a>
+                    </li>
+
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-07-21-love-cat.html">我为什么爱猫</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-07-08-living-philosophy.html">生活的智慧</a>
+                    </li>
+
+                    <li class="list-group-item title insight programming pl">
+                        <a href="pages/2017-07-06-master-pl.html">如何掌握所有的程序语言</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-06-28-home.html">回国了</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-06-06-politics.html">不谈政治</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2017-05-25-dsl.html">DSL</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2017-05-25-dsl-02.html">DSL(旧)</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2017-05-25-dsl-01.html">聊聊 DSL(旧)</a>
+                    </li>
+
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-05-24-ads.html">关于广告和付费</a>
+                    </li>
+
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-05-24-ads-01.html">关于广告和付费(旧)</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2017-05-23-kotlin.html">Kotlin 和 Checked Exception</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2017-05-23-kotlin-02.html">Kotlin 和 Checked Exception(旧)</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2017-05-23-kotlin-01.html">Kotlin 和 Checked Exception(旧)</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-05-17-practical-idealism.html">什么是现实理想主义者</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-05-17-practical-idealism-01.html">什么是现实理想主义者(旧)</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-05-16-chinese.html">对中国人的信心</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-05-16-chinese-01.html">对中国人的信心(旧)</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-05-10-microsoft-separation.html">微软的秘密离职协议</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-05-10-microsoft-separation-01.html">微软的秘密离职协议(旧)</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-05-08-company-culture.html">美国企业的装嫩问题</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-05-08-company-culture-01.html">美国企业的装嫩问题(旧)</a>
+                    </li>
+
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-05-04-contact.html">新的联系方式</a>
+                    </li>
+
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-05-01-may-day.html">纪念五一劳动节</a>
+                    </li>
+
+                    <li class="list-group-item title programming">
+                        <a href="pages/2017-04-23-ai.html">我为什么不在乎人工智能</a>
+                    </li>
+
+                    <li class="list-group-item title programming">
+                        <a href="pages/2017-04-23-ai-01.html">我为什么不在乎人工智能(旧)</a>
+                    </li>
+
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-04-19-yinhei.html">那些垠黑们</a>
+                    </li>
+
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-04-18-close-source.html">为什么我的代码进入闭源状态</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-04-17-management-tricks.html">美国公司管理层的洗脑技巧</a>
+                    </li>
+
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-04-15-monet.html">求带猫回国经验</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-04-14-experience-and-insight.html">经验和洞察力</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-04-11-strike.html">一个人的罢工</a>
+                    </li>
+
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-04-06-update.html">更新</a>
+                    </li>
+
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-04-06-update-01.html">更新(旧)</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2017-01-02-elitism.html">精英主义的灭亡</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2017-01-01-new-year.html">新年展望</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-12-01-september-eleven.html">9-11 袭击的真相</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-11-22-assange-donation.html">给 Julian Assange 捐款</a>
+                    </li>
+
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-11-20-hillary-emailgate.html">希拉里的“邮件门”丑闻是怎么回事</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-11-17-all-about-hillary.html">希拉里的真实面目</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2016-10-13-c-sharp-disposable.html">可恶的 C# IDisposable 接口</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2016-10-12-compiler-bug.html">C 编译器优化过程中的 Bug</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2016-09-18-rust.html">对 Rust 语言的分析</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-09-16-alipay.html">支付宝的身份验证问题</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2016-09-14-tests.html">测试的道理</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-07-10-tesla-autopilot-fatal-crash.html">Tesla autopilot 引起致命车祸</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-07-05-google-maps.html">Google Maps的设计问题</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-06-28-yangsheng.html">养生节目带来的危害</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2016-06-24-robot-tax.html">欧盟草拟法案，对机器人征税</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-06-22-plan-change.html">两个计划的变动</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2016-06-20-it-and-society.html">IT业给世界带来的危机</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-06-19-leaving-united-states.html">关于离开美国的决定</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2016-06-14-information-inequality.html">美国社会的信息不平等现象</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2016-06-08-java-value-type.html">Java 有值类型吗？</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming design pl">
+                        <a href="pages/2016-06-06-swift.html">Swift 语言的设计错误</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-05-25-my-tweet.html">我的 tweet 系统</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2016-05-22-positive-thinking.html">正面思维的误区</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-05-14-future.html">未来计划</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-04-13-pay-blog.html">关于博文的自愿付费方式</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-04-07-cfa.html">到底是谁在欺负我们读书少？</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight pl">
+                        <a href="pages/2016-03-31-no-longer-pl.html">我为什么不再做PL人</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2016-03-27-docker.html">Go语言，Docker和Kubernetes</a>
+                    </li>
+                    
+                    <li class="list-group-item title car">
+                        <a href="pages/2016-03-19-self-driving-car-liability.html">为什么自动车完全不可以犯错误</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-03-17-google-vision.html">Google的眼光</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2016-03-09-alpha-go.html">AlphaGo与人工智能</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-02-25-sea-world.html">不要去SeaWorld</a>
+                    </li>
+                    
+                    <li class="list-group-item title car">
+                        <a href="pages/2016-02-12-self-driving-car.html">我看自动驾驶技术</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2016-01-18-java.html">给Java说句公道话</a>
+                    </li>
+                    
+                    <li class="list-group-item title car">
+                        <a href="pages/2016-01-10-tesla-autopilot.html">Tesla Autopilot</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2016-01-04-las-vegas.html">给Las Vegas的差评</a>
+                    </li>
+                    
+                    <li class="list-group-item title car">
+                        <a href="pages/2015-12-21-tesla-model-x.html">Tesla Model X的车门设计问题</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2015-12-19-book-plan.html">写书计划</a>
+                    </li>
+                    
+                    <li class="list-group-item title car">
+                        <a href="pages/2015-12-12-tesla-model-s.html">Tesla Model S的设计失误</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming insight">
+                        <a href="pages/2015-11-21-programming-philosophy.html">编程的智慧</a>
+                    </li>
+
+                    <li class="list-group-item title programming insight">
+                        <a href="pages/2015-11-21-programming-philosophy-01.html">编程的智慧(旧)</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2015-10-18-turing.html">图灵的光环</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2015-09-19-parser.html">谈谈Parser</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2015-07-04-math.html">数学和编程</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2015-07-02-program-correctness.html">谈程序的正确性</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2015-06-14-dry-principle.html">DRY原则的误区</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2015-06-07-software-engineering.html">所谓软件工程</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2015-04-03-paradigms.html">编程的宗派</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2015-03-20-trap-of-intelligence.html">智商的圈套</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2015-03-18-yin-lang-secret.html">我为什么不再公开开发Yin语言</a>
+                    </li>
+                    
+                    <li class="list-group-item title design">
+                        <a href="pages/2015-03-17-design.html">设计的重要性</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming insight">
+                        <a href="pages/2015-03-13-a-plus.html">我为什么在乎这一个A+</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2015-03-11-rpg-game.html">RPG游戏是怎么炼成的</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2015-03-08-be-a-fool.html">不要做聪明人</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming insight">
+                        <a href="pages/2015-03-03-how-to-respect-a-programmer.html">怎样尊重一个程序员</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight design">
+                        <a href="pages/2015-02-24-human-errors.html">所谓“人为错误”</a>
+                    </li>
+
+                    <li class="list-group-item title programming">
+                        <a href="pages/2015-02-20-other-peoples-bug.html">不要让其他人修补自己的BUG</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2015-02-01-creative-thinking.html">创造者的思维方式</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2015-01-29-human-value.html">人的价值</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2015-01-05-top-university-syndrome.html">牛校综合征</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2014-12-31-google-story.html">我和 Google 的故事（2015 修订版）</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2014-12-11-san-francisco.html">在三藩的两年</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2014-11-12-interstellar.html">恶评《星际穿越》</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2014-09-17-rss.html">RSS与三不主义</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2014-09-15-innovation.html">谈创新</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2014-08-14-modesty.html">谦虚不是一种美德</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2014-08-11-genius.html">怎样成为一个天才</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2014-07-17-rest.html">休息，休息一会儿</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2014-05-08-value-of-critics.html">批判的价值</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2014-05-08-yin-lang.html">设计和开发 Yin 语言</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2014-04-24-relational.html">关系模型的实质</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2014-04-24-sql-nosql.html">SQL，NoSQL 以及数据库的实质</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2014-04-18-golang.html">对 Go 语言的综合评价</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2014-04-18-about-golang.html">关于go语言</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2014-04-11-hacker-culture.html">黑客文化的精髓</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2014-04-10-tv-formulas.html">电视编剧的问题</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2014-04-07-racket-pig.html">天下第一萌程序</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2014-04-04-on-marriage.html">婚姻不止是爱情的坟墓</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2014-03-24-academic-corruption.html">学术腐败是历史的必然</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2014-03-07-copyright.html">版权声明</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2014-02-18-dijkstra-interview.html">一个对 Dijkstra 的采访视频</a>
+                    </li>
+
+                    <li class="list-group-item title programming insight">
+                        <a href="pages/2014-02-11-from-the-young-me.html">十年前的我的来信</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2014-02-04-pl-tool.html">程序语言与它们的工具</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2014-01-28-rubysonar.html">RubySonar：一个 Ruby 静态分析器</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2014-01-25-pl-and.html">程序语言与……</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2014-01-04-authority.html">我和权威的故事</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-11-27-oop-vs-fp.html">为什么说面向对象编程和函数式编程都有问题</a>
+                    </li>
+
+                    <li class="list-group-item title programming">
+                        <a href="pages/2013-11-08-voxer-sg.html">再见 Voxer，你好 Sourcegraph</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2013-10-29-pysonar2.html">PySonar2 开源了</a>
+                    </li>
+
+                    <li class="list-group-item title programming insight">
+                        <a href="pages/2013-10-05-random-words.html">随便写点</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2013-07-28-zhihu.html">知乎</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2013-07-13-church-turing.html">丘奇和图灵</a>
+                    </li>
+
+                    <li class="list-group-item title programming insight pl">
+                        <a href="pages/2013-07-13-not-one-lang.html">为什么一种程序语言是不够用的</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2013-07-06-PyDiff-Python-structual-comparison.html">Pydiff Python结构化程序比较工具</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-06-23-one-lang-not-exist.html">“One语言”是不存在的</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-06-22-one-lang.html">“One语言”的设计理念</a>
+                    </li>
+
+                    <li class="list-group-item title programming">
+                        <a href="pages/2013-06-21-pysonar-slides.html">PySonar 的工作原理</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2013-06-21-move-on.html">前进</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2013-06-19-bye-coverity.html">我离开了Coverity</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2013-04-26-reason-and-proof.html">原因与证明</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2013-04-21-ydiff-structual-comparison.html">Ydiff 结构化的程序比较</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-04-21-programming-languages-are-not-tools.html">程序语言不是工具</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2013-04-20-editor-ide.html">编辑器与IDE</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-04-18-language-design-mistake2.html">程序语言的常见设计错误(2) - 试图容纳世界</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-04-17-languages.html">关于语言的思考</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2013-04-14-yoda-notation.html">Yoda 表示法错在哪里</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2013-04-14-terminology.html">几个超炫的专业词汇</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming os">
+                        <a href="pages/2013-04-14-os-design.html">一种新的操作系统设计</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-04-14-markdown.html">Markdown 的一些问题</a>
+                    </li>
+
+                    <li class="list-group-item title programming">
+                        <a href="pages/2013-04-14-standard-exam-language.html">标准化试卷标记语言</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2013-04-13-generality.html">谈程序的“通用性”</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2013-04-12-inspiration.html">什么是启发</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2013-04-11-scheme-setup.html">Scheme 编程环境的设置</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2013-04-10-cornell.html">我为什么离开 Cornell</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2013-04-07-test-driven-dev.html">谈“测试驱动的开发”</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2013-04-03-einstein-on-education.html">爱因斯坦谈教育</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-04-02-currying.html">谈谈 Currying</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-04-01-lazy-evaluation.html">谈惰性求值</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-04-01-hindley-milner.html">Hindley-Milner 类型系统的根本性错误</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-03-31-purely-functional.html">对函数式语言的误解</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2013-03-30-einstein-usa.html">爱因斯坦对美国的第一印象</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-03-29-scripting-language.html">什么是“脚本语言”</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-03-28-chez-scheme.html">Chez Scheme 的传说</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-03-28-compiler.html">谈编译器</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-03-26-lisp-dead-alive.html">Lisp 已死，Lisp 万岁！</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2013-03-24-tools.html">论对东西的崇拜</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight">
+                        <a href="pages/2013-03-19-eliminate-problems.html">“解决问题”与“消灭问题”</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-03-15-language-design-mistake1.html">程序语言的常见设计错误(1) - 片面追求短小</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-03-08-on-syntax.html">谈语法</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming os">
+                        <a href="pages/2013-03-07-oberon.html">Oberon 操作系统：被忽略的珍宝</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming os">
+                        <a href="pages/2013-03-07-linux-windows-mac.html">谈 Linux，Windows 和 Mac</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2013-03-07-design-patterns.html">解密“设计模式”</a>
+                    </li>
+                    
+                    <li class="list-group-item title temp">
+                        <a href="pages/2013-03-04-braid.html">Braid - 一个发人深思的游戏</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2013-03-03-hello-world.html">你好，世界</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2013-03-03-goodbye-iu.html">再别IU</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2013-03-03-one-last-time.html">好话只说一遍</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2012-11-05-the-last-one.html">最后一篇博文</a>
+                    </li>
+
+                    <li class="list-group-item title programming">
+                        <a href="pages/2012-10-16-structural-vc.html">结构化版本控制</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2012-10-20-type-infer.html">关于类型推导的幻灯片</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2012-10-09-oral-exam.html">PhD 的 oral exam</a>
+                    </li>
+
+                    <li class="list-group-item title programming">
+                        <a href="pages/2012-10-08-mindmap.html">用脑图来记录思想</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2012-09-18-texmacs.html">TeXmacs：一个真正“所见即所得”的排版系统</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2012-09-18-introspection.html">反省</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2012-09-14-haskell.html">不再推荐Haskell</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2012-09-11-theory-siege.html">理论是围城</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2012-09-09-goodbye-phd.html">对博士学位说永别</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2012-08-21-pride-and-prejudice.html">知识分子的傲慢与偏见</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2012-08-14-research.html">论研究</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2012-08-11-pl.html">如何掌握程序语言</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2012-08-06-socialism.html">什么是社会主义</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2012-08-02-pl-research.html">什么是程序语言的研究</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2012-08-01-interpreter.html">怎样写一个解释器</a>
+                    </li>
+
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2012-08-01-interpreter-01.html">怎样写一个解释器(旧)</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2012-07-28-introspection.html">一个中国人的反省</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming pl">
+                        <a href="pages/2012-07-25-semantics.html">什么是语义学</a>
+                    </li>
+                    
+                    <li class="list-group-item title insight pl">
+                        <a href="pages/2012-07-04-dan-friedman.html">GTF - Great Teacher Friedman</a>
+                    </li>
+
+                    <li class="list-group-item title programming insight pl">
+                        <a href="pages/2012-06-13-dan-paper.html">程序语言理论的学习对于程序员教育的作用</a>
+                    </li>
+                    
+                    <li class="list-group-item title programming">
+                        <a href="pages/2012-05-23-unix-flaw.html">Unix的缺陷</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2012-05-21-name-vs-essence.html">名称和本质</a>
+                    </li>                    
+
+                    <li class="list-group-item title insight design">
+                        <a href="pages/2012-05-18-user-friendliness.html">什么是“对用户友好”</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2012-05-18-welcome-back.html">小小科学家的归来</a>
+                    </li>
+
+                    <li class="list-group-item title programming">
+                        <a href="pages/2012-05-17-regex.html">为什么需要正则表达式</a>
+                    </li>
+
+                    <li class="list-group-item title insight">
+                        <a href="pages/2012-05-17-back-to-cs.html">让科学和理性回到计算机科学</a>
+                    </li>
+                    
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<html>
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="../styles/main.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+
+        <title>Some observations about Tesla's Autopilot</title>
+
+        
+        <script type="text/javascript" src="../js/title.js"></script>
+    </head>
+
+    <body>
+        <div style="margin: 2% 5% 2% 5%">
+            <table>
+                <tr>
+                    <td width="60%">
+                        <div style="padding: 2% 8% 5% 8%; border: 1px solid LightGrey;">
+                            <h2 onclick="nightOn()">Some observations about Tesla's Autopilot</h2>
+
+<iframe src='https://www.youtube.com/embed/MrwxEX8qOxA?' width="645" height="393"></iframe>
+
+<p>After analyzing Tesla Model S's various design problems, I was shocked again, this time by a popular video, showing Tesla's autopilot nearly causing a frontal crash.</p>
+
+<p>Some observations:</p>
+
+<ol>
+    <li><p>Autopilot sees tree shadows on the ground, and mistaken them as obstacles. This may not be a right kind of road to use the autopilot, but in principle this could happen even if you are on a high way with trees or some other shadow-casting objects, such as clouds. The failure of distinguishing shadows from objects suggests that Tesla hasn't done basic computer vision research, specifically, a subject called "image shadow removing". I'm also doubting whether the autopilot uses stereo vision or colors at all.</p>
+    </li>
+    <li>
+    <p>When seeing the tree shadow, autopilot tried to avoid it as if it were an obstacle. It didn't brake (the speed remained at ~38mph). It steered the car to the left, trying to cross the double yellow line, nearly causing a frontal crash with an upcoming vehicle. This shows that the autopilot hasn't ideas about basic road rules and correct emergency strategy. An experienced driver would brake instead of averting the obstacle without slowing down.</p>
+    </li>
+</ol>
+
+<p>There should be no public "beta testing" on such mission critical software. It needs to be perfectly safe before it can be released. Nobody wants to test such software with their lives. Putting complicated "warnings" or "conditions" on the software license, calling it "beta" and asking users to keep a hand on the steering wheel, can't really get Tesla out of liability if someone is actually hurt.</p>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

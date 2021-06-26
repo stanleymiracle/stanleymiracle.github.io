@@ -1,0 +1,54 @@
+<html>
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="../styles/main.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+
+        <title>How to reinvent the Y combinator</title>
+
+        
+        <script type="text/javascript" src="../js/title.js"></script>
+    </head>
+
+    <body>
+        <div style="margin: 2% 5% 2% 5%">
+            <table>
+                <tr>
+                    <td width="60%">
+                        <div style="padding: 2% 8% 5% 8%; border: 1px solid LightGrey;">
+                            <h2 onclick="nightOn()">How to reinvent the Y combinator</h2>
+
+<p style="text-align:center;"><iframe src='https://www.slideshare.net/slideshow/embed_code/12319464' width='850' height='696' scrolling='no' allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></p>
+
+<p>I don't believe in the doctrine "Don't reinvent the wheels". I believe that one can never learn the essence of anything without reinventing it (intentionally or not). Once you reinvent a thing, you can never forget it --- because otherwise you can just reinvent it again.</p>
+
+<p>Today I found that I forgot how to derive the definition of the Y combinator. I learned it several years ago from an online article, but now the search term "Y combinator" only brings news about startups (sigh). I attempted it for two hours, but still couldn't make the leap from the "poor man's Y" to "Y". Finally, I opened my good old friend "<a href="https://mitpress.mit.edu/books/little-schemer">The Little Schemer</a>". Alas. Chapter 9 tells me exactly how to reinvent Y. Thank you Dan Friedman and Matthias Felleisen!</p>
+
+<p>To prevent myself from forgetting how to derive Y again, I made a slide to record my understanding of it. It is slightly different from the ways of the recent version of "The Little Schemer", but I think it's easier to understand. I hope it can help some people (including the future me). So <a href="http://www.slideshare.net/yinwang0/reinventing-the-ycombinator">here</a> it is.</p>
+
+<p>Exercise: The Y combinator derived from this tutorial only works for direct recursion, try to derive the Y combinator for mutual recursive functions, for example the following two functions even and odd.</p>
+
+<pre>
+(define even
+  (lambda (x)
+    (cond
+     [(zero? x) #t]
+     [(= 1 x) #f]
+     [else (odd (sub1 x))])))
+
+(define odd
+  (lambda (x)
+    (cond
+     [(zero? x) #f]
+     [(= 1 x) #t]
+     [else (even (sub1 x))])))
+</pre>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

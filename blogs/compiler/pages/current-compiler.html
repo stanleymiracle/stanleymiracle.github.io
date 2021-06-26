@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link href="../styles/main.css" rel="stylesheet" type="text/css">
+
+	<title>Current P423</title>
+</head>
+
+<body>
+    <div style="margin: 2% 10% 2% 10%">
+        <table>
+            <tr>
+                <td width="60%">
+                    <div style="padding: 2% 8% 5% 8%; border: 1px solid LightGrey;">
+                        <h2>Current P423</h2>
+
+<h3>Introduction</h3>
+
+<p>High-level programming languages like Scheme make programming a breeze, but how do they work? There's a big gap between Scheme and machine instructions for modern computers. Learn how to translate Racket (a dialect of Scheme) programs all the way to Intel x86 assembly language.</p>
+
+<p>Most compiler courses teach one phase of the compiler at a time, such as <u>parsing</u>, <u>semantic analysis</u>, and <u>register allocation</u>. The problem with that approach is it is difficult to understand how the whole compiler fits together and why each phase is designed the way it is. Instead, each week we implement a successively larger subset of the Racket language and a statically typed version of it. The very first subset is a tiny language of arithmetic statements, and by the time we are done the language includes first-class functions.</p>
+
+<h3>Topic</h3>
+
+<ul>
+	<li>Instruction Selection</li>
+	<li>Register Allocation</li>
+	<li>Static type checking</li>
+	<li>Conditional control flow</li>
+	<li>Mutable data</li>
+	<li>Garbage collection</li>
+	<li>Procedures and calling conventions</li>
+	<li>First-class functions and closure conversion</li>
+	<li>Dynamic typing</li>
+	<li>Generics</li>
+	<li>High-level optimization (inlining, constant folding, copy propagation, etc.)</li>
+</ul>
+
+<h3>Resources</h3>
+
+<ul>
+	<li><a href="../docs/book.pdf">Essentials of Compilation</a></li>
+	<li><a href="https://docs.racket-lang.org/">Racket Documentation</a></li>
+	<li><a href="docs/intel-x86-manual.pdf">Intel x86 Manual</a></li>
+	<li>System V Application Binary Interface[<a href="../docs/i386-abi.pdf">i386</a>][<a href="../docs/amd64-abi.pdf">amd64</a>]</li>
+	<li><a href="../docs/gcsurvey.pdf">Uniprocessor Garbage Collection Techniques</a></li>
+	<li><a href="../docs/inlining.pdf">Fast and Effective Procedure Inlining</a></li>
+</ul>
+
+<h3><a href="current-assigns.html">Assignments</a></h3>
+
+						</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

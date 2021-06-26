@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>mk-new.rkt</title>
+<meta name="generator" content="emacs 25.1.1; htmlfontify 0.21" />
+<style type="text/css"><!-- 
+body { font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #eeeeee;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.default   { font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #eeeeee;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.default a { font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #eeeeee;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.string   { color: #deb887;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.string a { color: #deb887;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.racket-selfeval-face   { color: #2e8b57;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.racket-selfeval-face a { color: #2e8b57;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.builtin   { color: #f08080;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.builtin a { color: #f08080;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.function-name   { color: #daa520;  font-weight: 700;  font-family: Courier New;  font-stretch: normal;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.function-name a { color: #daa520;  font-weight: 700;  font-family: Courier New;  font-stretch: normal;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.comment   { color: #5f9ea0;  font-style: italic;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.comment a { color: #5f9ea0;  font-style: italic;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.comment-delimiter   { color: #5f9ea0;  font-style: italic;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.comment-delimiter a { color: #5f9ea0;  font-style: italic;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.racket-paren-face   { color: #696969;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.racket-paren-face a { color: #696969;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.variable-name   { color: #4eee94;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.variable-name a { color: #4eee94;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.keyword   { color: #00bfff;  font-weight: 700;  font-family: Courier New;  font-stretch: normal;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.keyword a { color: #00bfff;  font-weight: 700;  font-family: Courier New;  font-stretch: normal;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+ --></style>
+
+    <script type="text/javascript"><!--
+  // this function is needed to work around
+  // a bug in IE related to element attributes
+  function hasClass(obj)
+  {
+      var result = false;
+      if (obj.getAttributeNode("class") != null)
+      {
+          result = obj.getAttributeNode("class").value;
+      }
+      return result;
+  }
+
+  function stripe(id)
+  {
+      // the flag we'll use to keep track of
+      // whether the current row is odd or even
+      var even = false;
+
+      // if arguments are provided to specify the colors
+      // of the even & odd rows, then use the them;
+      // otherwise use the following defaults:
+      var evenColor = arguments[1] ? arguments[1] : "#fff";
+      var oddColor  = arguments[2] ? arguments[2] : "#ddd";
+
+      // obtain a reference to the desired table
+      // if no such table exists, abort
+      var table = document.getElementById(id);
+      if (! table) { return; }
+
+      // by definition, tables can have more than one tbody
+      // element, so we'll have to get the list of child
+      // &lt;tbody&gt;s
+      var tbodies = table.getElementsByTagName("tbody");
+
+      // and iterate through them...
+      for (var h = 0; h < tbodies.length; h++)
+      {
+          // find all the &lt;tr&gt; elements...
+          var trs = tbodies[h].getElementsByTagName("tr");
+
+          // ... and iterate through them
+          for (var i = 0; i < trs.length; i++)
+          {
+              // avoid rows that have a class attribute
+              // or backgroundColor style
+              if (! hasClass(trs[i]) &&
+                  ! trs[i].style.backgroundColor)
+              {
+                  // get all the cells in this row...
+                  var tds = trs[i].getElementsByTagName("td");
+
+                  // and iterate through them...
+                  for (var j = 0; j < tds.length; j++)
+                  {
+                      var mytd = tds[j];
+
+                      // avoid cells that have a class attribute
+                      // or backgroundColor style
+                      if (! hasClass(mytd) &&
+                          ! mytd.style.backgroundColor)
+                      {
+                          mytd.style.backgroundColor =
+                            even ? evenColor : oddColor;
+                      }
+                  }
+              }
+              // flip from odd to even, or vice-versa
+              even =  ! even;
+          }
+      }
+  }
+
+  function toggle_invis( name )
+  {
+      var filter =
+        { acceptNode:
+          function( node )
+          { var classname = node.id;
+            if( classname )
+            { var classbase = classname.substr( 0, name.length );
+              if( classbase == name ) { return NodeFilter.FILTER_ACCEPT; } }
+            return NodeFilter.FILTER_SKIP; } };
+      var walker = document.createTreeWalker( document.body           ,
+                                              NodeFilter.SHOW_ELEMENT ,
+                                              filter                  ,
+                                              false                   );
+      while( walker.nextNode() )
+      {
+          var e = walker.currentNode;
+          if( e.style.display == "none" ) { e.style.display = "inline"; }
+          else                            { e.style.display = "none";   }
+      }
+  }
+--> </script>
+  </head>
+  <body onload="stripe('index'); return true;">
+
+<pre><span class="keyword">#lang</span> <span class="variable-name">racket</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">provide</span> <span class="racket-paren-face">(</span><span class="keyword">all-defined-out</span><span class="racket-paren-face">))</span>
+
+<span class="comment-delimiter">;; </span><span class="comment">Under the Hood
+</span>
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">var</span> name<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span><span class="builtin">vector</span> name<span class="racket-paren-face">))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">var?</span> x<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span><span class="builtin">vector?</span> x<span class="racket-paren-face">))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">empty-s</span> '<span class="racket-paren-face">())</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">walk</span> v s<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">let</span> <span class="racket-paren-face">((</span><span class="variable-name">a</span> <span class="racket-paren-face">(</span><span class="keyword">and</span> <span class="racket-paren-face">(</span>var? v<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span><span class="builtin">assv</span> v s<span class="racket-paren-face">))))</span>
+    <span class="racket-paren-face">(</span><span class="keyword">cond</span>
+      <span class="racket-paren-face">((</span><span class="builtin">pair?</span> a<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span>walk <span class="racket-paren-face">(</span><span class="builtin">cdr</span> a<span class="racket-paren-face">)</span> s<span class="racket-paren-face">))</span>
+      <span class="racket-paren-face">(</span><span class="keyword">else</span> v<span class="racket-paren-face">))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">ext-s</span> x v s<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">cond</span>
+    <span class="racket-paren-face">((</span>occurs? x v s<span class="racket-paren-face">)</span> <span class="racket-selfeval-face">#f</span><span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span><span class="keyword">else</span> <span class="racket-paren-face">(</span><span class="builtin">cons</span> <span class="racket-paren-face">(</span><span class="builtin">cons</span> x v<span class="racket-paren-face">)</span> s<span class="racket-paren-face">))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">occurs?</span> x v s<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">let</span> <span class="racket-paren-face">((</span><span class="variable-name">v</span> <span class="racket-paren-face">(</span>walk v s<span class="racket-paren-face">)))</span>
+    <span class="racket-paren-face">(</span><span class="keyword">cond</span>
+      <span class="racket-paren-face">((</span>var? v<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span><span class="builtin">eqv?</span> v x<span class="racket-paren-face">))</span>
+      <span class="racket-paren-face">((</span><span class="builtin">pair?</span> v<span class="racket-paren-face">)</span>
+       <span class="racket-paren-face">(</span><span class="keyword">or</span> <span class="racket-paren-face">(</span>occurs? x <span class="racket-paren-face">(</span><span class="builtin">car</span> v<span class="racket-paren-face">)</span> s<span class="racket-paren-face">)</span>
+           <span class="racket-paren-face">(</span>occurs? x <span class="racket-paren-face">(</span><span class="builtin">cdr</span> v<span class="racket-paren-face">)</span> s<span class="racket-paren-face">)))</span>
+      <span class="racket-paren-face">(</span><span class="keyword">else</span> <span class="racket-selfeval-face">#f</span><span class="racket-paren-face">))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">unify</span> u v s<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">let</span> <span class="racket-paren-face">((</span><span class="variable-name">u</span> <span class="racket-paren-face">(</span>walk u s<span class="racket-paren-face">))</span>
+        <span class="racket-paren-face">(</span><span class="variable-name">v</span> <span class="racket-paren-face">(</span>walk v s<span class="racket-paren-face">)))</span>
+    <span class="racket-paren-face">(</span><span class="keyword">cond</span>
+      <span class="racket-paren-face">((</span><span class="builtin">eqv?</span> u v<span class="racket-paren-face">)</span> s<span class="racket-paren-face">)</span>
+      <span class="racket-paren-face">((</span>var? u<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span>ext-s u v s<span class="racket-paren-face">))</span>
+      <span class="racket-paren-face">((</span>var? v<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span>ext-s v u s<span class="racket-paren-face">))</span>
+      <span class="racket-paren-face">((</span><span class="keyword">and</span> <span class="racket-paren-face">(</span><span class="builtin">pair?</span> u<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span><span class="builtin">pair?</span> v<span class="racket-paren-face">))</span>
+       <span class="racket-paren-face">(</span><span class="keyword">let</span> <span class="racket-paren-face">((</span><span class="variable-name">s</span> <span class="racket-paren-face">(</span>unify <span class="racket-paren-face">(</span><span class="builtin">car</span> u<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span><span class="builtin">car</span> v<span class="racket-paren-face">)</span> s<span class="racket-paren-face">)))</span>
+         <span class="racket-paren-face">(</span><span class="keyword">and</span> s <span class="racket-paren-face">(</span>unify <span class="racket-paren-face">(</span><span class="builtin">cdr</span> u<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span><span class="builtin">cdr</span> v<span class="racket-paren-face">)</span> s<span class="racket-paren-face">))))</span>
+      <span class="racket-paren-face">(</span><span class="keyword">else</span> <span class="racket-selfeval-face">#f</span><span class="racket-paren-face">))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">==</span> u v<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>s<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span><span class="keyword">let</span> <span class="racket-paren-face">((</span><span class="variable-name">s</span> <span class="racket-paren-face">(</span>unify u v s<span class="racket-paren-face">)))</span>
+      <span class="racket-paren-face">(</span><span class="keyword">if</span> s <span class="racket-paren-face">(</span><span class="builtin">list</span> s<span class="racket-paren-face">)</span> '<span class="racket-paren-face">()))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">succeed</span> <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>s<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span><span class="builtin">list</span> s<span class="racket-paren-face">)))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">fail</span> <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>s<span class="racket-paren-face">)</span> '<span class="racket-paren-face">()))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">disj2</span> g1 g2<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>s<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span>append-inf <span class="racket-paren-face">(</span>g1 s<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span>g2 s<span class="racket-paren-face">))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">append-inf</span> s-inf t-inf<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">cond</span>
+    <span class="racket-paren-face">((</span><span class="builtin">null?</span> s-inf<span class="racket-paren-face">)</span> t-inf<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">((</span><span class="builtin">pair?</span> s-inf<span class="racket-paren-face">)</span>
+     <span class="racket-paren-face">(</span><span class="builtin">cons</span> <span class="racket-paren-face">(</span><span class="builtin">car</span> s-inf<span class="racket-paren-face">)</span>
+           <span class="racket-paren-face">(</span>append-inf <span class="racket-paren-face">(</span><span class="builtin">cdr</span> s-inf<span class="racket-paren-face">)</span> t-inf<span class="racket-paren-face">)))</span>
+    <span class="racket-paren-face">(</span><span class="keyword">else</span>
+     <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">()</span> <span class="racket-paren-face">(</span>append-inf t-inf <span class="racket-paren-face">(</span>s-inf<span class="racket-paren-face">))))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">unproductiveo</span><span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>s<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">()</span>
+      <span class="racket-paren-face">((</span>unproductiveo<span class="racket-paren-face">)</span> s<span class="racket-paren-face">))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">pull-inf</span> s-inf<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">cond</span>
+    <span class="racket-paren-face">((</span><span class="builtin">null?</span> s-inf<span class="racket-paren-face">)</span> '<span class="racket-paren-face">())</span>
+    <span class="racket-paren-face">((</span><span class="builtin">pair?</span> s-inf<span class="racket-paren-face">)</span> s-inf<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span><span class="keyword">else</span> <span class="racket-paren-face">(</span>pull-inf <span class="racket-paren-face">(</span>s-inf<span class="racket-paren-face">)))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">run-goal</span> g<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span>pull-inf <span class="racket-paren-face">(</span>g empty-s<span class="racket-paren-face">)))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">productiveo</span><span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>s<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">()</span>
+      <span class="racket-paren-face">((</span>disj2 succeed <span class="racket-paren-face">(</span>productiveo<span class="racket-paren-face">))</span> s<span class="racket-paren-face">))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">take-inf</span> n S-inf<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">cond</span>
+    <span class="racket-paren-face">((</span><span class="builtin">null?</span> S-inf<span class="racket-paren-face">)</span> '<span class="racket-paren-face">())</span>
+    <span class="racket-paren-face">(</span><span class="keyword">else</span>
+     <span class="racket-paren-face">(</span><span class="builtin">cons</span> <span class="racket-paren-face">(</span><span class="builtin">car</span> S-inf<span class="racket-paren-face">)</span>
+           <span class="racket-paren-face">(</span><span class="keyword">cond</span>
+             <span class="racket-paren-face">((</span><span class="keyword">and</span> n <span class="racket-paren-face">(</span><span class="builtin">zero?</span> <span class="racket-paren-face">(</span><span class="builtin">sub1</span> n<span class="racket-paren-face">)))</span> '<span class="racket-paren-face">())</span>
+             <span class="racket-paren-face">(</span><span class="keyword">else</span>
+              <span class="racket-paren-face">(</span>take-inf <span class="racket-paren-face">(</span><span class="keyword">and</span> n <span class="racket-paren-face">(</span><span class="builtin">sub1</span> n<span class="racket-paren-face">))</span>
+                        <span class="racket-paren-face">(</span>pull-inf <span class="racket-paren-face">(</span><span class="builtin">cdr</span> S-inf<span class="racket-paren-face">)))))))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">conj2</span> g1 g2<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>s<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span>append-map-inf g2 <span class="racket-paren-face">(</span>g1 s<span class="racket-paren-face">))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">append-map-inf</span> g s-inf<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">cond</span>
+    <span class="racket-paren-face">((</span><span class="builtin">null?</span> s-inf<span class="racket-paren-face">)</span> '<span class="racket-paren-face">())</span>
+    <span class="racket-paren-face">((</span><span class="builtin">pair?</span> s-inf<span class="racket-paren-face">)</span>
+     <span class="racket-paren-face">(</span>append-inf <span class="racket-paren-face">(</span>g <span class="racket-paren-face">(</span><span class="builtin">car</span> s-inf<span class="racket-paren-face">))</span>
+                 <span class="racket-paren-face">(</span>append-map-inf g <span class="racket-paren-face">(</span><span class="builtin">cdr</span> s-inf<span class="racket-paren-face">))))</span>
+    <span class="racket-paren-face">(</span><span class="keyword">else</span>
+     <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">()</span> <span class="racket-paren-face">(</span>append-map-inf g <span class="racket-paren-face">(</span>s-inf<span class="racket-paren-face">))))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">call/fresh</span> name f<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span>f <span class="racket-paren-face">(</span>var name<span class="racket-paren-face">)))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">reify-name</span> n<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="builtin">string-&gt;symbol</span>
+   <span class="racket-paren-face">(</span><span class="builtin">string-append</span> <span class="string">&quot;_&quot;</span>
+                  <span class="racket-paren-face">(</span><span class="builtin">number-&gt;string</span> n<span class="racket-paren-face">))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">walk*</span> v s<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">let</span> <span class="racket-paren-face">((</span><span class="variable-name">v</span> <span class="racket-paren-face">(</span>walk v s<span class="racket-paren-face">)))</span>
+    <span class="racket-paren-face">(</span><span class="keyword">cond</span>
+      <span class="racket-paren-face">((</span>var? v<span class="racket-paren-face">)</span> v<span class="racket-paren-face">)</span>
+      <span class="racket-paren-face">((</span><span class="builtin">pair?</span> v<span class="racket-paren-face">)</span>
+       <span class="racket-paren-face">(</span><span class="builtin">cons</span>
+        <span class="racket-paren-face">(</span>walk* <span class="racket-paren-face">(</span><span class="builtin">car</span> v<span class="racket-paren-face">)</span> s<span class="racket-paren-face">)</span>
+        <span class="racket-paren-face">(</span>walk* <span class="racket-paren-face">(</span><span class="builtin">cdr</span> v<span class="racket-paren-face">)</span> s<span class="racket-paren-face">)))</span>
+      <span class="racket-paren-face">(</span><span class="keyword">else</span> v<span class="racket-paren-face">))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define-syntax</span> <span class="variable-name">project</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">syntax-rules</span> <span class="racket-paren-face">()</span>
+    <span class="racket-paren-face">((</span>project <span class="racket-paren-face">(</span>x <span class="keyword">...</span><span class="racket-paren-face">)</span> g <span class="keyword">...</span><span class="racket-paren-face">)</span>
+     <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>s<span class="racket-paren-face">)</span>
+       <span class="racket-paren-face">(</span><span class="keyword">let</span> <span class="racket-paren-face">((</span><span class="variable-name">x</span> <span class="racket-paren-face">(</span>walk* x s<span class="racket-paren-face">))</span> <span class="keyword">...</span><span class="racket-paren-face">)</span>
+         <span class="racket-paren-face">((</span> conj g <span class="keyword">...</span><span class="racket-paren-face">)</span> s<span class="racket-paren-face">))))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">reify-s</span> v r<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">let</span> <span class="racket-paren-face">((</span><span class="variable-name">v</span> <span class="racket-paren-face">(</span>walk v r<span class="racket-paren-face">)))</span>
+    <span class="racket-paren-face">(</span><span class="keyword">cond</span>
+      <span class="racket-paren-face">((</span>var? v<span class="racket-paren-face">)</span>
+       <span class="racket-paren-face">(</span><span class="keyword">let</span> <span class="racket-paren-face">((</span><span class="variable-name">rn</span> <span class="racket-paren-face">(</span>reify-name <span class="racket-paren-face">(</span><span class="builtin">length</span> r<span class="racket-paren-face">))))</span>
+         <span class="racket-paren-face">(</span>ext-s v rn r<span class="racket-paren-face">)))</span>
+      <span class="racket-paren-face">((</span><span class="builtin">pair?</span> v<span class="racket-paren-face">)</span>
+       <span class="racket-paren-face">(</span><span class="keyword">let</span> <span class="racket-paren-face">((</span><span class="variable-name">r</span> <span class="racket-paren-face">(</span>reify-s <span class="racket-paren-face">(</span><span class="builtin">car</span> v<span class="racket-paren-face">)</span> r<span class="racket-paren-face">)))</span>
+         <span class="racket-paren-face">(</span>reify-s <span class="racket-paren-face">(</span><span class="builtin">cdr</span> v<span class="racket-paren-face">)</span> r<span class="racket-paren-face">)))</span>
+      <span class="racket-paren-face">(</span><span class="keyword">else</span> r<span class="racket-paren-face">))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">reify</span> v<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>s<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span><span class="keyword">let</span> <span class="racket-paren-face">((</span><span class="variable-name">v</span> <span class="racket-paren-face">(</span>walk* v s<span class="racket-paren-face">)))</span>
+      <span class="racket-paren-face">(</span><span class="keyword">let</span> <span class="racket-paren-face">((</span><span class="variable-name">r</span> <span class="racket-paren-face">(</span>reify-s v empty-s<span class="racket-paren-face">)))</span>
+        <span class="racket-paren-face">(</span>walk* v r<span class="racket-paren-face">)))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">appendo</span> l t out<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>s<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">()</span>
+      <span class="racket-paren-face">((</span>disj2
+        <span class="racket-paren-face">(</span>conj2 <span class="racket-paren-face">(</span><span class="builtin">==</span> '<span class="racket-paren-face">()</span> l<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span><span class="builtin">==</span> t out<span class="racket-paren-face">))</span>
+        <span class="racket-paren-face">(</span>call/fresh <span class="racket-selfeval-face">'a</span>
+                    <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>a<span class="racket-paren-face">)</span>
+                      <span class="racket-paren-face">(</span>call/fresh <span class="racket-selfeval-face">'d</span>
+                                  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>d<span class="racket-paren-face">)</span>
+                                    <span class="racket-paren-face">(</span>call/fresh <span class="racket-selfeval-face">'res</span>
+                                                <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>res<span class="racket-paren-face">)</span>
+                                                  <span class="racket-paren-face">(</span>conj2
+                                                   <span class="racket-paren-face">(</span><span class="builtin">==</span> <span class="racket-paren-face">(</span><span class="builtin">cons</span> a d<span class="racket-paren-face">)</span> l<span class="racket-paren-face">)</span>
+                                                   <span class="racket-paren-face">(</span>conj2
+                                                    <span class="racket-paren-face">(</span><span class="builtin">==</span> <span class="racket-paren-face">(</span><span class="builtin">cons</span> a res<span class="racket-paren-face">)</span> out<span class="racket-paren-face">)</span>
+                                                    <span class="racket-paren-face">(</span>appendo d t
+                                                             res<span class="racket-paren-face">)))))))))))</span>
+      s<span class="racket-paren-face">)))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">ifte</span> g1 g2 g3<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>s<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span>ifte-help <span class="racket-paren-face">(</span>g1 s<span class="racket-paren-face">)</span> g2 g3<span class="racket-paren-face">)))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">ifte-help</span> s-inf g2 g3<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">cond</span>
+    <span class="racket-paren-face">((</span><span class="builtin">null?</span> s-inf<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span>g3 s-inf<span class="racket-paren-face">))</span>
+    <span class="racket-paren-face">((</span><span class="builtin">pair?</span> s-inf<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span>append-map-inf g2 s-inf<span class="racket-paren-face">))</span>
+    <span class="racket-paren-face">(</span><span class="keyword">else</span>
+     <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">()</span> <span class="racket-paren-face">(</span>ifte-help <span class="racket-paren-face">(</span>s-inf<span class="racket-paren-face">)</span> g2 g3<span class="racket-paren-face">)))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">once</span> g<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>s<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span>once-help <span class="racket-paren-face">(</span>g s<span class="racket-paren-face">))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">once-help</span> s-inf<span class="racket-paren-face">)</span>
+  <span class="racket-paren-face">(</span><span class="keyword">cond</span>
+    <span class="racket-paren-face">((</span><span class="builtin">null?</span> s-inf<span class="racket-paren-face">)</span> '<span class="racket-paren-face">())</span>
+    <span class="racket-paren-face">((</span><span class="builtin">pair?</span> s-inf<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span><span class="builtin">cons</span> <span class="racket-paren-face">(</span><span class="builtin">car</span> s-inf<span class="racket-paren-face">)</span> '<span class="racket-paren-face">()))</span>
+    <span class="racket-paren-face">(</span><span class="keyword">else</span>
+     <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">()</span> <span class="racket-paren-face">(</span>once-help <span class="racket-paren-face">(</span>s-inf<span class="racket-paren-face">))))))</span>
+
+<span class="comment-delimiter">;; </span><span class="comment">Connecting the Wires
+</span>
+<span class="racket-paren-face">(</span><span class="keyword">define-syntax</span> <span class="variable-name">disj</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">syntax-rules</span> <span class="racket-paren-face">()</span>
+    <span class="racket-paren-face">((</span>disj<span class="racket-paren-face">)</span> fail<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">((</span>disj g<span class="racket-paren-face">)</span> g<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">((</span>disj g0 g1 g <span class="keyword">...</span><span class="racket-paren-face">)</span>
+     <span class="racket-paren-face">(</span>disj2 g0 <span class="racket-paren-face">(</span>disj g1 g <span class="keyword">...</span><span class="racket-paren-face">)))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define-syntax</span> <span class="variable-name">conj</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">syntax-rules</span> <span class="racket-paren-face">()</span>
+    <span class="racket-paren-face">((</span>conj<span class="racket-paren-face">)</span> succeed<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">((</span>conj g<span class="racket-paren-face">)</span> g<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">((</span>conj g0 g1 g <span class="keyword">...</span><span class="racket-paren-face">)</span>
+     <span class="racket-paren-face">(</span>conj2 g0 <span class="racket-paren-face">(</span>conj g1 g <span class="keyword">...</span><span class="racket-paren-face">)))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define-syntax</span> <span class="variable-name">fresh</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">syntax-rules</span> <span class="racket-paren-face">()</span>
+    <span class="racket-paren-face">((</span>fresh <span class="racket-paren-face">()</span> g <span class="keyword">...</span><span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span>conj g <span class="keyword">...</span><span class="racket-paren-face">))</span>
+    <span class="racket-paren-face">((</span>fresh <span class="racket-paren-face">(</span>x0 x <span class="keyword">...</span><span class="racket-paren-face">)</span> g <span class="keyword">...</span><span class="racket-paren-face">)</span>
+     <span class="racket-paren-face">(</span>call/fresh <span class="racket-selfeval-face">'x0</span>
+                 <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>x0<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span>fresh <span class="racket-paren-face">(</span>x <span class="keyword">...</span><span class="racket-paren-face">)</span> g <span class="keyword">...</span><span class="racket-paren-face">))))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define-syntax</span> <span class="variable-name">run</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">syntax-rules</span> <span class="racket-paren-face">()</span>
+    <span class="racket-paren-face">((</span>run n <span class="racket-paren-face">(</span>x0 x <span class="keyword">...</span><span class="racket-paren-face">)</span> g <span class="keyword">...</span><span class="racket-paren-face">)</span>
+     <span class="racket-paren-face">(</span>run n q
+          <span class="racket-paren-face">(</span>fresh <span class="racket-paren-face">(</span>x0 x <span class="keyword">...</span><span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span><span class="builtin">==</span> <span class="racket-paren-face">(</span><span class="builtin">list</span> x0 x <span class="keyword">...</span><span class="racket-paren-face">)</span> q<span class="racket-paren-face">)</span> g <span class="keyword">...</span><span class="racket-paren-face">)))</span>
+    <span class="racket-paren-face">((</span>run n q g <span class="keyword">...</span><span class="racket-paren-face">)</span>
+     <span class="racket-paren-face">(</span><span class="keyword">let</span> <span class="racket-paren-face">((</span><span class="variable-name">q</span> <span class="racket-paren-face">(</span>var <span class="racket-selfeval-face">'q</span><span class="racket-paren-face">)))</span>
+       <span class="racket-paren-face">(</span><span class="builtin">map</span> <span class="racket-paren-face">(</span>reify q<span class="racket-paren-face">)</span>
+            <span class="racket-paren-face">(</span>take-inf n <span class="racket-paren-face">(</span>run-goal <span class="racket-paren-face">(</span>conj g <span class="keyword">...</span><span class="racket-paren-face">))))))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define-syntax</span> <span class="variable-name">run*</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">syntax-rules</span> <span class="racket-paren-face">()</span>
+    <span class="racket-paren-face">((</span>run* q g <span class="keyword">...</span><span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span>run <span class="racket-selfeval-face">#f</span> q g <span class="keyword">...</span><span class="racket-paren-face">))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define-syntax</span> <span class="variable-name">conde</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">syntax-rules</span> <span class="racket-paren-face">()</span>
+    <span class="racket-paren-face">((</span>conde <span class="racket-paren-face">(</span>g <span class="keyword">...</span><span class="racket-paren-face">)</span> <span class="keyword">...</span><span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span>disj <span class="racket-paren-face">(</span>conj g <span class="keyword">...</span><span class="racket-paren-face">)</span> <span class="keyword">...</span><span class="racket-paren-face">))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define-syntax</span> <span class="variable-name">defrel</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">syntax-rules</span> <span class="racket-paren-face">()</span>
+    <span class="racket-paren-face">((</span>defrel <span class="racket-paren-face">(</span><span class="function-name">name</span> a <span class="keyword">...</span><span class="racket-paren-face">)</span> g <span class="keyword">...</span><span class="racket-paren-face">)</span>
+     <span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="racket-paren-face">(</span><span class="function-name">name</span> a <span class="keyword">...</span><span class="racket-paren-face">)</span>
+       <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>s<span class="racket-paren-face">)</span>
+         <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">()</span>
+           <span class="racket-paren-face">((</span>conj g <span class="keyword">...</span><span class="racket-paren-face">)</span> s<span class="racket-paren-face">)))))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define-syntax</span> <span class="variable-name">conda</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">syntax-rules</span> <span class="racket-paren-face">(</span><span class="keyword">else</span><span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">((</span>conda <span class="racket-paren-face">(</span><span class="keyword">else</span> g^ <span class="keyword">...</span><span class="racket-paren-face">))</span> <span class="racket-paren-face">(</span>conj g^ <span class="keyword">...</span><span class="racket-paren-face">))</span>
+    <span class="racket-paren-face">((</span>conda <span class="racket-paren-face">(</span>g0 g <span class="keyword">...</span><span class="racket-paren-face">)</span> l <span class="keyword">...</span><span class="racket-paren-face">)</span>
+     <span class="racket-paren-face">(</span>ifte g0 <span class="racket-paren-face">(</span>conj g <span class="keyword">...</span><span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span>conda l <span class="keyword">...</span><span class="racket-paren-face">)))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define-syntax</span> <span class="variable-name">condu</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">syntax-rules</span> <span class="racket-paren-face">(</span><span class="keyword">else</span><span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">((</span>condu <span class="racket-paren-face">(</span>g0 g <span class="keyword">...</span><span class="racket-paren-face">)</span> <span class="keyword">...</span> <span class="racket-paren-face">(</span><span class="keyword">else</span> g^ <span class="keyword">...</span><span class="racket-paren-face">))</span>
+     <span class="racket-paren-face">(</span>conda <span class="racket-paren-face">((</span>once g0<span class="racket-paren-face">)</span> g <span class="keyword">...</span><span class="racket-paren-face">)</span> <span class="keyword">...</span> <span class="racket-paren-face">(</span><span class="keyword">else</span> g^ <span class="keyword">...</span><span class="racket-paren-face">))))</span><span class="racket-paren-face">)</span></pre>
+
+ </body>
+</html>

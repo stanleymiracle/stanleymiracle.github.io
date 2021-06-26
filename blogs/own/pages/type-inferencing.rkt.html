@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.51 in css mode. -->
+<html>
+  <head>
+    <title>type-inferencing.rkt</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #eeeeee;
+        background-color: #102e4e;
+      }
+      .builtin {
+        /* font-lock-builtin-face */
+        color: #f08080;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #5f9ea0;
+        font-style: italic;
+      }
+      .comment-delimiter {
+        /* font-lock-comment-delimiter-face */
+        color: #5f9ea0;
+        font-style: italic;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #00bfff;
+        font-weight: bold;
+      }
+      .racket-paren {
+        /* racket-paren-face */
+        color: #696969;
+      }
+      .racket-selfeval {
+        /* racket-selfeval-face */
+        color: #2e8b57;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #deb887;
+      }
+      .variable-name {
+        /* font-lock-variable-name-face */
+        color: #4eee94;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+
+
+<span class="keyword">#lang</span> <span class="variable-name">racket</span>
+<span class="racket-paren">(</span><span class="keyword">require</span> <span class="string">"mk.rkt"</span><span class="racket-paren">)</span>
+
+<span class="racket-paren">(</span><span class="keyword">define</span> <span class="variable-name">apply-Go
+</span>  <span class="racket-paren">(</span><span class="keyword">lambda</span> <span class="racket-paren">(</span>G e t<span class="racket-paren">)</span>
+    <span class="racket-paren">(</span>fresh <span class="racket-paren">(</span>a G^<span class="racket-paren">)</span>
+      <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span>,a . ,G^<span class="racket-paren">)</span> G<span class="racket-paren">)</span>
+      <span class="racket-paren">(</span>fresh <span class="racket-paren">(</span>aa da<span class="racket-paren">)</span>
+        <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span>,aa . ,da<span class="racket-paren">)</span> a<span class="racket-paren">)</span>
+        <span class="racket-paren">(</span>conde
+          <span class="racket-paren">((</span><span class="builtin">==</span> aa e<span class="racket-paren">)</span> <span class="racket-paren">(</span><span class="builtin">==</span> da t<span class="racket-paren">))</span>
+          <span class="racket-paren">((</span>=/= aa e<span class="racket-paren">)</span> <span class="racket-paren">(</span>apply-Go G^ e t<span class="racket-paren">)))))))</span>
+
+<span class="racket-paren">(</span><span class="keyword">define</span> <span class="variable-name">!-
+</span>  <span class="racket-paren">(</span><span class="keyword">lambda</span> <span class="racket-paren">(</span>G e t<span class="racket-paren">)</span>
+    <span class="racket-paren">(</span>conde
+      <span class="racket-paren">((</span>numbero e<span class="racket-paren">)</span> <span class="racket-paren">(</span><span class="builtin">==</span> <span class="racket-selfeval">'Nat</span> t<span class="racket-paren">))</span>
+      <span class="racket-paren">((</span><span class="builtin">==</span> t <span class="racket-selfeval">'Bool</span><span class="racket-paren">)</span>
+       <span class="racket-paren">(</span>conde
+         <span class="racket-paren">((</span><span class="builtin">==</span> <span class="racket-selfeval">#t</span> e<span class="racket-paren">))</span>
+         <span class="racket-paren">((</span><span class="builtin">==</span> <span class="racket-selfeval">#f</span> e<span class="racket-paren">))))</span>
+      <span class="racket-paren">((</span>fresh <span class="racket-paren">(</span>e1<span class="racket-paren">)</span>
+              <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span><span class="builtin">zero?</span> ,e1<span class="racket-paren">)</span> e<span class="racket-paren">)</span>
+              <span class="racket-paren">(</span><span class="builtin">==</span> <span class="racket-selfeval">'Bool</span> t<span class="racket-paren">)</span>
+              <span class="racket-paren">(</span>!- G e1 <span class="racket-selfeval">'Nat</span><span class="racket-paren">)))</span>
+      <span class="racket-paren">((</span>fresh <span class="racket-paren">(</span>e1<span class="racket-paren">)</span>
+              <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span><span class="builtin">not</span> ,e1<span class="racket-paren">)</span> e<span class="racket-paren">)</span>
+              <span class="racket-paren">(</span><span class="builtin">==</span> <span class="racket-selfeval">'Bool</span> t<span class="racket-paren">)</span>
+              <span class="racket-paren">(</span>!- G e1 <span class="racket-selfeval">'Bool</span><span class="racket-paren">)))</span>
+      <span class="racket-paren">((</span>fresh <span class="racket-paren">(</span>e1<span class="racket-paren">)</span>
+              <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span><span class="builtin">sub1</span> ,e1<span class="racket-paren">)</span> e<span class="racket-paren">)</span>
+              <span class="racket-paren">(</span><span class="builtin">==</span> <span class="racket-selfeval">'Nat</span> t<span class="racket-paren">)</span>
+              <span class="racket-paren">(</span>!- G e1 <span class="racket-selfeval">'Nat</span><span class="racket-paren">)))</span>
+      <span class="racket-paren">((</span>fresh <span class="racket-paren">(</span>x<span class="racket-paren">)</span>
+             <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span><span class="builtin">car</span> ,x<span class="racket-paren">)</span> e<span class="racket-paren">)</span>
+             <span class="racket-paren">(</span>fresh <span class="racket-paren">(</span>ta td<span class="racket-paren">)</span>
+                    <span class="racket-paren">(</span><span class="builtin">==</span> ta t<span class="racket-paren">)</span> 
+                    <span class="racket-paren">(</span>!- G x `<span class="racket-paren">(</span>pairof ,ta ,td<span class="racket-paren">)))))</span>
+      <span class="racket-paren">((</span>fresh <span class="racket-paren">(</span>x<span class="racket-paren">)</span>
+             <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span><span class="builtin">cdr</span> ,x<span class="racket-paren">)</span> e<span class="racket-paren">)</span>
+             <span class="racket-paren">(</span>fresh <span class="racket-paren">(</span>ta td<span class="racket-paren">)</span>
+                    <span class="racket-paren">(</span><span class="builtin">==</span> td t<span class="racket-paren">)</span> 
+                    <span class="racket-paren">(</span>!- G x `<span class="racket-paren">(</span>pairof ,ta ,td<span class="racket-paren">)))))</span>
+      <span class="racket-paren">((</span>fresh <span class="racket-paren">(</span>ne1 ne2<span class="racket-paren">)</span>
+         <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span><span class="builtin">+</span> ,ne1 ,ne2<span class="racket-paren">)</span> e<span class="racket-paren">)</span>
+         <span class="racket-paren">(</span><span class="builtin">==</span> <span class="racket-selfeval">'Nat</span> t<span class="racket-paren">)</span>
+         <span class="racket-paren">(</span>!- G ne1 <span class="racket-selfeval">'Nat</span><span class="racket-paren">)</span>
+         <span class="racket-paren">(</span>!- G ne2 <span class="racket-selfeval">'Nat</span><span class="racket-paren">)))</span>
+      <span class="racket-paren">((</span>fresh <span class="racket-paren">(</span>ne1 ne2<span class="racket-paren">)</span>
+         <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span><span class="builtin">*</span> ,ne1 ,ne2<span class="racket-paren">)</span> e<span class="racket-paren">)</span>
+         <span class="racket-paren">(</span><span class="builtin">==</span> <span class="racket-selfeval">'Nat</span> t<span class="racket-paren">)</span>
+         <span class="racket-paren">(</span>!- G ne1 <span class="racket-selfeval">'Nat</span><span class="racket-paren">)</span>
+         <span class="racket-paren">(</span>!- G ne2 <span class="racket-selfeval">'Nat</span><span class="racket-paren">)))</span>
+      <span class="racket-paren">((</span>fresh <span class="racket-paren">(</span>a d<span class="racket-paren">)</span>
+              <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span><span class="builtin">cons</span> ,a ,d<span class="racket-paren">)</span> e<span class="racket-paren">)</span>
+              <span class="racket-paren">(</span>fresh <span class="racket-paren">(</span>ta td<span class="racket-paren">)</span>
+                     <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span>pairof ,ta ,td<span class="racket-paren">)</span> t<span class="racket-paren">)</span>
+                     <span class="racket-paren">(</span>!- G a ta<span class="racket-paren">)</span>
+                     <span class="racket-paren">(</span>!- G d td<span class="racket-paren">))))</span>
+      <span class="racket-paren">((</span>fresh <span class="racket-paren">(</span>teste anse elsee<span class="racket-paren">)</span>
+        <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span><span class="keyword">if</span> ,teste ,anse ,elsee<span class="racket-paren">)</span> e<span class="racket-paren">)</span>
+        <span class="racket-paren">(</span>!- G teste <span class="racket-selfeval">'Bool</span><span class="racket-paren">)</span>
+        <span class="racket-paren">(</span>!- G anse t<span class="racket-paren">)</span>
+        <span class="racket-paren">(</span>!- G elsee t<span class="racket-paren">)))</span>
+      <span class="racket-paren">((</span>symbolo e<span class="racket-paren">)</span> <span class="racket-paren">(</span>apply-Go G e t<span class="racket-paren">))</span>
+      <span class="racket-paren">((</span>fresh <span class="racket-paren">(</span>x b<span class="racket-paren">)</span>
+         <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span><span class="keyword">lambda</span> <span class="racket-paren">(</span>,x<span class="racket-paren">)</span> ,b<span class="racket-paren">)</span> e<span class="racket-paren">)</span>
+         <span class="racket-paren">(</span>symbolo x<span class="racket-paren">)</span>
+         <span class="racket-paren">(</span>fresh <span class="racket-paren">(</span>tx tb<span class="racket-paren">)</span>          
+           <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span>,tx <span class="builtin">-&gt;</span> ,tb<span class="racket-paren">)</span> t<span class="racket-paren">)</span>
+           <span class="racket-paren">(</span>!- `<span class="racket-paren">((</span>,x . ,tx<span class="racket-paren">)</span> . ,G<span class="racket-paren">)</span> b tb<span class="racket-paren">))))</span>
+       <span class="racket-paren">((</span>fresh <span class="racket-paren">(</span>x val b<span class="racket-paren">)</span>
+               <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span><span class="keyword">let</span> <span class="racket-paren">((</span><span class="variable-name">,x</span> ,val<span class="racket-paren">))</span> ,b<span class="racket-paren">)</span> e<span class="racket-paren">)</span> 
+               <span class="racket-paren">(</span>symbolo x<span class="racket-paren">)</span>
+               <span class="racket-paren">(</span>fresh <span class="racket-paren">(</span>te<span class="racket-paren">)</span>
+                      <span class="comment-delimiter">;</span><span class="comment">(!- G val `(,ta -&gt; ,td))
+</span>                      <span class="racket-paren">(</span>!- G val te<span class="racket-paren">)</span>
+                      <span class="racket-paren">(</span>!- `<span class="racket-paren">((</span>,x . ,te<span class="racket-paren">)</span> . ,G<span class="racket-paren">)</span> b t<span class="racket-paren">)</span>
+                      <span class="comment-delimiter">;</span><span class="comment">(== tt t)
+</span>                      <span class="racket-paren">)))</span> 
+       <span class="racket-paren">((</span>fresh <span class="racket-paren">(</span>x b<span class="racket-paren">)</span>
+               <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span>fix <span class="racket-paren">(</span><span class="keyword">lambda</span> <span class="racket-paren">(</span>,x<span class="racket-paren">)</span> ,b<span class="racket-paren">))</span> e<span class="racket-paren">)</span>
+               <span class="racket-paren">(</span>symbolo x<span class="racket-paren">)</span>
+               <span class="racket-paren">(</span>fresh <span class="racket-paren">(</span>tt<span class="racket-paren">)</span>
+                      <span class="racket-paren">(</span><span class="builtin">==</span> tt t<span class="racket-paren">)</span>
+                      <span class="racket-paren">(</span>!- `<span class="racket-paren">((</span>,x . ,tt<span class="racket-paren">)</span> . ,G<span class="racket-paren">)</span> b tt<span class="racket-paren">))))</span>
+       <span class="racket-paren">((</span>fresh <span class="racket-paren">(</span>e1 arg<span class="racket-paren">)</span>
+         <span class="racket-paren">(</span><span class="builtin">==</span> `<span class="racket-paren">(</span>,e1 ,arg<span class="racket-paren">)</span> e<span class="racket-paren">)</span>
+         <span class="racket-paren">(</span>fresh <span class="racket-paren">(</span>targ<span class="racket-paren">)</span>
+           <span class="racket-paren">(</span>!- G e1 `<span class="racket-paren">(</span>,targ <span class="builtin">-&gt;</span> ,t<span class="racket-paren">))</span>
+           <span class="racket-paren">(</span>!- G arg targ<span class="racket-paren">)))))))</span>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+</pre>
+  </body>
+</html>

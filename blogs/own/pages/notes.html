@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Notes</title>
+    <link rel="stylesheet" href="../styles/note.css" type="text/css">
+    <script src="../js/own.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="title"><h2>Notes</h2></div>
+        <button class="toggle">G200: 8:00am ~ 8:50am MWF (GA0005)</button>
+        <div class="panel note">
+            <ul>
+                <li>German Grammar</li>
+                <li>Vocabulary</li>
+            </ul>
+        </div>
+
+        <button class="toggle">C335: 9:05am ~ 9:55am MW (BH147) | 9:00am ~ 12:00pm F (LH035)</button>
+        <div class="panel note">
+            <ol>
+                <li>Translate C program to assembly</li>
+                <li>Translate assembly to binary</li>
+                <li>How processor executes binary</li>
+                <li>How program interacts with hardware</li>
+                <li>How to build embedded system with hardware modules</li>
+            </ol>
+        </div>
+
+        <button class="toggle">B461: 9:30 am ~ 9:55am TuTh (BH103)</button>
+        <div class="panel note">
+            <div class="subtitle">Fall 2009</div>
+            <ul>
+                <li>Conceptual Database Design and Query Languages</li>
+                <li>Physical Database Design and Query Optimization</li>
+                <li>Transaction Management and Design Optimization</li>
+                <li>Advanced Topics</li>
+            </ul>
+        </div>
+
+        <button class="toggle">P423: 1:00pm ~ 2:15pm MW (LH008)</button>
+        <div class="panel note">
+            <div class="subtitle">Essentials of Compilation</div>
+            <ul>
+                <li>Preliminaries</li>
+                <li>Compiling Integers and Variables</li>
+                <li>Register Allocation</li>
+                <li>Boolean, Control Flow, and Type Checking</li>
+                <li>Tuples and Garbage Collection</li>
+                <li>Functions</li>
+                <li>Lexically Scoped Functions</li>
+                <li>Dynamic Typing</li>
+                <li>Gradual Typing</li>
+                <li>Parametric Polymorphism</li>
+                <li>High-level Optimization</li>
+            </ul>
+        </div>
+
+        <button class="toggle">B403: 2:30pm ~ 3:45pm TuTh (BH340)</button>
+        <div class="panel note">
+            <div class="subtitle">Spring 2017</div>
+            <ul>
+                <li>Sorting and searching</li>
+                <li>Divide-and-conquer</li>
+                <li>Dynamic programming</li>
+                <li>Greedy algorithms</li>
+                <li>Graph algorithms</li>
+                <li>NP-completeness</li>
+            </ul>
+            <div class="subtitle">Fall 2011</div>
+            <ul>
+                <li>Introduction</li>
+                <li>Summing Series</li>
+                <li>Products and Binomials</li>
+                <li>Asymptotic Approximation</li>
+                <li>Simple Linear Recurrences</li>
+            </ul>
+        </div>
+
+        <a href="../docs/emacs.pdf"><button class="toggle">Emacs Shortcuts</button></a>
+        <div class="panel note"></div>
+
+        <button class="toggle">ffmpeg Audio Commands</button>
+        <div class="panel other">
+            <div class="card">
+                <div class="card-inner">
+                    <span class="">flac to alac:</span>
+                    <code>for each in ./*.flac; do ffmpeg -i "$each" -c:a alac "${each%.*}.m4a"; done;</code>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-inner">
+                    <span class="">wav to mp3:</span>
+                    <code>ffmpeg ­i audio.wav ­acodec libmp3lame audio.mp3</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">wav to ogg:</span>
+                    <code>ffmpeg ­i audio.wav  ­acodec libvorbis audio.ogg</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">wav to acc:</span>
+                    <code>ffmpeg ­i audio.wav  ­acodec libfaac audio.aac</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">wav to ac3:</span>
+                    <code>ffmpeg ­i audio.wav ­acodec ac3 audio.mp3</code>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <span class="">ogg to mp3:</span>
+                    <code>ffmpeg ­i audio.ogg ­acodec libmp3lame audio.mp3</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">ogg to wav:</span>
+                    <code>ffmpeg ­i audio.ogg audio.wav</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">ogg to acc:</span>
+                    <code>ffmpeg ­i audio.ogg  ­acodec libfaac audio.aac</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">ogg to ac3:</span>
+                    <code>ffmpeg ­i audio.ogg ­acodec ac3 audio.ac3</code>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <span class="">acc to mp3:</span>
+                    <code>ffmpeg ­i audio.aac ­acodec libmp3lame audio.mp3</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">acc to wav:</span>
+                    <code>ffmpeg ­i audio.aac audio.wav</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">acc to ac3:</span>
+                    <code>ffmpeg ­i audio.aac  ­acodec ac3 audio.ac3</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">acc to ogg:</span>
+                    <code>ffmpeg ­i audio.aac ­libvorbis audio.ogg</code>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <span class="">ac3 to mp3:</span>
+                    <code>ffmpeg ­i audio.ac3 ­acodec libmp3lame audio.mp3</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">ac3 to wav:</span>
+                    <code>ffmpeg ­i audio.ac3 audio.wav</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">ac3 to acc:</span>
+                    <code>ffmpeg ­i audio.ac3  ­acodec libfaac audio.aac</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">ac3 to ogg:</span>
+                    <code>ffmpeg ­i audio.ac3 ­acodec libvorbis audio.ogg</code>
+                </div>
+            </div>
+        </div>
+
+        <button class="toggle">ffmpeg Video Commands</button>
+        <div class="panel other">
+            <div class="card">
+                <div class="card-inner">
+                    <span class="">trim:</span>
+                    <code>ffmpeg -i input.mp4 -ss 00:00:00 -t 11:11:11 -async 1 -c copy output.mp4</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">concatnate:</span>
+                    <code>ffmpeg -f concat -safe 0 -i mylist.txt -c copy output.mp4</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">mylist.txt:</span>
+                    <div><code>- file 'filename'</code></div>
+                    <div><code>- file 'filename'</code></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>toggleOn();</script>
+</html>

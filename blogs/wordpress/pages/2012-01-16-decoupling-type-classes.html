@@ -1,0 +1,149 @@
+<html>
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="../styles/main.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+
+        <title>Decoupling type classes</title>
+
+        
+        <script type="text/javascript" src="../js/title.js"></script>
+    </head>
+
+    <body>
+        <div style="margin: 2% 5% 2% 5%">
+            <table>
+                <tr>
+                    <td width="60%">
+                        <div style="padding: 2% 8% 5% 8%; border: 1px solid LightGrey;">
+                            <h2 onclick="nightOn()">Decoupling type classes</h2>
+	
+
+<p>(I posted this idea to <a href="http://www.haskell.org/pipermail/haskell-cafe/2012-January/098439.html">Haskell Cafe</a> some days ago and got interesting respons from Dominique Devriese, who implemented <em>instance arguments</em> [1,2] (Agda's equivalence of type classes). The disucssion has been really interesting, so I decided to collect and organize the ideas into a coherent post here. Some syntax is borrowed from their work.)</p>
+
+<p>This post relates the three ideas together: type classes, implicit parameters, and typed dynamic scoping. The first two are researched into some degree but their relationship and design are still subject to debates. The latter is my own analogy which appears to be really helpful clarifying those design decisions.</p>
+
+<p>For the impatient, I have bulletted points with all the main ideas in this post here:</p>
+
+<ul>
+    <li>We can achieve the same or more expressiveness of type classes without using dictionaries. We just need implicit parameters.</li>
+    <li>Implicit parameters and their types can be fully inferred.</li>
+    <li>Implicit parameters can express MPTCs.</li>
+    <li>Type classes can be thought of as dynamic typing, though more disciplined.</li>
+</ul>
+
+<h3>To group, or not to group</h3>
+
+<p>Haskell's type classes tie the two concepts "overloading" and "grouping" together, but in fact they are not necessarily related. Decoupling those two concepts has several benefits:</p>
+
+<ul>
+    <li>It makes the type system more flexible.</li>
+    <li>It makes the implementation more modular.</li>
+    <li>It frees us from the need to pass a whole dictionary when we only use one function in it.</li>
+</ul>
+
+<p>I'm curious why we need to group those functions into a type class, instead of using them directly as overloaded functions. So I built an experimental type system which "decouples" the dictionary. Instead of passing a dictionary, it passes individual "implicit parameters" to the function. Each implicit parameter corresponds to an "undefined variable" in the function. Those implicit parameters are type inferenced and can contain type parameters just as the functions in a type class. Similarly, they are resolved by their types in the call site's scope.</p>
+
+<p>The convenience of this approach compared to Haskell's type classes is that we no longer require a user of a type class to define all the methods in a type class. For example, a user could just define a method + without defining other methods in the Num class: -, *, ... He can use the method + independently. For example, if + is defined on the String type to be concatenation, we can use + in another function:</p>
+
+<pre>weirdConcat x y = x + y + y</pre>
+
+<p>This has a utility, because the methods in the Num class don't "make sense" for Strings except +, but the current type class design requires us to define them. This is burdensome. By separating the Num class into individual overloaed functions, we enables this kind of overloading without any extra work.</p>
+
+<p>Then a question arises: how do we relate the types of functions if we no longer have this grouping? For example, for the Monad class, we expect return to be of type (a ->; m a) if (>;>;=) is of type (m a ->; (a ->; m b) ->; m b).</p>
+
+<p>The answer is to use a polymorphic record to group the functions <em>when needed</em>, then reference the functions through the record.</p>
+
+<p>Thus we have delegated the task of overloading to separate overloaded functions, and the task of grouping to records. This is a more modular design compared to the original type class system of Haskell.</p>
+
+<h3>Expressing MPTC</h3>
+
+<p>There is another benefit of this decoupling: it is expressive enough to subsume MPTC. Here is why: because the methods are no longer grouped, there is no longer a "common" type parameter to the methods. Thus we can easily have more than one parameter in the individual methods and conveniently use them as MPTC methods.</p>
+
+<p>For example,</p>
+
+<pre>overload g
+ ... ...
+f x (Int y) = g x y</pre>
+
+<p>Notice that in my system, there are no explicit declarations containing type variables. The declaration "overload g" is all that is needed. The system infers f's type as:</p>
+
+<pre>a ->; Int ->; {{g: a ->; Int ->; b}} ->; b</pre>
+
+<p>Here it automatically infers the type for g (a ->; Int ->; b) just from its <em>usage</em> inside f, as if we have written a type class definition like:</p>
+
+<pre>class G a where
+ g :: a ->; Int ->; b</pre>
+
+<p>So in this system, not only we don't need to defined type classes, we don't even need to declare the types of the overloaded functions! We can infer them from their usage and different calls to the same function don't even need to have the same type! All it takes is:</p>
+
+<pre>overload g</pre>
+
+<p>And even this is not really necessary. It is for sanity purposes - to avoid inadvertent overloading of unbound variables.</p>
+
+<p>So if g is used as:</p>
+
+<pre>f x y (Int z) = g x z y</pre>
+
+<p>then we infer its type as:</p>
+
+<pre>a ->; b ->; Int ->; {{ g :: a ->; Int ->; b ->; c}} ->; c</pre>
+
+<p>and g will be equivalent to the one you would have defined in a MPTC method.</p>
+
+<h3>Some implementation details</h3>
+
+<p>Here is how it can be implemented. When we see an "undefined" variable in a function definition which has been declared as "overloaded function", we store the function name, and the type variables that are associated with it. For example,</p>
+
+<pre>overload g -- (explicitly declare g as an overloaded function)
+
+f x y (String s) = ...
+...
+let z = g x s y in
+...
+...</pre>
+
+<p>We don't know what x and y are, but we know from the body of f that their types satisfy this pattern: g a String b. Thus we store this pattern constraint as an extra (implicit) argument in the type of f:</p>
+
+<pre>f :: a ->; b ->; String {{g: g a String b}}</pre>
+
+<p>We may have multiple such arguments.</p>
+
+<p>At the call sites of f, we look for a function g in the scope that satisfies the pattern g a String b, but we don't pass on the substitution, so they remain polymorphic. Once found, the function is passed as an extra parameter to f. This is essentially dictionary passing, but without grouping. It can be also more efficient because the parameters may be stored in registers.</p>
+
+<p>Here g is explicitly declared as "overloaded", although my experimental system doesn't need this. Any undefined variable inside function body automatically becomes overloaded. This may cause unintended overloading and it catches bugs late. That's why we need the "overload" declarations.</p>
+
+<p>But the automatic overloading of the undefined may be useful in certain situations. For example, if we are going to use Haskell as a shell language. Every "command" must be evaluated when we type them. If we have mutually recursive definitions, the shell will report "undefined variables" either way we order the functions. The automatic overloading may solve this problem. The undefined variables will temporarily exist as automatic overloaded functions. Once we actually define a function with the same name AND satisfies the type constraints, they become implicit parameters to the function we defined before. If we call a function whose implicit parameters are not associated, the shell reports error very similar to Haskell's "type a is not of class Num ..."</p>
+
+<h3>Type classes as typed dynamic scoping</h3>
+
+<p>It appears to be helpful to think of the calls to overloaded functions as referencing dynamically scoped variables. They are dispatched depending on the bindings we have in the call site's scope (and not the scope where the method is defined!). So it is very much similar to the much-hated dynamic scoping. But the dispatching is more disciplined --- it doesn't just match the name. It must match both the name and the inferred type. So in general it is useful and doesn't cause trouble.</p>
+
+<p>This intuition also explains why local instances shouldn't be allowed, because if we capture the variables at the definition site, the method call becomes "statically scoped".</p>
+
+<p>Let me post an example from Oleg:</p>
+
+<pre>foo x =
+ let overload bar (x:Int) = x + 1
+ in \() ->; bar x
+
+baz =
+ let overload bar (x:int) = x + 2
+ in foo (1::Int)</pre>
+
+<p>Here at the call site foo (1::Int), bar should be resolved to the one inside baz, and not the one inside foo. My analogy to "dynamic scoping" is useful to understand the reason here. If we capture the bar inside foo's definition site, it would correspond to "lexical scoping".</p>
+
+<p>Footnotes:</p>
+
+<p>[1] <a href="https://lirias.kuleuven.be/handle/123456789/304985">https://lirias.kuleuven.be/handle/123456789/304985</a><br />
+[2] <a href="http://wiki.portal.chalmers.se/agda/pmwiki.php?n=ReferenceManual.InstanceArguments">http://wiki.portal.chalmers.se/agda/pmwiki.php?n=ReferenceManual.InstanceArguments</a></p>
+
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

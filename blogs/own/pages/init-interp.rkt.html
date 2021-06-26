@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>interpreter.rkt</title>
+<meta name="generator" content="emacs 25.1.1; htmlfontify 0.21" />
+<style type="text/css"><!-- 
+body { font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #eeeeee;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.default   { font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #eeeeee;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.default a { font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #eeeeee;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.string   { color: #deb887;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.string a { color: #deb887;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.racket-selfeval-face   { color: #2e8b57;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.racket-selfeval-face a { color: #2e8b57;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.racket-keyword-argument-face   { color: #cd5c5c;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.racket-keyword-argument-face a { color: #cd5c5c;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.builtin   { color: #f08080;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.builtin a { color: #f08080;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.variable-name   { color: #4eee94;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.variable-name a { color: #4eee94;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.keyword   { color: #00bfff;  font-weight: 700;  font-family: Courier New;  font-stretch: normal;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.keyword a { color: #00bfff;  font-weight: 700;  font-family: Courier New;  font-stretch: normal;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.racket-paren-face   { color: #696969;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.racket-paren-face a { color: #696969;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.comment   { color: #5f9ea0;  font-style: italic;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.comment a { color: #5f9ea0;  font-style: italic;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+span.comment-delimiter   { color: #5f9ea0;  font-style: italic;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  background: #102e4e;  font-size: 10pt;  text-decoration: none; }
+span.comment-delimiter a { color: #5f9ea0;  font-style: italic;  font-family: Courier New;  font-stretch: normal;  font-weight: 500;  background: #102e4e;  font-size: 10pt;  text-decoration: underline; }
+ --></style>
+
+    <script type="text/javascript"><!--
+  // this function is needed to work around
+  // a bug in IE related to element attributes
+  function hasClass(obj)
+  {
+      var result = false;
+      if (obj.getAttributeNode("class") != null)
+      {
+          result = obj.getAttributeNode("class").value;
+      }
+      return result;
+  }
+
+  function stripe(id)
+  {
+      // the flag we'll use to keep track of
+      // whether the current row is odd or even
+      var even = false;
+
+      // if arguments are provided to specify the colors
+      // of the even & odd rows, then use the them;
+      // otherwise use the following defaults:
+      var evenColor = arguments[1] ? arguments[1] : "#fff";
+      var oddColor  = arguments[2] ? arguments[2] : "#ddd";
+
+      // obtain a reference to the desired table
+      // if no such table exists, abort
+      var table = document.getElementById(id);
+      if (! table) { return; }
+
+      // by definition, tables can have more than one tbody
+      // element, so we'll have to get the list of child
+      // &lt;tbody&gt;s
+      var tbodies = table.getElementsByTagName("tbody");
+
+      // and iterate through them...
+      for (var h = 0; h < tbodies.length; h++)
+      {
+          // find all the &lt;tr&gt; elements...
+          var trs = tbodies[h].getElementsByTagName("tr");
+
+          // ... and iterate through them
+          for (var i = 0; i < trs.length; i++)
+          {
+              // avoid rows that have a class attribute
+              // or backgroundColor style
+              if (! hasClass(trs[i]) &&
+                  ! trs[i].style.backgroundColor)
+              {
+                  // get all the cells in this row...
+                  var tds = trs[i].getElementsByTagName("td");
+
+                  // and iterate through them...
+                  for (var j = 0; j < tds.length; j++)
+                  {
+                      var mytd = tds[j];
+
+                      // avoid cells that have a class attribute
+                      // or backgroundColor style
+                      if (! hasClass(mytd) &&
+                          ! mytd.style.backgroundColor)
+                      {
+                          mytd.style.backgroundColor =
+                            even ? evenColor : oddColor;
+                      }
+                  }
+              }
+              // flip from odd to even, or vice-versa
+              even =  ! even;
+          }
+      }
+  }
+
+  function toggle_invis( name )
+  {
+      var filter =
+        { acceptNode:
+          function( node )
+          { var classname = node.id;
+            if( classname )
+            { var classbase = classname.substr( 0, name.length );
+              if( classbase == name ) { return NodeFilter.FILTER_ACCEPT; } }
+            return NodeFilter.FILTER_SKIP; } };
+      var walker = document.createTreeWalker( document.body           ,
+                                              NodeFilter.SHOW_ELEMENT ,
+                                              filter                  ,
+                                              false                   );
+      while( walker.nextNode() )
+      {
+          var e = walker.currentNode;
+          if( e.style.display == "none" ) { e.style.display = "inline"; }
+          else                            { e.style.display = "none";   }
+      }
+  }
+--> </script>
+  </head>
+  <body onload="stripe('index'); return true;">
+
+<pre>
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span><span class="comment-delimiter">;; </span><span class="comment">vanilla interpreter   ;;
+</span><span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">value-of</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span><span class="builtin">exp</span> env<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span><span class="builtin">match</span> <span class="builtin">exp</span>
+           <span class="racket-paren-face">[</span>`,n <span class="racket-keyword-argument-face">#:when</span> <span class="racket-paren-face">(</span><span class="builtin">number?</span> n<span class="racket-paren-face">)</span> n<span class="racket-paren-face">]</span>
+           <span class="racket-paren-face">[</span>`,y <span class="racket-keyword-argument-face">#:when</span> <span class="racket-paren-face">(</span><span class="builtin">symbol?</span> y<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span>env y<span class="racket-paren-face">)]</span>
+           <span class="racket-paren-face">[</span>`<span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>,x<span class="racket-paren-face">)</span> ,body<span class="racket-paren-face">)</span>
+            <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>arg<span class="racket-paren-face">)</span>
+              <span class="racket-paren-face">(</span>value-of body
+                        <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>y<span class="racket-paren-face">)</span>
+                          <span class="racket-paren-face">(</span><span class="keyword">if</span> <span class="racket-paren-face">(</span><span class="builtin">eqv?</span> y x<span class="racket-paren-face">)</span>
+                              arg
+                              <span class="racket-paren-face">(</span>env y<span class="racket-paren-face">)))))]</span>
+           <span class="racket-paren-face">[</span>`<span class="racket-paren-face">(</span>,rator ,rand<span class="racket-paren-face">)</span>
+            <span class="racket-paren-face">((</span>value-of rator env<span class="racket-paren-face">)</span>
+             <span class="racket-paren-face">(</span>value-of rand env<span class="racket-paren-face">))])))</span>
+
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span><span class="comment-delimiter">;; </span><span class="comment">functional representation ;;
+</span><span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">empty-env</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">()</span>
+    <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>y<span class="racket-paren-face">)</span>
+      <span class="racket-paren-face">(</span><span class="builtin">error</span> <span class="racket-selfeval-face">'empty-env</span> <span class="string">&quot;unbound var ~s&quot;</span> y<span class="racket-paren-face">))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">extend-env</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>x arg env<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>y<span class="racket-paren-face">)</span>
+      <span class="racket-paren-face">(</span><span class="keyword">if</span> <span class="racket-paren-face">(</span><span class="builtin">eqv?</span> y x<span class="racket-paren-face">)</span>
+          arg
+          <span class="racket-paren-face">(</span>env y<span class="racket-paren-face">)))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">apply-env</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>env y<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span>env y<span class="racket-paren-face">)))</span>
+
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">make-closure</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>body x env<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>arg<span class="racket-paren-face">)</span>
+      <span class="racket-paren-face">(</span>value-of-fn body
+                   <span class="racket-paren-face">(</span>extend-env x arg env<span class="racket-paren-face">)))))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">apply-closure</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>c a<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span>c a<span class="racket-paren-face">)))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">value-of-fn</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span><span class="builtin">exp</span> env<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span><span class="builtin">match</span> <span class="builtin">exp</span>
+           <span class="racket-paren-face">[</span>`,n <span class="racket-keyword-argument-face">#:when</span> <span class="racket-paren-face">(</span><span class="builtin">number?</span> n<span class="racket-paren-face">)</span> n<span class="racket-paren-face">]</span>
+           <span class="racket-paren-face">[</span>`,y <span class="racket-keyword-argument-face">#:when</span> <span class="racket-paren-face">(</span><span class="builtin">symbol?</span> y<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span>apply-env env y<span class="racket-paren-face">)]</span>
+           <span class="racket-paren-face">[</span>`<span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>,x<span class="racket-paren-face">)</span> ,body<span class="racket-paren-face">)</span>
+            <span class="racket-paren-face">(</span>make-closure x body env<span class="racket-paren-face">)]</span>
+           <span class="racket-paren-face">[</span>`<span class="racket-paren-face">(</span>,rator ,rand<span class="racket-paren-face">)</span>
+            <span class="racket-paren-face">(</span>apply-closure <span class="racket-paren-face">(</span>value-of rator env<span class="racket-paren-face">)</span>
+                           <span class="racket-paren-face">(</span>value-of rand env<span class="racket-paren-face">))])))</span>
+
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span><span class="comment-delimiter">;; </span><span class="comment">data structure representation ;;
+</span><span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">empty-env-ds</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">()</span> `<span class="racket-paren-face">(</span>empty-env-ds<span class="racket-paren-face">)))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">extend-env-ds</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>x arg env<span class="racket-paren-face">)</span>
+    `<span class="racket-paren-face">(</span>extended-env ,x ,arg ,env<span class="racket-paren-face">)))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">apply-env-ds</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>env y<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span><span class="builtin">match</span> env
+           <span class="racket-paren-face">[</span>`<span class="racket-paren-face">(</span>empty-env-ds<span class="racket-paren-face">)</span>
+            <span class="racket-paren-face">(</span><span class="builtin">error</span> `empty-env-ds <span class="string">&quot;unbound var ~s&quot;</span> y<span class="racket-paren-face">)]</span>
+           <span class="racket-paren-face">[</span>`<span class="racket-paren-face">(</span>extended-env ,x ,arg ,env<span class="racket-paren-face">)</span>
+            <span class="racket-paren-face">(</span><span class="keyword">if</span> <span class="racket-paren-face">(</span><span class="builtin">eqv?</span> x y<span class="racket-paren-face">)</span> arg <span class="racket-paren-face">(</span>apply-env-ds env y<span class="racket-paren-face">))]</span>
+           <span class="racket-paren-face">[</span><span class="keyword">else</span> <span class="racket-paren-face">(</span>env y<span class="racket-paren-face">)])))</span> <span class="comment-delimiter">;; </span><span class="comment">optional
+</span>
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">make-closure-ds</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>x body env<span class="racket-paren-face">)</span>
+    `<span class="racket-paren-face">(</span>closure ,x ,body ,env<span class="racket-paren-face">)))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">apply-closure-ds</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>c a<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span><span class="builtin">match</span> c
+           <span class="racket-paren-face">[</span>`<span class="racket-paren-face">(</span>closure ,x ,body ,env<span class="racket-paren-face">)</span>
+            <span class="racket-paren-face">(</span>value-of-ds body
+                         <span class="racket-paren-face">(</span>extend-env-ds x a env<span class="racket-paren-face">))])))</span>
+
+<span class="racket-paren-face">(</span><span class="keyword">define</span> <span class="variable-name">value-of-ds</span><span class="variable-name">
+</span>  <span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span><span class="builtin">exp</span> env<span class="racket-paren-face">)</span>
+    <span class="racket-paren-face">(</span><span class="builtin">match</span> <span class="builtin">exp</span>
+           <span class="racket-paren-face">[</span>`,n <span class="racket-keyword-argument-face">#:when</span> <span class="racket-paren-face">(</span><span class="builtin">number?</span> n<span class="racket-paren-face">)</span> n<span class="racket-paren-face">]</span>
+           <span class="racket-paren-face">[</span>`,y <span class="racket-keyword-argument-face">#:when</span> <span class="racket-paren-face">(</span><span class="builtin">symbol?</span> y<span class="racket-paren-face">)</span> <span class="racket-paren-face">(</span>apply-env-ds env y<span class="racket-paren-face">)]</span>
+           <span class="racket-paren-face">[</span>`<span class="racket-paren-face">(</span><span class="keyword">lambda</span> <span class="racket-paren-face">(</span>,x<span class="racket-paren-face">)</span> ,body<span class="racket-paren-face">)</span>
+            <span class="racket-paren-face">(</span>make-closure-ds x body env<span class="racket-paren-face">)]</span>
+           <span class="racket-paren-face">[</span>`<span class="racket-paren-face">(</span>,rator ,rand<span class="racket-paren-face">)</span>
+            <span class="racket-paren-face">(</span>apply-closure-ds <span class="racket-paren-face">(</span>value-of-ds rator env<span class="racket-paren-face">)</span>
+                              <span class="racket-paren-face">(</span>value-of-ds rand env<span class="racket-paren-face">))])))</span>
+
+</pre>
+
+ </body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="../styles/main.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+
+        <title>关于类型推导的幻灯片</title>
+
+        
+        <script type="text/javascript" src="../js/title.js"></script>
+    </head>
+
+    <body>
+        <div style="margin: 2% 5% 2% 5%">
+            <table>
+                <tr>
+                    <td width="60%">
+                        <div style="padding: 2% 8% 5% 8%; border: 1px solid LightGrey;">
+                            <h2 onclick="nightOn()">关于类型推导的幻灯片</h2>
+                            
+<p>今天下午在IU做了一个讲座，关于类型推导（type inference）。不敢说能让没有一定基础的人看懂，但是我确实放进了很多基本的直觉。这些都是用动画效果演示出来的。我没有想到做一个幻灯片会如此好玩。希望以后多做一些。</p>
+
+<p>这里也提供一个<a href="../../yw21/slides/type-infer.pdf">PDF</a>版本。基本的分步显示效果都还在，可是很多动画效果，比如物体的移动，电火花，火焰之类的全都没了。</p>
+
+<p>下面是这个讲座的内容简介：</p>
+
+<p>在这个讲座里，我指出一个简单而统一的思维方式来解释和设计类型推导系统，从最简单的到最复杂的。这些系统包括：</p>
+
+<ul>
+    <li>Hindley-Milner 系统（“HM 系统”，ML 和 Haskell 所用）</li>
+    <li>MLF 和它的竞争者们 （一种比 HM 系统更强大的系统）</li>
+    <li>Intersection type 系统</li>
+    <li>Polar type system 和 bidirectional type checking</li>
+</ul>
+
+<p>我试图回答以下这些问题：</p>
+
+<ul>
+    <li>设计一个类型系统所需要的主要直觉有哪些？</li>
+    <li>ML和Haskell所用的Hindley-Milner系统所提供的"let-polymorphism"有一个重要的问题。如何解决这个问题，而不增加程序员理解的负担？</li>
+    <li>为什么比 Hindley-Milner 系统更强大的类型系统（MLF，intersection types）很少在实际的语言中用到？</li>
+    <li>为什么类型系统的“表达力”跟它的“效率”总是成反比的？如何从中找到一个平衡点？</li>
+</ul>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

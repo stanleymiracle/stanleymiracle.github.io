@@ -1,0 +1,32 @@
+<html>
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="../styles/main.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+
+        <title>Let-polymorphism is Fundamentally Flawed</title>
+
+        
+        <script type="text/javascript" src="../js/title.js"></script>
+    </head>
+
+    <body>
+        <div style="margin: 2% 5% 2% 5%">
+            <table>
+                <tr>
+                    <td width="60%">
+                        <div style="padding: 2% 8% 5% 8%; border: 1px solid LightGrey;">
+                            <h2 onclick="nightOn()">Let-polymorphism is Fundamentally Flawed</h2>
+
+<p>On Oct 19, 2012, I gave a <a href="../../yw21/slides/type-infer.pdf">talk</a> on type systems at Indiana Universitys <a href="http://wonks.github.io/">Programming Languages Group</a>. Based on my research and experience of implementing type systems, I briefly described my understanding of the Hindley-Milner type system and its various enhancements. I described an observation of let-polymorphism (an important feature in the HM system) that it is the analogy to <a href="https://en.wikipedia.org/wiki/Scope_(computer_science)#Dynamic_scoping">dynamic scoping</a>, but reincarnated in a type-level language. The forall quantifiers in the types are put in random and unprincipled places which is causing undesirable interferences with many other language features (such as side-effects and first-class continuations).</p>
+
+<p>Because let-polymorphism has been deeply rooted in the very beginning of the HM system, it is very unlikely that any enhancement can get over it without changing the fundamental properties of the system (such as being able to infer parameter types without any annotations). Thus I think the various enhancements to the HM system, such as value restriction, MLF etc cant really get the system both correct and general.</p>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

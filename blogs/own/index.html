@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Silent Entry</title>
+	<link rel="stylesheet" href="./styles/main.css" type="text/css">
+	<script src="js/own.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+
+<div class="header"><h2> Silent Entry </h2></div>
+
+<div id="nav-bar">
+	<div><button class="tab-name" onclick="openTab(event, 'interp')" id="defaultTab">Interpreter</button></div>
+	<div><button class="tab-name" onclick="openTab(event, 'logic')">Logic Programming</button></div>
+	<div><button class="tab-name" onclick="openTab(event, 'org')">Org Files</button></div>
+	<div><button class="tab-name" onclick="openTab(event, 'wordpress')">Wordpress Files</button></div>
+	<div><button class="tab-name" onclick="openTab(event, 'current')">Current P423</button></div>
+	<div><button class="tab-name" onclick="openTab(event, 'nano-pass')">Nano-pass</button></div>
+	<div><button class="tab-name" onclick="openTab(event, 'chez-related')">Chez Related</button></div>
+	<div><button class="tab-name" onclick="openTab(event, 'compiler-extra')">Compiler Extra</button></div>
+	<div><button class="tab-name" onclick="openTab(event, 'compiler-assigns')">P423 Assignments</button></div>
+	<div><button class="tab-name" onclick="openTab(event, 'noir')">Noir</button></div>
+	<div><button class="tab-name" onclick="openTab(event, 'ntuch')">NTUCH</button></div>
+	<a href="pages/notes.html"><button class="tab-name">Notes</button></a>
+</div>
+
+<div id="interp" class="tab-content">
+	<script>document.getElementById("defaultTab").click();</script>
+	<h3>Interpreter</h3>
+	<ol>
+		<li><a href="pages/freeboundlex.rkt.html">Free, Bound, Lex</a></li>
+		<li><a href="pages/init-interp.rkt.html">Interpreter and Representation Independent</a></li>
+		<li><a href="pages/lexcal-dynamic.rkt.html">Lexical vs Dynamic Scope</a></li>
+		<li><a href="">Parameter-Passing Style(Calling Conventions)</a></li>
+		<li><a href="">Continuation-Passing Style</a></li>
+		<li><a href="">Registerization</a></li>
+		<li><a href="">Trampolining</a></li>
+		<li><a href="pages/stream.rkt.html">Stream</a></li>
+		<li><a href="">Store-Passing Style</a></li>
+		<li><a href="pages/type-inferencing.rkt.html">Type and Inference</a></li>
+		<li><a href="">Macros</a></li>
+		<li><a href="docs/partial-eval.pdf">Partial Evaluation</a></li>
+	</ol>
+</div>
+
+<div id="logic" class="tab-content">
+	<h3>Logic Programming</h3>
+	<ul>
+		<li>microkanren[<a href="pages/micro.rkt.html">micro.rkt</a>]</li>
+		<li>miniKanren[<a href="pages/mk-new.rkt.html">mk-new.rkt</a>]</li>
+	</ul>
+</div>
+
+<div id="org" class="tab-content">
+	<h3>Org Files</h3>
+	<ul>
+		<li><a href="../org/docs/Yin's Mid-Term Memory.pdf">Yin's Mid-Term Memory</a></li>
+		<li><a href="../org/docs/Data Structures.pdf">Data Structures Mindmap</a></li>
+		<li><a href="../org/docs/Operating Systems.pdf">Operating System Mindmap</a></li>
+		<li><a href="../org/docs/Learn Programming Language.pdf">Learn PL Mindmap</a></li>
+		<li><a href="../org/docs/BC03.pdf">Oberon - The Overlooked Jewel</a></li>
+		<li><a href="../org/docs/frege-writings.pdf">Translations from the Philosophical Writings of Gottlob Frege</a></li>
+		<li><a href="../org/docs/Function-and-Concept.pdf">Function and Concept</a></li>
+		<li><a href="../org/docs/LogicT.pdf">Backtracking, Interleaving, and Terminating Monad Transformers</a></li>
+		<li><a href="../org/docs/mex.pdf">The Role of the Study of PL in the Education of a Programmer</a></li>
+		<li><a href="../org/docs/purelyFunctional.pdf">What is a Purely Functional Language?</a></li>
+		<li><a href="../org/docs/simp-poly.pdf">Simple Imperative Polymorphism</a></li>
+		<li><a href="../org/docs/supercompiler.pdf">The Concept of a Supercompiler</a></li>
+		<li><a href="../org/docs/ugh.pdf">The UNIX-Haters Handbook</a></li>
+		<li><a href="../org/docs/what-goes-around-comes-around.pdf">What Goes Around Comes Around</a></li>
+		<li><a href="../org/docs/microsoft-separation-agreement.pdf">Microsoft Separation Agreement</a></li>
+	</ul>
+</div>
+
+<div id="wordpress" class="tab-content">
+	<h3>Wordpress Files</h3>
+	<ul>
+		<li><a href="../wordpress/docs/book-whole.pdf">Computability and Complexity</a></li>
+		<li><a href="../wordpress/docs/church-a-note-on-the-entscheidungsproblem.pdf">A Note on the Entscheidungsproblem</a></li>
+		<li><a href="../wordpress/docs/church.pdf">An Unsolvable Problem of Elementary Number Theory</a></li>
+		<li><a href="../wordpress/docs/Turing_Paper_1936.pdf">On Computable Numbers, with An Application to the Entscheidungsproblem</a></li>
+	</ul>
+</div>
+
+<div id="current" class="tab-content">
+	<h3>Current P423</h3>
+	<ul>
+		<li><a href="../compiler/docs/book.pdf">Essentials of Compilation</a></li>
+		<li><a href="../compiler/docs/inlining.pdf">Fast and Effective Procedure Inlining</a></li>
+		<li><a href="../compiler/docs/gcsurvey.pdf">Uniprocessor Garbage Collection Techniques</a></li>
+		<li><a href="../compiler/docs/amd64-abi.pdf">System V Application Binary Interface AMD64</a></li>
+		<li><a href="../compiler/docs/i386-abi.pdf">System V Application Binary Interface Intel386</a></li>
+		<li><a href="../compiler/docs/intel-arch-manual.pdf">Intel 64 and IA-32 Architectures Software Developer's Manual</a></li>
+	</ul>
+</div>
+
+<div id="nano-pass" class="tab-content">
+	<h3>Nano-pass Framework(<a href="imgs/schedule.PNG">Schedule</a>)</h3>
+	<ul>
+		<li>
+			<button class="toggle">Week 1: simplification</button>
+			<div class="panel">
+			<ul>
+				<li>verify-scheme<sup>1</sup></li>
+				<li>rename-var</li>
+				<li>remove-implicit-begin<sup>1</sup></li>
+				<li>remove-unquoted-constant</li>
+				<li>remove-one-armed-if</li>
+				<li>verify-a1-output<sup>1</sup></li>
+			</ul>
+			</div>
+		</li>
+		<li>
+			<button class="toggle">Week 2: assignment conv.</button>
+			<div class="panel">
+			<ul>
+				<li>remove-not</li>
+				<li>mark-assigned</li>
+				<li>optimize-letrec<sup>2</sup></li>
+				<li>remove-impure-letrec</li>
+				<li>convert-assigned</li>
+				<li>verify-a2-output<sup>1</sup></li>
+			</ul>
+			</div>
+		</li>
+		<li>
+			<button class="toggle">Week 3: closure conversion</button>
+			<div class="panel">
+			<ul>
+				<li>optimize-direct-call</li>
+				<li>remove-anon-lambda</li>
+				<li>sanitize-binding-forms</li>
+				<li>uncover-free</li>
+				<li>convert-closure</li>
+				<li>optimize-known-call<sup>3</sup></li>
+				<li>uncover-well-known<sup>2</sup></li>
+				<li>optimize-free<sup>2</sup></li>
+				<li>optimize-self-reference<sup>2</sup></li>
+				<li>analyze-closure-size<sup>1</sup></li>
+				<li>lift-letrec</li>
+				<li>verify-a3-output<sup>1</sup></li>
+			</ul>
+			</div>
+		</li>
+		<li>
+			<button class="toggle">Week 4: canonicalization</button>
+			<div class="panel">
+			<ul>
+				<li>introduce-closure-prims</li>
+				<li>remove-complex-constant</li>
+				<li>normalize-context</li>
+				<li>verify-a4-output<sup>1</sup></li>
+			</ul>
+			</div>
+		</li>
+		<li>
+			<button class="toggle">Week 5: encoding/allocation</button>
+			<div class="panel">
+			<ul>
+				<li>specify-immediate-repn</li>
+				<li>specify-nonimmediate-repn</li>
+			</ul>
+			</div>
+		</li>
+		<li>
+			<button class="toggle">Week 6: start of UIL compiler</button>
+			<div class="panel">
+			<ul>
+				<li>verify-uil</li>
+			</ul>
+			</div>
+		</li>
+		<li>
+			<button class="toggle">Week 7: labels and temps</button>
+			<div class="panel">
+			<ul>
+				<li>remove-complex-opera*</li>
+				<li>lift-letrec-body</li>
+				<li>introduce-return-point</li>
+				<li>verify-a7-output<sup>1</sup></li>
+			</ul>
+			</div>
+		</li>
+		<li>
+			<button class="toggle">Week 8: virtual registerizing</button>
+			<div class="panel">
+			<ul>
+				<li>remove-nonunary-let</li>
+				<li>uncover-local</li>
+				<li>the-return-of-set!</li>
+				<li>flatten-set!</li>
+				<li>verify-a8-output<sup>1</sup></li>
+			</ul>
+			</div>
+		</li>
+		<li>
+			<button class="toggle">Week 9: brief digression</button>
+			<div class="panel">
+			<ul>
+				<li>generate-C-code<sup>4</sup></li>
+			</ul>
+			</div>
+		</li>
+		<li>
+			<button class="toggle">Week 10: register alloc. setup</button>
+			<div class="panel">
+			<ul>
+				<li>uncover-call-live<sup>2</sup></li>
+				<li>optimize-save-placement<sup>2</sup></li>
+				<li>eliminate-redundant-saves<sup>2</sup></li>
+				<li>rewrite-saves/restores<sup>2</sup></li>
+				<li>impose-calling-convention</li>
+				<li>reveal-allocation-pointer</li>
+				<li>verify-a10-output<sup>1</sup></li>
+			</ul>
+			</div>
+		</li>
+		<li>
+			<button class="toggle">Week 11: live analysis</button>
+			<div class="panel">
+			<ul>
+				<li>uncover-live-1</li>
+				<li>uncover-frame-conflict</li>
+				<li>strip-live-1</li>
+				<li>uncover-frame-move</li>
+				<li>verify-a11-output<sup>1</sup></li>
+			</ul>
+			</div>
+		</li>
+		<li>
+			<button class="toggle">Week 12: call frames</button>
+			<div class="panel">
+			<ul>
+				<li>uncover-call-live-spills</li>
+				<li>assign-frame-1</li>
+				<li>assign-new-frame</li>
+				<li>optimize-fp-assignments<sup>2</sup></li>
+				<li>verify-a12-output<sup>1</sup></li>
+			</ul>
+			</div>
+		</li>
+		<li>
+			<button class="toggle">Week 13: spill code</button>
+			<div class="panel">
+			<ul>
+				<li>finalize-frame-locations</li>
+				<li>eliminate-frame-var</li>
+				<li>introduce-unspillables</li>
+				<li>verify-a13-output<sup>1</sup></li>
+			</ul>
+			</div>
+		</li>
+		<li>
+			<button class="toggle">Week 14: register assignment</button>
+			<div class="panel">
+			<ul>
+				<li>uncover-live-2</li>
+				<li>uncover-register-conflict</li>
+				<li>verify-unspillables<sup>1</sup></li>
+				<li>strip-live-2</li>
+				<li>uncover-register-move</li>
+				<li>assign-registers</li>
+				<li>assign-frame-2</li>
+				<li>finalize-register-locations</li>
+				<li>analyze-frame-traffic<sup>1</sup></li>
+				<li>verify-a14-output<sup>1</sup></li>
+			</ul>
+			</div>
+		</li>
+		<li>
+			<button class="toggle">Week 15: assembly</button>
+			<div class="panel">
+			<ul>
+				<li>flatten-program</li>
+				<li>generate-Sparc-code</li>
+			</ul>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<div id="chez-related" class="tab-content">
+	<h3>Chez Related</h3>
+	<ul>
+		<li><a href="../compiler/docs/chez-pub/01-auto-xlib-opt.pdf">Automatic Cross-Library Optimization</a></li>
+		<li><a href="../compiler/docs/chez-pub/02-commercial-nanopass.pdf">A Nanopass Framework for Commercial Compiler Development</a></li>
+		<li><a href="../compiler/docs/chez-pub/03-closureopt.pdf">Optimizing Closures in O(0) Time</a></li>
+		<li><a href="../compiler/docs/chez-pub/04-records.pdf">A Sufficiently Smart Compiler for Procedural Records</a></li>
+		<li><a href="../compiler/docs/chez-pub/05-ftypes.pdf">Ftypes: Structured Foreign Types</a></li>
+		<li><a href="../compiler/docs/chez-pub/06-library-groups.pdf">Enabling Cross-library Optimization and Compile-time Error Checking in the Presence of Procedural Macros</a></li>
+		<li><a href="../compiler/docs/chez-pub/08-letrec-reloaded.pdf">Fixing Letrec(reloaded)</a></li>
+		<li><a href="../compiler/docs/chez-pub/10-equal.pdf">Efficient Nondestructive Equality Checking for Trees and Graphs</a></li>
+		<li><a href="../compiler/docs/chez-pub/11-implicit-phasing.pdf">Implicit Phasing for R6RS Libraries</a></li>
+		<li><a href="../compiler/docs/chez-pub/12-bc-syntax-case.pdf">Syntactic Abstraction: The Syntax-case Expander</a></li>
+		<li><a href="../compiler/docs/chez-pub/13-hocs.pdf">The Development of Chez Scheme</a></li>
+		<li><a href="../compiler/docs/chez-pub/15-fixing-letrec.pdf">Fixing Letrec: A Faithful Yet Efficient Implementation of Scheme's Recursive Binding Construct</a></li>
+		<li><a href="../compiler/docs/chez-pub/17-popl99.pdf">Extending the Scope of Syntactic Abstraction</a></li>
+		<li><a href="../compiler/docs/chez-pub/19-pdrtc.pdf">An Infrastructure for Profile-Driven Dynamic Recompilation</a></li>
+		<li><a href="../compiler/docs/chez-pub/20-inlining.pdf">Fast and Effective Procedure Inlining</a></li>
+		<li><a href="../compiler/docs/chez-pub/22-call1cc.pdf">Representing Control in the Presence of One-Shot Continuations</a></li>
+		<li><a href="../compiler/docs/chez-pub/23-FP-Printing-PLDI96.pdf">Printing Floating-Point Numbers Quickly and Accurately</a></li>
+		<li><a href="../compiler/docs/chez-pub/24-fple95.pdf">Compiler Construction Using Scheme</a></li>
+		<li><a href="../compiler/docs/chez-pub/25-Reg-Alloc-PLDI95.pdf">Register Allocation Using Lazy Saves, Eager Restores, and Greedy Shuffling</a></li>
+		<li><a href="../compiler/docs/chez-pub/27-mrvs.pdf">An Efficient Implementation of Multiple Return Values in Scheme</a></li>
+		<li><a href="../compiler/docs/chez-pub/28-bibop.pdf">Don't Stop the BIBOP: Flexible and Efficient Storage Management for Dynamically Typed Languages</a></li>
+		<li><a href="../compiler/docs/chez-pub/29-LaSC-5-4-pp295-326.pdf">Syntactic Abstraction in Scheme</a></li>
+		<li><a href="../compiler/docs/chez-pub/30-guardians-pldi93.pdf">Guardians in a Generation-Based Garbage Collector</a></li>
+		<li><a href="../compiler/docs/chez-pub/31-tr356.pdf">Writing Hygienic Macros in Scheme with Syntax-Case</a></li>
+		<li><a href="../compiler/docs/chez-pub/32-LaSC-3-3-pp229-244.pdf">A New Approach to Procedures with Variable Arity</a></li>
+		<li><a href="../compiler/docs/chez-pub/34-stack.pdf">Representing Control in the Presence of First-Class Continuations</a></li>
+		<li><a href="../compiler/docs/chez-pub/35-ddcg.pdf">Destination-Driven Code Generation</a></li>
+		<li><a href="../compiler/docs/chez-pub/37-engines.pdf">Engines from Continuations</a></li>
+		<li><a href="../compiler/docs/chez-pub/38-arityprelim.pdf">A Variable-Arity Procedural Interface</a></li>
+		<li><a href="../compiler/docs/chez-pub/39-LaSC-1-1-pp53-75.pdf">Expansion-Passing Style: A General Macro Mechanism</a></li>
+		<li><a href="../compiler/docs/chez-pub/40-3imp.pdf">Three Implementation Models for Scheme</a></li>
+		<li><a href="../compiler/docs/chez-pub/42-epsprelim.pdf">Expansion-Passing Style: Beyond Conventional Macros</a></li>
+	</ul>
+</div>
+
+<div id="compiler-extra" class="tab-content">
+	<h3>Compiler Extra</h3>
+	<ul>
+		<li><a href="../compiler/docs/extra/CONCUR.pdf">CONCUR: A Language for Continuous, Concurrent Processes</a></li>
+		<li><a href="../compiler/docs/extra/john-mccarthy.pdf">A Basis For a Mathematical Theory of Computation</a></li>
+		<li><a href="../compiler/docs/extra/meta-programming.pdf">Profile-Guided Meta-Programming</a></li>
+		<li><a href="../compiler/docs/extra/nanopass-commercial.pdf">A Nanopass Framework for Commercial Compiler Development</a></li>
+		<li><a href="../compiler/docs/extra/nanopass-framework.pdf">A Nanopass Framework for Compiler Education</a></li>
+		<li><a href="../compiler/docs/extra/nanopass-infrastructure.pdf">A Nanopass Infrastructure for Compiler Education</a></li>
+		<li><a href="../compiler/docs/extra/scheme-record.pdf">A Run-time Representation of Scheme Record Types</a></li>
+		<li><a href="../compiler/docs/extra/syntactic-abstract.pdf">From Macrogeneration to Syntactic Abstraction</a></li>
+	</ul>
+</div>
+
+<div id="compiler-assigns" class="tab-content">
+	<h3>P423 Assignments</h3>
+	<ul>
+	    <li><a href="../compiler/docs/assigns/assign1.pdf">Assignment 1</a></li>
+	    <li><a href="../compiler/docs/assigns/assign2.pdf">Assignment 2</a></li>
+	    <li><a href="../compiler/docs/assigns/assign3.pdf">Assignment 3</a></li>
+	    <li><a href="../compiler/docs/assigns/assign4.pdf">Assignment 4</a></li>
+	    <li><a href="../compiler/docs/assigns/assign5.pdf">Assignment 5</a></li>
+	    <li><a href="../compiler/docs/assigns/assign6.pdf">Assignment 6</a></li>
+	    <li><a href="../compiler/docs/assigns/assign7.pdf">Assignment 7</a></li>
+	    <li><a href="../compiler/docs/assigns/assign8.pdf">Assignment 8</a></li>
+	    <li><a href="../compiler/docs/assigns/assign9.pdf">Assignment 9</a></li>
+	    <li><a href="../compiler/docs/assigns/assign10.pdf">Assignment 10</a></li>
+	    <li><a href="../compiler/docs/assigns/assign11.pdf">Assignment 11</a></li>
+	    <li><a href="../compiler/docs/assigns/assign13.pdf">Assignment 13</a></li>
+	    <li><a href="../compiler/docs/assigns/assign14.pdf">Assignment 14</a></li>
+	    <li><a href="../compiler/docs/assigns/assign15.pdf">Assignment 15</a></li>
+	</ul>
+</div>
+
+<div id="noir" class="tab-content">
+	<h3>Noir</h3>
+	<ul>
+	    <li><a href="https://www.youtube.com/embed/KAxXC4u-lY4">Episode 1</a></li>
+	    <li><a href="https://www.youtube.com/embed/Cn9OwL1vOTY">Episode 2</a></li>
+	    <li><a href="https://www.youtube.com/embed/BkrpTcaNcys">Episode 3</a></li>
+	    <li><a href="https://www.youtube.com/embed/PkqO-eLyNC0">Episode 4</a></li>
+	    <li><a href="https://www.youtube.com/embed/ZWPUCwOX1i0">Episode 5</a></li>
+	    <li><a href="https://www.youtube.com/embed/A3OpvDpanbc">Episode 6</a></li>
+	    <li><a href="https://www.youtube.com/embed/RNv-rYiMgtE">Episode 7</a></li>
+	    <li><a href="https://www.youtube.com/embed/JQVVJwK5McY">Episode 8</a></li>
+	    <li><a href="https://www.youtube.com/embed/bkc2vyIzMDE">Episode 9</a></li>
+	    <li><a href="https://www.youtube.com/embed/AnGHDm0_k6g">Episode 10</a></li>
+	    <li><a href="https://www.youtube.com/embed/OQ3ZgSTTKBU">Episode 11</a></li>
+	    <li><a href="https://www.youtube.com/embed/xf7jciq8Cq4">Episode 12</a></li>
+	    <li><a href="https://www.youtube.com/embed/x4WlWpU-EMM">Episode 13</a></li>
+	    <li><a href="https://www.youtube.com/embed/7UJk0xF9ZVg">Episode 14</a></li>
+	    <li><a href="https://www.youtube.com/embed/FiSXm5PxdhU">Episode 15</a></li>
+	    <li><a href="https://www.youtube.com/embed/Ekcwd-reDqE">Episode 16</a></li>
+	    <li><a href="https://www.youtube.com/embed/_vWttO6pNLA">Episode 17</a></li>
+	    <li><a href="https://www.youtube.com/embed/C7xOsSBrbFI">Episode 18</a></li>
+	    <li><a href="https://www.youtube.com/embed/ThBQwJIs4Do">Episode 19</a></li>
+	    <li><a href="https://www.youtube.com/embed/WGVIcHdqUHE">Episode 20</a></li>
+	    <li><a href="https://www.youtube.com/embed/Q4i0AwyOz3I">Episode 21</a></li>
+	    <li><a href="https://www.youtube.com/embed/O5OdfOhPg0c">Episode 22</a></li>
+	    <li><a href="https://www.youtube.com/embed/XCg2KyFthcY">Episode 23</a></li>
+	    <li><a href="https://www.youtube.com/embed/5s8ngZmdy78">Episode 24</a></li>
+	    <li><a href="https://www.youtube.com/embed/tdDj6DLFS1I">Episode 25</a></li>
+	    <li><a href="https://www.youtube.com/embed/nj0KAgEbWOc">Episode 26</a></li>
+	</ul>
+</div>
+
+<div id="ntuch" class="tab-content">
+	<h3>觀念和應用</h3>
+	<ul>
+	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgU_OTVpUVdhSJXlbdy4mWUM">氣功</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgUP24yPUsiHqUcbxuf3elHw">做一個面對現實的武術家</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgVPnPqVSs5Rc2pqTRwFXuit">長拳動作應用講解</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgU4EHq1_kjFIntyVEI70x4F">應用要領</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgXMlwDj9kjNsLYZIFydfMKb">基本觀念釋義</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgWx5R5my9a0RxwfGPHsQyGE">基本動作常見錯誤與修正</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgVvOw_L6gz27XBEqk2Af2Zw">刀械反制基本觀念</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgVy8kCyU14yrOR-ZBBlsV6X">長洪武術基本動作</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgX6kMrh5LsjMVRog9SV2dGG">Stanley vs Nick</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgUXAPGszjVPAKbDAUc2ykYM">合集</a></li>
+	</ul>
+	<h3>套路</h3>
+	<ul>
+	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgVUyg0eyyQ2TNUKWV-T0PMW">長拳套路</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLnWSN5LNHf3RqtWFFA-4Di4SlUZkkWwTT">十路彈腿</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLnWSN5LNHf3T4yAwVv9gNUT7bDSt2YN9Z">盤龍棍</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLnWSN5LNHf3TPhkWLHkHGicfUAQz76eq1">功力拳</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLnWSN5LNHf3SMa0cxKB3vhfrAE-dUwtI7">連步拳</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLnWSN5LNHf3Tpk2UW9jYiCmRxfJwBUuZY">柳葉單刀</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgXyAJj-hcKyzHu9JandR2kW">劍</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgX46226xQ6x_gThZUnBrnT2">拳形</a></li>
+	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgWNSt6L83Jv8Pp2-xgdjNJ4">CRANE STYLE</a></li>
+	</ul>
+</div>
+
+<script>toggleOn();</script>
+
+</div>
+</body>
+</html>
