@@ -10,51 +10,12 @@
 <body>
     <div class="wrapper">
         <div class="title"><h2>Notes</h2></div>
-        <button class="toggle">G200: 8:00am ~ 8:50am MWF (GA0005)</button>
-        <div class="panel note">
-            <ul>
-                <li>German Grammar</li>
-                <li>Vocabulary</li>
-            </ul>
-        </div>
 
-        <button class="toggle">C335: 9:05am ~ 9:55am MW (BH147) | 9:00am ~ 12:00pm F (LH035)</button>
+        <button class="toggle">Note Template</button>
         <div class="panel note">
-            <ol>
-                <li>Translate C program to assembly</li>
-                <li>Translate assembly to binary</li>
-                <li>How processor executes binary</li>
-                <li>How program interacts with hardware</li>
-                <li>How to build embedded system with hardware modules</li>
-            </ol>
-        </div>
-
-        <button class="toggle">B461: 9:30 am ~ 9:55am TuTh (BH103)</button>
-        <div class="panel note">
-            <div class="subtitle">Fall 2009</div>
+            <div class="subtitle">Note Title</div>
             <ul>
-                <li>Conceptual Database Design and Query Languages</li>
-                <li>Physical Database Design and Query Optimization</li>
-                <li>Transaction Management and Design Optimization</li>
-                <li>Advanced Topics</li>
-            </ul>
-        </div>
-
-        <button class="toggle">P423: 1:00pm ~ 2:15pm MW (LH008)</button>
-        <div class="panel note">
-            <div class="subtitle">Essentials of Compilation</div>
-            <ul>
-                <li>Preliminaries</li>
-                <li>Compiling Integers and Variables</li>
-                <li>Register Allocation</li>
-                <li>Boolean, Control Flow, and Type Checking</li>
-                <li>Tuples and Garbage Collection</li>
-                <li>Functions</li>
-                <li>Lexically Scoped Functions</li>
-                <li>Dynamic Typing</li>
-                <li>Gradual Typing</li>
-                <li>Parametric Polymorphism</li>
-                <li>High-level Optimization</li>
+                <li>Note List Item</li>
             </ul>
         </div>
 
@@ -82,12 +43,16 @@
         <a href="../docs/emacs.pdf"><button class="toggle">Emacs Shortcuts</button></a>
         <div class="panel note"></div>
 
-        <button class="toggle">ffmpeg Audio Commands</button>
+        <button class="toggle">Audio Commands</button>
         <div class="panel other">
             <div class="card">
                 <div class="card-inner">
                     <span class="">flac to alac:</span>
                     <code>for each in ./*.flac; do ffmpeg -i "$each" -c:a alac "${each%.*}.m4a"; done;</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">flac to alac (windows):</span>
+                    <code>ls -recurse -include *.flac | %{.\ffmpeg\bin\ffmpeg.exe -i $_.FullName -acodec alac -vcodec copy ($_.DirectoryName+"\\"+$_.BaseName+'.m4a')}</code>
                 </div>
             </div>
             
@@ -168,7 +133,7 @@
             </div>
         </div>
 
-        <button class="toggle">ffmpeg Video Commands</button>
+        <button class="toggle">Video Commands</button>
         <div class="panel other">
             <div class="card">
                 <div class="card-inner">
@@ -183,6 +148,23 @@
                     <span class="">mylist.txt:</span>
                     <div><code>- file 'filename'</code></div>
                     <div><code>- file 'filename'</code></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <span class="">Trim (windows):</span>
+                    <code>ffmpeg -i .\input.mp4 -ss <Start Time> -t <Duration> -acodec copy -vcodec copy .\output.mp4</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">Merge (windows):</span>
+                    <code>foreach ($i in Get-ChildItem .\*.mp4) {echo "file '$i'" >> mylist.txt} # need to recopy the txt content from mylist.txt to list.txt remove problematic characters</code>
+                    <code>ffmpeg -safe 0 -f concat -i list.txt -c copy output.mp4</code>
+                </div>
+                <div class="card-inner">
+                    <span class="">Simple Download (windows):</span>
+                    <code>curl url -o output.mp4</code>
+                    <code>ffmpeg -i url -c copy -bsf:a aac_adtstoasc output.mp4</code>
+                    <code>ffmpeg -i "url" -bsf:a aac_adtstoasc -vcodec copy -c copy output.mp4</code>
                 </div>
             </div>
         </div>
