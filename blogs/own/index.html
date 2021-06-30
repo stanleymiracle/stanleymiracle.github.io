@@ -11,23 +11,20 @@
 
 <div class="header"><h2> Silent Entry </h2></div>
 
-<div id="nav-bar">
-	<div><button class="tab-name" onclick="openTab(event, 'interp')" id="defaultTab">Interpreter</button></div>
-	<div><button class="tab-name" onclick="openTab(event, 'logic')">Logic Programming</button></div>
-	<div><button class="tab-name" onclick="openTab(event, 'org')">Org Files</button></div>
-	<div><button class="tab-name" onclick="openTab(event, 'wordpress')">Wordpress Files</button></div>
-	<div><button class="tab-name" onclick="openTab(event, 'current')">Current P423</button></div>
-	<div><button class="tab-name" onclick="openTab(event, 'nano-pass')">Nano-pass</button></div>
-	<div><button class="tab-name" onclick="openTab(event, 'chez-related')">Chez Related</button></div>
-	<div><button class="tab-name" onclick="openTab(event, 'compiler-extra')">Compiler Extra</button></div>
-	<div><button class="tab-name" onclick="openTab(event, 'compiler-assigns')">P423 Assignments</button></div>
-	<div><button class="tab-name" onclick="openTab(event, 'noir')">Noir</button></div>
-	<div><button class="tab-name" onclick="openTab(event, 'ntuch')">NTUCH</button></div>
-	<a href="pages/notes.html"><button class="tab-name">Notes</button></a>
+<div class="nav-bar">
+	<div><button class="tab-name-1 defaultTab" onclick="openTab(event, 'interp', 'tab-1', 'tab-name-1')">Interpreter</button></div>
+	<div><button class="tab-name-1" onclick="openTab(event, 'logic', 'tab-1', 'tab-name-1')">Logic Programming</button></div>
+	<div><button class="tab-name-1" onclick="openTab(event, 'org', 'tab-1', 'tab-name-1')">Org Files</button></div>
+	<div><button class="tab-name-1" onclick="openTab(event, 'wordpress', 'tab-1', 'tab-name-1')">Wordpress Files</button></div>
+	<div><button class="tab-name-1" onclick="openTab(event, 'current', 'tab-1', 'tab-name-1')">Current P423</button></div>
+	<div><button class="tab-name-1" onclick="openTab(event, 'nano-pass', 'tab-1', 'tab-name-1')">Nano-pass</button></div>
+	<div><button class="tab-name-1" onclick="openTab(event, 'chez-related', 'tab-1', 'tab-name-1')">Chez Related</button></div>
+	<div><button class="tab-name-1" onclick="openTab(event, 'compiler-extra', 'tab-1', 'tab-name-1')">Compiler Extra</button></div>
+	<div><button class="tab-name-1" onclick="openTab(event, 'compiler-assigns', 'tab-1', 'tab-name-1')">P423 Assignments</button></div>
+	<a href="pages/notes.html"><button class="tab-name-1">Notes</button></a>
 </div>
 
-<div id="interp" class="tab-content">
-	<script>document.getElementById("defaultTab").click();</script>
+<div id="interp" class="tab-1">
 	<h3>Interpreter</h3>
 	<ol>
 		<li><a href="pages/freeboundlex.rkt.html">Free, Bound, Lex</a></li>
@@ -45,7 +42,7 @@
 	</ol>
 </div>
 
-<div id="logic" class="tab-content">
+<div id="logic" class="tab-1">
 	<h3>Logic Programming</h3>
 	<ul>
 		<li>microkanren[<a href="pages/micro.rkt.html">micro.rkt</a>]</li>
@@ -53,7 +50,7 @@
 	</ul>
 </div>
 
-<div id="org" class="tab-content">
+<div id="org" class="tab-1">
 	<h3>Org Files</h3>
 	<ul>
 		<li><a href="../org/docs/Yin's Mid-Term Memory.pdf">Yin's Mid-Term Memory</a></li>
@@ -74,7 +71,7 @@
 	</ul>
 </div>
 
-<div id="wordpress" class="tab-content">
+<div id="wordpress" class="tab-1">
 	<h3>Wordpress Files</h3>
 	<ul>
 		<li><a href="../wordpress/docs/book-whole.pdf">Computability and Complexity</a></li>
@@ -84,7 +81,7 @@
 	</ul>
 </div>
 
-<div id="current" class="tab-content">
+<div id="current" class="tab-1">
 	<h3>Current P423</h3>
 	<ul>
 		<li><a href="../compiler/docs/book.pdf">Essentials of Compilation</a></li>
@@ -96,7 +93,7 @@
 	</ul>
 </div>
 
-<div id="nano-pass" class="tab-content">
+<div id="nano-pass" class="tab-1">
 	<h3>Nano-pass Framework(<a href="imgs/schedule.PNG">Schedule</a>)</h3>
 	<ul>
 		<li>
@@ -281,7 +278,7 @@
 	</ul>
 </div>
 
-<div id="chez-related" class="tab-content">
+<div id="chez-related" class="tab-1">
 	<h3>Chez Related</h3>
 	<ul>
 		<li><a href="../compiler/docs/chez-pub/01-auto-xlib-opt.pdf">Automatic Cross-Library Optimization</a></li>
@@ -319,7 +316,7 @@
 	</ul>
 </div>
 
-<div id="compiler-extra" class="tab-content">
+<div id="compiler-extra" class="tab-1">
 	<h3>Compiler Extra</h3>
 	<ul>
 		<li><a href="../compiler/docs/extra/CONCUR.pdf">CONCUR: A Language for Continuous, Concurrent Processes</a></li>
@@ -333,7 +330,7 @@
 	</ul>
 </div>
 
-<div id="compiler-assigns" class="tab-content">
+<div id="compiler-assigns" class="tab-1">
 	<h3>P423 Assignments</h3>
 	<ul>
 	    <li><a href="../compiler/docs/assigns/assign1.pdf">Assignment 1</a></li>
@@ -353,67 +350,37 @@
 	</ul>
 </div>
 
-<div id="noir" class="tab-content">
-	<h3>Noir</h3>
+<div class="nav-bar">
+	<div><button class="tab-name-2 defaultTab" onclick="openTab(event, 'os', 'tab-2', 'tab-name-2')">Operating System</button></div>
+	<div><button class="tab-name-2" onclick="openTab(event, 'network', 'tab-2', 'tab-name-2')">Network</button></div>
+</div>
+
+<div id="os" class="tab-2">
+	<h3>Operating System</h3>
 	<ul>
-	    <li><a href="https://www.youtube.com/embed/KAxXC4u-lY4">Episode 1</a></li>
-	    <li><a href="https://www.youtube.com/embed/Cn9OwL1vOTY">Episode 2</a></li>
-	    <li><a href="https://www.youtube.com/embed/BkrpTcaNcys">Episode 3</a></li>
-	    <li><a href="https://www.youtube.com/embed/PkqO-eLyNC0">Episode 4</a></li>
-	    <li><a href="https://www.youtube.com/embed/ZWPUCwOX1i0">Episode 5</a></li>
-	    <li><a href="https://www.youtube.com/embed/A3OpvDpanbc">Episode 6</a></li>
-	    <li><a href="https://www.youtube.com/embed/RNv-rYiMgtE">Episode 7</a></li>
-	    <li><a href="https://www.youtube.com/embed/JQVVJwK5McY">Episode 8</a></li>
-	    <li><a href="https://www.youtube.com/embed/bkc2vyIzMDE">Episode 9</a></li>
-	    <li><a href="https://www.youtube.com/embed/AnGHDm0_k6g">Episode 10</a></li>
-	    <li><a href="https://www.youtube.com/embed/OQ3ZgSTTKBU">Episode 11</a></li>
-	    <li><a href="https://www.youtube.com/embed/xf7jciq8Cq4">Episode 12</a></li>
-	    <li><a href="https://www.youtube.com/embed/x4WlWpU-EMM">Episode 13</a></li>
-	    <li><a href="https://www.youtube.com/embed/7UJk0xF9ZVg">Episode 14</a></li>
-	    <li><a href="https://www.youtube.com/embed/FiSXm5PxdhU">Episode 15</a></li>
-	    <li><a href="https://www.youtube.com/embed/Ekcwd-reDqE">Episode 16</a></li>
-	    <li><a href="https://www.youtube.com/embed/_vWttO6pNLA">Episode 17</a></li>
-	    <li><a href="https://www.youtube.com/embed/C7xOsSBrbFI">Episode 18</a></li>
-	    <li><a href="https://www.youtube.com/embed/ThBQwJIs4Do">Episode 19</a></li>
-	    <li><a href="https://www.youtube.com/embed/WGVIcHdqUHE">Episode 20</a></li>
-	    <li><a href="https://www.youtube.com/embed/Q4i0AwyOz3I">Episode 21</a></li>
-	    <li><a href="https://www.youtube.com/embed/O5OdfOhPg0c">Episode 22</a></li>
-	    <li><a href="https://www.youtube.com/embed/XCg2KyFthcY">Episode 23</a></li>
-	    <li><a href="https://www.youtube.com/embed/5s8ngZmdy78">Episode 24</a></li>
-	    <li><a href="https://www.youtube.com/embed/tdDj6DLFS1I">Episode 25</a></li>
-	    <li><a href="https://www.youtube.com/embed/nj0KAgEbWOc">Episode 26</a></li>
+	    <li><a href="./docs/OS-Concepts-9th.pdf">OS Concepts</a></li>
+	    <li><a href="./docs/OS-Three-Easy-Pieces.pdf">OS Three Easy Pieces</a></li>
+	    <li><a href="./docs/OS-Internals-and-Design-Principles-9th.pdf">OS Internals and Design Principles</a></li>
 	</ul>
 </div>
 
-<div id="ntuch" class="tab-content">
-	<h3>觀念和應用</h3>
+<div id="network" class="tab-2">
+	<h3>Network</h3>
 	<ul>
-	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgU_OTVpUVdhSJXlbdy4mWUM">氣功</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgUP24yPUsiHqUcbxuf3elHw">做一個面對現實的武術家</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgVPnPqVSs5Rc2pqTRwFXuit">長拳動作應用講解</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgU4EHq1_kjFIntyVEI70x4F">應用要領</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgXMlwDj9kjNsLYZIFydfMKb">基本觀念釋義</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgWx5R5my9a0RxwfGPHsQyGE">基本動作常見錯誤與修正</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgVvOw_L6gz27XBEqk2Af2Zw">刀械反制基本觀念</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgVy8kCyU14yrOR-ZBBlsV6X">長洪武術基本動作</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgX6kMrh5LsjMVRog9SV2dGG">Stanley vs Nick</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgUXAPGszjVPAKbDAUc2ykYM">合集</a></li>
-	</ul>
-	<h3>套路</h3>
-	<ul>
-	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgVUyg0eyyQ2TNUKWV-T0PMW">長拳套路</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLnWSN5LNHf3RqtWFFA-4Di4SlUZkkWwTT">十路彈腿</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLnWSN5LNHf3T4yAwVv9gNUT7bDSt2YN9Z">盤龍棍</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLnWSN5LNHf3TPhkWLHkHGicfUAQz76eq1">功力拳</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLnWSN5LNHf3SMa0cxKB3vhfrAE-dUwtI7">連步拳</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLnWSN5LNHf3Tpk2UW9jYiCmRxfJwBUuZY">柳葉單刀</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgXyAJj-hcKyzHu9JandR2kW">劍</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgX46226xQ6x_gThZUnBrnT2">拳形</a></li>
-	    <li><a href="https://www.youtube.com/playlist?list=PLWfaf9wFHOgWNSt6L83Jv8Pp2-xgdjNJ4">CRANE STYLE</a></li>
+	    <li><a href="./docs/Computer-Networks-and-Internets.pdf">Networks and Internets</a></li>
+	    <li><a href="./docs/Computer-Networking_A Top-Down-Approach-7th.pdf">A Top-Down Approach</a></li>
 	</ul>
 </div>
 
-<script>toggleOn();</script>
+<script>
+
+var defaultTabs = document.getElementsByClassName("defaultTab");
+for (let i = 0; i < defaultTabs.length; i++) {
+	defaultTabs[i].click();
+}
+toggleOn();
+
+</script>
 
 </div>
 </body>

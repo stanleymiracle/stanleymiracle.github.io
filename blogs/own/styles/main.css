@@ -31,7 +31,7 @@ a:hover {
 	margin: 2% 5% 2% 5%;
 }
 
-#nav-bar {
+.nav-bar {
 	float: left;
 	width: 25%;
     border: 1px solid #EEEEEE;
@@ -42,7 +42,7 @@ button.active {
 	background-color: #EEEEEE;
 }
 
-.tab-name {
+.tab-name-1, .tab-name-2 {
 	font-size: 12pt;
 	font-family: inherit;
 	color: #EEEEEE;
@@ -60,12 +60,12 @@ button.active {
     transition: 0.3s;
 }
 
-.tab-name:hover {
+.tab-name-1:hover, .tab-name-2:hover {
 	color: #102E4E;
 	background-color: #EEEEEE;
 }
 
-.tab-content {
+.tab-1,.tab-2 {
 	display: none;
 	width: 60%;
 	min-height: 500px;

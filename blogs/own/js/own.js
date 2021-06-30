@@ -1,11 +1,11 @@
-function openTab(evt, tabName) {
+function openTab(evt, tabName, tabContentClass, tabListClass) {
 
-    var tabcontent = document.getElementsByClassName("tab-content");
+    var tabcontent = document.getElementsByClassName(tabContentClass);
     for (var i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
 
-    tablist = document.getElementsByClassName("tab-name");
+    tablist = document.getElementsByClassName(tabListClass);
     for (var i = 0; i < tablist.length; i++) {
         tablist[i].className = tablist[i].className.replace(" active", "");
     }
