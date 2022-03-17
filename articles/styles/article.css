@@ -14,10 +14,44 @@
     max-width: 760px;
     margin: 0 auto;
     padding: 0 10px;
+    font-size: large;
 }
 
-.p {
-    font-size: small;
+p {
+    font-size: smaller;
+    padding: 5px 0px;
+}
+
+footer {
+    padding-bottom: 200px;
+}
+
+/* the top tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: lightgray;
+    color: inherit;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
 
 /* The switch - the box around the slider */
