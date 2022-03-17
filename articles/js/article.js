@@ -1,19 +1,21 @@
 function invertColor(source) {
     var chkbox = document.getElementById(source);
-    if (chkbox.checked) {
-        var elms = document.getElementsByTagName('body');
+    if (chkbox.checked) { // night
+        document.body.classList.add("reader-night-mode");
+        var elms = document.getElementsByClassName('tooltiptext');
         for (let i = 0; i < elms.length; i++) {
             const elm = elms[i];
-            elm.style.color = 'white';
-            elm.style.backgroundColor = 'black';
+            elm.classList.add("reader-day-mode");
+            elm.classList.remove("reader-night-mode");
         }
     }
-    else {
-        var elms = document.getElementsByTagName('body');
+    else { // day
+        document.body.classList.remove("reader-night-mode");
+        var elms = document.getElementsByClassName('tooltiptext');
         for (let i = 0; i < elms.length; i++) {
             const elm = elms[i];
-            elm.style.color = 'black';
-            elm.style.backgroundColor = 'white';
+            elm.classList.add("reader-night-mode");
+            elm.classList.remove("reader-day-mode");
         }        
     }
 }
