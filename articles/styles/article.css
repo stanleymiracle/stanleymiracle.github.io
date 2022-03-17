@@ -41,6 +41,7 @@ footer {
   position: relative;
   display: inline-block;
   color: inherit;
+  cursor: pointer;
 }
 
 .tooltip .tooltiptext {
@@ -57,7 +58,7 @@ footer {
   margin-left: -60px;
 }
 
-.tooltip:hover .tooltiptext {
+.show-text {
   visibility: visible;
 }
 

@@ -19,3 +19,16 @@ function invertColor(source) {
         }        
     }
 }
+
+document.body.addEventListener('click', function(e) {
+    var elms = document.getElementsByClassName('tooltip');
+    for (let i = 0; i < elms.length; i++) {
+        const elm = elms[i];
+        if (e.target == elm) {
+            elm.children[0].style.visibility = 'visible';
+        }
+        else {
+            elm.children[0].style.visibility = 'hidden';
+        }
+    }
+});
