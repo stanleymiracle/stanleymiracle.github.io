@@ -54,7 +54,7 @@ abbr {
 }
 abbr:hover::after {
   background-color: #000;
-  color: #fff;
+  color: #c8c8c8;
   border-radius: 10px;
   content: attr(data-text);
   display: block;
