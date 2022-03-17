@@ -3,6 +3,13 @@
   src: url("./OpenSans-Regular.ttf");
 }
 
+* , *:before, *:after{ 
+  box-sizing:border-box; 
+  -moz-box-sizing:border-box; 
+  -webkit-box-sizing:border-box; 
+  -ms-box-sizing:border-box;
+}
+
 .reader-night-mode {
   background-color: #3f3f3f;
   color: #c8c8c8;
@@ -23,8 +30,11 @@
   font-style: normal;
   max-width: 760px;
   margin: 0 auto;
-  padding: 0 10px;
   font-size: large;
+  box-sizing:border-box; 
+  -moz-box-sizing:border-box; 
+  -webkit-box-sizing:border-box; 
+  -ms-box-sizing:border-box;
 }
 
 p {
@@ -37,6 +47,25 @@ footer {
 }
 
 /* the top tooltip */
+
+abbr {
+  position: relative;
+  border-bottom: 1px dashed #000;
+}
+abbr:hover::after {
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+  content: attr(data-text);
+  display: block;
+  padding: 10px;
+  position: absolute;
+  width: 200px;
+  z-index: 1;
+  bottom: 110%;
+  left: 0%;
+}
+
 .tooltip {
   position: relative;
   display: inline-block;
@@ -47,7 +76,7 @@ footer {
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 200px;
-  border-radius: 6px;
+  border-radius: 10px;
   padding: 10px 10px;
 
   /* Position the tooltip */
@@ -55,11 +84,18 @@ footer {
   z-index: 1;
   bottom: 100%;
   left: 50%;
-  margin-left: -60px;
+  margin-left: -40px;
 }
 
-.show-text {
-  visibility: visible;
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
 }
 
 /* The switch - the box around the slider */
