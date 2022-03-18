@@ -10,6 +10,10 @@
   -ms-box-sizing:border-box;
 }
 
+.article-list a{
+  color: inherit;
+}
+
 .reader-night-mode {
   background-color: #3f3f3f;
   color: #c8c8c8;

@@ -18,6 +18,13 @@ function invertColor(source) {
     }
 }
 
+(function(){
+    var today = new Date();
+    if (today.getHours() > 18) {
+        document.getElementById('toggle').click();
+    }
+})();
+
 // document.body.addEventListener('click', function(e) {
 //     var elms = document.getElementsByClassName('tooltip');
 //     for (let i = 0; i < elms.length; i++) {
