@@ -1,0 +1,70 @@
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <link href="./styles/home.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="http://www.yinwang.org/images/Yc.jpg">
+    <script type="text/javascript" src="./js/fun.js"></script>
+
+    <title>Yin Wang's Homepage</title>
+
+  </head>
+  <body>
+
+<nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://docs.huihoo.com/homepage/shredderyin/index.html">Yin Wang's Homepage</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" onclick="nightOn()">Night</a></li>
+                <li><a href="#" id="sort-on" onclick="sortOn()">Sort</a></li>
+                <li><a href="#" id="sort-off" onclick="sortOff()" style="display: none;">All</a></li>
+                <li class="active"><a href="#">主页</a></li>
+                <li><a href="https://github.com/yinwang0">GitHub</a></li>
+                <li><a href="https://docs.huihoo.com/homepage/shredderyin/wiki/WelcomePage.html">WiKi</a></li>
+                <li><a href="https://docs.huihoo.com/homepage/shredderyin/wiki/WikiIndex.html">WiKi Index</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div style="margin: 5% 10% 2% 10%">
+    <table style="width: 100%;">
+        <tr>
+            <td width="70%">
+                <div id="tab-bar" style="display: none;">
+                    <div id="programming-tab" class="tab-item" onclick="openTab('programming')">Programming</div>
+                    <div id="pl-tab" class="tab-item" onclick="openTab('pl')">PL</div>
+                    <div id="os-tab" class="tab-item" onclick="openTab('os')">OS</div>
+                    <div id="insight-tab" class="tab-item" onclick="openTab('insight')">Insight</div>
+                    <div id="design-tab" class="tab-item" onclick="openTab('design')">Design</div>
+                    <div id="car-tab" class="tab-item" onclick="openTab('car')">Car</div>
+                    <div id="temp-tab" class="tab-item" onclick="openTab('temp')">Temp</div>
+                </div>
+                <ul class="list-group">
+
+                    <li class="list-group-item title insight design">
+                        <a href="pages/index.html">个人主页</a>
+                    </li>
+
+                    
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+
+</html>

@@ -1,11 +1,12 @@
 body {
     font-family:"lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
     font-size: 18px;
-    background-color: #B3B3B3;
+    background-color: #26292b;
 }
 
 P {
   line-height: 1.6;
+  color: #c4c4c4;
 }
 
 H1 {
@@ -82,13 +83,12 @@ code {
 a {
     text-decoration: none;
     cursor: crosshair;
-    border-bottom: 1px dashed orange;
-    color: #930ee4;
+    border-bottom: 1px dashed gray;
+    color: lightblue;
 }
 
-
 a:hover {
-	background-color: LightGrey;
+    background-color: #102E4E;
 }
 
 

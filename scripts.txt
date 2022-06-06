@@ -1,0 +1,77 @@
+HB000BUR821GVVB5NBSL77918577
+
+Music:
+ls -recurse -include *.flac | %{.\ffmpeg\bin\ffmpeg.exe -i $_.FullName -acodec alac -vcodec copy ($_.DirectoryName+"\\"+$_.BaseName+'.m4a')}
+
+Video:
+.\ffmpeg\bin\ffmpeg.exe -i .\input.mp4 -ss <Start Time> -t <Duration> -acodec copy -vcodec copy .\output.mp4
+foreach ($i in Get-ChildItem .\*.m2ts) {ffmpeg -i $i -vcodec libx264 -crf 15 -acodec ac3 "$i.mp4"}
+
+Merge:
+# need to recopy the txt content to remove problematic characters
+foreach ($i in Get-ChildItem .\*.mp4) {echo "file '$i'" >> mylist.txt}
+ffmpeg -safe 0 -f concat -i list.txt -c copy output.mp4
+
+Download:
+ffmpeg -i url -c copy -bsf:a aac_adtstoasc output.mp4
+ffmpeg -i "url" -bsf:a aac_adtstoasc -vcodec copy -c copy output.mp4
+
+curl url -o output.mp4
+
+youtube-dl -F url # get format code
+youtube-dl --format <format code> url
+
+url/Video.m3u8
+
+PowerShell script:
+Get-ChildItem -Include file* -Recurse
+Get-FolderSize | Format-Table -AutoSize -Wrap -Property FolderName,SizeGB
+
+Get-ChildItem -Path ".\*.mp4" -Recurse | Move-Item -Destination ".\"
+
+Get-ChildItem -Path ".\" -Recurse -Filter *English.srt
+# get all english.srt to current folder with renaming to folder name
+Get-ChildItem -Path ".\" |
+Foreach-Object {
+  $content = $_.FullName
+  Copy-Item -Path $content\*English.srt -Destination ".\$_.srt"
+}
+
+Get-ChildItem -Path $content\*English.srt 
+Copy-Item ".\*English.srt" -Destination "'$_.FullName'.srt"
+
+$files = Get-ChildItem -Path ".\"
+for ($i=0; $i -lt $files.Count; $i++) {
+    $outfile = $files[$i].FullName + ".srt" 
+    Copy-Item $files[$i].FullName\*English.srt -Destination $outfile
+}
+
+# download hrefs
+$LinkPath = "https://example.com/path"
+$Response = Invoke-WebRequest -URI $LinkPath -UseBasicParsing
+$Response.Links | Foreach-Object {
+    $IsGoodLink = $_.Href -NotLike "*..*"
+    if ($IsGoodLink) {
+      $fileName = $_.Href
+      echo "$LinkPath/$fileName"
+      Invoke-WebRequest -URI "$LinkPath/$fileName" -UseBasicParsing -OutFile $fileName
+    }
+}
+
+linux:
+wget https://example.com/videos/tschunks_{0..10}.ts
+cat tschunks_{0..10}.ts > video.mp4
+
+windows -> wsl:
+open explorer -> address -> \\wsl$ 
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
+
+
