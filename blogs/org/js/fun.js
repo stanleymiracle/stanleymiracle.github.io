@@ -18,9 +18,9 @@ function nightOn() {
 function openTab(tabName) {
     var item = document.getElementsByClassName("tab-item");
     for (var i = 0; i < item.length; i++) {
-        item[i].style.backgroundColor = "";
+        item[i].style.border = "none";
     }
-    document.getElementById(tabName + "-tab").style.backgroundColor = "#CCCCCC";
+    document.getElementById(tabName + "-tab").style.border = "1px solid #fff";
 
     var list = document.getElementsByClassName("list-group-item");
     for (var i = 0; i < list.length; i++) {
