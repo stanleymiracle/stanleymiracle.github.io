@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>Chicken Compiler</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>Chicken Compiler</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+<h2>使用方法：</h2>
+
+<h3>把 Scheme 编译成 C:</h3>
+
+<p>
+比如有一个文件叫 foo.scm.
+
+</p>
+
+<pre class="example">chicken foo.scm -output-file foo.c
+</pre>
+
+<p>
+就会把 foo.scm 编译成 foo.c
+
+</p>
+
+<h3>把 C 编译成机器代码</h3>
+
+<p>
+接着：
+
+</p>
+
+<pre class="example">gcc foo.c -o foo `chicken-config -cflags -libs`
+</pre>
+
+<p>
+就编译成了可执行程序。
+
+</p>
+
+<h3>只检查语法</h3>
+
+<pre class="example">chicken foo.scm -check-syntax
+</pre>
+
+<p>
+因为把一个上万行的 Scheme 编译成 C 是一个很漫长的过程，一个
+9000 行的 Scheme 翻译成 C 就是 11 万行之多，还没有带运行时的
+宏展开机制！
+
+</p>
+
+<p>
+中间一旦有语法错误就全部得重来，所以在你确信语法无误之前可以
+先把语法检查一下。
+
+</p>
+
+<p>
+检查语法时，它会把宏全部展开。所以如果这一步能通过，编译应该
+就没有问题。
+
+</p>
+
+<h3>启用 syntax-case</h3>
+
+<p>
+使用选项  -hygienic 可以启用  syntax-case 机制。这样被编译的
+文件里的 syntax-case 才能被正确处理。
+
+</p>
+
+<p>
+如果需要在运行时支持 syntax-case, 需要使用 -hygienic-at-run-time 选项。
+如果你的程序需要能够在运行时定义一些宏，那么必须起动这个开
+关。
+
+</p>
+
+<p>
+否则，你的程序如果想 eval 一个含有宏，比如 "unless" 的文件，
+就不能工作！
+
+</p>
+
+<p>
+-hygienic-at-run-time 只包括了 R5RS 的宏机制。如果你想要让所
+有宏的实现都能在运行时使用，就在文件里加一句：
+
+</p>
+
+<pre class="example">(require 'moremacros)
+</pre>
+
+<h3>多文件编译</h3>
+
+<p>
+如果一个，文件很长编译时不好管理。这样的话，你可以把程序分开
+在几个 scm 文件里，比如：
+
+</p>
+
+<pre class="example">;;; foo.scm
+(declare (uses bar))
+(write (fac 10)) (newline)
+</pre>
+
+<pre class="example">;;; bar.scm
+(declare (unit bar))
+(define (fac n)
+  (if (zero? n)
+      1
+      (* n (fac (- n 1))) ) )
+</pre>
+
+<p>
+foo.scm 调用了 bar.scm 里的函数 fac. bar 是被作为一个库。那
+么 bar 要在头部使用 unit 声明
+
+</p>
+
+<pre class="example">(declare (unit bar))
+</pre>
+
+<p>
+foo 要在头部使用 use 声明:
+
+</p>
+
+<pre class="example">(declare (uses bar))
+</pre>
+
+<p>
+编译时：
+
+</p>
+
+<pre class="example">% chicken foo.scm -output-file foo.c
+% chicken bar.scm -output-file bar.c -explicit-use
+</pre>
+
+<p>
+对 bar 使用 -explicit-use 参数，这样 bar.c 不会使用库。
+
+</p>
+
+<p>
+然后，把它们编译成目标文件： 
+
+</p>
+
+<pre class="example">% gcc -c foo.c `chicken-config -cflags`
+% gcc -c bar.c `chicken-config -cflags`
+</pre>
+
+<p>
+然后把它们连接在一起：
+
+</p>
+
+<pre class="example">% gcc foo.o bar.o -o foo `chicken-config -libs`
+</pre>
+
+<h3>优化</h3>
+
+<pre class="example">-optimize-level LEVEL 
+</pre>
+
+<p>
+可以指定从 0 到 3 的优化级别。
+
+</p>
+
+<p>
+它实际上是一下优化选项的组合：
+
+</p>
+
+<pre class="example">-optimize-leaf-routines
+-lambda-lift
+</pre>
+
+<p>
+进行两种优化，分别叫做 leaf routine optimization 和
+lambda-lifting。
+
+</p>
+
+<pre class="example">-usual-integrations
+</pre>
+
+<p>
+它的含义是“就当标准的函数从来没有被重新定义过”。
+
+</p>
+
+<pre class="example">-unsafe
+</pre>
+
+<p>
+不在运行时进行安全检查。
+
+</p>
+
+<h3>Debug</h3>
+
+<p>
+Chicken 编译大文件是需要很多时间的，所以编译这样的文件时最好
+使用一些 debug 选项。它们可以指定在 -debug 后的字符串里。我
+觉得最有用的是：
+
+</p>
+
+<table border="2" cellpadding="5">
+<thead>
+<tr>
+<th>-debug 选项</th><th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>t</td><td>显示需要的时间</td>
+</tr>
+<tr>
+<td>b</td><td>显示一个 pass 已经进行的时间</td>
+</tr>
+<tr>
+<td>o</td><td>显示进行的优化</td>
+</tr>
+<tr>
+<td>p</td><td>显示 pass 信息</td>
+</tr>
+</tbody>
+</table>
+
+<!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-06-09</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="ChickenCompiler.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  </body>
+</html>

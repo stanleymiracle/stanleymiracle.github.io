@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>Eq Eqv Equal</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>Eq Eqv Equal</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+<h2>区别</h2>
+
+<ul>
+<li>eq? is useful for fast identity (same object) comparisons
+  of non-numbers,
+</li>
+<li>= performs numeric comparisons on numbers,
+</li>
+<li>eqv? is like eq?, but treats copies of the same number as
+  though they were the same object, and
+</li>
+<li>equal? performs a "deep" comparison of the structure of
+  data structures. (It uses eqv? for components that are
+  numbers.)
+</li>
+</ul>
+
+<p>
+抄来的。我懒得翻译了。一句话:
+
+</p>
+
+<p>
+eq? 只有在两个参数指向同一个对象时才为 #t. 它跟 eqv? 的区别
+只能在不同的 Scheme 实现里体现出来。
+
+</p>
+
+<h2>不同 implementation 的比较</h2>
+
+<p>
+下面是测试结果：
+
+</p>
+
+<h3>Scheme48</h3>
+
+<p>
+Scheme48 里，我发现的 eq? 和 eqv? 唯一的不同点，只有这个：
+
+</p>
+
+<pre class="example">(define a 10.#)
+(eq? 10.# a)
+; #f
+(eqv? 10.# a)
+; #t
+</pre>
+
+<h3><a class="nonexistent" href="/cdn-cgi/l/email-protection#1c6b797e717d6f68796e5c6b7d727b657572327f7371">MzScheme</a>.</h3>
+
+<p>
+<a class="nonexistent" href="/cdn-cgi/l/email-protection#c2b5a7a0afa3b1b6a7b082b5a3aca5bbabaceca1adaf">MzScheme</a> 里测试，eq? 和 eqv? 区别很多：
+
+</p>
+
+<pre class="example">(eq? 4# 4##)
+(eq? 4.# 4.#)
+(eq? &quot;abc&quot; &quot;abc&quot;)
+(eq? '(1 2) '(1 2))
+(eq? &quot;&quot; &quot;&quot;)
+(eq? 1234567890 1234567890)
+</pre>
+
+<p>
+都给出 #f. 而这些在 Scheme 48 里都是 #t.
+
+</p>
+
+<h2>结论</h2>
+
+<p>
+Scheme 48 大部分 eq? 都跟 eqv? 的结果一样。说明 Scheme 48 采
+用了大量共享数据结构。这种共享特性还体现在 Scheme 48 的模块
+名称中，请参考 <a href="ModuleExperiment.html">ModuleExperiment</a>.
+
+</p>
+
+<h2>eq?  的特殊用途</h2>
+
+<p>
+eq? 可以判断两个变量是不是指向同一个对象。这样有很多用处。
+
+</p>
+
+<ul>
+<li>定义独一无二的对象。eq? 用于比较两个变量是否指向同一个对象。
+  所以如果你的程序里需要一个独一无二的对象用来表示某种东西，
+  就可以把它定义为一个 list, 这个 list 里面只有一个 symbol,
+  就是它自己。这种独一无二的对象有什么好处？举一个例子:
+</li>
+</ul>
+
+<blockquote>
+<p>
+  比如 tex2page 里定义了一个对象 
+  *invisible-space*:
+
+</p>
+</blockquote>
+
+<pre class="example">(define *invisible-space* (list '*invisible-space*))
+</pre>
+
+<p>
+以后遇到一个对象，就用一个函数 invisible-space? 函数来判断它
+是否是我们这个独一无二的对象：
+
+</p>
+
+<pre class="example">(define invisible-space?
+  (lambda (x)
+    (eq? x *invisible-space*)))
+</pre>
+
+<p>
+*invisible-space* 是用来在输入的 stream 中
+表示一个 TeX 命令的开始(大概是这样吧)，如果我们使用任何一个
+字符，比如 *, &, 甚至那些不可打印的字符，来表示这个“开始”，
+那么万一输入文档中真的出现了这个符号呢？我们就会出现很多错误
+的命令开始。
+
+</p>
+
+<p>
+所以，用这种“独一无二”的对象，可以避免出现这种问题。
+</p><!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-06-15</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="EqEqvEqual.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

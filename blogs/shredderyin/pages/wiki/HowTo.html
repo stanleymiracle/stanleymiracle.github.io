@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>Emacs Howto</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>Emacs Howto</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+<ul>
+<li>怎样在指定的文件里搜索一个 regexp?
+</li>
+</ul>
+
+<p>
+使用 dired. 先 mark 几个文件，然后按 A. 搜索会在第一个匹配处
+停下，继续搜索按 M-,
+
+</p>
+
+<ul>
+<li>怎样在指定的文件里替换一个 regexp?
+</li>
+</ul>
+
+<p>
+在 dired, mark, 然后 Q.
+
+</p>
+
+<ul>
+<li>怎样在指定的buffer里搜索一个 regexp?
+</li>
+</ul>
+
+<p>
+使用 ibuffer. 先 mark 几个 buffer, 然后按 O.
+
+</p>
+
+<ul>
+<li>怎样在指定的buffer里替换一个 regexp?
+</li>
+</ul>
+
+<p>
+使用 ibuffer. 先 mark 几个 buffer, 然后按 Q.
+
+</p>
+
+<ul>
+<li>怎样知道光标所在位置字符的编码，光标的位置等信息？
+</li>
+</ul>
+
+<p>
+C-x =
+
+</p>
+
+<ul>
+<li>怎样批量打开一些文件？
+</li>
+</ul>
+
+<p>
+在 dired 中 mark 上文件之后， C-u F.
+
+</p>
+
+<ul>
+<li>怎样让一个宏只在 region 中运行？越界自动停止？
+</li>
+</ul>
+
+<p>
+使用 Sam's 提供的 sams-apply-macro-on-region 函数：
+
+</p>
+
+<pre class="example">(defun sams-apply-macro-on-region (start end command) ;[Jesper]
+  &quot;Evaluate a given function (or the last defined macro) on region.
+I.e. it will continue until the point is position
+outside the region.
+
+This function is much like the function apply-macro-to-region-lines,
+which is shipped with Emacs. It has one difference though. It
+executes the macros until point is below the end of the region.&quot;
+  (interactive &quot;r\naCommand name (default:last keyboard macro).&quot;)
+  (goto-char end)
+  (let ((mark (point-marker)))
+    (goto-char start)
+    (while (&lt; (point) (marker-position mark))
+    (if (not (fboundp command))
+        (call-last-kbd-macro)
+      (command-execute command)))))
+</pre>
+<!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-05-26</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="HowTo.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  </body>
+</html>

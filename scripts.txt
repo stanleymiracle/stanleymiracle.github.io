@@ -47,16 +47,61 @@ for ($i=0; $i -lt $files.Count; $i++) {
 }
 
 # download hrefs
+
 $LinkPath = "https://example.com/path"
 $Response = Invoke-WebRequest -URI $LinkPath -UseBasicParsing
 $Response.Links | Foreach-Object {
-    $IsGoodLink = $_.Href -NotLike "*..*"
+    $IsGoodLink = $_.Href -NotLike "*/*"
     if ($IsGoodLink) {
       $fileName = $_.Href
       echo "$LinkPath/$fileName"
       Invoke-WebRequest -URI "$LinkPath/$fileName" -UseBasicParsing -OutFile $fileName
     }
 }
+
+$body = [System.Text.Encoding]::UTF8.GetBytes($body);
+$headers = @{
+  "Content-Type"="text/html; charset=utf-8";
+  "OData-MaxVersion"="4.0";
+  "OData-Version"="4.0";
+};
+
+$LinkPath = "https://docs.huihoo.com/homepage/shredderyin/choosetruck.html"
+$Path = "https://docs.huihoo.com/homepage/shredderyin"
+$Response = Invoke-WebRequest -URI $LinkPath -UseBasicParsing
+$Response.Images| Foreach-Object {
+  $fileName = $_.Src
+  $IsGoodLink = ($fileName -NotLike "*/*")
+  if ($IsGoodLink) {
+    echo "$Path/$fileName"
+    Invoke-WebRequest -URI "$Path/$fileName" -UseBasicParsing -OutFile $fileName
+  }
+  else {
+    echo "has sub: $fileName"
+  }
+}
+    Invoke-WebRequest -URI "$Path/$fileName" -UseBasicParsing -OutFile $fileName
+
+
+$LinkPath = "https://docs.huihoo.com/homepage/shredderyin/tex/src"
+$Path = "https://docs.huihoo.com/homepage/shredderyin/tex/src"
+$Response = Invoke-WebRequest -URI $LinkPath -UseBasicParsing
+$Response.Links | Foreach-Object {
+  $fileName = $_.Href
+  $IsGoodLink = ($fileName -NotLike "*/*") -and ($fileName -NotLike "")
+  if ($IsGoodLink) {
+    echo "$Path/$fileName"
+    Invoke-WebRequest -URI "$Path/$fileName" -UseBasicParsing -OutFile $fileName
+  }
+  else {
+    echo "has sub: $fileName"
+  }
+}
+
+Invoke-WebRequest -URI "$Path/$fileName" -UseBasicParsing -OutFile $fileName
+
+Invoke-WebRequest -URI "https://docs.huihoo.com/homepage/shredderyin/mutt_left.html" -UseBasicParsing -OutFile mutt_left.html
+
 
 linux:
 wget https://example.com/videos/tschunks_{0..10}.ts

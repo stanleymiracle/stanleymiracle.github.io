@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>Browse URL with Phoenix</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>Browse URL with Phoenix</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+<h3>把这些存为一个文件，比如 wy-browse-url.el</h3>
+
+<pre class="example">(defmacro browse-url-maybe-new-tab (arg)
+  `(if (interactive-p)
+       ,arg
+     browse-url-new-tab-flag))
+
+(defun browse-url-phoenix (url &amp;optional new-window new-tab)
+  &quot;Ask the Phoenix WWW browser to load URL.
+Default to the URL around or before point.  The strings in variable
+`browse-url-phoenix-arguments' are also passed to Phoenix.
+
+When called interactively, if variable `browse-url-new-window-flag' is
+non-nil, load the document in a new Phoenix window, otherwise use a
+random existing one.  A non-nil interactive prefix argument reverses
+the effect of `browse-url-new-window-flag'.
+
+When called non-interactively, optional second argument NEW-WINDOW is
+used instead of `browse-url-new-window-flag'.&quot;
+  (interactive (browse-url-interactive-arg &quot;URL: &quot;))
+  ;; URL encode any `confusing' characters in the URL.  This needs to
+  ;; include at least commas; presumably also close parens.
+  (while (string-match &quot;[,)]&quot; url)
+    (setq url (replace-match
+	       (format &quot;%%%x&quot; (string-to-char (match-string 0 url))) t t url)))
+  (let* ((process-environment (browse-url-process-environment))
+         (process (apply 'start-process
+			 (concat &quot;phoenix &quot; url) nil
+			 browse-url-phoenix-program
+			 (append
+			  browse-url-phoenix-arguments
+			  (if (eq window-system 'w32)
+			      (list url)
+			    (append
+			     (if new-window '(&quot;-noraise&quot;))
+			     (list &quot;-remote&quot;
+				   (concat &quot;openURL(&quot; url
+					   (if (browse-url-maybe-new-window
+						new-window)
+					       &quot;,new-window&quot;)
+                                           (if (browse-url-maybe-new-tab
+						new-tab)
+					       &quot;,new-tab&quot;)
+					   &quot;)&quot;))))))))
+    (set-process-sentinel process
+			  `(lambda (process change)
+			     (browse-url-phoenix-sentinel process ,url)))))
+
+(defun browse-url-phoenix-sentinel (process url)
+  &quot;Handle a change to the process communicating with Phoenix.&quot;
+  (or (eq (process-exit-status process) 0)
+      (let* ((process-environment (browse-url-process-environment)))
+	;; Phoenix not running - start it
+	(message &quot;Starting Phoenix...&quot;)
+	(apply 'start-process (concat &quot;phoenix&quot; url) nil
+	       browse-url-phoenix-program
+	       (append browse-url-phoenix-startup-arguments (list url))))))
+
+(defun browse-url-phoenix-send (command)
+  &quot;Send a remote control command to Phoenix.&quot;
+  (let* ((process-environment (browse-url-process-environment)))
+    (apply 'start-process &quot;phoenix&quot; nil
+           browse-url-phoenix-program
+           (append browse-url-phoenix-arguments
+                   (list &quot;-remote&quot; command)))))
+
+(defun browse-url-phoenix-open-new-window ()
+  &quot;Ask Phoenix to reload its current document.
+How depends on `browse-url-phoenix-version'.&quot;
+  (interactive)
+  (browse-url-phoenix-send &quot;xfeDoCommand(openBrowser)&quot;))
+</pre>
+
+<h3>在 .emacs 里的设定：</h3>
+
+<pre class="example">(load &quot;wy-browse-url&quot;)
+(setq browse-url-browser-function 'browse-url-phoenix)
+(setq browse-url-phoenix-program &quot;phoenix&quot;)
+(setq browse-url-phoenix-arguments nil)
+(setq browse-url-phoenix-startup-arguments browse-url-phoenix-arguments)
+(setq browse-url-new-window-flag nil)
+(setq browse-url-new-tab-flag t)
+</pre>
+
+<p>
+其中有几个可以自己设定的参数，比如：
+
+</p>
+
+<dl>
+<dt>browse-url-new-window-flag</dt>
+<dd>
+如果你想让你的 URL 每次都在新的窗口里打开，就设为 t.
+</dd>
+<dt>browse-url-new-tab-flag</dt>
+<dd>
+如果你想让你的 URL 每次都在新的tab里打开，就设为 t.
+</dd>
+</dl>
+<br>
+<!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-05-23</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="BrowseUrlPhoenix.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  </body>
+</html>

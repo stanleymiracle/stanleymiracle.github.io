@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>Html Notes</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>Html Notes</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+<h2>CSS 选择符</h2>
+
+<p>
+CSS 的选择符可以匹配，比如这个选择符：
+
+</p>
+
+<pre class="example">H1 EM { color: blue }
+</pre>
+
+<p>
+匹配 H1 下的 EM 标记。
+
+</p>
+
+<pre class="example">ol li:first-child{ 
+color:green; }
+</pre>
+
+<p>
+它匹配 <ol> 下的第一个 <li>. 所以第一个列表项的字符会是
+green.
+
+</p>
+
+<p>
+The selector in the following rule, which combines descendant and attribute selectors, matches any element that (1) has the "href" attribute set and (2) is inside a P that is itself inside a DIV:
+
+</p>
+
+<pre class="example">DIV P *[href]
+</pre>
+
+<pre class="example">a[href=&quot;#node_toc_node_chap_Temp_1&quot;]{ color:yellow; }
+</pre>
+
+<p>
+它匹配 href 属性值正好是 #node_toc_node_chap_Temp_1 的那个
+&lt;a&gt;
+
+</p>
+
+<pre class="example">DIV.warning
+DIV[class~=&quot;warning&quot;].
+</pre>
+
+<p>
+这两个是一个意思。表示 class 属性列表中有一项是 "warning" 的
+&lt;DIV&gt;.
+
+</p>
+
+<pre class="example">*[LANG=fr]
+</pre>
+
+<p>
+可以选择所有属性 LANG 是 fr 的标记。
+
+</p>
+
+<p>
+The next example reduces the vertical space separating an H1 and an H2 that immediately follows it:
+
+</p>
+
+<pre class="example">H1 + H2 { margin-top: -5mm }   
+</pre>
+
+<p>
+H1 后面紧接的 H2.
+
+</p>
+
+<p>
+ The following rule is similar to the one in the previous example, except that it adds an attribute selector. Thus, special formatting only occurs when H1 has class="opener":
+
+</p>
+
+<pre class="example">H1.opener + H2 { margin-top: -5mm }   
+</pre>
+
+<pre class="example">
+SPAN[hello=&quot;Cleveland&quot;][goodbye=&quot;Columbus&quot;] { color: blue; }
+
+</pre>
+
+<blockquote>
+<p>
+ The following ID selector matches the H1 element whose ID
+ attribute has the value "chapter1":
+
+</p>
+</blockquote>
+
+<pre class="example">H1#chapter1 { text-align: center }
+</pre>
+
+<p>
+The above rule means "change the letters of the first line
+of every paragraph to uppercase". 
+
+</p>
+
+<pre class="example">
+P:first-line { text-transform: uppercase }
+
+</pre>
+
+<p>
+The :first-letter pseudo-element may be used for "initial
+caps" and "drop caps", which are common typographical
+effects.
+
+</p>
+
+<p>
+drop caps:
+
+</p>
+
+<pre class="example">
+P              { font-size: 12pt; line-height: 12pt }
+   P:first-letter { font-size: 200%; font-style: italic;
+                    font-weight: bold; float: left }
+   SPAN           { text-transform: uppercase }
+</pre>
+
+<p>
+H1:before {content: counter(chapno, upper-roman) ". "}
+
+</p>
+
+<p>
+box model
+
+</p>
+
+<p>
+<img src="../images/boxdim.gif" alt="../images/boxdim.gif">
+
+</p>
+
+<pre class="example">H3 { display: run-in }
+</pre>
+
+<p>
+<H3>A run-in heading.</H3>
+    <blockquote>
+<p>
+    <P>And a paragraph of text that
+       follows it.
+
+</p>
+</blockquote>
+
+<pre class="example">
+EM {
+        padding: 2px; 
+        margin: 1em;
+        border-width: medium;
+        border-style: dashed;
+        line-height: 2.4em;
+      }
+</pre>
+
+<p>
+<p test="margin">a margin par</p>
+haha haha haha haha haha haha hahah <em>emphasized test words
+that may be span across lines</em>
+
+</p>
+
+<p>
+<p id=header>This is the header</p>
+<p id=sidebar>This is the sidebar</p>
+<p id=footer>This is the footer</p>        
+<p id=main>This is the main</p>
+<P>Beginning of body contents.
+      <center>
+<p>
+      <SPAN id=outer> Start of outer contents.
+      <SPAN id=inner> Inner contents.</SPAN>
+      <SPAN id=sibling> Sibling contents.</SPAN>
+      End of outer contents.</SPAN>
+      End of body contents.
+    </P>
+
+</p>
+</center>
+
+<p>
+'text-transform'
+<table border="2" cellpadding="5">
+<tbody>
+<tr>
+<td>Value:  	capitalize</td><td>uppercase</td><td>lowercase</td><td>none</td><td>inherit</td>
+</tr>
+</tbody>
+</table>
+
+    <blockquote>
+<p>
+    Initial:  	none
+    Applies to:  	all elements
+    Inherited:  	yes
+    Percentages:  	N/A
+    Media:  	visual
+
+</p>
+</blockquote>
+
+<p>
+PRE        { white-space: pre }
+P          { white-space: normal }
+TD[nowrap] { white-space: nowrap }
+</p><!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-06-01</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="HtmlNotes.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  </body>
+</html>

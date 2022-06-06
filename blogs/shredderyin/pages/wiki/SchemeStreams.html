@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>Scheme 流</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>Scheme 流</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+<h2>SICP 习题 3.55</h2>
+
+<blockquote>
+<p>
+     Define a procedure `partial-sums' that takes as
+     argument a stream S and returns the stream whose
+     elements are S_0, S_0 + S_1, S_0 + S_1 + S_2, .... For
+     example, `(partial-sums integers)' should be the stream
+     1, 3, 6, 10, 15, ....
+
+</p>
+</blockquote>
+
+<h3>一个低效率的解</h3>
+
+<p>
+一个很普通的想法是， (partial-sums s) 的第一个元素是
+(stream-car s)，而后面的元素应该是把这第一个元素 (stream-car
+s) 加到 (partial-sums (stream-cdr s)) 上。
+
+</p>
+
+<p>
+具体一点，举个例子。对于整数来说，就是这样。 (partial-sums
+integers) 就是求这样一个 stream:
+
+</p>
+
+<p>
+1, 1+2, 1+2+3, 1+2+3+4, ...
+
+</p>
+
+<p>
+它的第一个元素是 1。后面的序列我们可以把 1 加到下面这个序列
+来得到：
+
+</p>
+
+<p>
+2, 2+3, 2+3+4, ...
+
+</p>
+
+<p>
+注意到，这个序列就是序列 2, 3, 4, ... 的 partial-sums。也就
+是 (partial-sums (stream-cdr s)).
+
+</p>
+
+<p>
+于是我们把 partial-sums 定义如下：
+
+</p>
+
+<pre class="example">(define (partial-sums s)
+  (cons-stream (stream-car s)
+               (stream-map (lambda (x) (+ (stream-car s) x))
+                           (partial-sums (stream-cdr s)))))
+</pre>
+
+<p>
+这个定义能够正常工作，但是这里有一个效率上的问题。如果我们要
+求:
+
+</p>
+
+<pre class="example">(define sum1 (partial-sums integers))
+(stream-ref sum1 0)
+</pre>
+
+<p>
+当然我们立即得到了 1。因为最开头时 sum1 是这个样子:
+
+</p>
+
+<pre class="example">(cons 1
+      (delay (stream-map (lambda (x) (+ 1 x))
+                         (partial-sums 2,3,4...))))
+</pre>
+
+<p>
+当我们要求 (stream-ref sum1 1) 的时候，delay 被 force。于是
+我们要把 (lambda (x) (+ 1 x)) 作用到 (partial-sums 2,3,4...)
+得到第2个元素。我们必须先计算 (partial-sums 2,3,4...)，它被
+展开成：
+
+</p>
+
+<pre class="example">(cons 2
+      (delay (stream-map (lambda (x) (+ 2 x))
+                         (partial-sums 3,4,5...))))
+</pre>
+
+<p>
+于是在 stream-map 被执行之前，实际上 sum1 展开成这个样子：
+
+</p>
+
+<pre class="example">(cons 1
+      (delay (stream-map (lambda (x) (+ 1 x))
+                         (cons 2
+                               (delay (stream-map (lambda (x) (+ 2 x))
+                                                  (partial-sums 3,4,5...)))))))
+</pre>
+
+<p>
+当 stream-map 被执行之后， sum1 就变成了这样：
+
+</p>
+
+<pre class="example">(cons 1
+      (cons 3
+            (delay (stream-map (lambda (x) (+ 1 x))
+                               (stream-cdr 
+                                (cons 2
+                                      (delay (stream-map (lambda (x) (+ 2 x))
+                                                         (partial-sums 3,4,5...)))))))))
+</pre>
+
+<p>
+看到了？ delay 里面嵌套了两个 stream-map。这样我们如果要求 
+(stream-ref sum1 2)，实际上，我们先求得了 (partial-sums
+3,4,5,...) 的第一个元素然后，把 1,2 嵌套的加到上面。
+
+</p>
+
+<p>
+越往后计算，嵌套的 stream-map 就越多。每次我们需要第 n 个还
+没有计算过的新的元素，我们必须把 (partial-sums n+1,n+2, ...) 
+求出来，然后把 1,2,3,...,n 加到上面。这显然是非常低效率的。
+
+</p>
+
+<h3>改进的方法</h3>
+
+<p>
+我们既然已经知道了 partial-sums 前面的部分，为什么不直接利用
+这个结果呢？
+
+</p>
+
+<p>
+我们可以把 1 之后的流 1+2, 1+2+3, 1+2+3+4+5, ... 分成两部分：
+
+</p>
+
+<p>
+2,3,4,5,...
+
+</p>
+
+<p>
+和
+
+</p>
+
+<p>
+1, 1+2, 1+2+3, 1+2+3+4, ...
+
+</p>
+
+<p>
+后者正好是 (partial-sums integers) 本身。所以我们可以得到一
+个递归的定义：
+
+</p>
+
+<pre class="example">(define (partial-sums s)
+  (letrec ((p (cons-stream (stream-car s)
+                           (add-streams p (stream-cdr s)))))
+    p))
+
+(define sum2 (partial-sums integers))
+</pre>
+
+<p>
+这里用了一个递归的定义。我们来看看这个定义是怎样执行的：
+
+</p>
+
+<p>
+(stream-ref sum2 0) 直接返回 1. 接着， sum2 变成这个样子：
+
+</p>
+
+<pre class="example">p=(cons 1
+        (delay
+          (add-streams p (stream-cdr 1,2,3,4,...))))
+</pre>
+
+<p>
+这里有一个递归定义。接着我们如果取 (stream-ref sum2 1)，那么
+当我们要求 (stream-cdr sum2) 时，sum2 的 delay 被 force。于
+是 (stream-cdr sum2) 返回这样一个结构：
+
+</p>
+
+<pre class="example">p=(cons 3
+      (delay 
+        (add-streams p (stream-cdr 2,3,4,...))))
+</pre>
+
+<p>
+我为 (stream-cdr sum2) 取了一个临时名字叫 p，不然不好叙述。
+程序里面是没有这个名字的。
+
+</p>
+
+<p>
+继续 (stream-cdr p) 就会得到：
+
+</p>
+
+<pre class="example">p=(cons 6
+      (delay 
+        (add-streams p (stream-cdr 3,4,5,...))))
+</pre>
+
+<p>
+这样每次往后计算，我们只需要把下一个数加到以前的结果上。
+
+</p>
+
+<!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-07-03</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="SchemeStreams.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  </body>
+</html>

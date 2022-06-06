@@ -1,0 +1,601 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>求和</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>求和</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+<h2>简介</h2>
+
+<p>
+使用 Special Form:
+
+</p>
+
+<pre class="example">SUM(exp, ind, low, high)
+</pre>
+
+<p>
+可以进行求和。比如:
+
+</p>
+
+<pre class="example">(C1) SUM(k^2,k,0,n);
+
+				    n
+				   ====
+				   \	  2
+(D1) 				    &gt;	 k
+				   /
+				   ====
+				   k = 0
+</pre>
+
+<p>
+如果上下求和界限相差是整数，那么 MAXIMA 会求出这个 sum 的值：
+
+</p>
+
+<pre class="example">(C2) SUM(k^2,k,0,5);
+
+(D2) 				      55
+</pre>
+
+<p>
+如果变量 SIMPSUM 的值为 TRUE，那么 MAXIMA 会化简求和表达式，
+这在很多时候会求出一个 closed form.  比如，我们可以求出 D1
+的 closed form:
+
+</p>
+
+<pre class="example">(C3) D1,SIMPSUM;
+
+				   3	  2
+				2 n  + 3 n  + n
+(D3) 			        ---------------
+				       6
+</pre>
+
+<h2>操纵求和项目</h2>
+
+<h3>SUMCONTRACT</h3>
+
+<p>
+SUMCONTRACT 可以把两个上下界相差是常数的求和式进行合并。它有
+可能会从每个求和式里分离出某些不是共同的项，然后把共同的项目
+合并成一个求和式。比如：
+
+</p>
+
+<pre class="example">(C4) exp1:SUM(A[i],i,0,n-1)+SUM(B[k],k,1,n);
+
+			       n	 n - 1
+			      ====	 ====
+			      \		 \
+(D4) 			       &gt;    B  +  &gt;    A
+			      /	     k	 /      i
+			      ====	 ====
+			      k = 1	 i = 0
+(C5) SUMCONTRACT(exp1);
+
+				n - 1
+				====
+				\
+(D5) 			   B  +  &gt;    (B  + A ) + A
+			    n   /       k    k	   0
+				====
+				k = 1
+</pre>
+
+<p>
+这里 A[0] 和 B[n] 分别被提出来，然后中间的 1...n-1 的部分被
+合并。
+
+</p>
+
+<p>
+但是要想让 SUMCONTRACT 可以识别可合并的求和式，求和式必须有
+相同的系数。比如下面这个式子，由于 SUM(A[i],i,0,n-1) 有一个
+常数系数 C, 致使 MAXIMA 不知道是否可以合并这两个式子。
+
+</p>
+
+<pre class="example">(C6) exp2:c*SUM(A[i],i,0,n-1)+SUM(B[k],k,1,n);
+
+			      n		  n - 1
+			     ====	  ====
+			     \		  \
+(D6) 			      &gt;	   B  + C  &gt;    A
+			     /	    k	  /	 i
+			     ====	  ====
+			     k = 1	  i = 0
+(C7) SUMCONTRACT(exp2);
+
+			      n		  n - 1
+			     ====	  ====
+			     \		  \
+(D7) 			      &gt;	   B  + C  &gt;    A
+			     /	    k	  /	 i
+			     ====	  ====
+			     k = 1	  i = 0
+</pre>
+
+<p>
+所以一般先用 INTOSUM 把求和式前面的常数放进里
+面，然后再用 SUMCONTRACT，这样才能进行有效的合并。
+
+</p>
+
+<pre class="example">(C8) INTOSUM(exp2);
+
+			      n	        n - 1
+			     ====       ====
+			     \	        \
+(D8) 			      &gt;	   B  +  &gt;    C A
+			     /	    k   /	 i
+			     ====       ====
+			     k = 1      i = 0
+(C9) SUMCONTRACT(%);
+
+			      n - 1
+			      ====
+			      \
+(D9) 			 B  +  &gt;    (B  + C A ) + A  C
+			  n   /	      k	     k	   0
+			      ====
+			      k = 1
+</pre>
+
+<p>
+这样，MAXIMA 正确的合并了两个求和式。
+
+</p>
+
+<h2>展开求和式</h2>
+
+<p>
+有时侯我们需要把 (a+b+c)(x+y+z) 这样的式子展开。我们使用的是
+expand 函数：
+
+</p>
+
+<pre class="example">(C99) (a+b+c)*(x+y+z);
+
+(D99) 			    (C + B + A) (z + y + x)
+(C100) expand(%);
+
+(D100) 	      C z + B z + A z + C y + B y + A y + C x + B x + A x
+</pre>
+
+<p>
+但是 expand 对求和式是不起作用的。为了展开求和式，我们需要把
+SUMEXPAND 变量设为 TRUE:
+
+</p>
+
+<pre class="example">(C119) SUM(F(I),I,0,M)*SUM(G(J),J,0,N);
+
+			      M		  N
+			     ====	 ====
+			     \		 \
+(D119) 			    ( &gt;	   F(I))  &gt;    G(J)
+			     /		 /
+			     ====	 ====
+			     I = 0	 J = 0
+(C120) %,SUMEXPAND:TRUE;
+
+			    M	   N
+			   ====	  ====
+			   \	  \
+(D120) 			    &gt;	   &gt;	 F(I1) G(I2)
+			   /	  /
+			   ====	  ====
+			   I1 = 0 I2 = 0
+</pre>
+
+<p>
+这样，求和式的积就可以被展开了。
+
+</p>
+
+<h4>GENINDEX 和 GENSUMNUM</h4>
+
+<p>
+我们注意到展开之后，MAXIMA 给新的求和式自动生成了下标 I1 和
+I2. 这个下标的名字是由两个变量 GENINDEX 和 GENSUMNUM 确定的。
+
+</p>
+
+<p>
+GENINDEX 缺省是 I, GENSUMNUM 初始值是 1. 所以生成 I1, I2,
+... 这样的下标名。你可以修改它们的值来得到你需要的下标名字。
+
+</p>
+
+<h2>操纵下标</h2>
+
+<h4>CHANGEVAR</h4>
+
+<p>
+有时侯，我们需要改变求和下标，以便得到更加简单的表达式。比如
+下面这个 SUM(A[I]*X^(I-2),I,0,INF)，X 的指数上面有 I-2，很不
+好处理，所以我们希望用一个变量来代替 I-2，那么我们可以使用 
+CHANGEVAR 把 I-2 都换成 N。
+
+</p>
+
+<pre class="example">(C23) SUM(A[I]*X^(I-2),I,0,INF);
+
+				INF
+				====
+				\	  I - 2
+(D23) 				 &gt;    A  X
+				/      I
+				====
+				I = 0
+(C24) CHANGEVAR(%,I-2-N,N,I);
+
+			       INF
+			       ====
+			       \	       N
+(D24) 			        &gt;      A      X
+			       /        N + 2
+			       ====
+			       N = - 2
+</pre>
+
+<p>
+CHANGEVAR 接受四个参数，第1个是原来的表达式，第3个是我们要换
+成的新变量 x，第4个是我们想要换掉的变量 y。第2个参数是一个表
+达式 f(x,y)，变量 x 和 y 的关系由 f(x,y)=0 给出。这里我们想
+把 I-2 都换成 N, 那么它们之间的关系就是 I-2-N=0.
+
+</p>
+
+<h4>BASHINDICES</h4>
+
+<p>
+但是有时侯我们同时有几个求和表达式，它们的下标变量相同，但是
+我们只希望替换其中某一个下标。比如下面这种情况：
+
+</p>
+
+<pre class="example">(C25) exp3:SUM(A[I]*X^(I-2),I,0,INF)+SUM(I^2,I,0,N);
+
+			  INF		     N
+			  ====		    ====
+			  \	    I - 2   \	   2
+(D25) 			   &gt;    A  X	  +  &gt;	  I
+			  /	 I	    /
+			  ====		    ====
+			  I = 0		    I = 0
+(C26) CHANGEVAR(exp3,I-2-N,N,I);
+
+		  INF		      N - 2
+		  ====		      ====
+		  \		  N   \	        2
+(D26) 		   &gt;	  A      X  +  &gt;      (N  + 4 N + 4)
+		  /	   N + 2      /
+		  ====		      ====
+		  N = - 2	      N = - 2
+</pre>
+
+<p>
+如果不问青红皂白就把所有的 I-2 都换成  N，就会把其它本来就简
+单的式子变得复杂。这时候我们需要区分各个表达式里的下标。这可
+以由 BASHINDICES 来实现：
+
+</p>
+
+<pre class="example">(C32) BASHINDICES(exp3);
+
+			INF		      N
+			====		     ====
+			\	    J2 - 2   \	      2
+(D32) 			 &gt;     A   X	   +  &gt;	    J1
+			/       J2	     /
+			====		     ====
+			J2 = 0		     J1 = 0
+
+(C33) CHANGEVAR(%,J2-2-N,N,J2);
+
+			INF		     N
+			====		    ====
+			\	        N   \	     2
+(D33) 			 &gt;      A      X  +  &gt;	   J1
+			/	 N + 2	    /
+			====		    ====
+			N = - 2		    J1 = 0
+</pre>
+
+<p>
+在 BASHINDICES 之后，所有的求和下标都被赋予了独一无二的名字:
+J1, J2, J3 ... 
+
+</p>
+
+<p>
+J 后面接的数字存在变量 GENSUMNUM 里。你可以把它设置为任何你
+想要的数值。
+
+</p>
+
+<h4>NICEINDICES</h4>
+
+<p>
+BASHINDICES 方便了 CHANGEVAR，但是其它的求和下标被变成了 J1,
+J2, ... 这种样子，很不好看，以后处理起来会很麻烦。所以你可以
+用 NICEINDICES 把它们变成好看的下标：
+
+</p>
+
+<pre class="example">(C42) NICEINDICES(%);
+
+			 INF		      N
+			 ====		     ====
+			 \		 I   \	    2
+(D42) 			  &gt;	 A      X  +  &gt;	   I
+			 /	  I + 2	     /
+			 ====		     ====
+			 I = - 2	     I = 0
+</pre>
+
+<p>
+NICEINDICES 的下标名字是从 变量 NICEINDICESPREF 里选择的。这
+个变量的值一般是 [I,J,K,L,M,N]，它首先试图使用 I 作为每一个
+求和式的下标，如果内部求和式已经用了 I，它就尝试用 J，用了 J 
+之后用 K, ……。
+
+</p>
+
+<p>
+如果嵌套的求和式太深，N 都被用了之后还有一层求和，它就开始尝
+试在第一个符号后面加数字，使用 I0, I1, I2, ... 这样的名字。
+当然这种情况很少。
+
+</p>
+
+<h2>化简和式</h2>
+
+<p>
+这里的和式不一定是含有 Sigma 的。
+
+</p>
+
+<h4>XTHRU</h4>
+
+<p>
+如果有一些有理式需要把分母合并，就使用 XTHRU. 比如：
+
+</p>
+
+<pre class="example">(C76) exp4:((X+2)**20-2*Y)/(X+Y)**20+(X+Y)**-19-X/(X+Y)**20;
+
+				       20
+			1       (X + 2)	  - 2 Y	      X
+(D76) 		    --------- + --------------- - ---------
+			   19		  20		 20
+		    (Y + X)	   (Y + X)	  (Y + X)
+(C77) XTHRU(exp4);
+
+					20
+				 (X + 2)   - Y
+(D77) 				 -------------
+					  20
+				   (Y + X)
+</pre>
+
+<h4>COMBINE</h4>
+
+<p>
+XTHRU 会把不管3721把所有分母都合并。但是有时我们只希望把类似
+的分母进行合并。这时可以使用 COMBINE，它只把分母完全相同的项
+合并。
+
+</p>
+
+<pre class="example">(C78) COMBINE(exp4);
+
+						  20
+			   1	   - 2 Y + (X + 2)   - X
+(D78) 		       --------- + ---------------------
+			      19	        20
+		       (Y + X)		 (Y + X)
+</pre>
+
+<p>
+这样两个 (Y+X)^20 的项被合并在一起，而 (Y+X)^19 的项原封不动。
+
+</p>
+
+<h4>RNCOMBINE</h4>
+
+<p>
+COMBINE 只能合并分母完全相同的项，我们如果使用 RNCOMBINE，就
+可以把分母只相差一个常数系数的项都合并。这在很多时候是我们想
+要的结果。
+
+</p>
+
+<pre class="example">(C86) load(&quot;rncomb&quot;)$
+
+(C87) exp5:X/(2*(X+Y))+Z/(X+Y);
+
+				 Z	   X
+(D87) 			       ----- + ---------
+			       Y + X   2 (Y + X)
+(C88) COMBINE(exp5);
+
+				 Z	   X
+(D88) 			       ----- + ---------
+			       Y + X   2 (Y + X)
+(C89) RNCOMBINE(exp5);
+
+				    2 Z + X
+(D89) 				   ---------
+				   2 (Y + X)
+</pre>
+
+<h2>下标不是求和表达式的变量</h2>
+
+<p>
+FREEOF 可以告诉你一些变量是否没有在表达式里出现。这个函数被
+作用于求和式时，情况(似乎)有点特殊：所有的下标都不被作为求和
+表达式的变量。你可以看看下面两个结果的区别。
+
+</p>
+
+<pre class="example">(C45) FREEOF(I,SUM(I,I,0,N));
+
+(D45) 				     TRUE
+(C46) FREEOF(N,SUM(I,I,0,N));
+
+(D46) 				     FALSE
+</pre>
+
+<p>
+但是其实这是合理的，这一点应该很好理解。看看下面这个，就是 
+SUM(I,I,0,N) 的 closed form. 里面确实没有 I 这个变量。Got
+it?
+
+</p>
+
+<pre class="example">(C48) SUM(I,I,0,N),simpsum;
+
+				     2
+				    N  + N
+(D48) 				    ------
+				      2
+</pre>
+
+<h2>Indefinite Summations</h2>
+
+<p>
+我们刚才进行的都是确定上下界的求和，定求和(definite
+summation)，MAXIMA 还可以计算“不定求和”(indefinite
+summation)。 
+
+</p>
+
+<p>
+definite summation 和 indefinite summation 的关系就像
+定积分 (definite integration) 和不定积分 (indefinite
+integration) 的关系。
+
+</p>
+
+<p>
+不定求和可以用 nusum 来实现，比如:
+
+</p>
+
+<pre class="example">(C51) nusum(k*k!,k,0,n);
+
+
+Dependent equations eliminated:  (1)
+(D51) 				 (n + 1)! - 1
+
+(C59) nusum(k*(k-1),k,0,n);
+
+			       (n - 1) n (n + 1)
+(D59) 			       -----------------
+				       3
+</pre>
+
+<p>
+不定求和的反操作就是求差 (difference)。它在 MAXIMA 里是函数
+UNSUM. 举一个例子：
+
+</p>
+
+<pre class="example">(C68) nusum(k*(k-1),k,0,n);
+
+			       (n - 1) n (n + 1)
+(D68) 			       -----------------
+				       3
+(C69) unsum(%,n);
+
+(D69) 				   (n - 1) n
+</pre>
+
+<h2>SUMHACK</h2>
+
+<p>
+sum(q[k],k,4,0) 是什么意思？从 q_4 加到 q_0？我们可以有几种
+理解方法：
+
+</p>
+
+<ol>
+<li>这相当于求出 q[k], 4<=k<=0 的值，由于这个区间为空，所以值
+   为 0。
+</li>
+<li>这就是反向求和，所以应该等于 
+   q[4]+q[3]+q[2]+q[1]+q[0]。但是这与 
+   sum(q[k],k,1,n) 当 n=0 时应该等于 0 这个通常的约定冲突。
+</li>
+<li>因为 sum(q[k],k,m,n) 就是 q[k] 在区间 k&le;n 和区间 
+   k&lt;m 两次求和的差。那么 sum(q[k],k,4,0) 就是区间 k&le;0 
+   和区间 k&lt;4 的差，也就是 -q1-q2-q3.
+</li>
+</ol>
+
+<p>
+当 n-m >= -1 时，第3种办法和第1种一致。所以我们一般在 n-m
+>= -1 的情况下使用求和式。
+
+</p>
+
+<p>
+第3种方法其实就是 finite calculus 的方法。这使我们可以得到很
+多一致的结果。我们如果希望使用这种方法，就可以把变量 SUMHACK 
+设为 TRUE.
+
+</p>
+
+<pre class="example">(C67) SUM(q[k],k,4,0),SUMHACK:TRUE;
+
+(D67) 			        - q  - q  - q
+				   3    2    1
+</pre>
+
+<p>
+如果 SUMHACK 为 FALSE。当 n-m=-1 时，SUM(q[k],k,m,n) 的结果
+为 0. 如果 n-m&lt;-1，MAXIMA 会报错。
+</p><!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-07-31</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="SumManipulation.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  </body>
+</html>

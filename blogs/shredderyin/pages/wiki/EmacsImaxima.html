@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>Emacs Imaxima</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>Emacs Imaxima</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+<p>
+Maxima 本身为 Emacs 提供了一个 maxima-mode，具有语法加量，命
+令补全等功能，但是它不支持图形显示输出。
+
+</p>
+
+<p>
+Imaxima 弥补了图形显示空缺，但是它没有提供语法加亮，命令补
+全……
+
+</p>
+
+<p>
+没有两全其美的办法吗？有的。只要在 .emacs 文件里设置
+
+</p>
+
+<pre class="example">(setq imaxima-use-maxima-mode-flag t)
+</pre>
+
+<p>
+maxima-mode 就可以把 Imaxima 作为它发送命令的目标，从而把语
+句都送到 Imaxima 的 buffer 显示。
+
+</p>
+
+<p>
+使用方法是，先启动 Imaxima: M-x imaxima，然后把一个  buffer
+进入 maxima-mode. 这样，打完一个语句以后, C-c C-c 就可以把它
+送到 Imaxima 那里处理了，得到 TeX 质量的输出。
+
+</p>
+
+<p>
+只要使用 M-x imaxima-latex 就可以把结果输出成为 Latex 文档，
+经过修改，交给 LateX 处理，效果别提有多好了。
+
+</p>
+
+<p>
+需要注意的事项：
+
+</p>
+
+<ol>
+<li>Maxima 自带的 maxima-mode 自己独立启动时不知道为什么出现
+   的 maxima 进程会 crash。我不知道是我自己的配置有冲突还是
+   maxima-mode 有 bug. 所以最好先启动 imaxima, 然后把一个
+   buffer 进入 maxima-mode.
+</li>
+<li>imaxima-latex 输出的 Latex 文件不能直接用 AUC TeX 的 C-c
+   C-b 处理，因为它没有附着在一个文件上，所以要先存盘，再处
+   理。
+</li>
+<li>如果 Maxima 自带的 maxima-mode 起动 maxima 进程失败，请参
+   考 <a href="MaximaProblems.html#maximamodecrash">MaximaProblems</a>.
+</li>
+<li>作者有一个改进方法，可以使 maxima-mode 自动起动 imaxima.
+   只需要把 <a href="MaximamodeStartsImaxima.html">MaximamodeStartsImaxima</a> 加入 .emacs。
+</li>
+</ol>
+
+<p>
+<img src="../images/maxima-emacs.png" alt="../images/maxima-emacs.png">
+
+</p>
+
+<p>
+<img src="../images/maxima-latex.png" alt="../images/maxima-latex.png">
+</p><!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-05-23</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="EmacsImaxima.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  </body>
+</html>
