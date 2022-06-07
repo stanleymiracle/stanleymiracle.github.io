@@ -110,7 +110,22 @@ if ($lnkPath.IndexOf('#') -gt 0) {
 Invoke-WebRequest -URI "$Path/$fileName" -UseBasicParsing -OutFile $fileName
       Invoke-WebRequest -URI "$Path/$subfileName" -UseBasicParsing -OutFile $subfileName
 
-Invoke-WebRequest -URI "http://www-formal.stanford.edu/jmc/basis1/basis1.html" -UseBasicParsing -OutFile basis1.html
+Invoke-WebRequest -URI "https://docs.huihoo.com/homepage/shredderyin/anatomy.html" -UseBasicParsing -OutFile anatomy.html
+
+# convert file encoding
+Get-ChildItem -Path "*.html" -Recurse | Foreach-Object {
+  $content = $_.FullName
+  echo $content
+  Get-Content $content | Set-Content -Encoding utf8 "$content.utf8"
+}
+
+  Get-Content $content | Set-Content -Encoding utf8 $content
+
+Get-ChildItem -Path ".\" |
+Foreach-Object {
+  $content = $_.FullName
+  Copy-Item -Path $content\*English.srt -Destination ".\$_.srt"
+}
 
 
 linux:

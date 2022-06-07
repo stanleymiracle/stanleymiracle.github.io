@@ -1,0 +1,330 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>Syntax Rules Examples</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>Syntax Rules Examples</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+<h2>例子</h2>
+
+<p>
+这些例子显示了 syntax-rules 里面最容易搞混淆的地方。
+
+</p>
+
+<pre class="example">(define mydef &quot;mydef defined in toplevel&quot;)
+(define aa 5)
+
+(define-syntax test-macro
+  (syntax-rules (mydef)
+    ((_) #f)
+    ((_ mydef bar st1 st2 ...) 
+     (letrec ((bar 
+               (lambda ()
+                 (display &quot;this is: &quot;)
+                 (display bar)
+                 (newline)
+                 (display &quot;mydef is bound to: &quot;)
+                 (display mydef)
+                 (newline))))
+       st1 st2 ...))
+    ((_ e1 e2 e3 ...)
+     (let ((t e1))
+       (display &quot;aa's value is: &quot;)
+       (display aa)
+       (newline)
+       (if t t (or e2 e3 ...))))))
+
+(test-macro mydef foo (foo))
+(test-macro mydef bar (bar))
+</pre>
+
+<p>
+结果是：
+
+</p>
+
+<pre class="example">&gt; this is: #&lt;procedure:foo&gt;
+mydef is bound to: mydef defined in toplevel
+&gt; this is: #&lt;procedure:bar&gt;
+mydef is bound to: mydef defined in toplevel
+</pre>
+
+<p>
+这里显示了：
+
+</p>
+
+<ol>
+<li>literal mydef 匹配成功。因为它们的绑定都是顶层的 define
+   定义的。
+</li>
+<li>如果要能从输入调用宏内部定义的函数，必须把它作为一个参数
+   传递进去。就像这里的 foo 和 bar。它们被传递进去之后得到了
+   定义，然后我们可以从输入调用它们。
+</li>
+</ol>
+
+<p>
+接下来：
+
+</p>
+
+<pre class="example">(let ((mydef &quot;mydef defined in let&quot;))
+  (test-macro mydef bar (bar)))
+</pre>
+
+<p>
+结果是：
+
+</p>
+
+<pre class="example">&gt; aa's value is: aa defined in toplevel
+&quot;mydef defined in let&quot;
+</pre>
+
+<p>
+这个例子显示了：
+
+</p>
+
+<ol>
+<li>对于 literal mydef:
+   syntax-rules 出现的地方，mydef 的绑定是顶层的 define 定义
+   的。而在这里我们在 let 中重新绑定了 mydef 的值。所以第一
+   条规则不匹配。
+</li>
+<li>aa 的值是最顶层的定义。
+</li>
+</ol>
+
+<p>
+接下来：
+
+</p>
+
+<pre class="example">(define mydef #f)
+(test-macro mydef bar (bar))
+</pre>
+
+<p>
+结果是：
+
+</p>
+
+<pre class="example">&gt; this is: #&lt;procedure:bar&gt;
+mydef is bound to: #f
+</pre>
+
+<p>
+这说明，literal mydef 仍然匹配，虽然它们的顶层定义改变了。
+
+</p>
+
+<p>
+接下来我们把 test-macro 定义在一个 let 块里：
+
+</p>
+
+<pre class="example">(let ((mydef &quot;mydef defined in syntax block&quot;)
+      (aa &quot;aa in outer syntax block&quot;))
+  (define-syntax test-macro
+    (syntax-rules (mydef)
+      ((_) #f)
+      ((_ mydef bar st1 st2 ...) 
+       (letrec ((bar 
+                 (lambda ()
+                   (display &quot;this is: &quot;)
+                   (display bar)
+                   (newline)
+                   (display &quot;mydef is bound to: &quot;)
+                   (display mydef)
+                   (newline))))
+         st1 st2 ...))
+      ((_ e1 e2 e3 ...)
+       (let ((t e1))
+         (display &quot;aa's value is: &quot;)
+         (display aa)
+         (newline)
+         (if t t (or e2 e3 ...))))))
+
+  (test-macro mydef bar (bar))
+
+  (let ((mydef &quot;mydef defined in inner let&quot;)
+        (aa &quot;aa defined in inner let block&quot;))
+    (test-macro mydef bar (bar)))
+
+  )
+
+  (set! aa &quot;aa definition changed in outer let&quot;)
+  (let ((mydef &quot;mydef defined in inner let&quot;)
+        (aa &quot;aa defined in inner let block&quot;))
+    (test-macro mydef bar (bar)))
+
+  )
+
+</pre>
+
+<p>
+结果是：
+
+</p>
+
+<pre class="example">&gt; this is: #&lt;procedure:bar&gt;
+mydef is bound to: mydef defined in syntax block
+aa's value is: aa in outer syntax block
+aa's value is: aa definition changed in outer let
+&quot;mydef defined in inner let&quot;
+</pre>
+
+<p>
+这说明：
+
+</p>
+
+<ol>
+<li>第一个 literal mydef 匹配，因为它们都是在外层 let 块里绑定的。
+</li>
+<li>第二个 literal mydef 不匹配，因为它是在内层 let 块里定
+   义的。
+</li>
+<li>aa 的值是在外层 let 块里的值。即使它在内层定义过，但是
+   syntax-rules 是出现在外层，所以它使用外层的值，这个值可以
+   改变。
+</li>
+</ol>
+
+<p>
+接下来：
+
+</p>
+
+<pre class="example">(let ((aa 6)
+      (mydef &quot;mydef in let block&quot;))
+  (test-macro mydef bar (bar)))
+</pre>
+
+<p>
+结果是：
+
+</p>
+
+<pre class="example">&gt; aa's value is: aa defined in toplevel
+&quot;mydef in let block&quot;
+</pre>
+
+<p>
+虽然在  let 内重新绑定了 aa 的值，但是由于这时我们使用的是最
+外层定义的语法 test-macro, 所以它的  aa 引用的是最外层的 aa.
+
+</p>
+
+<p>
+重新定义 test-macro, 不把 mydef 作为  literal.
+
+</p>
+
+<pre class="example">(define-syntax test-macro
+  (syntax-rules ()
+    ((_) #f)
+    ((_ mydef bar st1 st2 ...) 
+     (letrec ((bar 
+               (lambda ()
+                 (display &quot;this is: &quot;)
+                 (display bar)
+                 (newline)
+                 (display &quot;mydef is bound to: &quot;)
+                 (display mydef)
+                 (newline))))
+       st1 st2 ...))
+    ((_ e1 e2 e3 ...)
+     (let ((t e1))
+       (display &quot;aa's value is: &quot;)
+       (display aa)
+       (newline)
+       (if t t (or e2 e3 ...))))))
+
+(let ((mydef &quot;mydef defined in let&quot;))
+  (test-macro mydef bar (bar)))
+</pre>
+
+<p>
+结果是：
+
+</p>
+
+<pre class="example">&gt; this is: #&lt;procedure:bar&gt;
+mydef is bound to: mydef defined in let
+</pre>
+
+<p>
+这个例子里的 mydef 不是一个 literal，所以它即使在 let 内部重
+新绑定，仍然可以匹配。而且它的值是重新绑定以后的值。
+
+</p>
+
+<p>
+这就让我想起 R5RS 里的例子：
+
+</p>
+
+<pre class="example">(let ((=&gt; #f))
+  (cond (#t =&gt; 'ok)))
+</pre>
+
+<p>
+结果是 ok. 这里 => 虽然在内部被重新绑定。但是 cond 是在顶层
+定义的，所以只有顶层定义的 => 才能匹配这个 "=>".
+
+</p>
+
+<p>
+所以 
+
+</p>
+
+<pre class="example">(cond (#t =&gt; 'ok))
+</pre>
+
+<p>
+无论你是否在顶层重新定义 => 都是要出错的。
+
+</p>
+
+<!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-06-08</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="SyntaxRulesExamples.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  </body>
+</html>

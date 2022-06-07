@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>Scheme Setf</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>Scheme Setf</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+<p>
+
+</p>
+
+<p>
+From <a href="/cdn-cgi/l/email-protection#fd9291989abd8d929f9285d39e9290"><span class="__cf_email__" data-cfemail="d8b7b4bdbf98a8b7bab7a0f6bbb7b5">[email&#160;protected]</span></a> Tue Jul 07 16:18:18 1998
+
+</p>
+
+<p>
+Path: News.<a class="nonexistent" href="/cdn-cgi/l/email-protection#2d5a484f404c5e59485f6d5a4c434a544443034e4240">CoLi</a>.Uni-SB.DE! news.phil.uni-sb.de!
+wuff.mayn.de! news-nue1.dfn.de! news-mue1.dfn.de!
+news-stu1.dfn.de! news-kar1.dfn.de! news-was.dfn.de!
+nntp-out.monmouth.com! newspeer.monmouth.com!
+nntp2.dejanews.com! nnrp1.dejanews.com!not-for-mail
+
+</p>
+
+<p>
+From: <a href="/cdn-cgi/l/email-protection#2f40434a486f5f404d4057014c4042"><span class="__cf_email__" data-cfemail="3857545d5f7848575a5740165b5755">[email&#160;protected]</span></a> Newsgroups: comp.lang.scheme Subject:
+setf -- a polymorphic, generic setter -- as a simple Scheme
+macro Date: Tue, 07 Jul 1998 16:18:18 GMT Organization: Deja
+News - The Leader in Internet Discussion Message-ID:
+<6nthoa$bvr$<a href="/cdn-cgi/l/email-protection#28196846465a5819064c4d4249464d5f5b064b4745"><span class="__cf_email__" data-cfemail="e4d5a48a8a9694d5ca80818e858a819397ca878b89">[email&#160;protected]</span></a>> Reply-To: <a href="/cdn-cgi/l/email-protection#d0bfbcb5b790a0bfb2bfa8feb3bfbd"><span class="__cf_email__" data-cfemail="9ff0f3faf8dfeff0fdf0e7b1fcf0f2">[email&#160;protected]</span></a>
+Summary: LISP's setf as a Scheme macro Keywords:
+polymorphism, setter, overloading, generic function, Scheme,
+LISP, macro X-Article-Creation-Date: Tue Jul 07 16:18:18
+1998 GMT X-Http-User-Agent: Mozilla/4.05 (Macintosh; I; PPC,
+Nav) Xref: News.<a class="nonexistent" href="/cdn-cgi/l/email-protection#6f180a0d020e1c1b0a1d2f180e0108160601410c0002">CoLi</a>.Uni-SB.DE comp.lang.scheme:22273
+Xcanpos: shelf.ccd0/199807172201!0005604418
+
+</p>
+
+<p>
+This is to discuss how a LISP-like setf form can be used and
+implemented in Scheme. First, allow me to show a few examples of setf!
+usage:
+
+</p>
+
+<pre class="example">&gt; (define al '((1 &quot;one&quot;) (2 &quot;two&quot;)))
+&gt; (assv 1 al)
+(1 &quot;one&quot;)
+&gt; (setf! (cadr (assv 1 al)) &quot;-one-&quot;)
+&gt; (assv 1 al)
+(1 &quot;-one-&quot;)
+&gt; (setf! (car (assv 1 al)) 3)
+&gt; (assv 1 al)
+#f
+&gt; al
+((3 &quot;-one-&quot;) (2 &quot;two&quot;))
+&gt;
+
+&gt; (define s (string-append &quot;abcd&quot; &quot;&quot;))
+&gt; (string-ref s 1)
+#\b
+&gt; (setf! (string-ref s 1) #\B)
+&gt; s
+&quot;aBcd&quot;
+&gt;
+
+&gt; (define v (vector 1 2 '() &quot;&quot;))
+&gt; (vector-ref v 2)
+()
+&gt; (setf! (vector-ref v 2) (list (vector-ref v 3) 3))
+&gt; v
+#(1 2 (&quot;&quot; 3) &quot;&quot;)
+&gt;
+
+        ; a more elaborate, and admittedly, contrived, example
+&gt; (define tree #f)
+&gt; (setf! tree '((a . b) . (c . (e . f))))
+
+(define (tree-ref tree . dirs)
+  (if (null? dirs) tree
+    (apply tree-ref (cons (if (car dirs) (cdr tree) (car tree)) (cdr dirs)))))
+
+(define (tree-set! tree dirval1 dirval2 . dirs)
+  (if (null? dirs) ((if dirval1 set-cdr! set-car!) tree dirval2)
+    (apply tree-set! (cons (if dirval1 (cdr tree) (car tree))
+                           (cons dirval2 dirs)))))
+
+&gt; (tree-ref tree #f #f)
+a
+&gt; (setf! (tree-ref tree #f #f) 'x)
+&gt; (tree-ref tree #f #f)
+x
+&gt; (tree-ref tree #f)
+(x . b)
+        ; the following prunes the tree
+&gt; (setf! (tree-ref tree #f) 'leaf)
+&gt; (tree-ref tree #f)
+leaf
+        ; and the following grows it back
+&gt; (setf! (tree-ref tree #f) '((z . u) . v))
+&gt; (tree-ref tree #f #f #t)
+u
+&gt;
+
+
+The setf! form is implemented as a Scheme macro. The following table
+shows code re-writing it performs. The first column tells what one can
+enter, while the second column shows what actually is being executed
+by a Scheme system after macro expansion:
+
+(setf! (car L) V)         ==&gt;   (set-car! L V)
+(setf! (cdr L) V)         ==&gt;   (set-cdr! L V)
+(setf! (car (cdr L)) V)   ==&gt;   (set-car! (cdr L) V)
+(setf! (cddr L)) V)       ==&gt;   (set-cdr! (cdr L) V)
+
+(setf! (string-ref s i) c)   ==&gt;   (string-set! s i c)
+(setf! (vector-ref v i) c)   ==&gt;   (vector-set! v i c)
+
+In general,
+(setf! (ANYTHING-ref v ....) c)   ==&gt;   (ANYTHING-set! v ... c)
+where ANYTHING is, well, anything - any combination of allowed characters.
+
+and (setf! X V)   ==&gt;   (set! X V)
+
+
+The setf! form is implemented as follows (Gambit-C 3.0):
+
+; setf! - a polymorphic generic setter
+(define-macro (setf! F V)
+        ; symbol-&gt;string chopping off a trailing -ref if any
+  (define (-ref-less sym)
+    (let* ((str (symbol-&gt;string sym)) (suffix &quot;-ref&quot;)
+           (s-pos (- (string-length str) (string-length suffix))))
+      (if (negative? s-pos) str
+        (let loop ((i 0))
+             (cond
+              ((&gt;= i (string-length suffix)) (substring str 0 s-pos))
+              ((char=? (string-ref suffix i) (string-ref str (+ i s-pos)))
+               (loop (+ 1 i)))
+              (else str))))))
+
+  (if (not (pair? F)) `(set! ,F ,V)
+    (case (car F)
+          ((car) `(set-car! ,@(cdr F) ,V))
+          ((cdr) `(set-cdr! ,@(cdr F) ,V))
+          ((cadr) `(setf! (car (cdr ,@(cdr F))) ,V))
+          ((cddr) `(setf! (cdr (cdr ,@(cdr F))) ,V))
+                ; I need to handle other cadda..vers but I'm tired...
+          (else `(,(string-&gt;symbol (string-append (-ref-less (car F)) &quot;-set!&quot;))
+                  ,@(cdr F) ,V)))))
+
+
+	<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="90fffcf5f7d0e0fff2ffe8bef3fffd">[email&#160;protected]</a>
+	http://pobox.com/~oleg/ftp/Scheme/
+
+-----== Posted via Deja News, The Leader in Internet Discussion ==-----
+http://www.dejanews.com/rg_mkgrp.xp   Create Your Own Free
+Member Forum
+
+</pre><!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-06-13</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="SchemeSetf.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

@@ -1,0 +1,366 @@
+<html><!--XSLT stylesheet used to transform this file:  dw-document-html-2.1.xsl--><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Common threads: Sed by example, Part 2</title><meta content="Sed is a very powerful and compact text stream editor.  In this article, the second in the series, Daniel shows you how to use sed to perform string substitution; create larger sed scripts; and use sed's append, insert, and change line commands." name="ABSTRACT"><meta content="Sed is a very powerful and compact text stream editor.  In this article, the second in the series, Daniel shows you how to use sed to perform string substitution; create larger sed scripts; and use sed's append, insert, and change line commands." name="DESCRIPTION"><meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"><meta content="Common threads: Sed by example, Part 2" name="TITLE"><meta content="http://www.ibm.com/developerworks/feedback" name="OWNER"><meta content="Public" name="SECURITY"><meta content="text/xhtml" name="FORMAT"><meta content="Copyright (c) 2000 by IBM Corporation" name="COPYRIGHT"><meta content="index,follow" name="ROBOTS"><meta content="zz" name="IBM.COUNTRY"><meta content="en-us" name="DC.Language" scheme="rfc1766"><meta content="2000-October-" name="DC.Date" scheme="iso8601"><meta content="us" name="DOCUMENTCOUNTRYCODE"><meta content="en" name="DOCUMENTLANGUAGECODE"><meta content="UNIX stream editor, sed, regular expressions, Linux, operating systems, Linux news, open source, Linux papers, Linux information, Linux articles, Linux whitepapers, IBM" name="KEYWORDS"><meta content="200001025" name="LAST UPDATED"><meta content="David Carlson" name="LAST UPDATED BY">
+ 
+ <meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.rsac.org/ratingsv01.html" l gen true comment "RSACi North America Server" by "webmaster@mail.software.ibm.com" for "http://www.ibm.com/software" on "1997.08.13T17:59-0800" r (n 0 s 0 v 0 l 0))'/>
+ 
+ <meta content="0" http-equiv="Expires"><script src="style.js" language="JavaScript" type="text/javascript"></script><script src="spinbox.js" language="JavaScript" type="text/javascript"></script><script language="JavaScript" type="text/javascript">var title = "Common threads: Sed by example, Part 2"; </script><script language="JavaScript" type="text/javascript">var forumURL = ""; </script><script language="JavaScript" type="text/javascript">var zoneList = "linux"; </script><script src="forumwindow.js" language="JavaScript" type="text/javascript"></script><script language="JavaScript" type="text/javascript">var emailAbstract = "Sed is a very powerful and compact text stream editor.  In this article, the second in the series, Daniel shows you how to use sed to perform string substitution; create larger sed scripts; and use sed's append, insert, and change line commands."; </script><script SRC="grabtitle.js" language="JavaScript" type="text/javascript"></script><script SRC="emailfriend2.js" language="JavaScript" type="text/javascript"></script><script language="JavaScript" type="text/javascript">var demoURL = ""; </script><script SRC="demowindow.js" language="JavaScript" type="text/javascript"></script></head><body leftmargin="2" topmargin="2" marginwidth="2" marginheight="2" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0"> 
+<tr>
+<td width="160" class="tbgc"><a href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/&origin=dwheader"><img 
+src="ibm-logo.gif" border="0" alt="IBM" 
+width="160" height="47"/></a></td>
+<td width="90" class="tbgdw"><a 
+href="l-sed2.html#main"><img src="c.gif" border="0" width="70" 
+height="1" alt="Skip to main content"/></a></td>
+
+<td width="100%" class="tbgc" 
+align="right" valign="top">
+<table border="0" cellpadding="0" cellspacing="0"> 
+<form method="get" action="http://www-106.ibm.com/search/searchResults.jsp" id="form1" name="form1"><input type="hidden" name="searchType" value="1">
+<input type="hidden" name="searchSite" value="dW">
+ 
+<tr><td colspan="7"><img src="c.gif" 
+border="0" width="390" height="4" alt="" /></td></tr>
+
+<tr valign="middle" nowrap>
+<td class="dwsearch24"><b>Search for:</b>&nbsp;</td>
+<td><input type=text class="dwsearch" name="query" height=15 size=18 maxlength=100/></font></td>
+<td class="dwsearch24">&nbsp;<b>within</b>&nbsp;</td>
+<td class="dwsearch"><select name="searchScope" class="dwsearch"> 
+<option value="dW">All of dW</option>
+<option value="gridZ">&nbsp;Grid computing</option>
+<option value="javaZ">&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;Linux</option> 
+<option value="opensrcZ">&nbsp;Open source</option>
+<option value="securityZ">&nbsp;Security</option>
+<option value="webarchZ">&nbsp;Web arch.</option>  
+<option value="webservZ">&nbsp;Web services</option> 
+<option value="wirelessZ">&nbsp;Wireless</option> 
+<option value="xmlZ">&nbsp;XML</option>
+<option value="dW">.................</option>
+<option value="forum">&nbsp;dW forums</option>  
+<option value="dW">.................</option>
+<option value="dW">Product domains:</option>
+<option value="ibmofferZ">&nbsp;IBM developer</option> 
+<option value="ibmofferZ">&nbsp;&nbsp;&nbsp;solutions</option>
+<option value="db2">&nbsp;DB2</option>
+<option value="WSDD">&nbsp;WebSphere</option>
+<option value="WSDD">&nbsp;&nbsp;&nbsp;(WSDD)</option> 
+<option value="dW">.................</option> 
+<option value="aW">alphaWorks</option>
+<option value="dW">.................</option> 
+<option value="all">All of IBM</option> 
+</select></td>
+
+<td><img src="c.gif" border="0" width="5" height="1" alt="" /></td>
+<td><input type="image" src="http://www.ibm.com/i/v11/m/en/search.gif" width="64" height="23" border="0" value="Search" name="Search" alt="Search button"/></td>
+<td valign="top"><img src="c.gif" border="0" width="10" height="1" alt="" /></td></tr>
+
+<tr valign="top">
+<td>&nbsp;</td>
+<td class="dwsmallwh">Use only + - (&nbsp;) "&nbsp;"<img src="c.gif" border="0" width="1" height="1" alt="" /></td>
+<td>&nbsp;</td><td class="dwsmall"><a href="http://www-106.ibm.com/developerworks/search/help-dw.html" style="color: #ffffff;" target="_blank">Search help</a><img src="c.gif" border="0" width="1" height="1" alt="" /></td>
+<td colspan="4">&nbsp;</td>
+</tr>
+
+<tr><td colspan="8"><img src="c.gif" 
+border="0" width="390" height="4" alt="" /></td></tr>
+</table>
+
+</td></tr></form>
+
+<tr><td width="160" height="21" class="hbg">&nbsp;</td><td colspan="2" height="21" valign="top" class="bbg">&nbsp;&nbsp;&nbsp;<a class="mainlink" 
+href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/&origin=dwheader">IBM home</a><span class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a class="mainlink" href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/products/&origin=dwheader">Products &amp; services</a><span 
+class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a class="mainlink" 
+href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/support/">Support &amp; downloads</a> <span 
+class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a class="mainlink" 
+href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/account/&origin=dwheader">My account</a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr class="hil"><td height="1" width="100%"><img alt="" height="1" width="600" src="c.gif"></td></tr><tr class="dwr1"><td height="2" width="100%"><img alt="" height="2" width="600" src="c.gif"></td></tr><tr class="dwg3"><td height="1" width="100%"><img alt="" height="1" width="600" src="c.gif"></td></tr><tr class="bbg"><td height="1" width="100%"><img alt="" height="1" width="600" src="c.gif"></td></tr><tr class="hil"><td height="1" width="100%"><img alt="" height="1" width="600" src="c.gif"></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="5"><img alt="" border="0" height="1" width="5" src="c.gif"></td><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><img alt="" border="0" height="4" width="2" src="c.gif"><br><a href="http://www-106.ibm.com/developerworks/" class="dwbctl">IBM developerWorks</a>  &gt;  
+        <a href="http://www-106.ibm.com/developerworks/linux/" class="dwbctl">Linux</a></td><td align="right" width="136"><a href="http://www-106.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="24" width="136" src="dwlogo-small.gif"></a></td><td width="5"><img alt="" border="0" height="1" width="5" src="c.gif"></td></tr></table></td></tr></table><a name="main"></a><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td colspan="5"><img alt="" border="0" height="15" width="5" src="c.gif"></td></tr><tr valign="top"><td width="2"><img alt="" border="0" height="1" width="2" src="c.gif"></td><td><span class="astitle">Common threads: </span><span class="atitle">Sed by example, Part 2</span></td><td width="8"><img alt="" border="0" height="1" width="8" src="c.gif"></td><td align="right" width="180"><img alt="" border="0" height="1" width="180" src="c.gif"><br><nobr><a href="ftp://www6.software.ibm.com/software/developer/library/l-sed2.pdf"><img alt="" border="0" height="26" width="35" src="icon-pdf.gif"></a><a href="javascript:void%20newWindow()"><img alt="e-mail it!" border="0" height="26" width="46" src="icon-email.gif"></a></nobr></td><td width="6"><img alt="" border="0" height="1" width="6" src="c.gif"></td></tr><tr valign="top"><td bgcolor="#000000" colspan="5"><img alt="" border="0" height="1" width="100" src="c.gif"></td></tr><tr valign="top"><td bgcolor="#FFFFFF" colspan="5"><img alt="" border="0" height="8" width="100" src="c.gif"></td></tr></table><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="top"><td width="5"><img alt="" border="0" height="1" width="5" src="c.gif"></td><td width="100%"><table cellpadding="0" cellspacing="0" border="0" align="right" width="168"><tr><td width="8"><img alt="" height="21" width="5" src="c.gif"></td><td width="160"><table cellpadding="0" cellspacing="0" border="0" width="160"><tr><td width="160" height="1" bgcolor="#000000"><img alt="" height="1" width="160" src="c.gif"></td></tr><tr><td align="center" background="bg-gold.gif" height="5"><b>Contents:</b></td></tr><tr><td width="160" height="1" bgcolor="#666666"><img alt="" height="1" width="160" src="c.gif"></td></tr><tr><td><table cellpadding="0" cellspacing="0" border="0" width="160"><tr><td><a href="l-sed2.html#h0">Substitution!</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed2.html#h1">Regexp snafus</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed2.html#h2">More character matching</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed2.html#h3">Advanced substitution stuff</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed2.html#h4">Those wonderful backslashed parentheses</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed2.html#h5">Mixing things up</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed2.html#h6">Multiple commands for one address</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed2.html#h7">Append, insert, and change line</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed2.html#h8">Next time</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><!--Standard links for every dw-article--><tr><td><a href="l-sed2.html#resources">Resources</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed2.html#author1">About the author</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed2.html#rating">Rate this article</a></td></tr><tr><td><img alt="" height="10" width="160" src="c.gif"></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" border="0" width="160"><tr><td width="160" height="1" bgcolor="#000000"><img alt="" height="1" width="160" src="c.gif"></td></tr><tr><td align="center" background="bg-gold.gif" height="5"><b>Related content:</b></td></tr><tr><td width="160" height="1" bgcolor="#666666"><img alt="" height="1" width="160" src="c.gif"></td></tr><tr><td><table cellpadding="0" cellspacing="0" border="0" width="160"><tr><td><a href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=www-106.ibm.com/developerworks/newsletter/&origin=dw-article">Subscribe to the developerWorks newsletter</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="http://www-106.ibm.com/developerworks/toolbox/">developerWorks Toolbox subscription</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr></table></td><td><!--Related Zone content--><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><!--Related Zone Navigation content--><tr><td><table cellpadding="0" cellspacing="0" border="0" width="160"><tr><td width="160" height="1" bgcolor="#000000"><img alt="" height="1" width="160" src="c.gif"></td></tr><tr><td align="center" background="bg-gold.gif" height="5"><a href="http://www-106.ibm.com/developerworks/linux/" class="nav"><b>Also in the Linux zone:</b></a></td></tr><tr><td width="160" height="1" bgcolor="#666666"><img alt="" height="1" width="160" src="c.gif"></td></tr><tr><td><table cellpadding="0" cellspacing="0" border="0" width="160"><tr><td><a href="http://www-106.ibm.com/developerworks/views/linux/tutorials.jsp">Tutorials</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="http://www-106.ibm.com/developerworks/views/linux/tools.jsp">Tools and products</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="http://www-106.ibm.com/developerworks/views/linux/code.jsp">Code and components</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="http://www-106.ibm.com/developerworks/views/linux/articles.jsp">Articles</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr></table></td></tr></table></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr></td></tr></table><table cellpadding="0" cellspacing="0" border="0" width="160"><tr><td width="150" height="2" bgcolor="#000000" colspan="2"><img alt="" height="2" width="160" src="c.gif"></td></tr><tr><td width="150" height="2" bgcolor="#FFFFFF" colspan="2"><img alt="" height="2" width="160" src="c.gif"></td></tr></table></td></tr></table><span class="atitle2">How to further take advantage of the UNIX text editor</span><br><p><a href="l-sed2.html#author1">Daniel Robbins</a> (<a href="/cdn-cgi/l/email-protection#c0a4b2afa2a2a9aeb380a7a5aeb4afafeeafb2a7"><span class="__cf_email__" data-cfemail="395d4b565b5b50574a795e5c574d565617564b5e">[email&#160;protected]</span></a>)<br>President/CEO, Gentoo Technologies, Inc.<br>October 2000</p><blockquote>Sed is a very powerful and compact text stream editor.  In this article, the second in the series, Daniel shows you how to use sed to perform string substitution; create larger sed scripts; and use sed's append, insert, and change line commands.</blockquote><docbody><p>Sed is a very useful (but often 
+forgotten) UNIX stream editor. It's ideal for batch-editing files or for creating shell scripts to modify 
+existing files in powerful ways. This article builds on my <a href="http://learn.tsinghua.edu.cn:8080/2001315450/src/sed/l-sed1.html%22">previous article introducing sed</a>.</p><p><a name="h0"><span class="atitle2">Substitution!</span></a><br>
+
+  
+Let's look at one of sed's most useful commands, the substitution command.  Using it, we can replace a particular
+string or matched regular expression with another string.  Here's an
+example of the most basic use of this command:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+$ sed -e 's/foo/bar/' myfile.txt
+</code></pre></td></tr></table><p>
+The above command will output the contents of myfile.txt to stdout,
+with the first occurrence of 'foo' (if any) on each line replaced with
+the string 'bar'.  Please note that I said <i>first occurrence on each
+line</i>, though this is normally not what you want.  Normally, when I
+do a string replacement, I want to perform it globally.  That is, I
+want to replace <i>all</i> occurrences on every line, as follows:
+</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+$ sed -e 's/foo/bar/g' myfile.txt
+</code></pre></td></tr></table><p>
+The additional 'g' option after the last slash tells sed to perform a
+global replace.</p><p>
+Here are a few other things you should know about the 's///'
+substitution command.  First, it is a command, and a command only; there are no addresses specified in any of the above examples.  This
+means that the 's///' command can also be used with addresses to
+control what lines it will be applied to, as follows:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+$ sed -e '1,10s/enchantment/entrapment/g' myfile2.txt
+</code></pre></td></tr></table><p>
+The above example will cause all occurrences of the phrase
+'enchantment' to be replaced with the phrase 'entrapment', but only on
+lines one through ten, inclusive.</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+$ sed -e '/^$/,/^END/s/hills/mountains/g' myfile3.txt
+</code></pre></td></tr></table><p>
+This example will swap 'hills' for 'mountains', but only on blocks of
+text beginning with a blank line, and ending with a line beginning
+with the three characters 'END', inclusive.</p><p>
+Another nice thing about the 's///' command is that we have a lot of
+options when it comes to those '/' separators.  If we're performing
+string substitution and the regular expression or replacement string
+has a lot of slashes in it, we can change the separator by specifying
+a different character after the 's'.  For example, this will replace
+all occurrences of /usr/local with /usr:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+$ sed -e 's:/usr/local:/usr:g' mylist.txt
+</code></pre></td></tr></table><p>
+In this example, we're using the colon as a separator.  If you ever
+need to specify the separator character in the regular expression, put
+a backslash before it.</p><p><a name="h1"><span class="atitle2">Regexp snafus</span></a><br>
+
+Up until now, we've only performed simple string substitution.  While this is
+ handy, we can also match a regular expression.  For example, the
+following sed command will match a phrase beginning with '&lt;' and
+ending with '&gt;', and containing any number of characters inbetween.
+This phrase will be deleted (replaced with an empty string):</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+$ sed -e 's/&lt;.*&gt;//g' myfile.html
+</code></pre></td></tr></table><p>
+This is a good first attempt at a sed script that will remove HTML
+tags from a file, but it won't work well, due to a regular expression
+quirk.  The reason?  When sed tries to match the regular expression on
+a line, it finds the <i>longest</i> match on the line.  This wasn't an
+issue in my <a href="l-sed1.html">previous sed article</a>, because we were using the 'd' and 'p'
+commands, which would delete or print the entire line anyway.  But
+when we use the 's///' command, it definitely makes a big difference,
+because the entire portion that the regular expression matches will be
+replaced with the target string, or in this case, deleted.  This means
+that the above example will turn the following line:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+&lt;b&gt;This&lt;/b&gt; is what &lt;b&gt;I&lt;/b&gt; meant.
+</code></pre></td></tr></table><p>
+into this:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+meant.
+</code></pre></td></tr></table><p>
+rather than this, which is what we wanted to do:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+This is what I meant.
+</code></pre></td></tr></table><p>
+Fortunately, there is an easy way to fix this.  Instead of typing in a
+regular expression that says "a '&lt;' character followed by any number of
+characters, and ending with a '&gt;' character", we just need to type in
+a regexp that says "a '&lt;' character followed by any number of non-'&gt;'
+characters, and ending with a '&gt;' character".  This will have the
+effect of matching the shortest possible match, rather than the
+longest possible one.  The new command looks like this:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+$ sed -e 's/&lt;[^&gt;]*&gt;//g' myfile.html
+</code></pre></td></tr></table><p>
+In the above example, the '[^&gt;]' specifies a "non-'&gt;'" character, and
+the '*' after it completes this expression to mean "zero or more
+non-'&gt;' characters".  Test this command on a few sample html files, pipe them to more, and review their results.</p><p><a name="h2"><span class="atitle2">More character matching</span></a><br>
+
+
+The '[ ]' regular expression syntax has some more additional options.
+To specify a range of characters, you can use a '-' as long as it
+isn't in the first or last position, as follows:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+'[a-x]*'
+</code></pre></td></tr></table><p>
+This will match zero or more characters, as long as all of them are
+'a','b','c'...'v','w','x'.  In addition, the '[:space:]' character
+class is available for matching whitespace.  Here's a fairly complete
+list of available character classes:</p><table cellspacing="0" cellpadding="5" border="0"><tr><td><b>Character class</b></td><td><b>Description</b></td></tr><tr><td>[:alnum:]</td><td>Alphanumeric [a-z A-Z 0-9]</td></tr><tr><td>[:alpha:]</td><td>Alphabetic [a-z A-Z]</td></tr><tr><td>[:blank:]</td><td>Spaces or tabs</td></tr><tr><td>[:cntrl:]</td><td>Any control characters</td></tr><tr><td>[:digit:]</td><td>Numeric digits [0-9]</td></tr><tr><td>[:graph:]</td><td>Any visible characters (no whitespace)</td></tr><tr><td>[:lower:]</td><td>Lower-case [a-z]</td></tr><tr><td>[:print:]</td><td>Non-control characters</td></tr><tr><td>[:punct:]</td><td>Punctuation characters</td></tr><tr><td>[:space:]</td><td>Whitespace</td></tr><tr><td>[:upper:]</td><td>Upper-case [A-Z]</td></tr><tr><td>[:xdigit:]</td><td>hex digits [0-9 a-f A-F]</td></tr></table><p>
+It's advantageous to use character classes whenever possible, because
+they adapt better to nonEnglish speaking locales (including accented
+characters when necessary, etc.).</p><p><a name="h3"><span class="atitle2">Advanced substitution stuff</span></a><br>
+
+
+We've looked at how to perform simple and even reasonably complex
+straight substitutions, but sed can do even more.  We can actually
+refer to either parts of or the entire matched regular expression, and
+use these parts to construct the replacement string.  As an example,
+let's say you were replying to a message.  The following example would
+prefix each line with the phrase "ralph said: ":</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+$ sed -e 's/.*/ralph said: &amp;/' origmsg.txt
+</code></pre></td></tr></table><p>
+The output will look like this:
+</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+ralph said: Hiya Jim,
+ralph said:
+ralph said: I sure like this sed stuff!
+ralph said:
+</code></pre></td></tr></table><p>
+In this example, we use the '&amp;' character in the replacement string,
+which tells sed to insert the entire matched regular expression.  So,
+whatever was matched by '.*' (the largest group of zero or more
+characters on the line, or the entire line) can be inserted anywhere
+in the replacement string, even multiple times.  This is great, but
+sed is even more powerful.</p><p><a name="h4"><span class="atitle2">Those wonderful backslashed parentheses</span></a><br>
+
+
+Even better than '&amp;', the 's///' command allows us to define
+<i>regions</i> in our regular expression, and we can refer to these
+specific regions in our replacement string.  As an example, let's say
+we have a file that contains the following text:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+foo bar oni
+eeny meeny miny
+larry curly moe
+jimmy the weasel
+</code></pre></td></tr></table><p>
+Now, let's say we wanted to write a sed script that would replace
+"eeny meeny miny" with "Victor eeny-meeny Von miny", etc.  To do this,
+first we would write a regular expression that would match the three
+strings, separated by spaces:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+'.* .* .*'
+</code></pre></td></tr></table><p>
+There.  Now, we will define regions by inserting backslashed
+parentheses around each region of interest:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+'\(.*\) \(.*\) \(.*\)'
+</code></pre></td></tr></table><p>
+This regular expression will work the same as our first one, except
+that it will define three logical regions that we can refer to in our
+replacement string.  Here's the final script:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+$ sed -e 's/\(.*\) \(.*\) \(.*\)/Victor \1-\2 Von \3/' myfile.txt
+</code></pre></td></tr></table><p>
+As you can see, we refer to each parentheses-delimited region by
+typing '\x', where x is the number of the region, starting at one.
+Output is as follows:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+Victor foo-bar Von oni
+Victor eeny-meeny Von miny
+Victor larry-curly Von moe
+Victor jimmy-the Von weasel
+</code></pre></td></tr></table><p>
+As you become more familiar with sed, you will be able to perform
+fairly powerful text processing with a minimum of effort.  You may
+want to think about how you'd have approached this problem using your
+favorite scripting language -- could you have easily fit the solution
+in one line?</p><p><a name="h5"><span class="atitle2">Mixing things up</span></a><br>
+
+
+As we begin creating more complex sed scripts, we need the ability to
+enter more than one command.  There are several ways to do this.
+First, we can use semicolons between the commands.  For example, this
+series of commands uses the '=' command, which tells sed to print the line
+number, as well as the 'p' command, which explicitly tells sed to
+print the line (since we're in '-n' mode):</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+$ sed -n -e '=;p' myfile.txt
+</code></pre></td></tr></table><p>
+Whenever two or more commands are specified, each command is applied
+(in order) to every line in the file.  In the above example, first the
+'=' command is applied to line 1, and then the 'p' command is applied.
+Then, sed proceeds to line 2, and repeats the process.  While the
+semicolon is handy, there are instances where it won't work.  Another
+alternative is to use two -e options to specify two separate commands:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+$ sed -n -e '=' -e 'p' myfile.txt
+</code></pre></td></tr></table><p>
+However, when we get to the more complex append and insert commands,
+even multiple '-e' options won't help us.  For complex multiline
+scripts, the best way is to put your commands in a separate file.
+Then, reference this script file with the -f options:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+$ sed -n -f mycommands.sed myfile.txt
+</code></pre></td></tr></table><p>
+This method, although arguably less convenient, will always work.</p><p><a name="h6"><span class="atitle2">Multiple commands for one address</span></a><br>
+
+
+Sometimes, you may want to specify multiple commands that will apply
+to a single address. This comes in especially handy when you are
+performing lots of 's///' to transform words or syntax in the source
+file.  To perform multiple commands per address, enter your sed
+commands in a file, and use the '{ }' characters to group commands, as
+follows:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+1,20{
+  s/[Ll]inux/GNU\/Linux/g
+  s/samba/Samba/g
+  s/posix/POSIX/g
+}
+</code></pre></td></tr></table><p>
+The above example will apply three substitution commands to lines 1
+through 20, inclusive.  You can also use regular expression addresses,
+or a combination of the two:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+1,/^END/{
+        s/[Ll]inux/GNU\/Linux/g 
+        s/samba/Samba/g 
+        s/posix/POSIX/g 
+  p
+}
+</code></pre></td></tr></table><p>
+This example will apply all the commands between '{ }' to the lines
+starting at 1 and up to a line beginning with the letters "END", or
+the end of file if "END" is not found in the source file.</p><p><a name="h7"><span class="atitle2">Append, insert, and change line</span></a><br>
+
+
+Now that we're writing sed scripts in separate files, we can take
+advantage of the append, insert, and change line commands.  These
+commands will insert a line after the current line, insert a line
+before the current line, or replace the current line in the pattern
+space.  They can also be used to insert multiple lines into the
+output.  The insert line command is used as follows:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+i\
+This line will be inserted before each line
+</code></pre></td></tr></table><p>
+If you don't specify an address for this command, it will be applied
+to each line and produce output that looks like this:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+This line will be inserted before each line
+line 1 here
+This line will be inserted before each line
+line 2 here
+This line will be inserted before each line
+line 3 here
+This line will be inserted before each line
+line 4 here
+</code></pre></td></tr></table><p>
+If you'd like to insert multiple lines before the current line, you
+can add additional lines by appending a backslash to the previous
+line, like so:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+i\
+insert this line\
+and this one\
+and this one\
+and, uh, this one too.
+</code></pre></td></tr></table><p>
+The append command works similarly, but will insert a line or lines
+after the current line in the pattern space.  It's used as follows:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+a\
+insert this line after each line.  Thanks! :)
+</code></pre></td></tr></table><p>
+On the other hand, the "change line" command will actually
+<i>replace</i> the current line in the pattern space, and is used as
+follows:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+c\
+You're history, original line! Muhahaha!
+</code></pre></td></tr></table><p>
+Because the append, insert, and change line commands need to be entered
+on multiple lines, you'll want to type them in to text sed scripts and
+tell sed to source them by using the '-f' option.  Using the other
+methods to pass commands to sed will result in problems.
+</p><p><a name="h8"><span class="atitle2">Next time</span></a><br>
+
+
+Next time, in the final article of this series on sed, I'll show you lots
+of excellent real-world examples of using sed for many different
+kinds of tasks.  Not only will I show you what the scripts do, but
+<i>why</i> they do what they do.  After you're done, you'll have
+additional excellent ideas of how to use sed in your various projects.  I'll
+see you then!  </p></docbody><p><a name="resources"><span class="atitle2">Resources</span></a><ul><li>Read Daniel's other sed articles on <i>developerWorks</i>: Common threads: Sed by example, <a href="l-sed1.html">Part 1</a> and <a href="l-sed3.html">Part 3</a>.<br><br></li><li>Check out Eric Pement's excellent <a href="http://www.cornerstonemag.com/sed/sedfaq.html">sed faq</a>.<br><br></li><li>You can find the sources to sed 3.02 at <a href="ftp://ftp.gnu.org/pub/gnu/sed">ftp.gnu.org</a>.<br><br></li><li>You'll find the nice, new sed 3.02.80 at <a href="ftp://alpha.gnu.org/pub/gnu/sed">alpha.gnu.org</a>.<br><br></li><li>Eric Pement also has a handy list of <a href="http://www.cornerstonemag.com/sed/sed1line.txt">sed one-liners</a> that any aspiring sed guru should definitely take a look at.<br><br></li><li>If you'd like a good old-fashioned book, O'Reilly's <a href="https://www.oreilly.com/catalog/sed2/">sed &amp; awk, 2nd Edition</a> would be wonderful choice.<br><br></li><li>Maybe you'd like to read <a href="http://www.softlab.ntua.gr/unix/docs/sed.txt">7th edition UNIX's sed man page</a> (circa 1978!).<br><br></li><li>Take Felix von Leitner's short <a href="http://www.math.fu-berlin.de/~leitner/sed/tutorial.html">sed tutorial</a>.<br><br></li><li>Brush up on <a href="http://www2.software.ibm.com/developer/education.nsf/linux-onlinecourse-bytitle/6C2B4863702F592B8625696200589C5B?OpenDocument">using regular expressions</a> to find and modify patterns in text in this free, dW-exclusive tutorial.<br><br></li></ul></p><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><a name="author1"></a><span class="atitle2">About the author</span><br>Residing in Albuquerque, New Mexico, Daniel Robbins is the President/CEO of 
+<a href="https://www.gentoo.org/">Gentoo Technologies, Inc.</a>, the creator of 
+Gentoo Linux, an advanced Linux for the PC, and the Portage system, a 
+next-generation ports system for Linux. He has also served as a contributing 
+author for the Macmillan books <i>Caldera OpenLinux Unleashed</i>, <i>SuSE Linux Unleashed</i>, 
+and <i>Samba Unleashed</i>. Daniel has been involved with computers in some fashion 
+since the second grade, when he was first exposed to the Logo programming 
+language as well as a potentially dangerous dose of Pac Man. This probably 
+explains why he has since served as a Lead Graphic Artist at SONY Electronic 
+Publishing/<a href="http://www.psygnosis.com/">Psygnosis</a>. Daniel enjoys 
+spending time with his wife, Mary, and his new baby daughter, Hadassah. You can contact Daniel at <a href="/cdn-cgi/l/email-protection#c1a5b3aea3a3a8afb281a6a4afb5aeaeefaeb3a6"><span class="__cf_email__" data-cfemail="4226302d20202b2c310225272c362d2d6c2d3025">[email&#160;protected]</span></a>.</td></tr></table><br clear="all"><img alt="" border="0" height="10" width="100" src="c.gif"><br><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td align="right" width="100%"><a href="ftp://www6.software.ibm.com/software/developer/library/l-sed2.pdf"><img alt="" border="0" height="26" width="35" src="icon-pdf.gif"></a><a href="javascript:void%20newWindow()"><img alt="e-mail it!" border="0" height="26" width="46" src="icon-email.gif"></a></td><td width="5"><img alt="" border="0" height="1" width="5" src="c.gif"></td></tr><tr valign="top"><td bgcolor="#000000" colspan="2"><img alt="" border="0" height="1" width="100" src="c.gif"></td></tr><tr valign="top"><td bgcolor="#FFFFFF" colspan="2"><img alt="" border="0" height="8" width="100" src="c.gif"></td></tr></table><table xmlns:fo="http://www.w3.org/1999/XSL/Format" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td><form action="http://www-105.ibm.com/developerworks/ratings.nsf/RateArticle?CreateDocument" method="POST"><input value="Common threads: Sed by example, Part 2" name="ArticleTitle" type="HIDDEN"><input value="Linux" name="Zone" type="HIDDEN"><input value="http://www-106.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="HIDDEN"><a name="rating"><b>What do you think of this document?</b></a><table width="600" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="5"><img alt="" border="0" height="8" width="100" src="c.gif"></td></tr><tr valign="top"><td width="16%"><input value="5" name="Rating" type="RADIO">Killer! (5)</td><td width="20%"><input value="4" name="Rating" type="RADIO">Good stuff (4)</td><td width="24%"><input value="3" name="Rating" type="RADIO">So-so; not bad (3)</td><td width="22%"><input value="2" name="Rating" type="RADIO">Needs work (2)</td><td width="18%"><input value="1" name="Rating" type="RADIO">Lame! (1)</td></tr></table><br><b>Comments?</b><br><textarea cols="60" rows="5" wrap="virtual" name="Comments"></textarea><br><br><input value="Submit feedback" type="SUBMIT"></form></td></tr><tr valign="top"><td bgcolor="#FFFFFF"><img alt="" border="0" height="8" width="100" src="c.gif"></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><img alt="" border="0" height="4" width="2" src="c.gif"><br><a href="http://www-106.ibm.com/developerworks/" class="dwbctl">IBM developerWorks</a>  &gt;  
+        <a href="http://www-106.ibm.com/developerworks/linux/" class="dwbctl">Linux</a></td><td align="right" width="136"><a href="http://www-106.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="24" width="136" src="dwlogo-small.gif"></a></td><td width="5"><img alt="" border="0" height="1" width="5" src="c.gif"></td></tr></table></td></tr></table></td><td width="1"><img alt="" border="0" height="1" width="1" src="c.gif"></td></tr></table><!-- IBM FOOTER -->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td><img src="c.gif" width="1" height="1" alt=""/></td>
+</tr>
+<tr valign="top">
+<td height="21" class="bbg">&nbsp;&nbsp;<a href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/ibm/?origin=dwheader" class="mainlink">About IBM</a><span class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/privacy/?origin=dwheader" class="mainlink">Privacy</a><span class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/legal/?origin=dwheader" class="mainlink">Legal</a><span class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/contact/?origin=dwheader" class="mainlink">Contact</a></td>
+</tr>
+</table>
+<!-- END IBM FOOTER -->
+
+<!-- SURFAID METRICS ** 06/04/02 DO NOT ALTER ** -------------->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" language="JavaScript1.2" src="https://www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="http://i.ihost.com/i/c.gif" width="1" height="1" alt="" border="0" /></noscript></body></html>

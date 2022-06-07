@@ -1,0 +1,313 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>List and Pairs</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>List and Pairs</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+<h2>append 总是复制前面的参数，而不复制最后一个参数</h2>
+
+<pre class="example">(define a1 '(1 2 3))
+(define a2 '(a b c))
+(define x (append a1 a2))
+x
+; (1 2 3 a b c)
+
+(set-car! a2 'd)
+x
+; (1 2 3 d b c)
+
+(set-car! a1 4)
+x
+; (1 2 3 d b c)
+</pre>
+
+<p>
+从这里可以看到，append 返回的 list 里，把第一个参数复制了一
+份，而把第二个参数原封不动挂在了第一个参数的复制品后面。
+
+</p>
+
+<p>
+这个原因很简单，因为 append 如果不复制第一个参数，那么它就会
+把第二个参数挂在真正的第一个参数后面。那么我们看到 a1 就变成
+了 (1 2 3 a b c)，就像我们这个函数 my-append:
+
+</p>
+
+<pre class="example">(define (my-append l a)
+  (let loop ((rest l))
+    (if (null? (cdr rest)) 
+        (set-cdr! rest a)
+        (loop (cdr rest)))))
+(define a1 '(1 2 3))
+(define a2 '(a b c))
+(define x (my-append a1 a2))
+x
+; (1 2 3 a b c)
+
+a1
+; (1 2 3 a b c)
+
+(set-car! a2 'd)
+x
+; (1 2 3 d b c)
+
+(set-car! a1 4)
+x
+; (4 2 3 d b c)
+</pre>
+
+<p>
+my-append 就是真正的把 a2 挂在了 a1 后面。然后返回 a1.
+这时 a1 的值就变成了 (1 2 3 a b c) 跟 x 一样。
+
+</p>
+
+<p>
+你有办法不复制 a1, 而能把 a2 附加在它后面，而不改变 a1 的值
+吗？不可能。
+
+</p>
+
+<p>
+我们继续
+
+</p>
+
+<pre class="example">(my-append a1 a2)
+; (1 2 3 . #0=(a b c . #0#))
+</pre>
+
+<p>
+为什么呢？因为 my-append 本来是从第一个参数开始不断的沿着 
+cdr 往后走，知道遇到 cdr 是 '() 的时候。然后把这个 cdr 指向
+第二个参数。
+
+</p>
+
+<p>
+这里，我们已经把 a2 指向的 list 挂在了 a1 后面，然后我们再进
+行 my-append, 就会一直走到 a1 最后，*也就是 a2 最后*。然后把
+a2 最后的 cdr 指向 a2, 我们就构造了一个循环结构。
+
+</p>
+
+<p>
+(define y a1) 之后，不断执行
+
+</p>
+
+<pre class="example">(begin (define y (cdr y)) y)
+</pre>
+
+<p>
+就会得到这样的结果：
+
+</p>
+
+<pre class="example">&gt; (2 3 . #0=(a b c . #0#))
+&gt; (3 . #0=(a b c . #0#))
+&gt; #0=(a b c . #0#)
+&gt; #0=(b c a . #0#)
+&gt; #0=(c a b . #0#)
+&gt; #0=(a b c . #0#)
+&gt; #0=(b c a . #0#)
+&gt; #0=(c a b . #0#)
+</pre>
+
+<p>
+进入 a2 之后就不断循环。我们这个 my-append 实际上功能相当于
+Common Lisp 的 nconc.
+
+</p>
+
+<h3>结论</h3>
+
+<p>
+结论就是：append 会“共享”最后一个参数。
+
+</p>
+
+<p>
+如果你用 append 构造了一个 list, 而后来修改了它的最后一部分，
+比如例子中的 a2，那么 append 构造返回的 list 就被修改了！
+
+</p>
+
+<p>
+这是很多 bug 的由来！小心！
+
+</p>
+
+<h3>示意图</h3>
+
+<pre class="example">(define foo '(x y z))
+(define bar '(a b))
+(define baz (append bar foo))
+
+
+                +----------------------------------------+                  
+                |                                        |
+               \|/                                       |
+     +---+    +---+---+     +---+---+      +---+---+     |
+ foo | *-+---&gt;| * | *-+----&gt;| * | *-+-----&gt;| * | * |     |
+     +---+    +-+-+---+     +-+-+---+      +-+-+---+     |
+                |             |             |            |
+               \|/           \|/           \|/           |
+                x             y             z            |
+                                                         |
+                                                         |
+     +---+    +---+---+     +---+---+                    |
+ bar | *-+---&gt;| * | *-+----&gt;| * | * |                    |
+     +---+    +-+-+---+     +-+-+---+                    |
+                |             |                          |
+               \|/           \|/                         |
+                a             b                          |
+               /|\           /|\                         |
+                |             |                          |
+     +---+    +---+---+     +---+---+                    |
+ baz | *-+---&gt;| * | *-+----&gt;| * | *-+--------------------+
+     +---+    +---+---+     +---+---+
+
+</pre>
+
+<h2>list 生成一个新的 list, 其实只是生成了一些 cons cell.</h2>
+
+<p>
+list 生成一系列 cons cell, 然后把它的参数原封不动挂在这些
+cell 的 car 上。以下是一个测试例子：
+
+</p>
+
+<pre class="example">(define b (list 4 5 6))
+(define tmp (cons b '()))
+
+tmp
+; ((4 5 6))
+
+(eq? b (car tmp))
+; #t
+
+(define x (cons a tmp))
+x
+; ((1 2 3) (4 5 6))
+
+(define y (list a b))
+y
+; ((1 2 3) (4 5 6))
+
+(eq? (car x) (car y))
+; #t
+
+(eq? (cdr x) (cdr y))
+; #f 因为 (cdr x) 是 tmp, 而 (cdr y) 是 list 生成的一个 cons cell
+
+(eq? (cadr x) (cadr y))
+; #t 
+
+(set-car! b 10)
+x
+; ((1 2 3) (10 5 6))
+
+y
+;((1 2 3) (10 5 6))
+
+;; 从上面的例子可见两个 cons cell 的 car 上挂的都是 b
+
+(set-cdr! x '((b c)))
+x
+; ((1 2 3) (b c))
+y
+; ((1 2 3) (10 5 6))
+</pre>
+
+<h2>reverse 构造了一些 cons cell，把原来的 car 们反着连接起来</h2>
+  了。
+
+</p>
+
+<p>
+从下面的例子看出 reverse 只构造了新的 cons cell. 而没有复制
+原来的结构。
+
+</p>
+
+<pre class="example">
+(define x (list '(1 2) '(a b)))
+(define xx (reverse x))
+
+x
+; ((1 2) (a b))
+xx
+; ((a b) (1 2))
+
+(eq? (car xx) (cadr x))
+; #t
+</pre>
+
+<h2>member 返回的 list 只是指向参数 list 内部的一个指针</h2>
+
+<p>
+例子：
+
+</p>
+
+<pre class="example">(define x '(a b c d))
+(define y (member 'c x))
+
+y
+; (c d)
+
+(set-car! y 2)
+
+y
+; (2 d)
+
+x
+; (a b 2 d)
+
+</pre>
+
+<h3>结论</h3>
+
+<p>
+如果我们要修改一个 list 内部包含 'c 的那个位置，我们就可以用
+member 去找到那个地方。
+</p><!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-06-04</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="ListAndPairs.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  </body>
+</html>

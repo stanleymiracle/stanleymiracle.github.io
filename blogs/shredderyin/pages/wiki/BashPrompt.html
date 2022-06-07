@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>Bash Prompt</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>Bash Prompt</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+<p>
+这个设置可以显示一个两行的提示符，它有如下特点：
+
+</p>
+
+<ul>
+<li>根据不同的终端显示不同颜色的终端符号和提示符(这里的 pts/5
+  和 $)。
+</li>
+<li>根据不同的用户帐号显示不同的用户颜色。
+</li>
+<li>程序出错退出时自动在提示符显示红色的出错码。看看那个
+  <em>[127]</em>。
+</li>
+<li>显示时间。
+<img src="../images/bash-prompt.png" alt="bash&#32;prompt&#32;in&#32;rxvt">
+</li>
+</ul>
+
+<pre class="example"># Below are the color init strings for the basic file types. A color init
+# string consists of one or more of the following numeric codes:
+# Attribute codes:
+# 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+# Text color codes:
+# 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+# Background color codes:
+# 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+
+# ==================================================================
+# some colors
+none=&quot;\[\033[0m\]&quot;
+black=&quot;\[\033[0;30m\]&quot;
+dark_gray=&quot;\[\033[1;30m\]&quot;
+blue=&quot;\[\033[0;34m\]&quot;
+light_blue=&quot;\[\033[1;34m\]&quot;
+green=&quot;\[\033[0;32m\]&quot;
+light_green=&quot;\[\033[1;32m\]&quot;
+cyan=&quot;\[\033[0;36m\]&quot;
+light_cyan=&quot;\[\033[1;36m\]&quot;
+red=&quot;\[\033[0;31m\]&quot;
+light_red=&quot;\[\033[1;31m\]&quot;
+purple=&quot;\[\033[0;35m\]&quot;
+light_purple=&quot;\[\033[1;35m\]&quot;
+brown=&quot;\[\033[0;33m\]&quot;
+yellow=&quot;\[\033[1;33m\]&quot;
+light_gray=&quot;\[\033[0;37m\]&quot;
+white=&quot;\[\033[1;37m\]&quot;
+
+
+# display_clock()
+# &gt; display a clock in the upper-righthand corner
+function display_clock {
+	LIGHT_BLUE=&quot;$(tput setaf 4; tput bold)&quot;
+	DEFAULT=&quot;$(tput sgr0)&quot;
+
+	CLOCK=&quot;[$LIGHT_BLUE$(date +%H:%M:%S)$DEFAULT]&quot;
+
+	# &lt;columns in display&gt; - len($CLOCK)
+	let UPPER_RIGHT=$(tput cols)-10
+
+	tput sc
+	tput cup 0 ${UPPER_RIGHT}
+	echo -n ${CLOCK}
+	tput rc
+}
+
+function set_hist_color {
+	# $? - exit value of last command
+    local ERR_in=$?
+	ERR=&quot;[$ERR_in]&quot;
+    if [ $ERR_in -gt 0 ]
+    then
+	HIST_COLOR=&quot;1;31&quot; # failure
+    else
+	HIST_COLOR=&quot;1;32&quot; # success
+	ERR=
+    fi
+}
+
+# set TTY_COLOR to current (tty-number mod 8)+30
+function set_tty_color {
+
+    local rem color
+    let rem=`tty | sed -e 's/.*\/\(tty\)\?//'`%8
+    let color=rem+30
+    TTY_COLOR=&quot;1;$color&quot;
+}
+
+
+function set_user_color {
+    local u_color_in
+    let u_color_in=`id -u`%8+30
+    USER_COLOR=&quot;1;${u_color_in}&quot;
+#purple=&quot;\[\033[0;35m\]&quot;
+    if [ `id -u` -eq 0 ] ; then
+	USER_COLOR=&quot;1;31&quot;
+    fi
+}
+
+# ==================================================================
+
+# prompt_command()
+# &gt; commands to run before each prompt display
+function prompt_command {
+	set_hist_color
+	set_tty_color
+	set_user_color
+	#display_clock
+        
+        # for screen title setting
+	echo -n -e &quot;\033k\033\134&quot;
+}
+
+function color_prompt
+{
+    PROMPT_COMMAND=prompt_command
+    local current_tty=`tty | sed -e &quot;s/\/dev\/\(.*\)/\1/&quot;`
+
+    PS1=&quot;$dark_gray&gt; \033[\$(echo -n \$TTY_COLOR)m\]$current_tty \033[\$(echo -n \$USER_COLOR)m\]\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1560317174677e4a7267746c55">[email&#160;protected]</a>$purple\H$dark_gray:$light_blue\w\n$dark_gray&gt; $cyan\t \033[\$(echo -n \$HIST_COLOR)m\]\$ERR\033[\$(echo -n \$TTY_COLOR)m\]&quot;'\$'&quot;$none &quot;
+
+    PS2=&quot;$dark_gray&gt;$none &quot;
+}
+
+
+function dynamic_prompt {
+	# Colour Macros
+ 	BLUE='\[\033[0;34m\]'
+ 	LIGHT_CYAN='\[\033[1;36m\]'
+ 	WHITE='\[\033[1;37m\]'
+ 	DEFAULT='\[\033[0m\]'
+
+	# Pre-Prompt Function
+	PROMPT_COMMAND=prompt_command
+
+	# Prompt
+	# \! - history number of last command
+	# $? - exit value of last command
+	# \t - exit time of last command
+	# \w - current directory (relative)
+ 	PS1=&quot;$BLUE[\[\033[\$(echo -n \$HIST_COLOR)m\]\!$BLUE] $WHITE\w$LIGHT_CYAN\$ $DEFAULT&quot;
+}
+
+
+function top_prompt
+{
+# If running interactively, then:
+if [ &quot;$PS1&quot; ]; then
+   local top_prompt_color=&quot;\[\033[1;30;46m\]&quot;
+    # set the prompt 
+    PS1=&quot;$(tput sc)$(tput cup 0 0)$(tput el)$top_prompt_color     \w : \<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b2c7f2">[email&#160;protected]</a>\H { \$(date +%T) }$(tput rc)$&quot;
+    
+    # move one line
+    tput cup 1 0
+    
+fi
+}
+
+function plain_prompt
+{
+    local current_tty=`tty | sed -e &quot;s/\/dev\/\(.*\)/\1/&quot;`
+    PS1=&quot;&gt; $current_tty \<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="304570">[email&#160;protected]</a>\H:\w\n&gt; \$? \t \! &quot;'\$'&quot; &quot;
+    PS2=&quot;&gt; &quot;
+}
+
+
+function fancy_three_line_prompt
+{
+PS1='\[\033[0m\]\[\033[0;31m\].:\[\033[0m\]\[\033[1;30m\][\[\033[0m\]\[\033[0;28m\]Managing \033[1;31m\]\j\[\033[0m\]\[\033[1;30m\]/\[\033[0m\]\[\033[1;31m\]$(ps ax | wc -l | tr -d '\'' '\'')\[\033[0m\]\[\033[1;30m\] \[\033[0m\]\[\033[0;28m\]jobs.\[\033[0m\]\[\033[1;30m\]] [\[\033[0m\]\[\033[0;28m\]CPU Load: \[\033[0m\]\[\033[1;31m\]$(temp=$(cat /proc/loadavg) &amp;&amp; echo ${temp%% *}) \[\033[0m\]\[\033[0;28m\]Uptime: \[\033[0m\]\[\033[1;31m\]$(temp=$(cat /proc/uptime) &amp;&amp; upSec=${temp%%.*} ; let secs=$((${upSec}%60)) ; let mins=$((${upSec}/60%60)) ; let hours=$((${upSec}/3600%24)) ; let days=$((${upSec}/86400)) ; if [ ${days} -ne 0 ]; then echo -n ${days}d; fi ; echo -n ${hours}h${mins}m)\[\033[0m\]\[\033[1;30m\]]\[\033[0m\]\[\033[0;31m\]:.\n\[\033[0m\]\[\033[0;31m\].:\[\033[0m\]\[\033[1;30m\][\[\033[0m\]\[\033[1;31m\]$(ls -l | grep &quot;^-&quot; | wc -l | tr -d &quot; &quot;) \[\033[0m\]\[\033[0;28m\]files using \[\033[0m\]\[\033[1;31m\]$(ls --si -s | head -1 | awk '\''{print $2}'\'')\[\033[0m\]\[\033[1;30m\]] [\[\033[0m\]\[\033[1;31m\]\u\[\033[0m\]\[\033[0;31m\]@\[\033[0m\]\[\033[1;31m\]\h \[\033[0m\]\[\033[1;34m\]\w\[\033[0m\]\[\033[1;30m\]]\[\033[0m\]\[\033[0;31m\]:.\n\[\033[0m\]\[\033[0;31m\].:\[\033[0m\]\[\033[1;30m\][\[\033[0m\]\[\033[1;31m\]\t\[\033[0m\]\[\033[1;30m\]]\[\033[0m\]\[\033[0;31m\]:. \[\033[0m\]\[\033[1;37m\]$ \[\033[0m\]'
+}
+
+#some aliases to set fancy prompts
+#see .bash_slyles for further informations
+
+if [ -f ~/.bash_styles ];
+then
+ alias dumb='. ~/.bash_styles dumb'
+ alias ice='. ~/.bash_styles ice'
+ alias fire='. ~/.bash_styles fire'
+ alias nature='. ~/.bash_styles nature'
+ alias sunshine='. ~/.bash_styles sunshine'
+ alias dream='. ~/.bash_styles dream'
+ alias magic='. ~/.bash_styles magic'
+ alias iceg='. ~/.bash_styles iceg'
+ alias topline='. ~/.bash_styles topline'
+fi
+
+
+# Actions
+color_prompt
+</pre><!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-05-18</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="BashPrompt.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Generated from amb.tex by tex2page, v 2003-06-04
+(running on MzScheme 204, unix), 
+(c) Dorai Sitaram, 
+http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
+
+-->
+<head>
+<title>
+神奇的 amb 操作符
+</title>
+<link rel="stylesheet" type="text/css" href="tex2page.css" title=default>
+<link rel="stylesheet" type="text/css" href="amb-Z-S.css" title=default>
+<meta name=robots content="noindex,follow">
+<meta http-equiv="Content-Type" content="text/html;charset=gb2312"></head>
+<body>
+<div align=right class=navigation><i>[<span><a href="amb.html">首页</a>, <a href="amb.html">上一页</a></span><span>, <a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-2.html">下一页</a></span><span class=disable>; &nbsp;&nbsp;</span><span class=disable>目录 </span>]</i></div><p></p>
+<a name="node_chap_Temp_1"></a>
+<h1 class=chapter>
+<div class=chapterheading>&nbsp;</div><br>
+<a href="amb-Z-H-1.html#node_toc_node_chap_Temp_1">目录</a></h1>
+<p><a name="node_toc_start"></a></p>
+<p class="toc"><b>
+<a name="node_toc_node_part_I"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-2.html#node_part_I">I&nbsp;&nbsp;用 Scheme 实现 amb</a></b><br>
+</p>
+<p class="toc"><b>
+&nbsp; &nbsp; <a name="node_toc_node_chap_1"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-3.html#node_chap_1">1&nbsp;&nbsp;amb 的功能</a></b><br>
+</p>
+<p class="toc"><b>
+&nbsp; &nbsp; <a name="node_toc_node_chap_2"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-4.html#node_chap_2">2&nbsp;&nbsp;amb 的 Scheme 实现</a></b><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <a name="node_toc_node_sec_2.1"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-4.html#node_sec_2.1">2.1&nbsp;&nbsp;初始化</a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <a name="node_toc_node_sec_2.2"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-4.html#node_sec_2.2">2.2&nbsp;&nbsp;amb 的 syntax-rules 实现</a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <a name="node_toc_node_sec_2.3"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-4.html#node_sec_2.3">2.3&nbsp;&nbsp;分析</a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a name="node_toc_node_sec_2.3.1"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-4.html#node_sec_2.3.1">2.3.1&nbsp;&nbsp;举例</a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a name="node_toc_node_sec_2.3.2"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-4.html#node_sec_2.3.2">2.3.2&nbsp;&nbsp;简化的实现</a><br>
+</p>
+<p class="toc"><b>
+&nbsp; &nbsp; <a name="node_toc_node_chap_3"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-5.html#node_chap_3">3&nbsp;&nbsp;一些方便的辅助函数</a></b><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <a name="node_toc_node_sec_3.1"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-5.html#node_sec_3.1">3.1&nbsp;&nbsp;number-between</a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <a name="node_toc_node_sec_3.2"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-5.html#node_sec_3.2">3.2&nbsp;&nbsp;assert</a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <a name="node_toc_node_sec_3.3"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-5.html#node_sec_3.3">3.3&nbsp;&nbsp;apply-amb</a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <a name="node_toc_node_sec_3.4"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-5.html#node_sec_3.4">3.4&nbsp;&nbsp;bag-of</a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <a name="node_toc_node_sec_3.5"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-5.html#node_sec_3.5">3.5&nbsp;&nbsp;distinct?</a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <a name="node_toc_node_sec_3.6"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-5.html#node_sec_3.6">3.6&nbsp;&nbsp;del</a><br>
+</p>
+<p class="toc"><b>
+<a name="node_toc_node_part_II"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-6.html#node_part_II">II&nbsp;&nbsp;用 amb 解决问题</a></b><br>
+</p>
+<p class="toc"><b>
+&nbsp; &nbsp; <a name="node_toc_node_chap_4"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-7.html#node_chap_4">4&nbsp;&nbsp;生成素数</a></b><br>
+</p>
+<p class="toc"><b>
+&nbsp; &nbsp; <a name="node_toc_node_chap_5"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-8.html#node_chap_5">5&nbsp;&nbsp;n-皇后问题</a></b><br>
+</p>
+<p class="toc"><b>
+&nbsp; &nbsp; <a name="node_toc_node_chap_6"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-9.html#node_chap_6">6&nbsp;&nbsp;凑 24</a></b><br>
+</p>
+<p class="toc"><b>
+&nbsp; &nbsp; <a name="node_toc_node_chap_7"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-10.html#node_chap_7">7&nbsp;&nbsp;凑24的推广</a></b><br>
+</p>
+<p class="toc"><b>
+&nbsp; &nbsp; <a name="node_toc_node_chap_8"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-11.html#node_chap_8">8&nbsp;&nbsp;地图4着色</a></b><br>
+</p>
+<p class="toc"><b>
+&nbsp; &nbsp; <a name="node_toc_node_chap_9"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-12.html#node_chap_9">9&nbsp;&nbsp;逻辑问题</a></b><br>
+</p>
+<p class="toc"><b>
+&nbsp; &nbsp; <a name="node_toc_node_chap_10"></a><a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-13.html#node_chap_10">10&nbsp;&nbsp;离散优化问题</a></b><br>
+</p>
+<p>
+</p>
+<div align=right class=navigation><i>[<span><a href="amb.html">首页</a>, <a href="amb.html">上一页</a></span><span>, <a href="http://learn.tsinghua.edu.cn:8080/2001315450/amb/amb-Z-H-2.html">下一页</a></span><span class=disable>; &nbsp;&nbsp;</span><span class=disable>目录 </span>]</i></div><p></p>
+</body>
+</html>

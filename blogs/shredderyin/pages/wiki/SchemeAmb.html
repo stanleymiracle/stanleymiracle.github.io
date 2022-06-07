@@ -1,0 +1,1394 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>神奇的 amb 操作符</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>神奇的 amb 操作符</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+John McCarthy 在他的著作 
+<a href="http://www-formal.stanford.edu/jmc/basis1/basis1.html">A&#32;Basis&#32;for&#32;a&#32;Mathematical&#32;Theory&#32;of&#32;Computation</a><a href="../jmc/basis1.html">(copy)</a>
+中提出了一个操作符叫做 <em>amb</em>.
+
+</p>
+
+<p>
+amb 接受一些参数，它会从这些参数里“不确定”的选一个出来。选
+择的标准是：要让整个程序得到 <em>有效的结果</em>。
+
+</p>
+
+<p>
+amb 跟 LISP 一样古老，但是它却强大得难以置信。使用它，我们可
+以轻而易举的写出需要大量回溯才能解决的问题。它可以被作为一种
+通用的回溯机制。
+
+</p>
+
+<p>
+在后面我们会看到如何用  amb 轻而易举的解决：
+
+</p>
+
+<ul>
+<li><a href="SchemeAmb.html#nqueens">&#32;n-皇后问题</a>
+</li>
+<li><a href="SchemeAmb.html#get24">凑&#32;24&#32;问题</a> 
+</li>
+<li><a href="SchemeAmb.html#getit">凑&#32;24&#32;的推广</a> (把“凑24”扩展到用任何数，任何操作符凑足任何数).
+</li>
+<li><a href="SchemeAmb.html#fourcolor">地图&#32;4&#32;着色</a>
+</li>
+<li><a href="SchemeAmb.html#logic">一个有趣的逻辑问题</a>
+</li>
+<li><a href="SchemeAmb.html#optimization">离散优化问题</a>
+</li>
+</ul>
+
+<h2>amb 的功能</h2>
+
+<p>
+amb 的功能就是从它的参数里选出一个来让整个程序得到“有效的结
+果”。“有效的结果”这个概念很模糊，什么叫做有效的结果？
+
+</p>
+
+<p>
+为了定义“有效的结果”，我们首先定义一下叫做“无效的结果”，
+或者叫做“失败的结果”。
+
+</p>
+
+<pre class="example">(amb)
+</pre>
+
+<p>
+没有参数的 amb 被定义为是一个 <em>失败</em>。
+
+</p>
+
+<p>
+看看下面这个表达式：
+
+</p>
+
+<pre class="example">(if (amb #f #t)
+    1
+    (amb))
+</pre>
+
+<p>
+后面那个 (amb) 显然是失败，那么第一个 amb 应该选择哪一个参数
+作为输出呢？如果它选 #f, 那么 if 判断条件为假，就会执行 
+(amb)，导致整个表达式“失败”。
+
+</p>
+
+<p>
+所以，为了避免失败，第一个 amb 不能选择 #f, 它只能选择 #t。
+我们的表达式返回值是 1.
+
+</p>
+
+<p>
+再来看一个例子：
+
+</p>
+
+<pre class="example">(let ((x (list (amb 2 1 -2 5 8 18) (amb 9 8 2 4 14 20))))
+  (assert (&gt; (car x) (cadr x)))
+  (display x))
+</pre>
+
+<p>
+x 是由 list 从两个 amb 的结果构造的 list.
+这个表达式中间有一个断言，说 (car x) 必须 (cadr x).
+那么那两个 amb 分别应该返回什么呢？我们可以从这个表达式的返
+回结果看到：
+
+</p>
+
+<pre class="example">(5 2)
+</pre>
+
+<p>
+第一个 amb 返回了 5, 第二个 amb 返回了 2. 这就叫做“有效的结
+果”。
+
+</p>
+
+<p>
+先别在你的 Scheme 解释器里敲上面的例子，它还没有定义呢！
+别急，现在我们来看看 amb 用 Scheme 如何实现。
+
+</p>
+
+<p>
+如果你真的着急，可以跳到 <a href="SchemeAmb.html#problems">SchemeAmb</a>.
+
+</p>
+
+<h2>amb 的 Scheme 实现</h2>
+
+<h3>初始化</h3>
+
+<p>
+amb-fail 是最近一个失败的分支设置的函数。如果执行没有参数的 
+(amb) 就会转到这个 amb-fail.
+
+</p>
+
+<p>
+这个例子里，我们把 amb-fail 被初始化为打印  "amb tree
+exhausted"。
+
+</p>
+
+<pre class="example">(define amb-fail '*)
+
+(define initialize-amb-fail
+  (lambda ()
+    (set! amb-fail
+      (lambda ()
+        (error &quot;amb tree exhausted&quot;)))))
+
+(initialize-amb-fail)
+</pre>
+
+<h3>amb 的 syntax-rules 实现</h3>
+
+<p>
+我们用 R5RS 的 syntax-rules 来实现 amb 操作符：
+
+</p>
+
+<pre class="example">(define-syntax amb
+  (syntax-rules ()
+    ((amb alt ...)
+     (let ((prev-amb-fail amb-fail))
+       (call/cc
+        (lambda (sk)
+
+          (call/cc
+           (lambda (fk)
+             (set! amb-fail
+                   (lambda ()
+                     (set! amb-fail prev-amb-fail)
+                     (fk 'fail)))
+             (sk alt))) ...
+             
+             (prev-amb-fail)))))))
+</pre>
+
+<h3>分析</h3>
+
+<p>
+有些不容易看懂，实际上它的功能就是把
+
+</p>
+
+<pre class="example">(amb #f #t)
+</pre>
+
+<p>
+这样的输入，转换成：
+
+</p>
+
+<pre class="example">(let ((prev-amb-fail amb-fail))
+  (call/cc
+   (lambda (sk)
+
+     ; branch 1
+     (call/cc
+      (lambda (fk)
+        (set! amb-fail
+              (lambda ()
+                (set! amb-fail prev-amb-fail)
+                (fk 'fail)))
+        (sk #f)))
+
+     ; branch 2
+     (call/cc
+      (lambda (fk)
+        (set! amb-fail
+              (lambda ()
+                (set! amb-fail prev-amb-fail)
+                (fk 'fail)))
+        (sk #t)))
+        
+     (prev-amb-fail))))
+</pre>
+
+<p>
+表达式先把 amb-fail 的值保存在局部变量 prev-amb-fail 里，这
+样当整个 amb 表达式失败时，它可以通过  prev-amb-fail 通知上
+一个 amb 表达式改变它的值。
+
+</p>
+
+<p>
+整个 amb 表达式的 continuation 存放在 sk 里。对于每一个参数，
+使用了一个 call/cc 得到它的 continuation. 并且保存在 fk 里。
+我们把这些参数对应的 call/cc 暂且叫做 <em>分支</em> 好了。看上面的
+"; branch 1" 和 "; branch 2".
+
+</p>
+
+<p>
+当某一个分支得到一个值，它就通过整个 amb 的 continuation(sk)
+把这个值返回出去。这样 amb 就返回一个值。
+
+</p>
+
+<p>
+每一个分支在第一次执行时，有两项工作：
+
+</p>
+
+<p>
+第一，把当前的 amb-fail 设置为一个函数。这个 <em>内部函数</em> 的作
+用就是把 amb-fail 的值恢复到进入 amb 以前的值:
+
+</p>
+
+<pre class="example">(lambda ()
+  (set! amb-fail prev-amb-fail)
+  (fk 'fail))
+</pre>
+
+<p>
+第二，立即通过 amb 表达式的 continuation(sk) 返回自己的分支
+的值。从而引起 amb 表达式中途返回。
+
+</p>
+
+<p>
+注意，每一个分支执行时都会引起 amb 立即返回。后面的分支都还
+没有执行！
+
+</p>
+
+<h4>举例</h4>
+
+<pre class="example">(if (amb #f #t)
+    1
+    (amb))
+</pre>
+
+<p>
+就用最开头的那个最简单的例子，这样容易理解：
+
+</p>
+
+<pre class="example">(let ((prev-amb-fail amb-fail))
+  (call/cc
+   (lambda (sk)
+
+     ; branch 1
+     (call/cc
+      (lambda (fk)
+        (set! amb-fail
+              (lambda ()
+                (set! amb-fail prev-amb-fail)
+                (fk 'fail)))
+        (sk #f)))
+
+     ; branch 2
+     (call/cc
+      (lambda (fk)
+        (set! amb-fail
+              (lambda ()
+                (set! amb-fail prev-amb-fail)
+                (fk 'fail)))
+        (sk #t)))
+        
+     (prev-amb-fail))))
+</pre>
+
+<p>
+第一个 amb 被展开，就成了上面那个样子。#f 和 #t 是两个分支。
+然后 #f 对应的分支将被运行。这个分支的 call/cc 把 amb-fail
+绑定到自己的内部函数，然后马上使用 
+
+</p>
+
+<pre class="example">(sk #f)
+</pre>
+
+<p>
+返回分支的值。
+
+</p>
+
+<p>
+接着 if 得到这个值，从而引起第二个没有参数的 (amb) 的执行。
+这就是一个“失败”。(amb) 的执行没有参数，所以没有分支。它被
+展开成：
+
+</p>
+
+<pre class="example">(let ((prev-amb-fail amb-fail))
+  (call/cc
+   (lambda (sk)
+        
+     (prev-amb-fail))))
+</pre>
+
+<p>
+它马上就会执行最下面的
+
+</p>
+
+<pre class="example">(prev-amb-fail)
+</pre>
+
+<p>
+而 prev-amb-fail 在进入这个  (amb) 的时候被绑定到了 amb-fail，
+也就是最近一个失败函数。这里 amb-fail 其实就是第一个 amb 表
+达式的 #f 分支设置的。
+
+</p>
+
+<p>
+所以，我们将执行 #f 的分支设置的 amb-fail 函数。这就是 #f 分
+支的内部函数，它先把 amb-fail 的值设置成 prev-amb-fail 也就
+是进入 (amb #f #t) 以前的值，然后使用 (fk 'fail) 返回 'fail 
+到分支的 continuation. 
+
+</p>
+
+<p>
+接着 (amb #f #t) 的第二个分支开始执行。它在设置好 amb-fail
+为自己的内部函数之后，返回了 #t 给 if. 那么 if 就会返回 1.
+使得整个 if 表达式没有“失败”。
+
+</p>
+
+<h3>一些方便的辅助函数</h3>
+
+<p>
+我们可以为 amb 设计一些辅助函数，使用它们我们可以清晰的表达
+经常用到的信息。由于我的代码里多次使用这些函数，以后我们用到
+这些函数时就不再列出代码。
+
+</p>
+
+<h4>number-between</h4>
+
+<pre class="example">(define number-between
+  (lambda (lo hi)
+    (let loop ((i lo))
+      (if (&gt; i hi) (amb)
+          (amb i (loop (+ i 1)))))))
+</pre>
+
+<p>
+这个函数是用来方便的构造一个 amb 数字选择的。比如
+
+</p>
+
+<pre class="example">(number-between 1 8)
+</pre>
+
+<p>
+就相当于 
+
+</p>
+
+<pre class="example">(amb 1 2 3 4 5 6 7 8)
+</pre>
+
+<p>
+如果是 (number-between 1 100) 就可以省去你打很多数字了 :)
+
+</p>
+
+<h4>assert</h4>
+
+<pre class="example">(define assert
+  (lambda (pred)
+    (if (not pred) (amb))))
+</pre>
+
+<p>
+我们可以用 assert 来插入一个断言。这样可以使程序的表达更加清晰明确。
+
+</p>
+
+<h4>apply-amb</h4>
+
+<pre class="example">(define-syntax apply-amb
+  (syntax-rules ()
+    ((apply-amb ls)
+     (eval `(amb ,@ls) (interaction-environment)))))
+</pre>
+
+<p>
+当我们需要把 amb 作用于一个从别处返回的列表时，可以用这个宏。
+
+</p>
+
+<h4>bag-of</h4>
+
+<pre class="example">(define-syntax bag-of
+  (syntax-rules ()
+    ((bag-of e)
+     (let ((prev-amb-fail amb-fail)
+           (results '()))
+       (if (call/cc
+            (lambda (k)                                                
+              (set! amb-fail (lambda () (k #f)))                ;&lt;-----+
+              (let ((v e))             ;amb-fail will be modified by e |
+                (set! results (cons v results))                       ;|
+                (k #t))))                                             ;|
+           (amb-fail))                 ;so this amb-fail may not be ---+
+       (set! amb-fail prev-amb-fail)
+       (reverse! results)))))
+</pre>
+
+<p>
+amb 每次只返回一个结果。所以如果想得到所有可以使得程序“不失
+败”的结果。你需要多次调用 (amb)。为了一次性得到所有结果，你
+可以用 bag-of. 
+
+</p>
+
+<p>
+bag-of 接受一个参数，这是一个表达式，这个表达式里面可以调用
+amb，它返回一个“有意义的结果”。
+
+</p>
+
+<h4>distinct?</h4>
+
+<p>
+用来判断一个list里的元素是不是没有重复。
+
+</p>
+
+<pre class="example">(define (distinct? . ls)
+  (let loop ((lst (car ls)))
+    (let ((first (car lst)) (rest (cdr lst)))
+      (cond 
+       ((null? rest) #t)
+       ((member first rest) #f)
+       (else (loop rest))))))
+</pre>
+
+<h4>del</h4>
+
+<p>
+用来从一个list里删除一个元素。
+
+</p>
+
+<pre class="example">(define (del n ls)
+  (let ((ls (reverse (reverse ls))))
+    (cond ((null? ls) ls)
+          ((eqv? n (car ls)) (cdr ls))
+          (else 
+           (let loop ((l (cdr ls)) (last ls))
+             (cond ((null? l) ls)
+                   ((equal? n (car l))
+                    (set-cdr! last (cdr l))
+                    ls)
+                   (else (loop (cdr l) l))))))))
+</pre>
+
+<h2><a name="problems" id="problems"></a>用 amb 解决问题</h2>
+
+<p>
+我们先举一个简单的例子示意一下我们上面的方便函数怎么用：
+
+</p>
+
+<h3>生成素数</h3>
+
+<pre class="example">(define (prime? n)
+  (call/cc
+   (lambda (return)
+     (do ((i 2 (+ i 1)))
+         ((&gt; i (sqrt n)) #t)
+       (if (= (modulo n i) 0) 
+           (return #f))))))
+
+(define gen-prime
+  (lambda (hi)
+    (let ((i (number-between 2 hi)))
+      (assert (prime? i))
+      i)))
+</pre>
+
+<p>
+其实这里就只是定义了一个函数 prime?，它可以判断一个数是不是
+素数。然后我们定义了一个函数 gen-prime，它说：“ <em>从 2 到 hi
+取一个数，它必须是一个素数。</em> ”
+
+</p>
+
+<p>
+我们用 (gen-prime 20) 就能返回 20 以内的第一个素数。如果我们
+要得到下一个素数，就调用 (amb)。不断调用 (amb) 就得到后面的
+素数，直到超过 20，我们就会看到 "amb tree exhausted".
+
+</p>
+
+<p>
+如果用
+
+</p>
+
+<pre class="example">(bag-of (gen-prime 20))
+</pre>
+
+<p>
+我们就能一次性得到所有 20 以内的素数在一个 list 里。
+
+</p>
+
+<h3><a name="nqueens" id="nqueens"></a>n-皇后问题</h3>
+
+<p>
+这是一个用 amb 解决的 n-皇后问题。
+
+</p>
+
+<pre class="example">(define (debug e) #f)
+
+(define (n-queens n)
+  (call/cc 
+   (lambda (return)
+     (let place-queens ((i 0) (rows '())) 
+       (when (&lt; i n)                    
+         (let ((try-place (number-between 1 n))) ;start to place queen No.i
+           (debug `(&quot;considering queen &quot; ,i &quot; on row &quot; ,try-place &quot;\n&quot;))
+           (do ((placed-idx 0 (+ 1 placed-idx))) ;ensure no two queens conflict
+               ((&gt;= placed-idx (length rows)))
+             (debug `(&quot;checking queen on column &quot; ,placed-idx))
+             (let* ((r (list-ref rows placed-idx))
+                    (condition (and (not (= r try-place))      
+                                    (not (or           
+                                          (= (+ placed-idx r) (+ i try-place))
+                                          (= (- placed-idx r) (- i try-place)))))))
+               (if condition 
+                   (debug &quot; ... OK!\n&quot;)
+                   (debug &quot; ... conflict!\n&quot;))
+               (assert condition)))
+           (debug `(&quot;putting queen &quot; ,i &quot; on row &quot; ,try-place &quot;\n&quot;))
+           (debug `(&quot;places: &quot; ,(append rows (list try-place)) &quot;\n&quot;))
+           (place-queens (+ 1 i) (append rows (list try-place))))
+         )
+       (return rows)))))
+
+</pre>
+
+<p>
+其实程序的大部分回溯都由 number-between 包办了。在放置第 i 
+个皇后时，你需要做的只是：让 number-between 帮你取一个数，作
+为第 i 列皇后放置的行数。然后说：“ <em>这个皇后不能与已经放好
+的任何一个皇后在同一条横线上，或者在同一条对角线上。</em> ” amb
+就会自动帮你找到答案。魔法！
+
+</p>
+
+<p>
+我在代码里加入了一些 debug 语句，但是 debug 先被定义为什么也
+不干。这样处理 8 个皇后的时候会快一些。执行：
+
+</p>
+
+<pre class="example">(n-queens 8)
+</pre>
+
+<p>
+就得到一个结果。再执行 (amb) 就得到下一个结果，再下一个结果……
+
+</p>
+
+<p>
+执行
+
+</p>
+
+<pre class="example">(bag-of (n-queens 8))
+</pre>
+
+<p>
+就得到了“八皇后问题”的所有 92 个解。
+
+</p>
+
+<p>
+如果你把 debug 重新定义为
+
+</p>
+
+<pre class="example">(define debug
+  (lambda (e)
+    (cond ((list? e)
+           (for-each display e))
+          ((string? e)
+           (display e)))))
+</pre>
+
+<p>
+就能显示这个过程中，amb 为你考虑了什么。不过显示 debug 信息
+时，最好使用 4 个皇后，因为 8 个皇后的信息量实在太大了，会看
+头晕的 :P
+
+</p>
+
+<p>
+n-皇后其实不大能展示 amb 的威力。你可能觉得用 C 实现 n-皇后
+也挺容易？那么就看看下面几个……
+
+</p>
+
+<h3><a name="get24" id="get24"></a>凑 24</h3>
+
+<p>
+我一直想写一个凑 24 程序，可就是懒得动手。现在有了 amb，我花
+了 10 分钟就写出了一个程序可以得到所有结果。也许方法有点笨，
+但是我真的只花了 10 分钟！
+
+</p>
+
+<p>
+后来我又花了一个小时就把所有看起来重复的解都去掉了。比如我认
+为: (* 2 (+ 2 (+ 3 7))) 和 (* 2 (+ 2 (+ 7 3))) 是一样的。
+这样在 bag-of 时可以减少一些没有意义的重复。
+
+</p>
+
+<pre class="example">(define (get-24 . numbers)
+  (let* ((index '(0 1 2 3))
+         (ai (apply-amb index))
+         (bi (apply-amb index))
+         (ci (apply-amb index))
+         (di (apply-amb index)))
+    (assert (distinct? (list ai bi ci di)))
+
+    (let* ((a (list-ref numbers ai))
+           (b (list-ref numbers bi))
+           (c (list-ref numbers ci))
+           (d (list-ref numbers di)))
+
+      (let* ((ops '('+ '- '* '/))
+             (op1s (apply-amb ops))
+             (op1 (eval op1s (interaction-environment)))
+             (op2s (apply-amb ops))
+             (op2 (eval op2s (interaction-environment)))
+             (op3s (apply-amb ops))
+             (op3 (eval op3s (interaction-environment))))
+
+;         (for-each display `(,a &quot; &quot; ,b &quot; &quot; ,c &quot; &quot; ,d &quot; &quot; 
+;                                ,op1s &quot; &quot; ,op2s &quot; &quot; ,op3s &quot;\n&quot;))
+
+        (let ((exp
+               (amb 
+                (when (not (or (and (eq? op2 /)
+                                    (= (op3 c d) 0))
+                               (and (eq? op1 /)
+                                    (= (op2 b (op3 c d)) 0))
+                               (and (memq op3 (list + * /))
+                                    (&lt; c d))
+                               (and (memq op2 (list + * /))
+                                    (&lt; b (op3 c d)))
+                               (and (memq op1 (list + * /))
+                                    (&lt; a (op2 (op3 c d))))))
+                  `(,op1s ,a (,op2s ,b (,op3s ,c ,d))))
+
+                (when (not (or (and (eq? op3 /)
+                                    (= 0 b))
+                               (and (eq? op2 /)
+                                    (= 0 c))
+                               (and (eq? op1 /)
+                                    (= 0 d))
+                               (and (memq op3 (list + * /))
+                                    (&lt; a b))
+                               (and (memq op2 (list + * /))
+                                    (&lt; (op3 a b) c))
+                               (and (memq op1 (list + * /))
+                                    (&lt; (op2 (op3 a b) c) d))))
+                  `(,op1s (,op2s (,op3s ,a ,b) ,c) ,d))
+
+                (when (not (or (and (eq? op3 /)
+                                    (= 0 c))
+                               (and (eq? op2 /)
+                                    (= 0 (op3 b c)))
+                               (and (eq? op1 /)
+                                    (= 0 (op2 a (op3 b c))))
+                               (and (memq op3 (list + * /))
+                                    (&lt; b c))
+                               (and (memq op2 (list + * /))
+                                    (&lt; a (op3 b c)))
+                               (and (memq op1 (list + * /))
+                                    (&lt; (op2 a (op3 b c)) d))))
+                  `(,op1s (,op2s ,a (,op3s ,b ,c)) ,d))
+
+                (when (not (or (and (eq? op3 /)
+                                    (= 0 c))
+                               (and (eq? op2 /)
+                                    (= 0 (op3 b c)))
+                               (and (eq? op1 /)
+                                    (= 0 (op2 (op3 b c) d)))
+                               (and (memq op3 (list + * /))
+                                    (&lt; b c))
+                               (and (memq op2 (list + * /))
+                                    (&lt; (op3 b c) d))
+                               (and (memq op1 (list + * /))
+                                    (&lt; a (op2 (op3 b c) d)))))
+                  `(,op1s ,a (,op2s (,op3s ,b ,c) ,d)))
+
+                (when (not (or (and (eq? op2 /)
+                                    (= (op2 a b) 0))
+                               (and (eq? op1 /)
+                                    (= (op3 c d) 0))
+                               (and (memq op3 (list + * /))
+                                    (&lt; c d))
+                               (and (memq op2 (list + * /))
+                                    (&lt; a b))
+                               (and (memq op1 (list + * /))
+                                    (&lt; (op2 a b) (op3 c d)))))
+                  `(,op1s (,op2s ,a ,b) (,op3s ,c ,d))))))
+
+          (assert (eqv? 24 (eval exp (interaction-environment))))
+          exp
+          )))))
+</pre>
+
+<p>
+原理很简单，选4个数，选3个操作符，选5种可能的表达式树，然后
+把操作符和数字按表达式树组合起来。
+
+</p>
+
+<p>
+选数的时候先选4个不重复的 index，然后到参数list里取出数。这
+样可以解决参数重复的问题。帮助函数 distinct? 可以判断一个
+list 里的成员是否有 equal? 意义上的重复。
+
+</p>
+
+<p>
+选操作符时可以重复。因为一个操作符可以多次使用。
+
+</p>
+
+<p>
+构造表达式树时，要求 * + / 三种操作符的左边的参数必须大于或
+等于右边的参数，这样可以减少重复。
+
+</p>
+
+<p>
+然后断言：“表达式结果必须是24。”
+
+</p>
+
+<p>
+看到了吗？我只是简单的描述了一下，amb 就为我找到了答案！
+
+</p>
+
+<p>
+运行:
+
+</p>
+
+<pre class="example">(get-24 1 3 6 12)
+</pre>
+
+<p>
+结果是：
+
+</p>
+
+<pre class="example">(* (* 6 1) (/ 12 3))
+</pre>
+
+<p>
+执行 (amb) 就得到下一个解。
+
+</p>
+
+<pre class="example">(* (/ 6 1) (/ 12 3))
+</pre>
+
+<p>
+我们可以用 
+
+</p>
+
+<pre class="example">(bag-of (get-24 1 3 6 12))
+</pre>
+
+<p>
+得到所有的解。
+
+</p>
+
+<h3><a name="getit" id="getit"></a>凑24的推广</h3>
+
+<p>
+其实上面的“凑24” 可以推广一下，我们可以用一个程序来生成那
+些表达式树，这样我们就可以解决用任意数目的输入数凑足任何一个
+数，用任何操作符。实现如下：
+
+</p>
+
+<pre class="example">(define (get-it numbers operators target)
+  (let loop ((rest numbers))
+    (let ((ai (number-between 0 (- (length rest) 1)))
+          (bi (number-between 0 (- (length rest) 1))))
+      (assert (distinct? (list ai bi)))
+      (let ((a (list-ref rest ai))
+            (b (list-ref rest bi)))
+        (let* ((op (apply-amb operators))
+               (subexp (list op a b)))
+
+          (if (and (memv op '(+ *)) (real? a) (real? b))
+              (assert (&gt; (eval (cadr subexp) (interaction-environment))
+                         (eval (caddr subexp) (interaction-environment)))))
+
+          (if (memv op '(+ *))
+              (cond ((and (pair? a)
+                          (eqv? op (car a))
+                          (not (pair? b)))
+                     (set! subexp `(,@a ,b)))
+                    ((and (pair? b)
+                          (eqv? op (car b))
+                          (not (pair? a)))
+                     (set! subexp `(,@b ,a)))
+                    ((and (pair? a)
+                          (pair? b)
+                          (eqv? op (car a))
+                          (eqv? op (car b)))
+                     (set! subexp (append a (cdr b))))))
+
+          (if (eq? op '/) (assert
+                           (not (= 0 (eval (caddr subexp)
+                                           (interaction-environment))))))
+
+          (if (= 2 (length rest))
+              (begin
+                (assert (= target
+                                (eval subexp (interaction-environment))))
+                     subexp)
+              (loop (cons subexp (del a (del b rest))))
+              ))))))
+</pre>
+
+<p>
+这个函数 get-it 接受三个参数。第一个是允许使用的数字，第二个
+是允许使用的操作符(必须是二元操作符)，第三个参数是要得到什么
+结果。
+
+</p>
+
+<p>
+你发现其实这个程序虽然强大很多，反而比上面的 get-24 还要短小。
+实际上它的原理就是自底向上构造一个表达式树，然后断言这个表达
+式的值为 target.
+
+</p>
+
+<p>
+我们的帮助函数 del 是用来从一个 list 里去掉一个元素的。
+
+</p>
+
+<p>
+比如我们可以这样使用：
+
+</p>
+
+<pre class="example">(bag-of (get-it '(1 3 6 12) '('+ '- '* '/) 24))
+</pre>
+
+<p>
+这就相当 get-24 对于参数 1 3 6 12。
+
+</p>
+
+<p>
+我们还可以自己定义一些操作符，比如“平方和”符号 "++":
+
+</p>
+
+<pre class="example">(define (++ a b)
+  (+ (* a a) (* b b)))
+</pre>
+
+<p>
+然后我用
+
+</p>
+
+<pre class="example">(get-it '(2 8 4 3 6 12) '('+ '- '* '/ '++) 100)
+</pre>
+
+<p>
+就可以求得用这5种操作符对这6个数进行操作，所有能得到 100 的
+表达式。
+
+</p>
+
+<p>
+我们甚至可以使用分数数甚至复数！
+
+</p>
+
+<pre class="example">(get-it '(3 5 10 7) '('+ '- '* '/ '++) 12.5)
+(get-it '(1+2i 5 2 3-3i) '('+ '- '* '/ '++) 27+9i)
+</pre>
+
+<h3><a name="fourcolor" id="fourcolor"></a>地图4着色</h3>
+
+<p>
+下面两个例子是从
+<a href="http://www.ccs.neu.edu/home/dorai/t-y-scheme/t-y-scheme.html">Teach&#32;Yourself&#32;Scheme&#32;in&#32;Fixnum&#32;Days</a> 抄来的例子。实际上我就是从
+这本书里得知的 amb。
+
+</p>
+
+<p>
+这个程序解决了对欧洲地图的 4-着色。不是证明四色定理哈！
+
+</p>
+
+<p>
+用 amb 为每个国家选一个颜色，然后根据邻接矩阵判断是否有颜色
+冲突。就是这么简单。
+
+</p>
+
+<pre class="example">(define choose-color
+  (lambda ()
+    (amb 'red 'yellow 'blue 'white)))
+
+(define color-europe
+  (lambda ()
+
+    ;choose colors for each country
+    (let ((p (choose-color)) ;Portugal
+          (e (choose-color)) ;Spain
+          (f (choose-color)) ;France
+          (b (choose-color)) ;Belgium
+          (h (choose-color)) ;Holland
+          (g (choose-color)) ;Germany
+          (l (choose-color)) ;Luxemb
+          (i (choose-color)) ;Italy
+          (s (choose-color)) ;Switz
+          (a (choose-color)) ;Austria
+          )
+
+      ;construct the adjacency list for
+      ;each country: the 1st element is
+      ;the name of the country; the 2nd
+      ;element is its color; the 3rd
+      ;element is the list of its
+      ;neighbors' colors
+      (let ((portugal
+             (list 'portugal p
+                   (list e)))
+            (spain
+             (list 'spain e
+                   (list f p)))
+            (france
+             (list 'france f
+                   (list e i s b g l)))
+            (belgium
+             (list 'belgium b
+                   (list f h l g)))
+            (holland
+             (list 'holland h
+                   (list b g)))
+            (germany
+             (list 'germany g
+                   (list f a s h b l)))
+            (luxembourg
+             (list 'luxembourg l
+                   (list f b g)))
+            (italy
+             (list 'italy i
+                   (list f a s)))
+            (switzerland
+             (list 'switzerland s
+                   (list f i a g)))
+            (austria
+             (list 'austria a
+                   (list i s g))))
+        (let ((countries
+               (list portugal spain
+                     france belgium
+                     holland germany
+                     luxembourg
+                     italy switzerland
+                     austria)))
+
+          ;the color of a country
+          ;should not be the color of
+          ;any of its neighbors
+          (for-each
+           (lambda (c)
+             (assert
+              (not (memq (cadr c)
+                         (caddr c)))))
+           countries)
+
+          ;output the color
+          ;assignment
+          (for-each
+           (lambda (c)
+             (display (car c))
+             (display &quot; &quot;)
+             (display (cadr c))
+             (newline))
+           countries))))))
+
+(color-europe)
+
+</pre>
+
+<p>
+得到第一个结果需要一些时间，以后每次按以下 (amb) 就显示另一
+个结果。如果你喜欢，可以把这些代码改一改然后用 bag-of 得到所
+有结果。嗯……大概有 2592 个吧…… 不过要有耐心哦！建议用
+scsh 来运行这个程序。
+
+</p>
+
+<h3><a name="logic" id="logic"></a>逻辑问题</h3>
+
+<p>
+这个问题来自 J A H Hunter 写的
+<a href="https://store.yahoo.com/doverpublications/0486233472.html">Mathematical&#32;Brain-Teasers</a>。
+
+</p>
+
+<p>
+有一个部落叫 Kalotan，这里的人有一个很奇怪的特点，那就是男性
+从来只说真话；女性从来不会连续说两句真话，也不会连续说两句假
+话。
+
+</p>
+
+<p>
+有一天，一个人类学家来到这个部落。遇到一对(异性)夫妇和他们的
+小孩 Kibi。人类学家问 Kibi：“你是男孩还是女孩？” 
+
+</p>
+
+<p>
+Kibi 说了一句 Kalotan 语。人类学家听不懂，于是转向 Kibi 的父
+母询问答案(他们会说英语)。于是其中一个(parent1)对他说：
+“Kibi 说他是男孩。” 另一个(parent2)对他说：“Kibi 是个女孩。
+Kibi 撒谎了。”
+
+</p>
+
+<p>
+请你判断 parent1, parent2 和 Kibi 各自的性别。
+
+</p>
+
+<p>
+如果写一个 Scheme 程序，不但立即就可以解决这个问题。还可以帮
+助我们分析这个问题。程序如下：
+
+</p>
+
+<pre class="example">(define (distinct? . ls)
+  (let loop ((lst (car ls)))
+    (let ((first (car lst)) (rest (cdr lst)))
+      (cond 
+       ((null? rest) #t)
+       ((member first rest) #f)
+       (else (loop rest))))))
+
+(define (xor a b)
+  (or (and a (not b))
+      (and b (not a))))
+
+(define solve-kalotan-puzzle
+  (lambda ()
+    (let ((parent1 (amb 'm 'f))
+          (parent2 (amb 'm 'f))
+          (kibi (amb 'm 'f))
+          (kibi-self-desc (amb 'm 'f))
+          (kibi-lied? (amb #t #f)))
+
+      ;; Parent1 and parant2 must have distinct sex. 
+      (assert
+       (distinct? (list parent1 parent2)))
+
+      ;; If kibi is a boy, then he will never tell a lie.
+      (assert
+       (if (eqv? kibi 'm)
+           (not kibi-lied?)))
+
+      (assert
+       (if kibi-lied?
+           (xor
+            (and (eqv? kibi-self-desc 'm)
+                 (eqv? kibi 'f))
+            (and (eqv? kibi-self-desc 'f)
+                 (eqv? kibi 'm)))))
+
+      (assert
+       (if (not kibi-lied?)
+           (xor
+            (and (eqv? kibi-self-desc 'm)
+                 (eqv? kibi 'm))
+            (and (eqv? kibi-self-desc 'f)
+                 (eqv? kibi 'f)))))
+
+      ;; If parent1 is male,
+      ;; parent1 told the truth,
+      ;; parent2 told a truth and a lie, 
+      ;; but we don't know which is the truth.
+      (assert
+       (if (eqv? parent1 'm)
+           (and
+            (eqv? kibi-self-desc 'm)    
+            (xor                        
+             (and (eqv? kibi 'f)
+                  (eqv? kibi-lied? #f))
+             (and (eqv? kibi 'm)
+                  (eqv? kibi-lied? #t))))))
+
+      ;; If parent1 is female, 
+      ;; we can't know whether parent1 told the truth,
+      ;; because he(she) said only one sentence,
+      ;; but parent2 must told us all truth.
+      (assert
+       (if (eqv? parent1 'f)
+           (and                         
+            (eqv? kibi 'f)
+            (eqv? kibi-lied? #t))))
+
+      ;; Output the results.
+      (newline)
+      (display &quot;Kibi said its sex is &quot;)
+      (display kibi-self-desc)
+      (display &quot;.\n&quot;)
+      (if kibi-lied?
+          (display &quot;Kibi lied.\n&quot;)
+          (display &quot;Kibi told the truth.\n&quot;))
+      (display &quot;The sex of parent1, parent2 and Kibi is: &quot;)
+      (display (list parent1 parent2 kibi))
+      (newline))))
+
+(solve-kalotan-puzzle)
+</pre>
+
+<p>
+我们用变量 parent1, parent2, kibi 分别表示三个人的
+性别。用 kibi-self-desc 表示 Kibi 自称的性别。用 kibi-lied?
+表示 Kibi 是否撒谎。
+
+</p>
+
+<p>
+这里有两个帮助函数 distinct? 和 xor。distinct? 可以判断一个
+list 里的元素是否没有重复。xor 是异或，当且仅当它只有一个参
+数为真时为真。
+
+</p>
+
+<p>
+其它的部分在程序里已经相当明了，不需要多解释了。
+
+</p>
+
+<p>
+执行
+
+</p>
+
+<pre class="example">(solve-kalotan-puzzle)
+</pre>
+
+<p>
+就能看到三个人的性别，和对另外一些事实的判断。如果你对这个结
+果的唯一性表示怀疑，可以用
+
+</p>
+
+<pre class="example">(bag-of (solve-kalotan-puzzle))
+</pre>
+
+<p>
+来看看是不是只有一个答案。
+
+</p>
+
+<h3><a name="optimization" id="optimization"></a>离散优化问题</h3>
+
+<p>
+我们可以另外定义两个宏，用来得到一个 amb 系统的最大值或者最
+小值：
+
+</p>
+
+<pre class="example">(define-syntax min-of
+  (syntax-rules ()
+    ((_ e cost)
+     (let ((prev-amb-fail amb-fail)
+           (results '()))
+       (if (call/cc
+            (lambda (k)
+              (set! amb-fail (lambda () (k #f)))
+              (let ((v e))
+                (cond ((null? results)
+                       (set! results (list v)))
+                      ((&lt; (cost v) (cost (car results)))
+                       (set! results (list v)))
+                      ((= (cost v) (cost (car results)))
+                       (if (not (member v results))
+                           (set! results (cons v results)))))
+                (k #t))))
+           (amb-fail))
+       (set! amb-fail prev-amb-fail)
+       (reverse! results)))))
+
+(define-syntax max-of
+  (syntax-rules ()
+    ((_ e cost)
+     (let ((prev-amb-fail amb-fail)
+           (results '()))
+       (if (call/cc
+            (lambda (k)
+              (set! amb-fail (lambda () (k #f)))
+              (let ((v e))
+                (cond ((null? results)
+                       (set! results (list v)))
+                      ((&gt; (cost v) (cost (car results)))
+                       (set! results (list v)))
+                      ((= (cost v) (cost (car results)))
+                       (if (not (member v results))
+                           (set! results (cons v results)))))
+                (k #t))))
+           (amb-fail))
+       (set! amb-fail prev-amb-fail)
+       (reverse! results)))))
+</pre>
+
+<p>
+min-of 和 max-of 都接受两个参数，一个是用来生成结果的表达式，
+和一个用来衡量结果费用的函数。它的返回值是一个list，里面是达
+到最小(最大)值的所有解。
+
+</p>
+
+<p>
+比如，我们可以这样用：
+
+</p>
+
+<pre class="example">(define (f1)
+  (* (amb 34 23 12 3 8 34 45 94 32 18)
+     (amb 3 8 42 45 64 47 68 19 10 2)))
+
+(min-of (f1) (lambda (x) x))
+</pre>
+
+<p>
+这样我们就可以求得 f1 里的两个 amb 可能的最小乘积。
+
+</p>
+
+<p>
+这两个函数可以作为通用的离散优化函数。比如我们可以用 max-of
+来解决装箱问题(bin-pack).
+
+</p>
+
+<pre class="example">(define (bin-pack objs volume)
+  (let pack ((in-bag '())
+             (out-of objs))
+    (call/cc 
+     (lambda (return)
+       (let ((next (apply-amb out-of)))
+         (if (&lt;= (apply + (cons next in-bag)) volume)
+             (begin
+             (pack (cons next in-bag) (del next out-of)))
+             (return in-bag)))))))
+</pre>
+
+<p>
+我们的帮助函数 del 是用来从一个 list 里去掉一个元素的。
+
+</p>
+
+<p>
+bin-pack 接受两个参数，第一个是一些物体的重量，第二个是我们
+的箱子(行包)的容积。
+
+</p>
+
+<p>
+每次运行就会得到一个不超过容积的解，比如：
+
+</p>
+
+<pre class="example">(bin-pack (list 48 102 180 23 3 45 201 19 29 34 55 82 24) 300)
+</pre>
+
+<p>
+就会得到 (102 48).
+
+</p>
+
+<p>
+我们可以用 max-of 得到最大可能的装箱： 
+
+</p>
+
+<pre class="example">(max-of (bin-pack (list 48 102 180 23 3 45 201 19 29 34 55 82 24) 300)
+        (lambda (l) (apply + l)))
+</pre>
+
+<p>
+结果是 ((55 19 45 3 23 102 48)). 总重 295.
+
+</p>
+
+<!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-06-13</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="SchemeAmb.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  </body>
+</html>

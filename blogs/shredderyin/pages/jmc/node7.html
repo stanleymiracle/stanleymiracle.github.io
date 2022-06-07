@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Ambiguous Functions</TITLE>
+<META NAME="description" CONTENT="Ambiguous Functions">
+<META NAME="keywords" CONTENT="basis1">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="basis1.css">
+</HEAD>
+<BODY LANG="EN">
+ <A NAME="tex2html96" HREF="node8.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="next.png"></A> <A NAME="tex2html94" HREF="node2.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="up.png"></A> <A NAME="tex2html88" HREF="node6.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="prev.png"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html97" HREF="node8.html">Recursive Definitions of Sets</A>
+<B>Up:</B> <A NAME="tex2html95" HREF="node2.html">Formalisms For Describing Computable </A>
+<B> Previous:</B> <A NAME="tex2html89" HREF="node6.html">Non-Computable Functions and Functionals</A>
+<BR> <P>
+<H2><A NAME="SECTION00025000000000000000">Ambiguous Functions</A></H2>
+<P>
+<A NAME="secambig">&#160;</A>
+<P>
+Ambiguous functions are not really
+functions. For each prescription of values to the arguments the
+ambiguous function has a collection of possible values. An example of
+an ambiguous function is <I>less</I>(<I>n</I>) defined for all positive integer
+values of <I>n</I>. Every non-negative integer less than <I>n</I> is a possible
+value of <I>less</I>(<I>n</I>). First we define a basic ambiguity operator <I>amb</I>(<I>x</I>,<I>y</I>)
+whose possible values are <I>x</I> and <I>y</I> when both are defined: otherwise,
+whichever is defined. Now we can define <I>less</I>(<I>n</I>) by
+<P>
+<P> <IMG WIDTH=395 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1137" SRC="img128.gif"  > <P>
+<P>
+<I>less</I>(<I>n</I>) has the property that if we define
+<P>
+<P> <IMG WIDTH=416 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1141" SRC="img129.gif"  > <P>
+<P>
+then
+<P> <IMG WIDTH=347 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1143" SRC="img130.gif"  > <P>
+<P>
+        There are a number of important kinds of mathematical arguments whose
+convenient formalization may involve ambiguous functions. In order to give
+an example, we need two definitions.
+<P>
+        If <I>f</I> and <I>g</I> are two ambiguous functions, we shall say that
+<I>f</I> is a <I>descendant</I> of <I>g</I> if for each <I>x</I> every possible value of
+<I>f</I>(<I>x</I>) is also a possible value of <I>g</I>(<I>x</I>).
+<P>
+        Secondly, we shall say that a property of ambiguous functions
+is <I>hereditary</I> if whenever it is possessed by a function <I>g</I> it is
+also possessed by all descendants of <I>g</I>. The property that iteration
+of an integer valued function eventually gives 0 is hereditary, and
+the function <I>less</I> has this property. So, therefore, do all its
+descendants. Therefore any integer-function <I>g</I> satisfying <I>g</I>(0) = 0
+and  <IMG WIDTH=146 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1173" SRC="img131.gif"  >  has the property that  <IMG WIDTH=298 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1175" SRC="img132.gif"  >  is identically 0 since <I>g</I> is a
+descendant of <I>less</I>. Thus any function, however complicated, which
+always reduces a number will if iterated sufficiently always give 0.
+<P>
+        This example is one of our reasons for hoping that ambiguous
+functions will turn out to be useful.
+<P>
+        With just the operation <I>amb</I> defined above adjoined to those
+used to generate  <IMG WIDTH=48 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline551" SRC="img13.gif"  > , we can extend  <IMG WIDTH=14 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline491" SRC="img1.gif"  >  to the class
+ <IMG WIDTH=56 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline1187" SRC="img133.gif"  >  which may be called the <EM>computably ambiguous
+functions</EM>. A wider class of ambiguous functions is formed using the
+operator  <IMG WIDTH=103 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1189" SRC="img134.gif"  >  whose values are all <I>x</I>'s satisfying  <IMG WIDTH=41 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1193" SRC="img135.gif"  > <BR>
+<P>
+<HR><A NAME="tex2html96" HREF="node8.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="next.png"></A> <A NAME="tex2html94" HREF="node2.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="up.png"></A> <A NAME="tex2html88" HREF="node6.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="prev.png"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html97" HREF="node8.html">Recursive Definitions of Sets</A>
+<B>Up:</B> <A NAME="tex2html95" HREF="node2.html">Formalisms For Describing Computable </A>
+<B> Previous:</B> <A NAME="tex2html89" HREF="node6.html">Non-Computable Functions and Functionals</A>
+<P><ADDRESS>
+<I>John McCarthy <BR>
+Wed May  1 20:03:21 PDT 1996</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>Chinese Number</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>Chinese Number</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+<p>
+我帮助 Dorai Sitaram 修改 tex2page 的时候写了一个函数。可以
+把 1e16 以内的整数转换成中文字符串。
+
+</p>
+
+<p>
+比如:
+
+</p>
+
+<pre class="example">(display (chinese-number 430340300))
+</pre>
+
+<p>
+将输出结果：
+
+</p>
+
+<pre class="example">四亿三千零三十四万零三百
+</pre>
+
+<p>
+当然从来没有人想用中文数字写出这样的数字。我写这个函数只是为
+了好玩。
+
+</p>
+
+<p>
+下面是这个函数:
+
+</p>
+
+<pre class="example">(define (chinese-number n)
+  (let* ((digits '(&quot;零&quot; &quot;一&quot; &quot;二&quot; &quot;三&quot; &quot;四&quot; &quot;五&quot; &quot;六&quot; &quot;七&quot; &quot;八&quot; &quot;九&quot;))
+         (logs (reverse (list 10000 1000 100 10 1)))
+         (names (reverse (list &quot;万&quot; &quot;千&quot; &quot;百&quot; &quot;十&quot; &quot;&quot;)))
+         (ret &quot;&quot;)
+         (zeronum #f)
+         (guowan 0)
+         (allzero #t))
+    (let loop ((t 0))
+
+      (let* ((q (quotient n (list-ref logs t)))
+             (r (modulo q 10)))
+
+;        (for-each display `(&quot;digit: &quot; , t &quot;quotient: &quot; ,r &quot;, name&quot; ,(list-ref names t)))(newline)
+        (when (&gt; q 0)
+
+          (set! ret (string-append
+                     (cond ((and        ;末位的零
+                             (= r 0) 
+                             (string=? (list-ref names t) &quot;&quot;))
+                            (set! zeronum #t)
+                            &quot;&quot;)
+                           ((and (&lt; q 10) ;&quot;一十&quot; 的 &quot;一&quot; 不显示
+                                 (= r 1)  ;但是 &quot;一百一十&quot; 的 &quot;一&quot; 要显示
+                                 (string=? (list-ref names t) &quot;十&quot;))
+                            (set! allzero #f)
+                            &quot;&quot;)
+                           ((and (= r 0) ;&quot;零万&quot;
+                                 (member (list-ref names t) '(&quot;万&quot;)))
+                            (set! zeronum #t)
+                            &quot;&quot;)
+                           ((and (= r 0) ;&quot;零十&quot;
+                                 zeronum
+                                 (member (list-ref names t) '(&quot;十&quot;)))
+                            (set! zeronum #t)
+                            &quot;&quot;)
+                           ((and (= r 0)
+                                 zeronum) ;连续的 &quot;零&quot; 只显示一个
+                            (set! zeronum #t)
+                            &quot;&quot;)
+                           (else
+                            (if (= r 0)
+                                
+                                  (set! zeronum #t)
+                                  (begin  
+                                    (set! allzero #f)
+                                    (set! zeronum #f)))
+                            (list-ref digits r)))
+                     (if (or (&gt; r 0) (string=? (list-ref names t) &quot;万&quot;))
+                         (if (string=? (list-ref names t) &quot;万&quot;)
+                             (begin 
+                               (set! guowan (+ 1 guowan))
+                               (if (even? guowan) &quot;亿&quot; &quot;万&quot;))
+                             (list-ref names t))
+                             &quot;&quot;)
+                     ret))
+          (when (string=? (list-ref names t) &quot;万&quot;)
+            (set! n q)
+            (set! t 0))
+          (loop (+ t 1)))))
+    (if allzero (set! ret &quot;零&quot;))
+    (set! ret (regexp-replace* (regexp &quot;亿万&quot;) ret &quot;亿&quot;))
+    ret))
+</pre>
+
+<!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-06-13</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="ChineseNumber.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  </body>
+</html>

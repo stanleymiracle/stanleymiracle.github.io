@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>Syntax Definitions</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>Syntax Definitions</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+<p>
+这里讨论几种 Scheme 可以使用的语法定义方式。
+
+</p>
+
+<h2>syntax-rules()</h2>
+
+<p>
+这是 Revised 5 Report on the Algorithmic Language Scheme
+(R5RS) 里的一种“干净”(hygienic) 的宏定义方式。这种方式的思
+想请参考
+<a href="https://www.acm.org/pubs/citations/proceedings/lfp/62678/p86-bawden/">Alan&#32;Bawden&#32;and&#32;Jonathan&#32;Rees.&#32;&#34;Syntactic&#32;closures&#34;.&#32;Proceedings&#32;of&#32;the&#32;1988&#32;ACM&#32;Conference&#32;on&#32;Lisp&#32;and&#32;Functional&#32;Programming.&#32;July&#32;1988</a>.
+
+</p>
+
+<p>
+我们的 coroutine 宏如果用 syntax-rules 定义，看起来要舒服一
+些，因为它可以使用一种很直观的“省略号”方式表示可变的参数。
+
+</p>
+
+<pre class="example">(define-syntax coroutine
+  (syntax-rules ()
+    ((coroutine arg resume body ...)
+     (letrec ((local-control-state
+               (lambda (arg) body ...))
+              (resume
+               (lambda (c v)
+                 (call/cc
+                  (lambda (k)
+                    (set! local-control-state k)
+                    (c v))))))
+       (lambda (v)
+         (local-control-state v))))))
+</pre>
+
+<p>
+我们看到在这个 coroutine 的定义里，我们故意把 resume 放到了 
+coroutine 宏的参数列表中。以后调用这个宏，我们必须使用一个
+符号作为第二个参数。就像这样：
+
+</p>
+
+<pre class="example">(letrec ((timer (coroutine dummy resume
+                           (let loop ((tick 0))
+                             (resume controller tick)
+                             (loop (+ tick 1)))))
+
+         (controller (coroutine c resume
+                                (let loop ((count 0))
+                                  (if (&lt; count c)
+                                      (begin
+                                        (display (resume timer 'go))
+                                        (loop (+ 1 count))))))))
+  (controller 6)
+  )
+</pre>
+
+<p>
+这样我们实际上实在把一个名字 resume 交给 coroutine 宏，让它
+把这个名字绑定到一个函数，然后我们调用这个函数，所以调用时，
+我们可以随意换名字。比如我们用 go-on 也是一样的效果：
+
+</p>
+
+<pre class="example">(letrec ((timer (coroutine dummy go-on
+                           (let loop ((tick 0))
+                             (go-on controller tick)
+                             (loop (+ tick 1)))))
+
+         (controller (coroutine c go-on
+                                (let loop ((count 0))
+                                  (if (&lt; count c)
+                                      (begin
+                                        (display (go-on timer 'go))
+                                        (loop (+ 1 count))))))))
+  (controller 6)
+  )
+</pre>
+
+<h2><a name="syntaxcase" id="syntaxcase"></a>syntax-case</h2>
+
+<p>
+这种结构是由 Dybvig, Hieb, 和 Bruggeman 提出的，请参考 
+<a href="http://www.cs.indiana.edu/~dyb/papers/syntactic.ps.gz">&#34;Syntactic&#32;abstraction&#32;in&#32;Scheme&#34;&#44;&#32;Lisp&#32;and&#32;Symbolic&#32;Computation&#44;&#32;December&#32;1993</a>.
+
+</p>
+
+<p>
+它把 syntax 作为一个语法结构，就像一个函数那样。在展开的时候，
+它可以利用展开时刻的环境，对某些符号进行绑定和处理。
+
+</p>
+
+<p>
+这样，我们的 coroutine 宏就可以利用 syntax-case 的威力得到一
+个简洁的定义了：
+
+</p>
+
+<pre class="example">(define-syntax (coroutine stx)
+  (syntax-case stx ()
+    [(src-coroutine arg body ...)
+     (with-syntax ((resume (datum-&gt;syntax-object 
+                          (syntax src-coroutine) 'resume)))
+       (syntax (letrec
+                   ((local-control-state
+                     (lambda (arg) body ...))
+                    (resume
+                     (lambda (c v)
+                       (call/cc
+                        (lambda (k)
+                          (set! local-control-state k)
+                          (c v))))))
+                 (lambda (v)
+                   (local-control-state v)))))]))
+</pre>
+
+<p>
+这样调用：
+
+</p>
+
+<pre class="example">(letrec ((timer (coroutine dummy
+                            (let loop ((tick 0))
+                              (begin 
+                                (if (&gt; tick 5)
+                                    (set! tick 5))
+                                (resume controller tick))
+                              (loop (+ tick 1)))))
+
+         (controller (coroutine c
+                                (let loop ((count 0))
+                                  (if (&lt; count c)
+                                      (begin
+                                        (display (resume timer 'go))
+                                        (loop (+ 1 count))))))))
+  (controller 10)
+)
+</pre>
+
+<p>
+就能得到正确结果。
+
+</p>
+
+<p>
+调用时，你不必为 "resume" 指定一个名字。syntax-case 的分析请
+见 <a href="SyntaxCaseExamples.html">SyntaxCaseExamples</a>.
+
+</p>
+
+<p>
+这种方式必须显示绑定一个宏里的符号，其它符号仍然是“干净的”
+闭包起来了的。由于 syntax-case 可以在宏的输入符号和输出之间
+架起桥梁，而且是“干净”的，也可以“不干净”。所以用法非常灵
+活。很多 Scheme 解释器都支持这个方式。如果不支持，可以到
+
+</p>
+
+<p>
+<a href="ftp://ftp.cs.indiana.edu/pub/scheme-repository/code">ftp://ftp.cs.indiana.edu/pub/scheme-repository/code</a> 
+
+</p>
+
+<p>
+下载一个可移植的 syntax-case 实现。
+
+</p>
+
+<h2>defmacro</h2>
+
+<p>
+这种方式就是字面上的替换，跟 TeX, cpp 差不多。这种方式对于简
+单的宏是很有用的特别是那种我们在 <a href="CoroutineProblem.html">CoroutineProblem</a> 里提到的 
+coroutine 宏的定义中，我们需要让展开时的输入捕获宏定义时的符
+号绑定。
+
+</p>
+
+<pre class="example">(require (lib &quot;defmacro.ss&quot;))
+(define-macro coroutine
+  (lambda (x . body)
+    `(letrec ((+local-control-state
+               (lambda (,x) ,@body))
+              (resume
+               (lambda (c v)
+                 (call/cc
+                  (lambda (k)
+                    (set! +local-control-state k)
+                    (c v))))))
+       (lambda (v)
+         (+local-control-state v)))))
+
+</pre>
+
+<p>
+调用方法跟 syntax-case 的一样。
+
+</p>
+
+<p>
+可是这种方式不小心就会导致名字冲突，而且替换以后的符号不一定
+附和语法规则。最要命的弱点就是替换后的文本和源程序没有任何关
+联，调试程序的时候看到一大堆展开的代码不知道自己到底怎么写的
+了。
+
+</p>
+
+<!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-06-09</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="SyntaxDefinitions.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  </body>
+</html>

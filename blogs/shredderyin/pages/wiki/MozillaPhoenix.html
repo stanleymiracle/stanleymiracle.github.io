@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>Mozilla & Phoenix</title>
+    <meta name="generator" content="emacs-wiki.el">
+    <meta http-equiv="Content-Type"
+	  content="text/html; charset=gb2312">
+    <link rev="made" href="mailto:webmaster@wangyin.com">
+    <link rel="home" href="WelcomePage.html">
+    <link rel="index" href="WikiIndex.html">
+    <LINK rel="stylesheet" href="../main.css" media="screen">
+  </head>
+  <body>
+    <h1>Mozilla & Phoenix</h1>
+    <!-- Page published by Emacs Wiki begins here -->
+
+
+
+
+
+
+<p>
+这里的 Mozilla 就是指所有类似 Mozilla 的浏览器，不管是
+Mozilla, Phoenix, 还是 Firebird ……
+
+</p>
+
+<h3>Java plugin 的安装注意事项。</h3>
+
+<blockquote>
+<p>
+   很多人安了 Java plugin 之后都会 crash，原因是它们把那个
+   libjavaplugin_oji.so 直接拷贝到了 Mozilla 的 plugin 目录。
+   应该做一个符号连接才行！
+
+</p>
+</blockquote>
+
+<h3>Mozilla  如何嵌入的显示 PDF?</h3>
+
+<blockquote>
+<p>
+  把 Acrobat Reader 的 nppdf.so 拷贝到 Mozilla 的 plugins 目
+  录就行了。nppdf.so 一般在 Acrobat Reader 目录的 
+  Browsers/intellinux/ 目录下。
+
+</p>
+</blockquote>
+
+<h3>装了 nppdf， 但是还是显示不了 PDF 文件。</h3>
+
+<p>
+   这个原因很有可能是你的 ~/.Xdefaults 文件里有这么一行：
+
+</p>
+
+<pre class="example">*.preeditType: OverTheSpot
+</pre>
+
+<p>
+这个 * 匹配了所有的程序，所以 Acrobat reader 的 plugin 不接
+受这个输入模式的话就会出错。
+
+</p>
+
+<h3>如何嵌入显示 PS, dvi 文档？</h3>
+
+<p>
+  plugger，四海一家的解决方案。看看它嵌入显示的 
+<a href="../images/phoenix-ps.png">gv</a> 和 
+<a href="../images/phoenix-dvi.png">dvi</a>。
+
+</p>
+
+<h3>Mozilla 安装的 extension 放到哪里去了？</h3>
+
+<p>
+一般在 ~/.mozilla/.../chrome 下。有一个文件叫
+installed-chrome.txt 记录了安装的东西的信息。比如以下几行：
+
+</p>
+
+<pre class="example">content,install,url,jar:resource:/chrome/spade.jar!/content/spade/
+content,install,url,jar:resource:/chrome/adblock.jar!/content/
+content,install,url,jar:resource:/chrome/aggreg8.jar!/content/
+</pre>
+
+<p>
+就是告诉 Mozilla 安装了 spade, 在 spade.jar 文件里。
+
+</p>
+
+<h3>怎样使 Emacs browse-url 在 Mozilla 打开新的 tab?</h3>
+
+<p>
+请参考 <a href="BrowseUrlPhoenix.html">BrowseUrlPhoenix</a>.
+</p><!-- Page published by Emacs Wiki ends here -->
+    <div class="navfoot">
+    <hr>
+      <table width="100%" border="0" summary="Footer navigation">
+	<tr>
+	  <td width="33%" align="left">
+	    <span class="footdate">最后更新：2003-05-23</span>
+	  </td>
+	  <td width="60%" align="center">
+	    <span class="foothome">
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="MozillaPhoenix.html" target=_parent>取消框架</a>
+	    </span>
+	  </td>
+	  <td width="33%" align="right">
+	    
+	  </td>
+	</tr>
+      </table>
+    </div>
+
+
+  </body>
+</html>

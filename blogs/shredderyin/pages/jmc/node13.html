@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Recursive function theory</TITLE>
+<META NAME="description" CONTENT="Recursive function theory">
+<META NAME="keywords" CONTENT="basis1">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="basis1.css">
+</HEAD>
+<BODY LANG="EN">
+ <A NAME="tex2html156" HREF="node14.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="next.png"></A> <A NAME="tex2html154" HREF="node12.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="up.png"></A> <A NAME="tex2html148" HREF="node12.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="prev.png"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html157" HREF="node14.html">On the Relations between </A>
+<B>Up:</B> <A NAME="tex2html155" HREF="node12.html">Relation to Other Formalisms</A>
+<B> Previous:</B> <A NAME="tex2html149" HREF="node12.html">Relation to Other Formalisms</A>
+<BR> <P>
+<H2><A NAME="SECTION00041000000000000000">Recursive function theory</A></H2>
+<P>
+<A NAME="recursivefns">&#160;</A>
+<P>
+Our characterization of
+ <IMG WIDTH=48 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline551" SRC="img13.gif"  >  as the set of functions computable in terms of the
+base functions in  <IMG WIDTH=14 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline491" SRC="img1.gif"  >  cannot be independently verified in general
+since there is no other concept with which it can be
+compared. However, it is not hard to show that all partial recursive
+functions in the sense of Church and Kleene are in  <IMG WIDTH=102 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline1975" SRC="img314.gif"  >  In
+order to prove this we shall use the definition of partial recursive
+functions given by Davis [3]. If we modify definition 1.1 of page 41
+of Davis [3] to omit reference to oracles we have the following: A
+function is partial recursive if it can be obtained by a finite number
+of applications of composition and minimalization beginning with the
+functions on the following list:
+<P> <IMG WIDTH=500 HEIGHT=138 ALIGN=BOTTOM ALT="eqnarray414" SRC="img315.gif"  > <P>
+<P>
+All the above functions are in  <IMG WIDTH=101 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline1977" SRC="img316.gif"  >  Any  <IMG WIDTH=48 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline551" SRC="img13.gif"  >  is
+closed under composition so all that remains is to show that
+ <IMG WIDTH=96 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline1981" SRC="img317.gif"  >  is closed under the minimalization operation. This
+operation is defined as follows: The operation of minimalization
+associates with each total function  <IMG WIDTH=116 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1983" SRC="img318.gif"  >  the function
+ <IMG WIDTH=97 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1985" SRC="img319.gif"  >  whose value for given  <IMG WIDTH=68 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline641" SRC="img25.gif"  >  is the least <I>y</I>
+for which <IMG WIDTH=157 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1991" SRC="img320.gif"  >  and which is undefined if no such <I>y</I>
+exists. We have to show that if <I>f</I> is in  <IMG WIDTH=96 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline1981" SRC="img317.gif"  >  so is <I>h</I>. But
+<I>h</I> may be defined by
+<P>
+<P> <IMG WIDTH=374 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath2003" SRC="img321.gif"  > <P>
+<P>
+where
+<P>
+<P> <IMG WIDTH=560 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath2005" SRC="img322.gif"  > <P>
+<P>
+The converse statement that all functions in  <IMG WIDTH=96 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline1981" SRC="img317.gif"  >  are
+partial recursive is presumably also true but not quite so easy to
+prove.
+<P>
+It is our opinion that the recursive function formalism based
+on conditional expressions presented in this paper is better than the
+formalisms which have heretofore been used in recursive function
+theory both for practical and theoretical purposes. First of all,
+particular functions in which one may be interested are more easily
+written down and the resulting expressions are briefer and more
+understandable. This has been observed in the cases we have looked at,
+and there seems to be a fundamental reason why this is so. This is
+that both the original Church-Kleene formalism and the formalism using
+the minimalization operation use integer calculations to control the
+flow of the calculations. That this can be done is noteworthy, but
+controlling the flow in this way is less natural than using
+conditional expressions which control the flow directly.
+<P>
+A similar objection applies to basing the theory of computation on
+Turing machines. Turing machines are not conceptually different from
+the automatic computers in general use, but they are very poor in
+their control structure. Any programmer who has also had to write down
+Turing machines to compute functions will observe that one has to
+invent a few artifices and that constructing Turing machines is like
+programming. Of course, most of the theory of computability deals with
+questions which are not concerned with the particular ways
+computations are represented. It is sufficient that computable
+functions be represented somehow by symbolic expressions, e.g.
+numbers, and that functions computable in terms of given functions be
+somehow represented by expressions computable in terms of the
+expressions representing the original functions. However, a practical
+theory of computation must be applicable to particular algorithms. The
+same objection applies to basing a theory of computation on Markov's
+[9] normal algorithms as applies to basing it on properties of the
+integers; namely flow of control is described awkwardly.
+<P>
+The first attempt to give a formalism for describing computations that
+allows computations with entities from arbitrary spaces was made by A. P.
+Ershov [4]. However, his formalism uses computations with the symbolic
+expressions representing program steps, and this seems to be an unnecessary
+complication.
+<P>
+We now discuss the relation between our formalism and computer
+programming languages. The formalism has been used as the basis for the
+Lisp programming system for computing with symbolic expressions and has
+turned out to be quite practical for this kind of calculation. A particular
+advantage has been that it is easy to write recursive functions that transform
+programs, and this makes compilers and other program generators easy to
+write.
+<P>
+The relation between recursive functions and the description
+of flow control by flow charts is described in Reference 7. An ALGOL
+program can be described by a recursive function provided we lump all
+the variables into a single state vector having all the variables as
+components. If the number of components is large and most of the
+operations performed involve only a few of them, it is necessary to
+have separate names for the components. This means that a programming
+language should include both recursive function definitions and
+ALGOL-like statements. However, a theory of computation certainly must
+have techniques for proving algorithms equivalent, and so far it has
+seemed easier to develop proof techniques like recursion induction for
+recursive functions than for ALGOL-like programs.<BR>
+<P>
+<HR><A NAME="tex2html156" HREF="node14.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="next.png"></A> <A NAME="tex2html154" HREF="node12.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="up.png"></A> <A NAME="tex2html148" HREF="node12.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="prev.png"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html157" HREF="node14.html">On the Relations between </A>
+<B>Up:</B> <A NAME="tex2html155" HREF="node12.html">Relation to Other Formalisms</A>
+<B> Previous:</B> <A NAME="tex2html149" HREF="node12.html">Relation to Other Formalisms</A>
+<P><ADDRESS>
+<I>John McCarthy <BR>
+Wed May  1 20:03:21 PDT 1996</I>
+</ADDRESS>
+</BODY>
+</HTML>

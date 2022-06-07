@@ -1,0 +1,479 @@
+<html><!--XSLT stylesheet used to transform this file:  dw-document-html-2.1.xsl--><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Common threads: Sed by example, Part 3</title><meta content="In this conclusion of the sed series, Daniel Robbins gives you a true taste of the power of sed.  After introducing a handful of essential sed scripts, he'll demonstrate some radical sed scripting by converting a Quicken .QIF file into a text-readable format.  This conversion script is not only functional, it also serves as an excellent example of sed scripting power." name="ABSTRACT"><meta content="In this conclusion of the sed series, Daniel Robbins gives you a true taste of the power of sed.  After introducing a handful of essential sed scripts, he'll demonstrate some radical sed scripting by converting a Quicken .QIF file into a text-readable format.  This conversion script is not only functional, it also serves as an excellent example of sed scripting power." name="DESCRIPTION"><meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"><meta content="Common threads: Sed by example, Part 3" name="TITLE"><meta content="http://www.ibm.com/developerworks/feedback" name="OWNER"><meta content="Public" name="SECURITY"><meta content="text/xhtml" name="FORMAT"><meta content="Copyright (c) 2000 by IBM Corporation" name="COPYRIGHT"><meta content="index,follow" name="ROBOTS"><meta content="zz" name="IBM.COUNTRY"><meta content="en-us" name="DC.Language" scheme="rfc1766"><meta content="2000-November-" name="DC.Date" scheme="iso8601"><meta content="us" name="DOCUMENTCOUNTRYCODE"><meta content="en" name="DOCUMENTLANGUAGECODE"><meta content="UNIX stream editor, sed scripts, sed scripting, sed, regular expressions" name="KEYWORDS"><meta content="linux tutorials, linux training, linux standards, linux code, linux resources, linux programming, open source standards, linux how to" name="KEYWORDS"><meta content="20001115" name="LAST UPDATED"><meta content="David Carlson" name="LAST UPDATED BY">
+ 
+ <meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.rsac.org/ratingsv01.html" l gen true comment "RSACi North America Server" by "webmaster@mail.software.ibm.com" for "http://www.ibm.com/software" on "1997.08.13T17:59-0800" r (n 0 s 0 v 0 l 0))'/>
+ 
+ <meta content="0" http-equiv="Expires"><script src="style.js" language="JavaScript" type="text/javascript"></script><script src="spinbox.js" language="JavaScript" type="text/javascript"></script><script language="JavaScript" type="text/javascript">var title = "Common threads: Sed by example, Part 3"; </script><script language="JavaScript" type="text/javascript">var forumURL = ""; </script><script language="JavaScript" type="text/javascript">var zoneList = "linux"; </script><script src="forumwindow.js" language="JavaScript" type="text/javascript"></script><script language="JavaScript" type="text/javascript">var emailAbstract = "In this conclusion of the sed series, Daniel Robbins gives you a true taste of the power of sed.  After introducing a handful of essential sed scripts, he'll demonstrate some radical sed scripting by converting a Quicken .QIF file into a text-readable format.  This conversion script is not only functional, it also serves as an excellent example of sed scripting power."; </script><script SRC="grabtitle.js" language="JavaScript" type="text/javascript"></script><script SRC="emailfriend2.js" language="JavaScript" type="text/javascript"></script><script language="JavaScript" type="text/javascript">var demoURL = ""; </script><script SRC="demowindow.js" language="JavaScript" type="text/javascript"></script></head><body leftmargin="2" topmargin="2" marginwidth="2" marginheight="2" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0"> 
+<tr>
+<td width="160" class="tbgc"><a href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/&origin=dwheader"><img 
+src="ibm-logo.gif" border="0" alt="IBM" 
+width="160" height="47"/></a></td>
+<td width="90" class="tbgdw"><a 
+href="l-sed3.html#main"><img src="c.gif" border="0" width="70" 
+height="1" alt="Skip to main content"/></a></td>
+
+<td width="100%" class="tbgc" 
+align="right" valign="top">
+<table border="0" cellpadding="0" cellspacing="0"> 
+<form method="get" action="http://www-106.ibm.com/search/searchResults.jsp" id="form1" name="form1"><input type="hidden" name="searchType" value="1">
+<input type="hidden" name="searchSite" value="dW">
+ 
+<tr><td colspan="7"><img src="c.gif" 
+border="0" width="390" height="4" alt="" /></td></tr>
+
+<tr valign="middle" nowrap>
+<td class="dwsearch24"><b>Search for:</b>&nbsp;</td>
+<td><input type=text class="dwsearch" name="query" height=15 size=18 maxlength=100/></font></td>
+<td class="dwsearch24">&nbsp;<b>within</b>&nbsp;</td>
+<td class="dwsearch"><select name="searchScope" class="dwsearch"> 
+<option value="dW">All of dW</option>
+<option value="gridZ">&nbsp;Grid computing</option>
+<option value="javaZ">&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;Linux</option> 
+<option value="opensrcZ">&nbsp;Open source</option>
+<option value="securityZ">&nbsp;Security</option>
+<option value="webarchZ">&nbsp;Web arch.</option>  
+<option value="webservZ">&nbsp;Web services</option> 
+<option value="wirelessZ">&nbsp;Wireless</option> 
+<option value="xmlZ">&nbsp;XML</option>
+<option value="dW">.................</option>
+<option value="forum">&nbsp;dW forums</option>  
+<option value="dW">.................</option>
+<option value="dW">Product domains:</option>
+<option value="ibmofferZ">&nbsp;IBM developer</option> 
+<option value="ibmofferZ">&nbsp;&nbsp;&nbsp;solutions</option>
+<option value="db2">&nbsp;DB2</option>
+<option value="WSDD">&nbsp;WebSphere</option>
+<option value="WSDD">&nbsp;&nbsp;&nbsp;(WSDD)</option> 
+<option value="dW">.................</option> 
+<option value="aW">alphaWorks</option>
+<option value="dW">.................</option> 
+<option value="all">All of IBM</option> 
+</select></td>
+
+<td><img src="c.gif" border="0" width="5" height="1" alt="" /></td>
+<td><input type="image" src="http://www.ibm.com/i/v11/m/en/search.gif" width="64" height="23" border="0" value="Search" name="Search" alt="Search button"/></td>
+<td valign="top"><img src="c.gif" border="0" width="10" height="1" alt="" /></td></tr>
+
+<tr valign="top">
+<td>&nbsp;</td>
+<td class="dwsmallwh">Use only + - (&nbsp;) "&nbsp;"<img src="c.gif" border="0" width="1" height="1" alt="" /></td>
+<td>&nbsp;</td><td class="dwsmall"><a href="http://www-106.ibm.com/developerworks/search/help-dw.html" style="color: #ffffff;" target="_blank">Search help</a><img src="c.gif" border="0" width="1" height="1" alt="" /></td>
+<td colspan="4">&nbsp;</td>
+</tr>
+
+<tr><td colspan="8"><img src="c.gif" 
+border="0" width="390" height="4" alt="" /></td></tr>
+</table>
+
+</td></tr></form>
+
+<tr><td width="160" height="21" class="hbg">&nbsp;</td><td colspan="2" height="21" valign="top" class="bbg">&nbsp;&nbsp;&nbsp;<a class="mainlink" 
+href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/&origin=dwheader">IBM home</a><span class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a class="mainlink" href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/products/&origin=dwheader">Products &amp; services</a><span 
+class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a class="mainlink" 
+href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/support/">Support &amp; downloads</a> <span 
+class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a class="mainlink" 
+href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/account/&origin=dwheader">My account</a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr class="hil"><td height="1" width="100%"><img alt="" height="1" width="600" src="c.gif"></td></tr><tr class="dwr1"><td height="2" width="100%"><img alt="" height="2" width="600" src="c.gif"></td></tr><tr class="dwg3"><td height="1" width="100%"><img alt="" height="1" width="600" src="c.gif"></td></tr><tr class="bbg"><td height="1" width="100%"><img alt="" height="1" width="600" src="c.gif"></td></tr><tr class="hil"><td height="1" width="100%"><img alt="" height="1" width="600" src="c.gif"></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="5"><img alt="" border="0" height="1" width="5" src="c.gif"></td><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><img alt="" border="0" height="4" width="2" src="c.gif"><br><a href="http://www-106.ibm.com/developerworks/" class="dwbctl">IBM developerWorks</a>  &gt;  
+        <a href="http://www-106.ibm.com/developerworks/linux/" class="dwbctl">Linux</a></td><td align="right" width="136"><a href="http://www-106.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="24" width="136" src="dwlogo-small.gif"></a></td><td width="5"><img alt="" border="0" height="1" width="5" src="c.gif"></td></tr></table></td></tr></table><a name="main"></a><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td colspan="5"><img alt="" border="0" height="15" width="5" src="c.gif"></td></tr><tr valign="top"><td width="2"><img alt="" border="0" height="1" width="2" src="c.gif"></td><td><span class="astitle">Common threads: </span><span class="atitle">Sed by example, Part 3</span></td><td width="8"><img alt="" border="0" height="1" width="8" src="c.gif"></td><td align="right" width="180"><img alt="" border="0" height="1" width="180" src="c.gif"><br><nobr><a href="ftp://www6.software.ibm.com/software/developer/library/l-sed3.pdf"><img alt="" border="0" height="26" width="35" src="icon-pdf.gif"></a><a href="javascript:void%20newWindow()"><img alt="e-mail it!" border="0" height="26" width="46" src="icon-email.gif"></a></nobr></td><td width="6"><img alt="" border="0" height="1" width="6" src="c.gif"></td></tr><tr valign="top"><td bgcolor="#000000" colspan="5"><img alt="" border="0" height="1" width="100" src="c.gif"></td></tr><tr valign="top"><td bgcolor="#FFFFFF" colspan="5"><img alt="" border="0" height="8" width="100" src="c.gif"></td></tr></table><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="top"><td width="5"><img alt="" border="0" height="1" width="5" src="c.gif"></td><td width="100%"><table cellpadding="0" cellspacing="0" border="0" align="right" width="168"><tr><td width="8"><img alt="" height="21" width="5" src="c.gif"></td><td width="160"><table cellpadding="0" cellspacing="0" border="0" width="160"><tr><td width="160" height="1" bgcolor="#000000"><img alt="" height="1" width="160" src="c.gif"></td></tr><tr><td align="center" background="bg-gold.gif" height="5"><b>Contents:</b></td></tr><tr><td width="160" height="1" bgcolor="#666666"><img alt="" height="1" width="160" src="c.gif"></td></tr><tr><td><table cellpadding="0" cellspacing="0" border="0" width="160"><tr><td><a href="l-sed3.html#h0">Muscular sed</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed3.html#h1">Text translation</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed3.html#h2">Reversing lines</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed3.html#h3">Reversal explained</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed3.html#h4">sed QIF magic</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed3.html#h5">A tale of two formats</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed3.html#h6">Starting the process</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed3.html#h7">Refinement</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed3.html#h8">Finishing touches</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed3.html#h9">Don't get confuSed</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><!--Standard links for every dw-article--><tr><td><a href="l-sed3.html#resources">Resources</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed3.html#author1">About the author</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="l-sed3.html#rating">Rate this article</a></td></tr><tr><td><img alt="" height="10" width="160" src="c.gif"></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" border="0" width="160"><tr><td width="160" height="1" bgcolor="#000000"><img alt="" height="1" width="160" src="c.gif"></td></tr><tr><td align="center" background="bg-gold.gif" height="5"><b>Related content:</b></td></tr><tr><td width="160" height="1" bgcolor="#666666"><img alt="" height="1" width="160" src="c.gif"></td></tr><tr><td><table cellpadding="0" cellspacing="0" border="0" width="160"><tr><td><a href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=www-106.ibm.com/developerworks/newsletter/&origin=dw-article">Subscribe to the developerWorks newsletter</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="http://www-106.ibm.com/developerworks/toolbox/">developerWorks Toolbox subscription</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr></table></td><td><!--Related Zone content--><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><!--Related Zone Navigation content--><tr><td><table cellpadding="0" cellspacing="0" border="0" width="160"><tr><td width="160" height="1" bgcolor="#000000"><img alt="" height="1" width="160" src="c.gif"></td></tr><tr><td align="center" background="bg-gold.gif" height="5"><a href="http://www-106.ibm.com/developerworks/linux/" class="nav"><b>Also in the Linux zone:</b></a></td></tr><tr><td width="160" height="1" bgcolor="#666666"><img alt="" height="1" width="160" src="c.gif"></td></tr><tr><td><table cellpadding="0" cellspacing="0" border="0" width="160"><tr><td><a href="http://www-106.ibm.com/developerworks/views/linux/tutorials.jsp">Tutorials</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="http://www-106.ibm.com/developerworks/views/linux/tools.jsp">Tools and products</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="http://www-106.ibm.com/developerworks/views/linux/code.jsp">Code and components</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr><tr><td><a href="http://www-106.ibm.com/developerworks/views/linux/articles.jsp">Articles</a></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr></table></td></tr></table></td></tr><tr><td height="1"><img alt="" height="5" width="160" src="c.gif"></td></tr></td></tr></table><table cellpadding="0" cellspacing="0" border="0" width="160"><tr><td width="150" height="2" bgcolor="#000000" colspan="2"><img alt="" height="2" width="160" src="c.gif"></td></tr><tr><td width="150" height="2" bgcolor="#FFFFFF" colspan="2"><img alt="" height="2" width="160" src="c.gif"></td></tr></table></td></tr></table><span class="atitle2">Taking it to the next level: Data crunching, sed style</span><br><p><a href="l-sed3.html#author1">Daniel Robbins</a> (<a href="/cdn-cgi/l/email-protection#c1a5b3aea3a3a8afb281a6a4afb5aeaeefaeb3a6"><span class="__cf_email__" data-cfemail="0e6a7c616c6c67607d4e696b607a616120617c69">[email&#160;protected]</span></a>)<br>President/CEO, Gentoo Technologies, Inc.<br>November 2000</p><blockquote>In this conclusion of the sed series, Daniel Robbins gives you a true taste of the power of sed.  After introducing a handful of essential sed scripts, he'll demonstrate some radical sed scripting by converting a Quicken .QIF file into a text-readable format.  This conversion script is not only functional, it also serves as an excellent example of sed scripting power.</blockquote><docbody><p><a name="h0"><span class="atitle2">Muscular sed</span></a><br>
+
+
+ In <a href="l-sed2.html">my second sed article</a>, I offered
+ examples that demonstrated how sed works, but very few
+of these examples actually did anything particularly <i>useful</i>.  In this final sed article, it's time to change that pattern and put sed to good
+use.  I'll show you several excellent examples that not only
+demonstrate the power of sed, but also do some really neat (and handy)
+things.  For example, in the second half of the article, I'll show you
+how I designed a sed script that converts a .QIF file from Intuit's
+Quicken financial program into a nicely formatted text file.  Before
+doing that, we'll take a look at some less complicated yet useful sed
+scripts.</p><p><a name="h1"><span class="atitle2">Text translation</span></a><br>
+
+
+Our first practical script converts UNIX-style text to DOS/Windows format.  As
+you probably know, DOS/Windows-based text files have a CR (carriage return)
+and LF (line feed) at the end of each line, while UNIX text has only a
+line feed.  There may be times when you need to move some UNIX text to a Windows
+system, and this script will perform the necessary format conversion
+for you.</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+$ sed -e 's/$/\r/' myunix.txt &gt; mydos.txt
+</code></pre></td></tr></table><p>
+In this script, the '$' regular expression will match the end of the
+line, and the '\r' tells sed to insert a carriage return right before
+it.  Insert a carriage return before a line feed, and presto, a CR/LF
+ends each line.  Please note that the '\r' will be replaced with a CR
+only when using GNU sed 3.02.80 or later.  If you haven't installed GNU sed
+3.02.80 yet, see my <a href="l-sed1.html">first sed article</a> for
+instructions on how to do this.</p><p>
+I can't tell you how many times I've downloaded some example script or
+C code, only to find that it's in DOS/Windows format.  While many
+programs don't mind DOS/Windows format CR/LF text files, several
+programs definitely do -- the most notable being bash, which chokes as
+soon as it encounters a carriage return.  The following sed invocation
+will convert DOS/Windows format text to trusty UNIX format:
+</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+$ sed -e 's/.$//' mydos.txt &gt; myunix.txt
+</code></pre></td></tr></table><p>
+The way this script works is simple: our substitution regular expression
+matches the last character on the line, which happens to be a carriage
+return.  We replace it with nothing, causing it to be deleted from the
+output entirely.  If you use this script and notice that the last
+character of every line of the output has been deleted, you've
+specified a text file that's already in UNIX format.  No need for that!
+</p><p><a name="h2"><span class="atitle2">Reversing lines</span></a><br>
+
+
+Here's another handy little script.  This one will reverse lines in a file, similar to
+the "tac" command that's included with most Linux distributions. 
+The name "tac" may be a bit misleading, because "tac" doesn't reverse
+the position of characters on the line (left and right), but rather the position of
+lines in the file (up and down). Tacing the following file:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+foo
+bar
+oni
+</code></pre></td></tr></table><p>
+....produces the following output:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+oni
+bar
+foo
+</code></pre></td></tr></table><p>
+We can do the same thing with the following sed script:
+</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+$ sed -e '1!G;h;$!d' forward.txt &gt; backward.txt
+</code></pre></td></tr></table><p>
+You'll find this sed script useful if you're logged in to a FreeBSD
+system, which doesn't happen to have a "tac" command.  While handy,
+it's also a good idea to know why this script does what it does.
+Let's dissect it.</p><p><a name="h3"><span class="atitle2">Reversal explained</span></a><br>
+
+First, this script contains three separate sed commands, separated by
+semicolons: '1!G', 'h' and '$!d'.  Now, it's time to get an good
+understanding of the addresses used for the first and third commands.
+If the first command were '1G', the 'G' command would be applied only
+to the first line.  However, there is an additional '!'  character --
+this '!' character <i>negates</i> the address, meaning that the 'G'
+command will apply to <i>all but</i> the first line.  For the '$!d'
+command, we have a similar situation.  If the command were '$d', it
+would apply the 'd' command to only the last line in the file (the '$'
+address is a simple way of specifying the last line).  However, with
+the '!', '$!d' will apply the 'd' command to <i>all but</i> the last
+line.  Now, all we need to to is understand what the commands
+themselves do.</p><p>
+When we execute our line reversal script on the text file above, the first command that
+gets executed is 'h'.  This command tells sed to copy the contents of
+the pattern space (the buffer that holds the current line being worked
+on) to the hold space (a temporary buffer).  Then, the 'd' command is
+executed, which deletes "foo" from the pattern space, so it doesn't
+get printed after all the commands are executed for this line.</p><p>
+Now, line two.  After "bar" is read into the pattern space, the 'G'
+command is executed, which appends the contents of the hold space
+("foo\n") to the pattern space ("bar\n"), resulting in "bar\n\foo\n"
+in our pattern space.  The 'h' command puts this back in the hold
+space for safekeeping, and 'd' deletes the line from the pattern space
+so that it isn't printed.</p><p>
+For the last "oni" line, the same steps are repeated, except that the
+contents of the pattern space aren't deleted (due to the '$!' before
+the 'd'), and the contents of the pattern space (three lines) are
+printed to stdout.</p><p>
+Now, it's time to do some powerful data conversion with sed.</p><p><a name="h4"><span class="atitle2">sed QIF magic</span></a><br>
+
+
+For the last few weeks, I've been thinking about purchasing a copy of
+<a href="http://www.intuit.com">Quicken</a> to balance my bank
+accounts.  Quicken is a very nice financial program, and would
+certainly perform the job with flying colors.  But, after thinking
+about it, I decided that I could easily write some software that would
+balance my checkbook.  After all, I reasoned, I'm a software
+developer!</p><p>
+I developed a nice little checkbook balancing program (using awk) that
+calculates by balance by parsing a text file containing all my
+transactions.  After a bit of tweaking, I improved it so that I could
+keep track of different credit and debit categories, just like Quicken can.  But, there was one more
+feature I wanted to add.  I recently switched my accounts to a bank
+that has an online Web account interface.  One day, I noticed that my bank's
+Web site allowed me to to download my account information
+in Quicken's .QIF format.  In very little time, I decided that it would be really neat if I could convert this information into text format.</p><p><a name="h5"><span class="atitle2">A tale of two formats</span></a><br>
+
+
+Before we look at the QIF format, here's what my checkbook.txt format
+looks like:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+28 Aug 2000     food    -       -       Y     Supermarket             30.94
+25 Aug 2000     watr    -       103     Y     Check 103               52.86
+</code></pre></td></tr></table><p>
+In my file, all fields are separated by one or more tabs, with one
+transaction per line.  After the date, the next field lists the type
+of expense (or "-" if this is an income item).  The third field lists
+the type of income (or "-" if this is an expense item).  Then, there's
+a check number field (again, "-" if empty), a transaction cleared
+field ("Y" or "N"), a comment and a dollar amount.  Now, we're ready
+to take a look at the QIF format.  When I viewed my downloaded QIF
+file in a text viewer, this is what I saw:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+!Type:Bank
+D08/28/2000
+T-8.15
+N
+PCHECKCARD SUPERMARKET
+^
+D08/28/2000
+T-8.25
+N
+PCHECKCARD PUNJAB RESTAURANT
+^
+D08/28/2000
+T-17.17
+N
+PCHECKCARD SUPERMARKET
+</code></pre></td></tr></table><p>
+After scanning the file, wasn't very hard to figure out the format --
+ignoring the first line, the format is as follows:
+</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+D&lt;date&gt;
+T&lt;transaction amount&gt;
+N&lt;check number&gt;
+P&lt;description&gt;
+^
+ (this is the field separator)
+</code></pre></td></tr></table><p><a name="h6"><span class="atitle2">Starting the process</span></a><br>
+
+
+When you're tackling a significant sed project like this, don't get discouraged --
+sed allows you to gradually massage the data into its final form.  As
+you progress, you can continue to refine your sed script until your
+output appears exactly as intended.  You don't need to get it exactly right
+on the first try.</p><p>
+To start off, I created a file called "qiftrans.sed", and started massaging the data:
+</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+1d
+/^^/d
+s/[[:cntrl:]]//g
+</code></pre></td></tr></table><p>
+The first '1d' command deletes the first line, and the second command
+removes those pesky '^' characters from the output.  The last line
+removes any control characters that may exist in the file.  Since I'm
+dealing with a foreign file format, I want to eliminate the risk of
+encountering any control characters along the way.  So far, so good.
+Now, it's time to add some processing punch to this basic script:
+</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+1d
+/^^/d
+s/[[:cntrl:]]//g
+/^D/ {
+  s/^D\(.*\)/\1\tOUTY\tINNY\t/
+        s/^01/Jan/
+        s/^02/Feb/
+        s/^03/Mar/
+        s/^04/Apr/
+        s/^05/May/
+        s/^06/Jun/
+        s/^07/Jul/
+        s/^08/Aug/
+        s/^09/Sep/
+        s/^10/Oct/
+        s/^11/Nov/
+        s/^12/Dec/
+        s:^\(.*\)/\(.*\)/\(.*\):\2 \1 \3: 
+}
+</code></pre></td></tr></table><p>
+First, I add a '/^D/' address so that sed will only begin processing
+when it encounters the first character of the QIF date field, 'D'.  All of
+the commands in the curly braces will execute in order as soon as sed
+reads such a line into its pattern space.</p><p>
+The first line in the curly braces will transform a line that looks
+like:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+D08/28/2000
+</code></pre></td></tr></table><p>
+into one that looks like thist:
+</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+08/28/2000  OUTY  INNY
+</code></pre></td></tr></table><p>
+Of course, this format isn't perfect right now, but that's OK.  We'll
+gradually refine the contents of the pattern space as we go.  The next
+12 lines have the net effect of transforming the date to a
+three-letter format, with the last line removing the three slashes
+from the date.  We end up with this line:
+</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+Aug 28 2000 OUTY  INNY
+</code></pre></td></tr></table><p>
+The OUTY and INNY fields are serving as placeholders and will get
+replaced later.  I can't specify them just yet, because if the dollar
+amount is negative, I'll want to set OUTY and INNY to "misc" and "-",
+but if the dollar amount is positive, I'll want to change them to "-"
+and "inco" respectively.  Since the dollar amount hasn't been read
+yet, I need to use placeholders for the time being.</p><p><a name="h7"><span class="atitle2">Refinement</span></a><br>
+
+
+Now, it's time for some further refinement:
+</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+1d 
+/^^/d
+s/[[:cntrl:]]//g 
+/^D/ { 
+        s/^D\(.*\)/\1\tOUTY\tINNY\t/ 
+        s/^01/Jan/ 
+        s/^02/Feb/ 
+        s/^03/Mar/ 
+        s/^04/Apr/ 
+        s/^05/May/ 
+        s/^06/Jun/ 
+        s/^07/Jul/ 
+        s/^08/Aug/ 
+        s/^09/Sep/ 
+        s/^10/Oct/ 
+        s/^11/Nov/ 
+        s/^12/Dec/ 
+        s:^\(.*\)/\(.*\)/\(.*\):\2 \1 \3: 
+        N 
+        N 
+        N 
+        s/\nT\(.*\)\nN\(.*\)\nP\(.*\)/NUM\2NUM\t\tY\t\t\3\tAMT\1AMT/ 
+        s/NUMNUM/-/ 
+        s/NUM\([0-9]*\)NUM/\1/ 
+        s/\([0-9]\),/\1/ 
+}
+</code></pre></td></tr></table><p>
+The next seven lines are a bit complicated, so we'll cover them in
+detail.  First, we have three 'N' commands in a row.  The 'N'
+command tells sed to read in the <i>next line in the input</i> and append it to our
+current pattern space.  The three 'N' commands cause the next three
+lines to be appended to our current pattern space buffer, and now our
+line looks like this:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+28 Aug 2000 OUTY  INNY  \nT-8.15\nN\nPCHECKCARD SUPERMARKET
+</code></pre></td></tr></table><p>
+Sed's pattern space got ugly -- we need to remove the extra
+newlines and perform some additional formatting.  To do this, we'll use
+the substitution command.  The pattern we want to match is:
+</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+'\nT.*\nN.*\nP.*'
+</code></pre></td></tr></table><p>
+This will match a newline, followed by a 'T', followed by zero or more
+characters, followed by a newline, followed by an 'N', followed by any
+number of characters and a newline, followed by a 'P', followed by any
+number of characters.  Phew!  This regexp will match the entire
+contents of the three lines we just appended to the pattern space.
+But we want to reformat this region, not replace it entirely. The dollar
+amount, check number (if any) and description need to reappear in our
+replacement string.  To do this, we surround those "interesting parts"
+with backslashed parentheses, so that we can refer to them in our
+replacement string (using '\1', '\2\, and '\3' to tell sed where to
+insert them).  Here is the final command:
+</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+s/\nT\(.*\)\nN\(.*\)\nP\(.*\)/NUM\2NUM\t\tY\t\t\3\tAMT\1AMT/ 
+</code></pre></td></tr></table><p>
+This command transforms our line into:
+</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+ 
+28 Aug 2000  OUTY  INNY  NUMNUM    Y     CHECKCARD SUPERMARKET   AMT-8.15AMT
+</code></pre></td></tr></table><p>
+While this line is getting better, there are a few things that at
+first glance appear a bit...er...interesting.  The first is that
+silly "NUMNUM" string -- what purpose does that serve?  You'll find
+out as you inspect the next two lines of the sed script, which will
+replace "NUMNUM" with a "-", while "NUM"&lt;number&gt;"NUM"
+will be replaced with &lt;number&gt;.  As you can see,
+surrounding the check number with a silly tag allows us to
+conveniently insert a "-" if the field is empty.
+</p><p><a name="h8"><span class="atitle2">Finishing touches</span></a><br>
+
+
+The last line removes a comma following a number.  This converts
+dollar amounts like "3,231.00" to "3231.00", which is the format I
+use.  Now, it's time to take a look at the final, production script:
+</p><p>
+<b>The final QIF to text script</b>
+<table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+1d
+/^^/d
+s/[[:cntrl:]]//g
+/^D/ {
+  s/^D\(.*\)/\1\tOUTY\tINNY\t/
+  s/^01/Jan/
+  s/^02/Feb/
+  s/^03/Mar/
+  s/^04/Apr/
+  s/^05/May/
+  s/^06/Jun/
+  s/^07/Jul/
+  s/^08/Aug/
+  s/^09/Sep/
+  s/^10/Oct/
+  s/^11/Nov/
+  s/^12/Dec/
+  s:^\(.*\)/\(.*\)/\(.*\):\2 \1 \3:
+  N
+  N
+  N
+  s/\nT\(.*\)\nN\(.*\)\nP\(.*\)/NUM\2NUM\t\tY\t\t\3\tAMT\1AMT/
+  s/NUMNUM/-/
+  s/NUM\([0-9]*\)NUM/\1/
+  s/\([0-9]\),/\1/
+  /AMT-[0-9]*.[0-9]*AMT/b fixnegs
+  s/AMT\(.*\)AMT/\1/
+  s/OUTY/-/
+  s/INNY/inco/
+  b done
+:fixnegs
+  s/AMT-\(.*\)AMT/\1/
+  s/OUTY/misc/
+  s/INNY/-/
+:done
+}
+</code></pre></td></tr></table>
+</p><p>
+The additional eleven lines use substitution and some branching
+functionality to perfect the output.  We'll want to take a look
+at this line first:
+</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+        /AMT-[0-9]*.[0-9]*AMT/b fixnegs 
+</code></pre></td></tr></table><p>
+This line contains a branch command, which is of the format "/regexp/b label".  If the pattern space matches the regexp, sed will branch to the
+fixnegs label.  You should be able to easily spot this label, which
+appears as ":fixnegs" in the code.  If the regexp doesn't match,
+processing continues as normal with the next command.</p><p>
+Now that you understand the workings of the command itself,
+let's take a look at the branches.  If you look at the branch regular
+expression, you'll see that it will match the string 'AMT', followed
+by a '-', followed by any number of digits, a '.', any number of
+digits and 'AMT'.  As I'm sure you've figured out, this regexp deals
+specifically with a negative dollar amount. Earlier, we surrounded our
+dollar amount with 'AMT' strings so we could easily find it later.
+Because the regexp only matches dollar amounts that begin with a '-',
+our branch will only happen if we happen to be dealing with a debit.
+If we are dealing with a debit, OUTY should be set to 'misc', INNY
+should be set to '-', and the negative sign in front of the debit
+amount should be removed.  If you follow the code, you'll see that
+this is exactly what happens.  If the branch isn't executed, OUTY gets
+replaced with '-', and INNY gets replaced with 'inco'.  We're
+finished!  Our output line is now perfect:</p><table bgcolor="#CCCCCC" width="100%" cellpadding="5" cellspacing="0" border="1"><tr><td><pre><code>
+28 Aug 2000 misc  - -       Y     CHECKCARD SUPERMARKET  -8.15
+</code></pre></td></tr></table><p><a name="h9"><span class="atitle2">Don't get confuSed</span></a><br>
+
+As you can see, converting data using sed isn't all that hard, as long
+as you approach the problem incrementally.  Don't try to do everything
+with a single sed command, or all at once.  Instead, gradually work
+your way toward the goal, and continue to enhance your sed script
+until your output looks just the way you want it to.  Sed packs a lot
+of punch, and I hope that you've become very familiar with its inner
+workings and that you'll continue to grow in your sed mastery!
+</p></docbody><p><a name="resources"><span class="atitle2">Resources</span></a><ul><li>Read Daniel's previous sed articles on <i>developerWorks</i>: Common threads: Sed by example, <a href="l-sed1.html">Part 1</a> and <a href="l-sed2.html">Part 2</a>.<br><br></li><li>Check out Eric Pement's excellent <a href="http://www.cornerstonemag.com/sed/sedfaq.html">sed faq</a>.<br><br></li><li>You can find the sources to sed 3.02 at <a href="ftp://ftp.gnu.org/pub/gnu/sed">ftp.gnu.org</a>.<br><br></li><li>You'll find the nice, new sed 3.02.80 at <a href="ftp://alpha.gnu.org/pub/gnu/sed">alpha.gnu.org</a>.<br><br></li><li>Eric Pement also has a handy list of <a href="http://www.cornerstonemag.com/sed/sed1line.txt">sed one-liners</a> that any aspiring sed guru should definitely take a look at.<br><br></li><li>If you'd like a good old-fashioned book, O'Reilly's <a href="https://www.oreilly.com/catalog/sed2/">sed &amp; awk, 2nd Edition</a> would be a wonderful choice.<br><br></li><li>Maybe you'd like to read <a href="http://www.softlab.ntua.gr/unix/docs/sed.txt">7th edition UNIX's sed man page</a> (circa 1978!).<br><br></li><li>Take Felix von Leitner's short <a href="http://www.math.fu-berlin.de/~leitner/sed/tutorial.html">sed tutorial</a>.<br><br></li><li>Brush up on <a href="http://www2.software.ibm.com/developer/education.nsf/linux-onlinecourse-bytitle/6C2B4863702F592B8625696200589C5B?OpenDocument">using regular expressions</a> to find and modify patterns in text in this free, dW-exclusive tutorial.<br><br></li></ul></p><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><a name="author1"></a><span class="atitle2">About the author</span><br>Residing in Albuquerque, New Mexico, Daniel Robbins is the President/CEO of 
+<a href="https://www.gentoo.org/">Gentoo Technologies, Inc.</a>, the creator of 
+Gentoo Linux, an advanced Linux for the PC, and the Portage system, a 
+next-generation ports system for Linux. He has also served as a contributing 
+author for the Macmillan books <i>Caldera OpenLinux Unleashed</i>, <i>SuSE Linux Unleashed</i>, 
+and <i>Samba Unleashed</i>. Daniel has been involved with computers in some fashion 
+since the second grade, when he was first exposed to the Logo programming 
+language as well as a potentially dangerous dose of Pac Man. This probably 
+explains why he has since served as a Lead Graphic Artist at SONY Electronic 
+Publishing/<a href="http://www.psygnosis.com/">Psygnosis</a>. Daniel enjoys 
+spending time with his wife, Mary, and his new baby daughter, Hadassah. You can contact Daniel at <a href="/cdn-cgi/l/email-protection#5632243934343f38251631333822393978392431"><span class="__cf_email__" data-cfemail="97f3e5f8f5f5fef9e4d7f0f2f9e3f8f8b9f8e5f0">[email&#160;protected]</span></a>.</td></tr></table><br clear="all"><img alt="" border="0" height="10" width="100" src="c.gif"><br><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td align="right" width="100%"><a href="ftp://www6.software.ibm.com/software/developer/library/l-sed3.pdf"><img alt="" border="0" height="26" width="35" src="icon-pdf.gif"></a><a href="javascript:void%20newWindow()"><img alt="e-mail it!" border="0" height="26" width="46" src="icon-email.gif"></a></td><td width="5"><img alt="" border="0" height="1" width="5" src="c.gif"></td></tr><tr valign="top"><td bgcolor="#000000" colspan="2"><img alt="" border="0" height="1" width="100" src="c.gif"></td></tr><tr valign="top"><td bgcolor="#FFFFFF" colspan="2"><img alt="" border="0" height="8" width="100" src="c.gif"></td></tr></table><table xmlns:fo="http://www.w3.org/1999/XSL/Format" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td><form action="http://www-105.ibm.com/developerworks/ratings.nsf/RateArticle?CreateDocument" method="POST"><input value="Common threads: Sed by example, Part 3" name="ArticleTitle" type="HIDDEN"><input value="Linux" name="Zone" type="HIDDEN"><input value="http://www-106.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="HIDDEN"><a name="rating"><b>What do you think of this document?</b></a><table width="600" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="5"><img alt="" border="0" height="8" width="100" src="c.gif"></td></tr><tr valign="top"><td width="16%"><input value="5" name="Rating" type="RADIO">Killer! (5)</td><td width="20%"><input value="4" name="Rating" type="RADIO">Good stuff (4)</td><td width="24%"><input value="3" name="Rating" type="RADIO">So-so; not bad (3)</td><td width="22%"><input value="2" name="Rating" type="RADIO">Needs work (2)</td><td width="18%"><input value="1" name="Rating" type="RADIO">Lame! (1)</td></tr></table><br><b>Comments?</b><br><textarea cols="60" rows="5" wrap="virtual" name="Comments"></textarea><br><br><input value="Submit feedback" type="SUBMIT"></form></td></tr><tr valign="top"><td bgcolor="#FFFFFF"><img alt="" border="0" height="8" width="100" src="c.gif"></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><img alt="" border="0" height="4" width="2" src="c.gif"><br><a href="http://www-106.ibm.com/developerworks/" class="dwbctl">IBM developerWorks</a>  &gt;  
+        <a href="http://www-106.ibm.com/developerworks/linux/" class="dwbctl">Linux</a></td><td align="right" width="136"><a href="http://www-106.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="24" width="136" src="dwlogo-small.gif"></a></td><td width="5"><img alt="" border="0" height="1" width="5" src="c.gif"></td></tr></table></td></tr></table></td><td width="1"><img alt="" border="0" height="1" width="1" src="c.gif"></td></tr></table><!-- IBM FOOTER -->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td><img src="c.gif" width="1" height="1" alt=""/></td>
+</tr>
+<tr valign="top">
+<td height="21" class="bbg">&nbsp;&nbsp;<a href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/ibm/?origin=dwheader" class="mainlink">About IBM</a><span class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/privacy/?origin=dwheader" class="mainlink">Privacy</a><span class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/legal/?origin=dwheader" class="mainlink">Legal</a><span class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/contact/?origin=dwheader" class="mainlink">Contact</a></td>
+</tr>
+</table>
+<!-- END IBM FOOTER -->
+
+<!-- SURFAID METRICS ** 06/04/02 DO NOT ALTER ** -------------->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" language="JavaScript1.2" src="https://www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="http://i.ihost.com/i/c.gif" width="1" height="1" alt="" border="0" /></noscript></body></html>
