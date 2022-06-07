@@ -66,15 +66,16 @@ $headers = @{
   "OData-Version"="4.0";
 };
 
-$LinkPath = "https://docs.huihoo.com/homepage/shredderyin/choosetruck.html"
-$Path = "https://docs.huihoo.com/homepage/shredderyin"
+$LinkPath = "http://www-formal.stanford.edu/jmc/basis1"
+$Path = "http://www-formal.stanford.edu/jmc/basis1"
+$Response = Invoke-WebRequest -URI $LinkPath -UseDefaultCredentials
 $Response = Invoke-WebRequest -URI $LinkPath -UseBasicParsing
+echo $Response.Images.Count
 $Response.Images| Foreach-Object {
   $fileName = $_.Src
   $IsGoodLink = ($fileName -NotLike "*/*")
   if ($IsGoodLink) {
     echo "$Path/$fileName"
-    Invoke-WebRequest -URI "$Path/$fileName" -UseBasicParsing -OutFile $fileName
   }
   else {
     echo "has sub: $fileName"
@@ -83,11 +84,12 @@ $Response.Images| Foreach-Object {
     Invoke-WebRequest -URI "$Path/$fileName" -UseBasicParsing -OutFile $fileName
 
 
-$LinkPath = "https://docs.huihoo.com/homepage/shredderyin/tex/src"
-$Path = "https://docs.huihoo.com/homepage/shredderyin/tex/src"
+$LinkPath = "http://www-formal.stanford.edu/jmc/basis1"
+$Path = "http://www-formal.stanford.edu/jmc/basis1"
 $Response = Invoke-WebRequest -URI $LinkPath -UseBasicParsing
 $Response.Links | Foreach-Object {
-  $fileName = $_.Href
+  $lnkPath = $_.Href
+  $fileName = $lnkPath
   $IsGoodLink = ($fileName -NotLike "*/*") -and ($fileName -NotLike "")
   if ($IsGoodLink) {
     echo "$Path/$fileName"
@@ -98,9 +100,17 @@ $Response.Links | Foreach-Object {
   }
 }
 
-Invoke-WebRequest -URI "$Path/$fileName" -UseBasicParsing -OutFile $fileName
+if ($lnkPath.IndexOf('#') -gt 0) {
+    $fileName = $lnkPath.SubString(0, $lnkPath.IndexOf('#'))
+  }
+  else {
+    $fileName = ""
+  }
 
-Invoke-WebRequest -URI "https://docs.huihoo.com/homepage/shredderyin/mutt_left.html" -UseBasicParsing -OutFile mutt_left.html
+Invoke-WebRequest -URI "$Path/$fileName" -UseBasicParsing -OutFile $fileName
+      Invoke-WebRequest -URI "$Path/$subfileName" -UseBasicParsing -OutFile $subfileName
+
+Invoke-WebRequest -URI "http://www-formal.stanford.edu/jmc/basis1/basis1.html" -UseBasicParsing -OutFile basis1.html
 
 
 linux:

@@ -1,0 +1,1982 @@
+\batchmode
+\documentclass[12pt]{article}
+\makeatletter
+\usepackage{html}
+\usepackage{rotating}
+\usepackage{amstex}
+\usepackage[dvips]{epsfig}
+\newcount\hours
+\newcount\minutes
+\newcount\temp
+\newtoks\ampm
+
+
+
+\temp\time 
+\divide\temp 60
+\hours\temp 
+\multiply\temp -60
+\minutes\time 
+\advance\minutes \temp 
+\ifnum\hours =12 \ampm={p.m.} \else
+\ifnum\hours >12 \advance\hours -12 \ampm={p.m.} \else \ampm={a.m.} \fi \fi
+
+
+
+
+
+
+
+
+\textheight 8.0in
+\textwidth 6.5in
+\textheight 7.5in   \textwidth 5.5in
+\oddsidemargin 0.0in
+\topmargin -0.5in
+\headheight 0.0in
+
+
+\title{A BASIS FOR A MATHEMATICAL THEORY OF COMPUTATION\thanks{This paper is a corrected version of the paper of the same title
+given at the Western Joint Computer Conference, May 1961. A tenth
+section discussing the relations between mathematical logic and
+computation has bean added.}
+}
+\author{JOHN McCARTHY}
+\date{1961--1963}
+
+
+\def\setdaytime{\temp\time 
+   \divide\temp 60
+   \hours\temp 
+   \multiply\temp -60
+   \minutes\time 
+   \advance\minutes \temp 
+   \ifnum\hours =12 \ampm={p.m.} \else
+   \ifnum\hours >12 \advance\hours -12 \ampm={p.m.} \else \ampm={a.m.} \fi \fi
+}
+
+\def\theMonth{\relax
+  \ifcase\month\or
+    Jan\or Feb\or Mar\or Apr\or May\or Jun\or
+    Jul\or Aug\or Sep\or Oct\or Nov\or Dec\fi}
+
+\def\theTime{\the\hours:\ifnum \minutes < 10 0\fi \the\minutes\ \the\ampm}
+
+\def\jmcdate{ \number\year\space\theMonth\space\number\day}
+
+\makeatother
+\newenvironment{tex2html_wrap}{}{}
+\newwrite\lthtmlwrite
+\def\lthtmltypeout#1{{\let\protect\string\immediate\write\lthtmlwrite{#1}}}%
+\newbox\sizebox
+\begin{document}
+\pagestyle{empty}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\cal F$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline491: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\cal C$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline493: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}(p_1 \rightarrow e_1,p_2 \rightarrow e_2,\ldots,p_n \rightarrow e_n)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\textbf{if} \ p_1 \ \textbf{then} \ e_1 \ \textbf{else \ if}
+ \ p_2 \ \textbf{then} \ e_2 \ \ldots \ \textbf{else \ if}
+ \ p_n \ \textbf{then} \ e_n.\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$p_1,\ldots,p_n$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline523: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(p_1 \rightarrow e_1, p_2 \rightarrow e_2,\ldots, p_n \rightarrow e_n)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline525: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\rightarrow$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline533: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}|x| &=& (x < 0 \rightarrow -x,x \geq 0 \rightarrow x)\\ 
+\delta_{ij} &=& (i = j\rightarrow 1, i \not= j\rightarrow 0)
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}tri (x) = (x \leq -1 \rightarrow 0,x \leq 0 \rightarrow x + 1, x \leq 1 \rightarrow 1-x, x > 1 \rightarrow 0).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}[htbp]
+  \begin{center}
+    \leavevmode
+  \epsfig{file=/u/ftp/jmc/basis1.eps,width=75mm}
+    \label{fig:basis1}
+  \end{center}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}n! =(n = 0 \rightarrow 1, n \not= 0 \rightarrow n\cdot(n-1)!)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}2! &=& (2 = 0 \rightarrow 1,2 \not= 0 \rightarrow 2\cdot(2-1)!)\\ 
+&=& 2\cdot 1!\\  
+&=& 2\cdot (1 = 0 \rightarrow1, 1\not= 0 \rightarrow 1\cdot (1-1)!)\\ 
+&=& 2\cdot1\cdot0!\\ 
+&=& 2\cdot1\cdot(0 = 0 \rightarrow1, 0 \not= 0 \rightarrow 0\cdot(0-1)!)\\ 
+&=& 2\cdot1\cdot1\\ 
+&=& 2.
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$C\{\cal{F}\}$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline551: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$y = f (x_i,...,x_n)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline563: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$x_i$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline565: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$U_i$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline567: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}f\colon U_1 \times U_2 \times \ldots \times U_n \rightarrow V.\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$U_1 \times \dots \times U_n$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline575: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(x_1,\ldots,x_n)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline579: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f(g(x),y), x^2 +y$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline599: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f(x,y) = x^2+y$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline603: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$e_1,...,e_n$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline623: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$U_1,..., U_n$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline625: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f(e_1,...,e_n)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline627: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$x_1,...,x_n$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline641: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$h(x_1,...,x_n) = e$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline645: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f_1,...,f_m$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline647: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\Pi$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline675: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\text{prime} (x) = \left\{ \begin{array}{ll}
+                       \mbox{T if x is prime} \\ 
+                       \mbox{F otherwise}
+                       \end{array}
+               \right. \end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\text{less}(x,y) = \left\{ \begin{array}{ll}
+                         \mbox{T if $x < y$} \\ 
+                         \mbox{F otherwise} 
+                         \end{array}
+                \right. \end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$eq_U$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline689: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}eq_U(x,y) = \left\{ \begin{array}{ll}
+                      \mbox{T if $x = y$} \\ 
+                      \mbox{F otherwise}
+                      \end{array}
+               \right. \end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$eq_U(x,y)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline695: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\land, \lor,$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline709: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\sim$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline711: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}(p_1 \rightarrow e_1,...,p_n \rightarrow e_n)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}& &(2 < 1 \rightarrow 1, 2 > 1 \rightarrow 3) = 3\\ 
+& &(1 < 2 \rightarrow 4, 1 < 2 \rightarrow 3) = 4\\ 
+& &(2 < 1 \rightarrow 1, 3 < 1 \rightarrow 3)\ {\rm is\  undefined}\\ 
+& &(0/0 < 1\rightarrow 1, 1 < 2 \rightarrow 3)\ {\rm is\  undefined}\\ 
+& &(1 < 2 \rightarrow 0/0, 1 < 2 \rightarrow 1)\ {\rm is\  undefined}\\ 
+& &(1 < 2 \rightarrow 2, 1 < 3 \rightarrow 0/0) = 2
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}|x| = (x < 0 \rightarrow -x,x\geq 0\rightarrow x),\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}|x| = (x<0 \rightarrow - x, T \rightarrow x).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}p\land q&=&(p \rightarrow q, {\rm T} \rightarrow {\rm F})\\ 
+p\lor q&=&(p \rightarrow {\rm T, T} \rightarrow q)\\ 
+\sim p &=& (p\rightarrow {\rm F, T} \rightarrow {\rm T})\\ 
+p \supset q&=& (p \rightarrow q, {\rm T} \rightarrow {\rm T})
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$p \land q$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline741: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$q \land p$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline743: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$cond_n$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline755: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}(p_1 \rightarrow e_1,...,p_n \rightarrow e_n) =
+cond_n(p,...,p_n,e_1,...,e_n).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$p_1$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline761: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$e_1$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline763: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$p_1,...,p_n$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline769: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(p_1 \rightarrow e_1,...,p_n \rightarrow e_n)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline783: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}n!=(n = 0 \rightarrow 1, {\rm T} \rightarrow n \cdot (n - 1)!)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}0! = (0 = 0 \rightarrow 1, {\rm T} \rightarrow 0\cdot(0 - 1)!) = 1.\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f_1,...,f_k$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline795: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}& &f_1(x_1,...,x_n) = e_1\\ 
+& &\quad\quad\quad\vdots\\ 
+& &f_k(x_1,...,x_n) = e_k
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$e_1,...,e_k$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline797: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$V_1,..., V_k$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline801: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f_i(x_i,...,x_k)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline811: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$e_i$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline815: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$g(e_1^*,...,e_m^*)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline825: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$e_1^*,...,e_m^*$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline827: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f_i(e_1^*,...,e_n^*)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline831: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f_i$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline835: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$n_1$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline859: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$n_2$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline861: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$n_1 = n_2$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline863: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}succ(n) = n'\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}eq (n_1,n_2) = \left\{ \begin{array}{ll}
+                          \mbox{T if $n_1 = n_2$} \\ 
+                          \mbox{F if $n_1 \not= n_2$}
+                          \end{array}
+                  \right. \end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\{{succ,eq}\}$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline877: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}pred(n) = pred2(n,0)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}pred2(n,m) = (m' = n \rightarrow m, {\rm T} \rightarrow pred2(n,m')).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$n^-.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline893: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}m + n = (n = 0 \rightarrow m, {\rm T} \rightarrow m'+n^-),\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}mn = (n = 0 \rightarrow 0, {\rm T} \rightarrow m + mn^-),\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}m-n = (n = 0 \rightarrow m, {\rm T} \rightarrow m^- - n^-)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$m \ge n.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline901: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$m \le n$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline903: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}m \le n = (m = 0) \lor (\sim (n = 0) \land (m^- \le n^-)).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}m < n = (m \leq n) \land \sim (m = n).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}m/n = (m < n \rightarrow 0,{\rm T} \rightarrow ((m - n)/n)').\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}rem(m/n) = (m < n \rightarrow m,{\rm T} \rightarrow rem((m - n)/n)),\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}m|n = (n = 0) \lor ((n \ge m) \land (m|(n - m))).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}prime(n) = (n \not= 0) \land (n \not= 1) \land prime2(n,2)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}prime2(m,n) = (m = n) \lor (\sim (m|n) \land prime2(n,m')).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}gcd(m,n) = (m > n \rightarrow gcd(n,m),rem(n/m) = 0 \rightarrow m, {\rm T} \rightarrow gcd(rem(n/m),m))\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\varphi$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline933: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\varphi (n) = \varphi _2(n,n)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\varphi_2 (n,m) = (m = 1 \rightarrow 1,gcd(n,m) = 1 \rightarrow \varphi _2(n,m^-)',{\rm T} \rightarrow \varphi _2(n,m^-)).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$ \varphi (n)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline939: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\sum^{n}_{i=m} a_i\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\{{a_i}\}$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline953: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}sum(m,n,f) = (m > n \rightarrow 0,{\rm T} \rightarrow f(m) + sum(m + 1,n,f))\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\sum^{n}_{i=m} f(i) = (m > n \rightarrow 0,{\rm T} \rightarrow f(m) + \sum^{n}_{i=m+1} f(i)).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}least(p) = least2(p,0)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}least2(p,n) = (p(n) \rightarrow n,{\rm T} \rightarrow least2(p,n+1)).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f(x_1,...,x_n) = e$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline973: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\lambda((x_1,...,x_n),e)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline979: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\lambda((x,y),x^2+y)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline985: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\lambda((x,y),x^2+y)(3,4)= 13,\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\lambda((y,x),x^2+y)(3,4) = 19.\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\lambda$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline991: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\lambda((x,y),x^2+y),\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\lambda((u,v),u^2+v),\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\lambda((y,x),y^2+x)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\sum^{n}_{i=1} i^2$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline999: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$sum(1,n,\lambda((i),i^2))$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1001: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$n^2 > 50$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1005: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}least(\lambda((n),n^2 > 50)).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}factorial(n) = (n = 0 \rightarrow 1,{\rm T} \rightarrow n \cdot factorial(n-1)).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\lambda((n),(n = 0 \rightarrow 1,{\rm T} \rightarrow n \cdot factorial(n-1)))\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}label(f,\lambda((x_1,...,x_n),e))\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}f(x_1,...,x_n) = e\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}label(factorial,\lambda((n),(n = 0 \rightarrow 1,{\rm T} \rightarrow n \cdot factorial(n-1)))),\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}label(g,\lambda((r),(r = 0 \rightarrow 1,{\rm T} \rightarrow r \cdot g(r-1))))\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}f(x) = {\cal E}(x,f)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{${\cal E}(x,f)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1041: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}label(f,\lambda((x),{\cal E}(x,f))).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}g(x, \varphi )={\cal E}(x,\lambda((x), \varphi (x, \varphi )))\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}g = \lambda((x, \varphi ),{\cal E}(x,\lambda((x), \varphi (x, \varphi )))).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}f(x) = g(x,g)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}g(x,g) = {\cal E}(x,\lambda((x),g(x,g))).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}f = \lambda((x),\lambda((y, \varphi ),{\cal E}(y,\lambda((u), \varphi (u, \varphi )))) (x,\lambda((y, \varphi ),{\cal E}(y,\lambda((u), \varphi (u, \varphi )))))).\end{displaymath}
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$ \forall $}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1069: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\forall ((x),e)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$ \forall ((x),e)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1081: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$Ha\{\cal{F}\}$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1095: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\{{successor, equality}\}$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1101: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\imath$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1105: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\imath((x),p(x))$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1107: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$
+\forall ((f),\varphi(f))$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1119: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \begin{displaymath}less(n) = amb(n-1,less(n-1)).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}ult(n) = (n = 0 \rightarrow 0,{\rm T} \rightarrow ult(less(n)))\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\forall ((n),ult(n) = 0) = {\mathit T}.\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$n > 0 \supset g(n) < n$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1173: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$g^*(n) = (n = 0
+\rightarrow 0,{\rm T} \rightarrow g^*(g(n)))$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1175: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$C^*\{\cal{F}\}$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1187: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$Am(x,\pi(x))$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1189: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\pi(x).$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1193: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$A \times B$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1195: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(a \cdot b)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1201: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$a\ \epsilon\ A$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1203: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$b\ 
+\epsilon\ B$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1205: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$n(A \times B) =
+n(A) \cdot n(B)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1219: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\pi_A,_B\colon A \times B \rightarrow A$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1223: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\pi_A,_B((a \cdot b)) = a$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1225: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\varrho_A,_B\colon A \times B \rightarrow B$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1227: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\varrho_A,_B((a \cdot b)) = b.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1229: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\pi_A,_B$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1231: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\varrho_A,_B$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1233: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\gamma$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1243: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\gamma_A,_B\colon A,B \rightarrow A \times B$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1245: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\gamma_A,_B(a,b) = (a \cdot b).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$A \times B.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1257: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$A \oplus B$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1259: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$n(A \oplus B) = n(A) + n(B)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1273: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$a_A$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1285: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$b_B.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1287: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$i_A,_B\colon A \rightarrow A\oplus B$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1291: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$i_A,_B(a) = a_A,$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1293: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$j_A,_B\colon B \rightarrow A \oplus B$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1295: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$j_A,_B(b) = b_B,$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1297: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$p_A,_B\colon A \oplus B \rightarrow \Pi$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1299: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$p_A,_B(x)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1301: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$q_A,_B\colon A \oplus B \rightarrow \Pi$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1307: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$q_A,_B(x)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1309: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$r_{A,B}$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1315: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$s_{A,B}$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1317: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$r_{A,B}\colon A \oplus B \rightarrow A$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1319: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$r_{A,B}(i_A,_B(a)) = a.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1323: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$s_A,_B\colon A \oplus B \rightarrow B$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1325: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$s_A,_B(j_A,_B(b)) =
+b.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1327: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$A^B$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1329: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f\colon B \rightarrow A.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1331: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\alpha_A,_B\colon A^B \times B \rightarrow A$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1333: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\alpha_A,_B(f,b) =f(b).$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1335: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$A \times
+(B \times C)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1337: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(A \times B) \times C$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1339: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}g_{A,B,C} \colon (A \times B) \times C \rightarrow A \times (B \times C)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}g_{A,B,C}(u) = \gamma_{A,B \times C}(\pi_{A,B}(\pi_{A \times B, C}(u)),\gamma_{B,C}(\varrho_{A,B}(\pi_{A \times B, C}(u)),\varrho_{A \times B, C}(u))).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}(A \times B) \times C \simeq A \times (B \times C)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}&1.&t_{A,B} \colon A \times B \rightarrow B \times A \text{ defined by } t(u) = \gamma_{B,A}( \varrho _{A,B}(u),\pi_{A,B}(u))\\ 
+&2.&d_{1} \colon A \times (B \oplus C) \rightarrow A \times B \oplus A \times C\\ 
+&3.&a_{2} \colon (A \oplus B) \oplus C \rightarrow A \oplus (B \oplus C)\\ 
+&4.&d_{2} \colon A^C \times B^C \rightarrow (A \times B)^C\\ 
+&5.&d_3 \colon A^B \times A^C \rightarrow A^{B \oplus C}\\ 
+&6.&s_1 \colon (A^B)C \rightarrow A^{B \times C}
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}& & A \oplus 0 \simeq A\\ 
+& & A \times 0 \simeq 0\\ 
+& & A \times 1 \simeq A\\ 
+& & A \times 2 \simeq A \oplus A (n {\rm \ terms, \ associate \ to \ left \ by \ convention)}\\ 
+& & A ^0 \simeq 1\ \ \ \ \ (\rm by \ convention)\\ 
+& & A ^1 \simeq A\\ 
+& & A ^n \simeq A \times...\times A (n {\rm \ terms, \ associate \ to \ left \ by \ convention})
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}S=\{{ \Lambda}\} \oplus A \times S.\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$ \Lambda$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1355: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(a, \Lambda)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1365: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}(a_1\cdot (a_2 \cdot \Lambda)) {\rm \ and} \ (a_1 \cdot (a_2 \cdot (a_3 \cdot \Lambda))) {\rm \ etc}.\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\{{ \Lambda}\} \oplus A \times S$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1375: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$S = \{{ \Lambda}\} \oplus A \times S$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1379: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}S = \{{ \Lambda}\} \oplus A \times (\{{ \Lambda}\} \oplus A \times S).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}S=\{{ \Lambda}\} \oplus A \times \{{\Lambda}\} \oplus A \times A \times \{{ \Lambda} \} \oplus ...\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\{{\Lambda}\}$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1387: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}S = 1 \oplus A \oplus A^2 \oplus A^3 \oplus ...\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$S = 1 \oplus A
+\times S$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1395: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$S = 1 \oplus A \oplus A^2 \oplus
+...$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1401: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}S = A \oplus S \times S.\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(a_1 \cdot a_2)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1407: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$((a_1 \cdot
+a_2) \cdot a_3)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1409: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(a_1 \cdot (a_2 \cdot a_3))$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1411: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}atom(x) = p _{A, S \times S}(x)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}eq(x,y) = (i _{A,S \times S}(x) = i _{A,S \times S}(y))\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}car(x) = n _{S,S}(s_{A,S \times S}(x))\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}cdr(x) = \varrho _{S,S}(s _{A,S \times S}(x))\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}cons(x,y) = j _{A,S \times S}(\gamma _{S,S}(x,y))\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}I = \{{0}\} \oplus \{{0}\} \times I.\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}0,(0 \cdot 0),(0 \cdot (0 \cdot 0)), {\rm etc}.\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}succ(n) = \gamma  (0,n)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}pred(n) = \varrho  (s(n)).\end{displaymath}
+}
+
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(p \rightarrow x,y)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1451: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(p \rightarrow x,{\rm T}
+\rightarrow y).\ \ (p \rightarrow x,y)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1453: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\pi$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1461: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\alpha$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1463: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\beta$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1465: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(\pi
+\rightarrow \alpha, \beta)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1467: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(\pi \rightarrow \alpha, \beta).$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1473: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}[t]{ll}
+  value($\pi$)&value(($\pi \rightarrow \alpha,\beta$))\\  \hline T &
+  value($\alpha$) \\  F & value($\beta$) \\  undefined & undefined
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$((p
+\rightarrow q,r) \rightarrow a,b)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1489: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(p \rightarrow (q \rightarrow
+a,b),(r \rightarrow a,b))$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1491: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{lccccc}
+p\, q\,  r &  ( $ p \rightarrow q,r$)  &
+  ( $ ( p \rightarrow q,r)  \rightarrow a,b$)  &
+  $( q \rightarrow a,b) $  & ( $ r \rightarrow a,b$)  &
+  ( $ p \rightarrow \begin{array}[t]{l} (q \rightarrow
+     a,b), \\  ( r \rightarrow a,b)) \end{array}$ \\  \hline
+
+ T T T  & T & a & a & a & a \\ 
+ T T F  & T & a & a & a & a \\ 
+ T T u  & T & a & a & u & a \\ 
+ \\ 
+T F T & F & b & b & a & b \\ 
+T F F & F & b & b & b & b \\ 
+T F u & F & b & b & u & b \\ 
+\\ 
+T u T & u & u & u & a  & u \\ 
+T u F & u & u & u & b  & u \\ 
+T u u & u & u & u & u  & u \\ 
+\\ 
+  F T T  & T & a & a & a & a \\ 
+ F T F  & F & b & a & b & b \\ 
+ F T u  & u & u & a & u & u \\ 
+ \\ 
+F F T & T & a & b & a & a \\ 
+F F F & F & b & b & b & b \\ 
+F F u & u & u & b & u & u \\ 
+\\ 
+F u T & T & a & u & a  & a \\ 
+F u F & F & b & u & b  & b \\ 
+F u u & u & u & u & u  & u \\ 
+\\ 
+ u T T  & u & u & a & a & u \\ 
+ u T F  & u & u & a & b & u \\ 
+ u T u  & u & u & a & u & u \\ 
+ \\ 
+u F T & u & u & b & a & u \\ 
+u F F & u & u & b & a & u \\ 
+u F u & u & u & b & u & u \\ 
+\\ 
+u u T & u & u & u & a  & u \\ 
+u u F & u & u & u & b  & u \\ 
+u u u & u & u & u & u  & u \\ 
+
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{lcccccc}
+p q &   ( $ q \rightarrow a,b$) &  ( $ q \rightarrow c,d$) &  $( p \rightarrow \begin{array}[t]{l} ( q \rightarrow a,b),\\  ( q
+   \rightarrow c,d)) \end{array} $   &  ( $ p \rightarrow a,c$)  &
+ ( $ p \rightarrow b,d$)  &
+ ( $ q \rightarrow \begin{array}[t]{l} ( p
+     \rightarrow a,c), \\  ( p \rightarrow b,d)) \end{array} $  \\  \hline
+T T  & a& c & a & a & b & a \\ 
+T F & b& d & b & a & b & b \\ 
+F T & a& c & c & c & d & c \\ 
+F F & b& d & d & c & d & d 
+
+ 
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(p \rightarrow (q \rightarrow a,b),(q \rightarrow c,d))$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1521: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(q \rightarrow (p \rightarrow a,c),(p \rightarrow b,d))$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1523: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\equiv_s$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1525: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\equiv_w$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1527: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\alpha \equiv \beta$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1529: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\alpha_1 \equiv B_1$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1531: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\alpha \equiv \beta,$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1533: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\alpha_1
+\equiv \beta_1.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1535: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\delta$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1543: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\gamma \equiv \delta.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1551: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}&1)&(p \rightarrow a,a) \equiv_wa\\ 
+ &2)&(T \rightarrow a,b) \equiv_sa\\ 
+ &3)&(F \rightarrow a,b) \equiv_sb\\ 
+ &4)&(p \rightarrow {\rm T,F}) \equiv_sp\\ 
+ &5)&(p \rightarrow (p \rightarrow a,b),c) \equiv_s(p \rightarrow a,c)\\ 
+ &6)&(p \rightarrow a,(p \rightarrow b,c) \equiv_s(p \rightarrow a,c)\\ 
+ &7)&((p \rightarrow q,r) \rightarrow a,b) \equiv_s(p \rightarrow (q \rightarrow a,b),(r \rightarrow a,b))\\ 
+ &8)&((p \rightarrow (q \rightarrow a,b),(q \rightarrow c,d)) \equiv_s(q \rightarrow (p\rightarrow a,c),(p \rightarrow b,d))
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}(p_1 \rightarrow a_0,a_1)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$a_i$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1561: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}a_i = (p_2 \rightarrow a _{i0},a _{i1})\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}a_{i_1...i_k} = (p _{k+1} \rightarrow a_{i_1...i_k0}, a_{i_1...i_k1})\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$a_{i_1...i_n}$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1569: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}((p \rightarrow q,r) \rightarrow a,b)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}(r \rightarrow (q \rightarrow (p \rightarrow a,a),(p \rightarrow b,a)),(q \rightarrow (p \rightarrow a,b),(p \rightarrow b,b))).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$^n$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1577: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(q \rightarrow (p_1 \rightarrow
+a,b),p_1 \rightarrow c,d))$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1587: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(q \rightarrow a,(p_1 \rightarrow c,d))$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1589: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(q \rightarrow (p_1
+\rightarrow a,a),(p_1 \rightarrow c,b));$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1591: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(q \rightarrow
+(p_1 \rightarrow a,b),c)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1593: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(p_1 \rightarrow \alpha,
+\beta)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1595: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$p_2$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1603: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}(p \rightarrow (r \rightarrow (q \rightarrow a,b),(q \rightarrow c,d)),(q \rightarrow e,f)).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$p_1,$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1641: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(p \rightarrow (q \rightarrow a,b),c) \equiv_s (p \rightarrow (q \rightarrow (p \rightarrow a,a),(p \rightarrow b,b)),c)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1653: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(p \rightarrow a,(q \rightarrow b,c)) \equiv_s (p \rightarrow
+a,(q \rightarrow (p \rightarrow b,b),(p \rightarrow c,c))).$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1655: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}p_1 \rightarrow (p_1 \rightarrow a,b),c)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}p_1 \rightarrow a,(p_1 \rightarrow b,c)).\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\beta.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1679: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}(p_1 \rightarrow e_1,(p_2 \rightarrow e_2,...,(p_n \rightarrow e_n,u),...))\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}\lefteqn{f(x_1,...,x_{i-1},(p_1 \rightarrow e_1,...,p_n \rightarrow e_n),x _{i+ 1},...,x_k) = }\\ 
+   & & (p_1\rightarrow f(x_1,...,x _{i-1},e_1,x_{i+1},...,x_k),...,p_n \rightarrow f(x_1,...,x _{i-1},e_n,x _{i+1},...,x_k)).
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f(x_1,...,x_i,...,x_n)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1725: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$x_i.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1733: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(p_1 \rightarrow e_1,...,p_i \rightarrow e_i,...,p_n \rightarrow e_n)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1747: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(\sim p_1 \land ... \land \sim p_{i-1}) \land p_i \land \pi.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1749: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$p_i$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1753: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\sim p_1 \land ... \land \sim p_{i-1} \land \pi.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1765: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\alpha'$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1771: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(\pi \rightarrow \alpha)
+\equiv_s (\pi \rightarrow \alpha')$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1773: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f(x_1,...,x_n) = \cal E$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1785: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{${x_1,...,x_n,f}$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1787: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\cal E$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1789: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$\cal A$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1793: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(x_1,...,x_n)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1797: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}g(x_1,...,x_n) = h(x_1,...,x_n)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f(x_1,...,x_n)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1827: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}m+n=(n=0 \rightarrow m,{ \rm T} \rightarrow m'+n^-)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}mn=(n=0 \rightarrow 0, {\rm T} \rightarrow m+mn^-)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}Th.\ {\rm 1}.\ m+0&=&m\\ 
+Proof\ \ m+0&=&(0=0 \rightarrow m,{\rm T} \rightarrow m'+0^-)\\ 
+ &=&m.
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$Th.\ { \rm 2}.\ (m + n)' = m' + n$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1837: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f(m,n) = (n = 0 \rightarrow m', { \rm T} \rightarrow
+f(m,n^-))$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1841: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}(m+n)' &=&(n=0 \rightarrow m, {\rm T} \rightarrow (m'+n^-)')\\ 
+&=&(n=0 \rightarrow m', {\rm T} \rightarrow (m'+n^-)'), { \rm while}\\ 
+m'+n&=&(n=0 \rightarrow m', { \rm T} \rightarrow (m')'+n^-).
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$g(m',n) = (m' + n^-)'$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1859: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$h(m',n^-) = (m')' + n^-.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1861: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}f(n,x,...,z) &=& (n = 0 \rightarrow g(x,...,z), { \rm T} \rightarrow h(n,x,...,z,\\ 
+             & & \mbox{} f(n^-,r(x,...,z),...,t(x,...,z)),\\ 
+             & & \mbox{} f(n^-,u(x,...,z),...,w(x,...,z)),etc.))
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$Th.\ { \rm 3}.\ (m+n)+p=(m+p)+n.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1875: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f(m,n,p) = (p = 0 \rightarrow m+n,{ \rm T} \rightarrow f(m',n,p^-)).$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1877: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}(m+n)+p &=& (p = 0 \rightarrow m+n,{ \rm T} \rightarrow (m+n)'+p-)\\ 
+&=& (p = 0 \rightarrow m+n,{ \rm T} \rightarrow (m'+n)+p^-) {\rm \ using\ Th.\ 2.}\\ 
+(m+p)+n &=& (p = 0 \rightarrow m,{ \rm T} \rightarrow m'+p^-)+n\\ 
+&=& (p = 0 \rightarrow m+n,{ \rm T} \rightarrow (m'+p^-)+n).
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}(0+n)+p = (0+p)+n\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{picture}(257,178)(-05,624)
+\thinlines
+\put( 80,800){\line( 3,-4){120}}
+\put(320,800){\line(-3,-4){120}}
+\put(120,750){\line( 4, 5){ 40}}
+\put(240,800){\line( 4,-5){ 40}}
+\put(110,800){\line(-3,-4){ 15}}
+\put(130,800){\line( 1,-1){ 15}}
+\put(265,800){\line(-1,-1){ 15}}
+\put(285,800){\line( 1,-1){ 20}}
+\put( 65,770){\makebox(0,0)[lb]{b}}
+\put(230,775){\makebox(0,0)[lb]{a}}
+\put(195,625){\makebox(0,0)[lb]{0}}
+\end{picture}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$m^-$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1895: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$m' \not= 0$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1905: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(m')^- = m$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1907: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(m \not= 0) \supset ((m^-)' = m)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1909: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$Th.\ {\rm 4}.\ 0+n=n.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1911: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}\text{Proof } \ {\rm Let}\ f(n) &=& (n = 0 \rightarrow { \rm 0,T} \rightarrow f(n^-)')\\ 
+0 + n &=& (n = 0 \rightarrow { \rm 0,T} \rightarrow 0' + n^-)\\ 
+        &=& (n =0 \rightarrow { \rm 0,T} \rightarrow (0 + n^-)')\\  
+n&=& (n = 0 \rightarrow n,{ \rm T} \rightarrow n)\\ 
+&=& (n = 0 \rightarrow { \rm 0,T} \rightarrow (n^-)') {\rm \ \ \ axiom\ 3}
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$Th.\ {\rm 5}.\ m+n=n+m.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1913: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$Th.\ {\rm 6}.\ (m + n) +p = m + (n + p)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1915: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}\text{Proof }\ (m+n)+p &=& (m+p)+n\ {\rm Th.\ 3.}\\ 
+&=&(p+m)+n\ {\rm Th.\ 5.}\\ 
+&=&(p+n)+m\ {\rm Th.\ 3.}\\ 
+&=& m+ (n+p)\ {\rm Th.\ 5.\ twice.}
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$Th.\ 7.\ m\cdot0=0.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1917: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}\text{Proof }m\cdot0&=& (0 = 0 + 0,T \rightarrow m+n\cdot0^-)\\ 
+=&0&
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$Th.\ 8.\ 0 \cdot n = 0.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1919: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}\text{Proof }{\rm Let }f(n) &=& (n = 0 \rightarrow 0,{\rm T} \rightarrow f(n^-))\\ 
+0\cdot n &=&(n=0\rightarrow 0,{\rm T}\rightarrow 0+0\cdot n)=(n=0\rightarrow 0,{\rm T}\rightarrow 0\cdot n)\\ 
+0&=&(n=0\rightarrow 0,{\rm T} \rightarrow 0)
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$Th.\ 9.\ mn' = m+mn.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1921: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}\text{Proof }mn' &=& (n' = 0 \rightarrow 0,{\rm T}\rightarrow m + m\cdot (n')^-)\\ 
+&=& m + mn\ \ \ \ {\rm axioms\ 1\ and\ 2}.
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}Th.\ 10.\ m(n + p) = mn + mp.\\ 
+\text{Proof }{\rm Let}f(m,n,p) &=& (p = 0 \rightarrow mn,{\rm T} \rightarrow f(m,n',p^-))\\ 
+m(n + p) &=& m(p = 0 \rightarrow n,{\rm T} \rightarrow n' + p^-))\\ 
+&=& (p = 0 \rightarrow mn,{\rm T} \rightarrow m(n' + p^-))\\ 
+mn+mp &=& mn+(p = 0 \rightarrow 0,{\rm T} \rightarrow m+mp^-)\\ 
+&=& (p = 0 \rightarrow mn + 0,{\rm T} \rightarrow mn + (m + mp^-))\\ 
+&=&(p = 0 \rightarrow mn,{\rm T} \rightarrow (mn+m)+mp^-)\\ 
+&=& (p = 0 \rightarrow mn,{\rm T} \rightarrow mn' + mp^-)
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}\begin{array}{l}
+car[cons[x;y]] = x\\  
+cdr[cons[x;y]] = y\\  
+\sim atom[x] \supset cons[car[x];cdr[x] = x\\  
+atom[cons[x;y]] = {\rm F}\\ 
+null[x] = eq[x;{\rm NIL}]
+\end{array}\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$x^*y$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1923: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}x^*y = [null[x] \rightarrow y; {\rm T} \rightarrow cons [car[x];cdr[x]^*y]]\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$[x^*y]^*z = x^*[y^*z].$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1933: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$[x^*y]^*z$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1935: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$x^*[y^*z]$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1937: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}f[x;y;z] = [null[x] \rightarrow y^*z; {\rm T} \rightarrow cons[car[x];f[cdr[x];y;z]]]\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}cons[a;u]^*v = [null[cons[a;u]] \rightarrow v; {\rm T} \rightarrow cons[car[cons[a;u]]; cdr [cons[a;u]]^*v]] = cons[a;u^*v]\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}[x^*y]^*z &=& [null[x] \rightarrow y; {\rm T} \rightarrow cons[car[x];cdr[x]^*y]]^*z\\ 
+&=& [null[x] \rightarrow y^*z; {\rm T} \rightarrow cons[car[x];cdr[x]^*y]^*z]\\ 
+&=& [null[x] \rightarrow y^*z; {\rm T} \rightarrow cons[car[x];cdr[x]^*y]^*z]]
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}x^*[y^*z] = [null[x] \rightarrow y^*z; {\rm T} \rightarrow cons[car[x];cdr[x]^*[y^*z]]].\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$[x^*[y^*z]$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1947: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}Th.\ {\rm 12.\ NIL}^*x &=& x\\ 
+x^* {\rm NIL} &=& x.\\ 
+\text{Proof }{\rm NIL}^*x &=& [null[{\rm NIL}] \rightarrow x; {\rm T} \rightarrow cons[car [{\rm NIL}]; cdr[{\rm NIL}]^*x]]\\ 
+        &=& x\\ 
+        x^*{\rm NIL} &=& [null[x] \rightarrow {\rm NIL; T} \rightarrow cons[car[x];cdr[x]^*{\rm NIL}]].
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f[x] = [null[x] \rightarrow {\rm NIL; T} \rightarrow cons[car[x];f[cdr[x]]]].$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1949: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$x^*$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1951: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}x &=& [null[x] \rightarrow x;{\rm T} \rightarrow x]\\ 
+&=& [null[x] \rightarrow {\rm NIL; T} \rightarrow cons[car[x]; cdr[x]]] 
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}reverse[x] = [null[x] \rightarrow {\rm NIL; T} \rightarrow reverse[cdr[x]]^*cons[car[x];{\rm NIL}].\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}reverse [x^*y] = reverse [y]^*reverse[x]\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}reverse[reverse[x]] = x.\end{displaymath}
+}
+
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$C\{{succ,eg}\}.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1975: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{eqnarray*}&1)& x'\\ 
+&2)& U_{i^n}(x_1,...,x_n) = x_i,\ \ 1 \leq i \leq n\\ 
+&3)&x+y\\ 
+&4)& x-y = (x-y > 0 \rightarrow x-y,{\rm T} \rightarrow 0)\\ 
+&5)&xy
+\end{eqnarray*}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$C\{{succ,eq}\}.$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1977: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$C\{{succ,eq}\}$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1981: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f(y,x_1,...,x_n)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1983: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$h(x_1,...,x_n)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1985: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f(y,x_1,...,x_n)= 0,$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline1991: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}h(x_1,...,x_n) = h_2(0,x_1,...,x_n)\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}h_2(y,x_1,...,x_n) = (f(,y,x_1,...,x_n) = 0 \rightarrow y,{\rm T} \rightarrow h_2(y',x_1,...,x_n)).\end{displaymath}
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$_1$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline2009: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$_2$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline2011: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$_3$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline2013: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$_4$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline2015: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$_5$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline2017: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$a_1,...,a_k,$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline2021: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$_6$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline2023: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$f[a_1;...;a_k]$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline2037: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$_i$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline2041: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$_j$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline2043: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$2 ^{36^{15^{2}}}$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline2051: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}check [statement; proof]\end{displaymath}
+}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+
+\end{document}

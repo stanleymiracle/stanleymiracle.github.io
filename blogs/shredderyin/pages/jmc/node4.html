@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Recursive Functions of the Integers</TITLE>
+<META NAME="description" CONTENT="Recursive Functions of the Integers">
+<META NAME="keywords" CONTENT="basis1">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="basis1.css">
+</HEAD>
+<BODY LANG="EN">
+ <A NAME="tex2html66" HREF="node5.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="next.png"></A> <A NAME="tex2html64" HREF="node2.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="up.png"></A> <A NAME="tex2html58" HREF="node3.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="prev.png"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html67" HREF="node5.html">Computable Functionals</A>
+<B>Up:</B> <A NAME="tex2html65" HREF="node2.html">Formalisms For Describing Computable </A>
+<B> Previous:</B> <A NAME="tex2html59" HREF="node3.html">Functions Computable in Terms </A>
+<BR> <P>
+<H2><A NAME="SECTION00022000000000000000">Recursive Functions of the Integers</A></H2>
+<P>
+<A NAME="secrecfun">&#160;</A>
+<P>
+In Reference 7 we develop the
+recursive functions of a class of symbolic expressions in terms of the
+conditional expression and recursive function formalism.
+<P>
+        As an example of the use of recursive function definitions, we
+shall give recursive definitions of a number of functions over the
+integers. We do this for three reasons: to help the reader familiarize
+himself with recursive definition, to show how much simpler in
+practice our methods of recursive definition are than either Turing
+machines or Kleene's formalism, and to prove that any partial
+recursive function (Kleene) on the non-negative integers is in  <IMG WIDTH=48 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline551" SRC="img13.gif"  > 
+where  <IMG WIDTH=14 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline491" SRC="img1.gif"  >  contains only the successor function and the predicate
+equality.<BR>
+<P>
+Let <I>I</I> be the set of non-negative integers {0,1,2,...} and
+denote the successor of an integer <I>n</I> by <I>n</I>' and denote the equality of
+integers  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline859" SRC="img61.gif"  >  and  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline861" SRC="img62.gif"  >  by  <IMG WIDTH=62 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline863" SRC="img63.gif"  > . If we define functions <I>succ</I> and <I>eq</I> by
+<P>
+<P> <IMG WIDTH=302 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath869" SRC="img64.gif"  > <P>
+<P>
+<P> <IMG WIDTH=364 HEIGHT=49 ALIGN=BOTTOM ALT="displaymath847" SRC="img65.gif"  > <P>
+<P>
+then we write  <IMG WIDTH=14 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline491" SRC="img1.gif"  >  =  <IMG WIDTH=81 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline877" SRC="img66.gif"  > . We are interested in  <IMG WIDTH=48 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline551" SRC="img13.gif"  > . Clearly all functions
+in  <IMG WIDTH=48 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline551" SRC="img13.gif"  >  will have either integers or truth values as values.
+<P>
+First we define the predecessor function <I>pred</I>(not defined for <I>n</I> = 0) by
+<P>
+<P> <IMG WIDTH=343 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath887" SRC="img67.gif"  > <P>
+<P>
+<P> <IMG WIDTH=456 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath889" SRC="img68.gif"  > <P>
+<P>
+We shall denote <I>pred</I>(<I>n</I>) by  <IMG WIDTH=25 HEIGHT=11 ALIGN=BOTTOM ALT="tex2html_wrap_inline893" SRC="img69.gif"  > 
+<P>
+Now we define the sum
+<P> <IMG WIDTH=407 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath895" SRC="img70.gif"  > <P>
+<P>
+the product
+<P> <IMG WIDTH=398 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath897" SRC="img71.gif"  > <P>
+<P>
+the difference
+<P> <IMG WIDTH=409 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath899" SRC="img72.gif"  > <P>
+<P>
+which is defined only for  <IMG WIDTH=58 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline901" SRC="img73.gif"  >  The inequality predicate  <IMG WIDTH=53 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline903" SRC="img74.gif"  >  is defined by
+<P>
+<P> <IMG WIDTH=444 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath905" SRC="img75.gif"  > <P>
+<P>
+The strict inequality <I>m</I> &lt; <I>n</I> is defined by 
+<P> <IMG WIDTH=382 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath909" SRC="img76.gif"  > <P>
+<P>
+The integer valued quotient <I>m</I>/<I>n</I> is defined by
+<P>
+<P> <IMG WIDTH=420 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath913" SRC="img77.gif"  > <P>
+<P>
+The remainder on dividing <I>m</I> by <I>n</I> is defined by
+<P>
+<P> <IMG WIDTH=466 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath919" SRC="img78.gif"  > <P>
+<P>
+and the divisibility of a number <I>n</I> by a number <I>m</I>,
+<P>
+<P> <IMG WIDTH=431 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath925" SRC="img79.gif"  > <P>
+<P>
+The primeness of a number is defined by
+<P> <IMG WIDTH=441 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath927" SRC="img80.gif"  > <P>
+<P>
+where
+<P>
+<P> <IMG WIDTH=482 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath929" SRC="img81.gif"  > <P>
+<P>
+        The Euclidean algorithm defines the greatest common divisor, and
+we write
+<P>
+<P> <IMG WIDTH=682 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath931" SRC="img82.gif"  > <P>
+<P>
+and we can define Euler's  <IMG WIDTH=10 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline933" SRC="img83.gif"  > -function by
+<P>
+        <P> <IMG WIDTH=315 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath935" SRC="img84.gif"  > <P>
+<P>
+where
+<P> <IMG WIDTH=597 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath937" SRC="img85.gif"  > <P>
+<P>
+ <IMG WIDTH=38 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline939" SRC="img86.gif"  >  is the number of numbers less than <I>n</I> and relatively prime to <I>n</I>.
+<P>
+        The above shows that our form of recursion is a convenient way of
+defining arithmetical functions. We shall see how some of the
+properties of the arithmetical functions can conveniently be derived
+in this formalism in a later section.<BR>
+<P>
+<HR><A NAME="tex2html66" HREF="node5.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="next.png"></A> <A NAME="tex2html64" HREF="node2.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="up.png"></A> <A NAME="tex2html58" HREF="node3.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="prev.png"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html67" HREF="node5.html">Computable Functionals</A>
+<B>Up:</B> <A NAME="tex2html65" HREF="node2.html">Formalisms For Describing Computable </A>
+<B> Previous:</B> <A NAME="tex2html59" HREF="node3.html">Functions Computable in Terms </A>
+<P><ADDRESS>
+<I>John McCarthy <BR>
+Wed May  1 20:03:21 PDT 1996</I>
+</ADDRESS>
+</BODY>
+</HTML>

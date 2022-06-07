@@ -2,7 +2,6 @@ BODY {
   padding: 0.7in;
   font-size: medium;
   font-family: Times New Roman, Times, serif;
-  background: white;
   border-style: solid;
   border-width: 20pt;
   border-color: #415d7a;
@@ -154,7 +153,7 @@ h1.home {
 }
 
 h2 {
-  color: #2f547c;
+  color: #102336;
   font-size: 18px;
   border-top: solid #7b7b85 1px;
   border: solid #7b7b85 1px;
@@ -162,11 +161,11 @@ h2 {
   padding-top: 0.2em;
   padding-left: 0.3em;
   padding-bottom: 0.3em;
-  /* background: #adadad; */
+  background: #474950;
 }
 
 h3 {
-  color: #1e4c7e;
+  color: #7b7b85;
   font-size: 16px;
   border-left: solid #7b7b85 1px;
   border-bottom: solid #7b7b85 1px;

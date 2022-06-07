@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Computable Functionals</TITLE>
+<META NAME="description" CONTENT="Computable Functionals">
+<META NAME="keywords" CONTENT="basis1">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="basis1.css">
+</HEAD>
+<BODY LANG="EN">
+ <A NAME="tex2html76" HREF="node6.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="next.png"></A> <A NAME="tex2html74" HREF="node2.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="up.png"></A> <A NAME="tex2html68" HREF="node4.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="prev.png"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html77" HREF="node6.html">Non-Computable Functions and Functionals</A>
+<B>Up:</B> <A NAME="tex2html75" HREF="node2.html">Formalisms For Describing Computable </A>
+<B> Previous:</B> <A NAME="tex2html69" HREF="node4.html">Recursive Functions of the </A>
+<BR> <P>
+<H2><A NAME="SECTION00023000000000000000">Computable Functionals</A></H2>
+<P>
+<A NAME="secfunctionals">&#160;</A>
+<P>
+The formalism previously described enables us
+to define functions that have functions as arguments. For example,
+<P> <IMG WIDTH=272 HEIGHT=48 ALIGN=BOTTOM ALT="displaymath945" SRC="img87.gif"  > <P>
+<P>
+can be regarded as a function of the numbers <I>m</I> and <I>n</I> and the
+sequence  <IMG WIDTH=33 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline953" SRC="img88.gif"  > . If we regard the sequence as a function <I>f</I> we can write the recursive definition
+<P> <IMG WIDTH=510 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath957" SRC="img89.gif"  > <P> 
+or in terms of the conventional notation
+<P>
+<P> <IMG WIDTH=455 HEIGHT=49 ALIGN=BOTTOM ALT="displaymath946" SRC="img90.gif"  > <P>
+<P>
+Functions with functions as arguments are called <EM>functionals</EM>.
+<P>
+        Another example is the functional <I>least</I>(<I>p</I>) which gives the least integer <I>n</I>
+such that <I>p</I>(<I>n</I>) for a predicate <I>p</I>. We have
+<P>
+<P> <IMG WIDTH=343 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath967" SRC="img91.gif"  > <P>
+where
+<P> <IMG WIDTH=453 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath969" SRC="img92.gif"  > <P>
+<P>
+        In order to use functionals it is convenient to have a notation for naming
+functions. We use Church's [1] lambda notation. Suppose we have a function <I>f</I>
+defined by an equation  <IMG WIDTH=133 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline973" SRC="img93.gif"  >  where <I>e</I> is some expression in  <IMG WIDTH=68 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline641" SRC="img25.gif"  > . The name of this function is  <IMG WIDTH=130 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline979" SRC="img94.gif"  > . For example, the name
+of the function <I>f</I> defined by  <IMG WIDTH=133 HEIGHT=34 ALIGN=MIDDLE ALT="tex2html_wrap_inline603" SRC="img21.gif"  >  is  <IMG WIDTH=132 HEIGHT=34 ALIGN=MIDDLE ALT="tex2html_wrap_inline985" SRC="img95.gif"  > .<BR>
+<P>
+Thus we have
+<P> <IMG WIDTH=362 HEIGHT=23 ALIGN=BOTTOM ALT="displaymath987" SRC="img96.gif"  > <P>
+but
+<P> <IMG WIDTH=362 HEIGHT=23 ALIGN=BOTTOM ALT="displaymath989" SRC="img97.gif"  > <P>
+<P>
+The variables occurring in a  <IMG WIDTH=8 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline991" SRC="img98.gif"  >  definition are dummy or bound variables and
+can be replaced by others without changing the function provided the
+replacement is done consistently. For example, the expressions
+<P>
+<P> <IMG WIDTH=318 HEIGHT=23 ALIGN=BOTTOM ALT="displaymath993" SRC="img99.gif"  > <P>
+<P> <IMG WIDTH=318 HEIGHT=23 ALIGN=BOTTOM ALT="displaymath995" SRC="img100.gif"  > <P>
+<P>
+and
+<P>
+<P> <IMG WIDTH=315 HEIGHT=23 ALIGN=BOTTOM ALT="displaymath997" SRC="img101.gif"  > <P>
+<P>
+all represent the same function.<BR>
+<P>
+        In the notation  <IMG WIDTH=55 HEIGHT=33 ALIGN=MIDDLE ALT="tex2html_wrap_inline999" SRC="img102.gif"  >  is represented by  <IMG WIDTH=160 HEIGHT=34 ALIGN=MIDDLE ALT="tex2html_wrap_inline1001" SRC="img103.gif"  >  and the least
+integer <I>n</I> for which  <IMG WIDTH=63 HEIGHT=35 ALIGN=MIDDLE ALT="tex2html_wrap_inline1005" SRC="img104.gif"  >  is represented by
+<P>
+<P> <IMG WIDTH=344 HEIGHT=23 ALIGN=BOTTOM ALT="displaymath1007" SRC="img105.gif"  > <P>
+<P>
+        When the functions with which we are dealing are defined recursively, a difficulty arises. For example, consider <I>factorial</I> defined by
+<P>
+<P> <IMG WIDTH=479 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1011" SRC="img106.gif"  > <P>
+<P>
+The expression
+<P>
+<P> <IMG WIDTH=442 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1013" SRC="img107.gif"  > <P>
+<P>
+cannot serve as a name for this function because it is not clear that the
+occurrence of ``factorial'' in the expression refers to the function defined by the
+expression as a whole. Therefore, for recursive functions we adopt an additional
+convention, Namely,
+<P>
+<P> <IMG WIDTH=353 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1015" SRC="img108.gif"  > <P>
+<P>
+stands for the function <I>f</I> defined by the equation
+<P>
+<P> <IMG WIDTH=316 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1019" SRC="img109.gif"  > <P>
+<P>
+where any occurrences of the function letter <I>f</I> within <I>e</I> stand for the function
+being defined. The letter <I>f</I> is a dummy variable. The factorial function then has
+the name
+<P>
+<P> <IMG WIDTH=533 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1027" SRC="img110.gif"  > <P>
+<P>
+and since <I>factorial</I> and <I>n</I> are dummy variables the expression
+<P>
+<P> <IMG WIDTH=440 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1033" SRC="img111.gif"  > <P>
+<P>
+represents the same function.
+<P>
+        If we start with a base domain for our variables, it is
+possible to consider a hierarchy of functionals. At level 1 we have
+functions whose arguments are in the base domain. At level 2 we have
+functionals taking functions of level 1 as arguments. At level 3 are
+functionals taking functionals of level 2 as arguments, etc. Actually
+functionals of several variables can be of mixed type.
+<P>
+        However, this hierarchy does not exhaust the possibilities,
+and if we allow functions which can take themselves as arguments we
+can eliminate the use of <I>label</I> in naming recursive functions. Suppose
+that we have a function <I>f</I> defined by
+<P>
+<P> <IMG WIDTH=310 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1039" SRC="img112.gif"  > <P>
+<P>
+where  <IMG WIDTH=57 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1041" SRC="img113.gif"  >  is some expression in <I>x</I> and the function variable <I>f</I>. This
+function can be named
+<P> <IMG WIDTH=349 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1047" SRC="img114.gif"  > <P>
+<P>
+However, suppose we define a function <I>g</I> by
+<P> <IMG WIDTH=376 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1051" SRC="img115.gif"  > <P>
+or
+<P> <IMG WIDTH=396 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1053" SRC="img116.gif"  > <P>
+We then have
+<P>
+<P> <IMG WIDTH=308 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1055" SRC="img117.gif"  > <P>
+<P>
+since <I>g</I>(<I>x</I>,<I>g</I>) satisfies the equation
+<P>
+<P> <IMG WIDTH=374 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1059" SRC="img118.gif"  > <P>
+<P>
+Now we can write <I>f</I> as
+<P>
+<P> <IMG WIDTH=643 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1063" SRC="img119.gif"  > <P>
+<P>
+This eliminates <I>label</I> at what seems to be an excessive cost. Namely, the
+expression gets quite complicated and we must admit functionals capable of
+taking themselves as arguments. These escape our orderly hierarchy of
+functionals.<BR>
+<P>
+<HR><A NAME="tex2html76" HREF="node6.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="next.png"></A> <A NAME="tex2html74" HREF="node2.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="up.png"></A> <A NAME="tex2html68" HREF="node4.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="prev.png"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html77" HREF="node6.html">Non-Computable Functions and Functionals</A>
+<B>Up:</B> <A NAME="tex2html75" HREF="node2.html">Formalisms For Describing Computable </A>
+<B> Previous:</B> <A NAME="tex2html69" HREF="node4.html">Recursive Functions of the </A>
+<P><ADDRESS>
+<I>John McCarthy <BR>
+Wed May  1 20:03:21 PDT 1996</I>
+</ADDRESS>
+</BODY>
+</HTML>

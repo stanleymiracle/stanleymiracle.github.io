@@ -1,0 +1,326 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Functions Computable in Terms of Given Base Functions </TITLE>
+<META NAME="description" CONTENT="Functions Computable in Terms of Given Base Functions ">
+<META NAME="keywords" CONTENT="basis1">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="basis1.css">
+</HEAD>
+<BODY LANG="EN">
+ <A NAME="tex2html56" HREF="node4.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="next.png"></A> <A NAME="tex2html54" HREF="node2.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="up.png"></A> <A NAME="tex2html48" HREF="node2.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="prev.png"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html57" HREF="node4.html">Recursive Functions of the </A>
+<B>Up:</B> <A NAME="tex2html55" HREF="node2.html">Formalisms For Describing Computable </A>
+<B> Previous:</B> <A NAME="tex2html49" HREF="node2.html">Formalisms For Describing Computable </A>
+<BR> <P>
+<H2><A NAME="SECTION00021000000000000000">Functions Computable in Terms of Given Base Functions </A></H2>
+<P>
+<A NAME="seccbf">&#160;</A>
+<P>
+Suppose we are given a base collection  <IMG WIDTH=14 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline491" SRC="img1.gif"  >  of functions (including predicates) having certain
+domains and ranges. In the case of the non-negative integers, we may
+have the successor function and the predicate of equality, and in the
+case of the S-expressions discussed in reference 7, we have the five
+basic operations. Our object is to define a class of functions 
+ <IMG WIDTH=10 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline493" SRC="img2.gif"  >  { <IMG WIDTH=14 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline491" SRC="img1.gif"  > }
+which we shall call <I>the</I> <I>class</I> <I>of</I> <I>functions</I> <I>computable</I> <I>in</I> <I>terms</I> <I>of</I>  <IMG WIDTH=14 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline491" SRC="img1.gif"  > .
+<P>
+        Before developing  <IMG WIDTH=10 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline493" SRC="img2.gif"  >  { <IMG WIDTH=14 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline491" SRC="img1.gif"  > } formally, we wish to give an example,
+and in order to give the example, we first need the concept of
+conditional expression. In our notation a conditional expression has
+the form
+<P>
+<P> <IMG WIDTH=384 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath519" SRC="img3.gif"  > <P>
+<P>
+which corresponds to the ALGOL 60 reference language (12) expression
+<P>
+<P> <IMG WIDTH=494 HEIGHT=19 ALIGN=BOTTOM ALT="displaymath521" SRC="img4.gif"  > <P>
+<P>
+Here  <IMG WIDTH=82 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline523" SRC="img5.gif"  >  are propositional expressions taking the values T or
+        F standing for truth and falsity respectively.
+<P>
+        The value of  <IMG WIDTH=268 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline525" SRC="img6.gif"  >  is the value of the <I>e</I> corresponding to the first <I>p</I> that has value T. Thus
+<P>
+(4 &lt; 3  <IMG WIDTH=17 HEIGHT=11 ALIGN=BOTTOM ALT="tex2html_wrap_inline533" SRC="img7.gif"  >  7, 2 &gt; 3  <IMG WIDTH=17 HEIGHT=11 ALIGN=BOTTOM ALT="tex2html_wrap_inline533" SRC="img7.gif"  >  8, 2 &lt; 3  <IMG WIDTH=17 HEIGHT=11 ALIGN=BOTTOM ALT="tex2html_wrap_inline533" SRC="img7.gif"  >  9, 4 &lt; 5  <IMG WIDTH=17 HEIGHT=11 ALIGN=BOTTOM ALT="tex2html_wrap_inline533" SRC="img7.gif"  >  7) = 9.
+<P>
+        Some examples of the conditional expressions for well known
+functions are
+<P>
+<P> <IMG WIDTH=500 HEIGHT=50 ALIGN=BOTTOM ALT="eqnarray34" SRC="img8.gif"  > <P>
+and the triangular function whose graph is given in figure 1 is represented
+by the conditional expression 
+<P> <IMG WIDTH=558 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath547" SRC="img9.gif"  > <P>
+<P>
+<P><A NAME="figbasis1">&#160;</A> <IMG WIDTH=329 HEIGHT=226 ALIGN=BOTTOM ALT="figure37" SRC="img10.gif"  > <P>
+<P>
+        Now we are ready to use conditional expressions to define
+functions recursively. For example, we have
+<P>
+<P> <IMG WIDTH=412 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath549" SRC="img11.gif"  > <P>
+<P>
+Let us evaluate 2! according to this definition. We have
+<P>
+<P> <IMG WIDTH=500 HEIGHT=190 ALIGN=BOTTOM ALT="eqnarray43" SRC="img12.gif"  > <P>
+<P>
+        The reader who has followed these simple examples is ready for
+the construction of  <IMG WIDTH=48 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline551" SRC="img13.gif"  >  which is a straightforward generalization of
+the above together with a tying up of a few loose ends.
+<P>
+        <I>Some notation</I>. Let  <IMG WIDTH=14 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline491" SRC="img1.gif"  >  be a collection (finite in the examples
+we shall give) of functions whose domains and ranges are certain
+sets.  <IMG WIDTH=48 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline551" SRC="img13.gif"  >  will be a class of functions involving the same sets which
+we shall call computable in terms of  <IMG WIDTH=14 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline491" SRC="img1.gif"  > .
+<P>
+Suppose <I>f</I> is a function of <I>n</I> variables, and suppose that if we write  <IMG WIDTH=133 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline563" SRC="img14.gif"  > , each  <IMG WIDTH=15 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline565" SRC="img15.gif"  >  takes values in the set  <IMG WIDTH=16 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline567" SRC="img16.gif"  >  and <I>y</I> takes its
+value in the set <I>V</I>. It is customary to describe this situation by
+writing
+<P>
+<P> <IMG WIDTH=366 HEIGHT=18 ALIGN=BOTTOM ALT="displaymath573" SRC="img17.gif"  > <P>
+<P>
+The set  <IMG WIDTH=112 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline575" SRC="img18.gif"  >  of <I>n</I>-tuples  <IMG WIDTH=99 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline579" SRC="img19.gif"  >  is called the <I>domain</I> of
+<I>f</I>, and the set <I>V</I> is called the <I>range</I> of <I>f</I>.
+<P>
+        <EM>Forms and functions.</EM> In order to make properly the
+definitions that follow, we will distinguish between functions and
+expressions involving free variables. Following Church [1] the latter
+are called <I>forms</I>. Single letters such as <I>f</I>, <I>g</I>, <I>h</I>, etc. or sequences of
+letters such as <I>sin</I> are used to denote <EM>functions</EM>. Expressions such as
+<I>f</I>(<I>x</I>,<I>y</I>),  <IMG WIDTH=141 HEIGHT=34 ALIGN=MIDDLE ALT="tex2html_wrap_inline599" SRC="img20.gif"  >  are called forms. In particular we may refer
+to the function <I>f</I> defined by  <IMG WIDTH=133 HEIGHT=34 ALIGN=MIDDLE ALT="tex2html_wrap_inline603" SRC="img21.gif"  > . Our definitions will be
+written as though all forms involving functions were written <I>f</I>(,...,)
+although we will use expressions like <I>x</I> + <I>y</I> with infixes like + in
+examples.
+<P>
+        <EM>Composition</EM>. Now we shall describe the ways in which new
+functions are defined from old. The first way may be called
+(generalized) <I>composition</I> and involves the use of forms. We shall use
+the letters <I>x</I>,<I>y</I>,... (sometimes with subscripts) for variables and will
+suppose that there is a notation for constants that does not make
+expressions ambiguous. (Thus, the decimal notation is allowed for
+constants when we are dealing with integers.)
+<P>
+        The class of forms is defined recursively as follows:
+<P>
+        (i) A variable <I>x</I> with an associated space <I>U</I> is a form, and
+with this form we also associate <I>U</I>. A constant in a space <I>U</I> is a form
+and we also associate <I>U</I> with this form.
+<P>
+        (ii) If  <IMG WIDTH=63 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline623" SRC="img22.gif"  >  are forms associated with the spaces
+ <IMG WIDTH=71 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline625" SRC="img23.gif"  >  respectively, then  <IMG WIDTH=93 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline627" SRC="img24.gif"  >  is a form associated with
+the space <I>V</I>. Thus the form <I>f</I>(<I>g</I>(<I>x</I>,<I>y</I>),<I>x</I>) may be built from the forms
+<I>g</I>(<I>x</I>,<I>y</I>) and <I>x</I> and the function <I>f</I>.
+<P>
+        If all the variables occurring in a form <I>e</I> are among
+         <IMG WIDTH=68 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline641" SRC="img25.gif"  > , we can define a function <I>h</I> by writing
+         <IMG WIDTH=133 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline645" SRC="img26.gif"  > . We shall assume that the reader knows how
+        to compute the values of a function defined in this
+        way. If  <IMG WIDTH=68 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline647" SRC="img27.gif"  >  are all the functions occurring in <I>e</I> we shall
+        say that the function <I>h</I> is defined by <EM>composition</EM>
+        from  <IMG WIDTH=68 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline647" SRC="img27.gif"  > . The class of functions definable from given
+        functions using only composition is narrower than the class of
+        function computable in terms of these functions.
+<P>
+        <EM>Partial functions</EM>. In the theory of computation it is necessary to
+        deal with <EM>partial functions</EM> which are not defined for all
+        <I>n</I>-tuples in their domains. Thus we have the partial function
+        <I>minus</I>, defined by <I>minus</I> (<I>x</I>,<I>y</I>) = <I>x</I>-<I>y</I>, which is defined on those
+        pairs (<I>x</I>,<I>y</I>) of positive integers for which <I>x</I> is greater than
+        <I>y</I>. A function which is defined for all <I>n</I>-tuples in its domain
+        is called a <EM>total function</EM>. We admit the limiting case of a
+        partial function which is not defined for any <I>n</I>-tuples.
+<P>
+        The <I>n</I>-tuples for which a function described by composition is
+defined is determined in an obvious way from the sets of <I>n</I>-tuples for
+which the functions entering the composition are defined. If all the
+functions occurring in a composition are total functions, the new
+function is also a total function, but the other processes for
+defining functions are not so kind to totality. When the word
+``function'' is used from here on, we shall mean partial function.
+<P>
+        Having to introduce partial functions is a nuisance, but an
+        unavoidable one. The rules for defining computable functions
+        sometimes give computation processes that never terminate, and
+        when the computation process fails to terminate, the result is
+        undefined. It is well known that there is no effective general
+        way of deciding whether a process will terminate.
+<P>
+        <EM>Predicates and propositional forms</EM>. The space  <IMG WIDTH=14 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline675" SRC="img28.gif"  >  of
+        truth values whose only elements are T (for truth) and F (for
+        falsity) has a special role in our theory. A function whose
+        range is  <IMG WIDTH=14 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline675" SRC="img28.gif"  >  is called a <EM>predicate</EM>. Examples of predicates on
+        the integers are <EM>prime</EM> defined by
+<P>
+<P> <IMG WIDTH=372 HEIGHT=49 ALIGN=BOTTOM ALT="displaymath485" SRC="img29.gif"  > <P>
+<P>
+and <I>less</I> defined by
+<P>
+<P> <IMG WIDTH=360 HEIGHT=49 ALIGN=BOTTOM ALT="displaymath486" SRC="img30.gif"  > <P>
+<P>
+We shall, of course, write <I>x</I> &lt; <I>y</I> instead of <I>less</I>(<I>x</I>,<I>y</I>). For any space <I>U</I>
+there is a predicate  <IMG WIDTH=26 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline689" SRC="img31.gif"  >  of two arguments defined by
+<P>
+<P> <IMG WIDTH=360 HEIGHT=49 ALIGN=BOTTOM ALT="displaymath487" SRC="img32.gif"  > <P>
+<P>
+We shall write <I>x</I> = <I>y</I> instead of  <IMG WIDTH=72 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline695" SRC="img33.gif"  > , but some of the remarks
+about functions might not hold if we tried to consider equality a
+single predicate defined on all spaces at once.
+<P>
+        A form with values in  <IMG WIDTH=14 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline675" SRC="img28.gif"  >  such as <I>x</I> &lt; <I>y</I>, <I>x</I> = <I>y</I>, or <I>prime</I>(<I>x</I>) is
+called a <EM>propositional form</EM>.
+<P>
+        Propositional forms constructed directly from predicates such
+as <I>prime</I>(<I>x</I>) or <I>x</I> &lt; <I>y</I> may be called <I>simple</I>. Compound
+propositional forms can be constructed from the simple ones by means
+of the propositional connectives  <IMG WIDTH=36 HEIGHT=24 ALIGN=MIDDLE ALT="tex2html_wrap_inline709" SRC="img34.gif"  >  and  <IMG WIDTH=12 HEIGHT=4 ALIGN=BOTTOM ALT="tex2html_wrap_inline711" SRC="img35.gif"  > . We shall
+assume that the reader is familiar with the use of these connectives.
+<P>
+        <EM>Conditional forms or conditional expressions</EM>. Conditional
+forms require a little more careful treatment than was given above in
+connection with the example. The value of the conditional form
+<P>
+<P> <IMG WIDTH=340 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath713" SRC="img36.gif"  > <P>
+<P>
+is the value of the <I>e</I> corresponding to the first <I>p</I> that has value T;
+if all <I>p</I>'s have value F, then the value of the conditional form is not
+defined. This rule is complete provided all the <I>p</I>'s and <I>e</I>'s have
+defined values, but we need to make provision for the possibility that
+some of the <I>p</I>'s or <I>e</I>'s are undefined. The rule is as follows:
+<P>
+        <EM>If an undefined p occurs before a true p or if all p's are false
+or if the e corresponding to the first true p is undefined, then
+the form is undefined. Otherwise, the value of the form is the value of
+the e corresponding to the first true p</EM>.<BR>
+<P>
+We shall illustrate this definition by additional examples:
+<P>
+<P> <IMG WIDTH=500 HEIGHT=167 ALIGN=BOTTOM ALT="eqnarray80" SRC="img37.gif"  > <P>
+        The truth value T can be used to simplify certain conditional
+forms.
+<P>
+Thus, instead of
+<P> <IMG WIDTH=383 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath729" SRC="img38.gif"  > <P>
+we shall write
+<P>
+<P> <IMG WIDTH=367 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath731" SRC="img39.gif"  > <P>
+<P>
+The propositional connectives can be expressed in terms of
+conditional forms as follows:
+<P>
+<P> <IMG WIDTH=500 HEIGHT=108 ALIGN=BOTTOM ALT="eqnarray85" SRC="img40.gif"  > <P>
+<P>
+Considerations of truth tables show that these formulae give the same
+results as the usual definitions. However, in order to treat partial
+functions we must consider the possibility that <I>p</I> or <I>q</I> may be
+undefined.
+<P>
+Suppose that <I>p</I> is false and <I>q</I> is undefined; then according to the
+conditional form definition  <IMG WIDTH=41 HEIGHT=24 ALIGN=MIDDLE ALT="tex2html_wrap_inline741" SRC="img41.gif"  >  is false and  <IMG WIDTH=38 HEIGHT=24 ALIGN=MIDDLE ALT="tex2html_wrap_inline743" SRC="img42.gif"  >  is
+undefined. This unsymmetry in the propositional connectives turns out
+to be appropriate in the theory of computation since if a calculation
+of <I>p</I> gives F as a result <I>q</I> need not be computed to evaluate  <IMG WIDTH=41 HEIGHT=24 ALIGN=MIDDLE ALT="tex2html_wrap_inline741" SRC="img41.gif"  > , but if the calculation of <I>p</I> does not terminate, we never
+get around to computing <I>q</I>.
+<P>
+        It is natural to ask if a function  <IMG WIDTH=45 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline755" SRC="img43.gif"  >  of 2<I>n</I> variables can be defined so that
+<P>
+<P> <IMG WIDTH=458 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath759" SRC="img44.gif"  > <P>
+<P>
+This is not possible unless we extend our notion of function because
+normally one requires all the arguments of a function to be given
+before the function is computed. However, as we shall shortly see, it
+is important that a conditional form be considered defined when, for
+example,  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline761" SRC="img45.gif"  >  is true and  <IMG WIDTH=13 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline763" SRC="img46.gif"  >  is defined and all the other <I>p</I>'s
+and <I>e</I>'s are undefined. The required extension of the concept of
+function would have the property that functions of several variables
+could no longer be identified with one-variable functions defined on
+product spaces. We shall not pursue this possibility further here.
+<P>
+        We now want to extend our notion of forms to include
+conditional forms. Suppose  <IMG WIDTH=67 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline769" SRC="img47.gif"  >  are forms associated with the
+space of truth values and  <IMG WIDTH=63 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline623" SRC="img22.gif"  >  are forms each of which is
+associated with the space <I>V</I>. Suppose further that each variable
+ <IMG WIDTH=15 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline565" SRC="img15.gif"  >  occurring in  <IMG WIDTH=67 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline769" SRC="img47.gif"  >  and  <IMG WIDTH=63 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline623" SRC="img22.gif"  >  is associated with
+the space <I>U</I>. Then  <IMG WIDTH=180 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline783" SRC="img48.gif"  >  is
+a form associated with <I>V</I>.
+<P>
+        We believe that conditional forms will eventually come to be
+generally used in mathematics whenever functions are defined by
+considering cases. Their introduction is the same kind of innovation
+as vector notation. Nothing can be proved with them that could not
+also be proved without them. However, their formal properties, which
+will be discussed later, will reduce many case-analysis verbal
+arguments to calculation.
+<P>
+<EM>Definition of functions by recursion</EM>. The definition
+<P>
+<P> <IMG WIDTH=395 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath787" SRC="img49.gif"  > <P>
+<P>
+is an example of definition by recursion. Consider the computation of 0!
+<P>
+<P> <IMG WIDTH=412 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath789" SRC="img50.gif"  > <P>
+<P>
+We now see that it is important to provide that the conditional form
+be defined even if a term beyond the one that gives the value is undefined.
+In this case (0 - 1)! is undefined.
+<P>
+        Note also that if we consider a wider domain than the
+non-negative integers, <I>n</I>! as defined above becomes a partial function,
+since unless <I>n</I> is a non-negative integer, the recursion process does
+not terminate.
+<P>
+        In general, we can either define single functions by
+recursion or define several functions together by simultaneous
+recursion, the former being a particular case of the latter.
+<P>
+        To define simultaneously functions  <IMG WIDTH=63 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline795" SRC="img51.gif"  > , we write equations
+<P>
+<P> <IMG WIDTH=500 HEIGHT=87 ALIGN=BOTTOM ALT="eqnarray97" SRC="img52.gif"  > <P>
+        The expressions  <IMG WIDTH=62 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline797" SRC="img53.gif"  >  must contain only known
+functions and the functions  <IMG WIDTH=63 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline795" SRC="img51.gif"  > . Suppose that the ranges of
+the functions are to be  <IMG WIDTH=66 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline801" SRC="img54.gif"  >  respectively; then we further
+require that the expressions  <IMG WIDTH=62 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline797" SRC="img53.gif"  >  be associated with these
+spaces respectively, given that within  <IMG WIDTH=62 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline797" SRC="img53.gif"  >  the <I>f</I>'s are
+taken as having the corresponding <I>V</I>'s as ranges. This is a
+consistency condition.
+<P>
+ <IMG WIDTH=98 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline811" SRC="img55.gif"  >  is to be evaluated for given values of the <I>x</I>'s as follows.
+<P>
+        1. If  <IMG WIDTH=12 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline815" SRC="img56.gif"  >  is a conditional form then the <I>p</I>'s are to be
+evaluated in the prescribed order stopping when a true <I>p</I> and the
+corresponding <I>e</I> have been evaluated.
+<P>
+        2. If  <IMG WIDTH=12 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline815" SRC="img56.gif"  >  has the form  <IMG WIDTH=96 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline825" SRC="img57.gif"  > , then
+ <IMG WIDTH=67 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline827" SRC="img58.gif"  >  are to be evaluated and then the function <I>g</I> applied.
+<P>
+        3. If any expression  <IMG WIDTH=97 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline831" SRC="img59.gif"  >  occurs it is to be
+evaluated from the defining equation.
+<P>
+        4. Any subexpressions of  <IMG WIDTH=12 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline815" SRC="img56.gif"  >  that have to be evaluated are
+evaluated according to the same rules.
+<P>
+        5. Variables occurring as subexpressions are evaluated by
+giving them the assigned values.
+<P>
+        There is no guarantee that the evaluation process will
+terminate in any given case. If for particular arguments the process
+does not terminate, then the function is undefined for these
+arguments. If the function  <IMG WIDTH=13 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline835" SRC="img60.gif"  >  occurs in the expression  <IMG WIDTH=12 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline815" SRC="img56.gif"  > , then
+the possibility of termination depends on the presence of conditional
+expressions in the  <IMG WIDTH=12 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline815" SRC="img56.gif"  > 's.
+<P>
+        The class of functions  <IMG WIDTH=48 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline551" SRC="img13.gif"  >  computable in terms of
+the given base functions  <IMG WIDTH=14 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline491" SRC="img1.gif"  >  is defined to consist of the
+functions which can be defined by repeated applications of the above
+recursive definition process.<BR>
+<P>
+<HR><A NAME="tex2html56" HREF="node4.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="next.png"></A> <A NAME="tex2html54" HREF="node2.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="up.png"></A> <A NAME="tex2html48" HREF="node2.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="prev.png"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html57" HREF="node4.html">Recursive Functions of the </A>
+<B>Up:</B> <A NAME="tex2html55" HREF="node2.html">Formalisms For Describing Computable </A>
+<B> Previous:</B> <A NAME="tex2html49" HREF="node2.html">Formalisms For Describing Computable </A>
+<P><ADDRESS>
+<I>John McCarthy <BR>
+Wed May  1 20:03:21 PDT 1996</I>
+</ADDRESS>
+</BODY>
+</HTML>

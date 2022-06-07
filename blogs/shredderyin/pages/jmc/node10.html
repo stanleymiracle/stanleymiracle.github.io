@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Formal Properties of Conditional Forms</TITLE>
+<META NAME="description" CONTENT="Formal Properties of Conditional Forms">
+<META NAME="keywords" CONTENT="basis1">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="basis1.css">
+</HEAD>
+<BODY LANG="EN">
+ <A NAME="tex2html126" HREF="node11.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="next.png"></A> <A NAME="tex2html124" HREF="node9.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="up.png"></A> <A NAME="tex2html118" HREF="node9.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="prev.png"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html127" HREF="node11.html">Recursion Induction</A>
+<B>Up:</B> <A NAME="tex2html125" HREF="node9.html">Properties of Computable Functions</A>
+<B> Previous:</B> <A NAME="tex2html119" HREF="node9.html">Properties of Computable Functions</A>
+<BR> <P>
+<H2><A NAME="SECTION00031000000000000000">Formal Properties of Conditional Forms</A></H2>
+<P>
+<A NAME="secformal">&#160;</A>
+<P>
+The theory of
+conditional expressions corresponds to analysis by cases in
+mathematics and is only a mild generalization of propositional
+calculus.
+<P>
+We start by considering expressions called generalized Boolean forms
+(gbf) formed as follows:
+<P>
+1. Variables are divided into propositional variables <I>p</I>, <I>q</I>, <I>r</I>,
+etc. and general variables <I>x</I>, <I>y</I>, <I>z</I>, etc.
+<P>
+2. We shall write  <IMG WIDTH=83 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1451" SRC="img205.gif"  >  for  <IMG WIDTH=233 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1453" SRC="img206.gif"  >  is called an elementary
+conditional form (ecf) of which <I>p</I>, <I>x</I>, and <I>y</I> are called the <EM>
+premiss, conclusion</EM> and the <I>alternative</I>,
+respectively.<A NAME="tex2html2" HREF="footnode.html#231"><IMG  ALIGN=BOTTOM ALT="gif" SRC="http://www-formal.stanford.edu/icons/foot_motif.gif"></A>
+<P>
+3. A variable is a gbf, and if it is a propositional variable it is
+called a propositional form (pf).
+<P>
+4. If  <IMG WIDTH=9 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1461" SRC="img207.gif"  >  is a pf and  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  and  <IMG WIDTH=11 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1465" SRC="img209.gif"  >  are gbfs, then  <IMG WIDTH=87 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1467" SRC="img210.gif"  >  is a gbf. If, in addition,  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  and  <IMG WIDTH=11 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1465" SRC="img209.gif"  >  are
+pfs, so is  <IMG WIDTH=92 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1473" SRC="img211.gif"  > 
+<P>
+The value of a gbf  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  for given values (T, F or undefined) of the
+propositional variables will be T or F in case  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  is a pf or a
+general variable otherwise. This value is determined for a gbf  <IMG WIDTH=87 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1467" SRC="img210.gif"  >  according to the table
+<P>
+<P> <IMG WIDTH=273 HEIGHT=88 ALIGN=BOTTOM ALT="tabular233" SRC="img212.gif"  > <P>
+<P>
+We shall say that two gbfs are strongly equivalent if they have the
+same value for all values of the propositional variables in them
+including the case of undefined propositional variables. They are
+weakly equivalent if they have the same values for all values of the
+propositional variables when these are restricted to F and T.
+<P>
+The equivalence of gbfs can be tested by a method of truth tables
+identical to that of propositional calculus. The table for  <IMG WIDTH=153 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1489" SRC="img213.gif"  >  and  <IMG WIDTH=227 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1491" SRC="img214.gif"  >  is given on the foregoing page.
+<P>
+<P> <IMG WIDTH=762 HEIGHT=882 ALIGN=BOTTOM ALT="tabular237" SRC="img215.gif"  > <P>
+<P>
+According to the table,  <IMG WIDTH=153 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1489" SRC="img213.gif"  >  and
+ <IMG WIDTH=227 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1491" SRC="img214.gif"  >  are strongly
+equivalent.
+<P>
+For weak equivalence the <I>u</I> case can be left out of the table.
+<P>
+Consider the table,
+<P>
+ 
+<P> <IMG WIDTH=849 HEIGHT=136 ALIGN=BOTTOM ALT="tabular244" SRC="img216.gif"  > <P>
+<P>
+
+<P>
+which proves that  <IMG WIDTH=227 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1521" SRC="img217.gif"  >  and  <IMG WIDTH=227 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1523" SRC="img218.gif"  >  are weakly equivalent. They are also strongly equivalent. We shall write  <IMG WIDTH=18 HEIGHT=19 ALIGN=MIDDLE ALT="tex2html_wrap_inline1525" SRC="img219.gif"  >  and  <IMG WIDTH=23 HEIGHT=19 ALIGN=MIDDLE ALT="tex2html_wrap_inline1527" SRC="img220.gif"  > 
+for the relations of strong and weak equivalence.
+<P>
+There are two rules whereby an equivalence can be used to generate
+other equivalences.
+<P>
+1. If  <IMG WIDTH=49 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1529" SRC="img221.gif"  >  and  <IMG WIDTH=66 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_inline1531" SRC="img222.gif"  >  is the result of
+substituting any gbf for any variable in  <IMG WIDTH=53 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1533" SRC="img223.gif"  >  then  <IMG WIDTH=68 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1535" SRC="img224.gif"  >  This is called the rule of substitution.
+<P>
+2. If  <IMG WIDTH=49 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1529" SRC="img221.gif"  >  and  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  is subexpression of  <IMG WIDTH=9 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline1243" SRC="img147.gif"  >  and
+ <IMG WIDTH=7 HEIGHT=15 ALIGN=BOTTOM ALT="tex2html_wrap_inline1543" SRC="img225.gif"  >  is the result of replacing an occurrence of  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  in  <IMG WIDTH=9 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline1243" SRC="img147.gif"  > 
+by an occurrence of  <IMG WIDTH=11 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1465" SRC="img209.gif"  > , then  <IMG WIDTH=49 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline1551" SRC="img226.gif"  >  This is
+called the rule of replacement.
+<P>
+These rules are applicable to either strong or weak equivalence and in
+fact to much more general situations.
+<P>
+Weak equivalence corresponds more closely to equivalence of truth
+functions in propositional calculus than does strong equivalence.
+<P>
+        Consider the equations
+<P> <IMG WIDTH=533 HEIGHT=225 ALIGN=BOTTOM ALT="eqnarray253" SRC="img227.gif"  > <P>
+<P>
+All are strong equivalence except the first, and all can be proved by truth
+tables.
+<P>
+These eight equations can be used as axioms to transform any gbf into
+any weakly equivalent one using substitution and replacement.
+<P>
+In fact, they can be used to transform any gbf into a canonical
+form. This canonical form is the following. Let  <IMG WIDTH=67 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline769" SRC="img47.gif"  >  be the
+variables of the gbf <I>a</I> taken in an arbitrary order. Then <I>a</I> can be
+transformed into the form
+<P> <IMG WIDTH=303 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1559" SRC="img228.gif"  > <P>
+where each  <IMG WIDTH=13 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline1561" SRC="img229.gif"  >  has the form
+<P>
+<P> <IMG WIDTH=329 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1563" SRC="img230.gif"  > <P>
+<P>
+and in general for each <I>k</I> = 1,...,<I>n</I>-1
+<P>
+<P> <IMG WIDTH=384 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1567" SRC="img231.gif"  > <P>
+<P>
+and each  <IMG WIDTH=43 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline1569" SRC="img232.gif"  >  is a truth value or a general variable.<BR>
+<P>
+For example, the canonical form of
+<P>
+<P> <IMG WIDTH=326 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1571" SRC="img233.gif"  > <P>
+<P>
+with the variables taken in the order <I>r</I>, <I>q</I>, <I>p</I> is
+<P>
+<P> <IMG WIDTH=528 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1575" SRC="img234.gif"  > <P>
+<P>
+In this canonical form, the 2 <IMG WIDTH=6 HEIGHT=6 ALIGN=BOTTOM ALT="tex2html_wrap_inline1577" SRC="img235.gif"  >  cases of the truth or falsity of  <IMG WIDTH=67 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline769" SRC="img47.gif"  >  are explicitly exhibited.
+<P>
+An expression may be transformed into canonical form as follows:
+<P>
+1) Axiom 7 is used repeatedly until in every subexpression the  <IMG WIDTH=9 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1461" SRC="img207.gif"  > 
+in  <IMG WIDTH=87 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1467" SRC="img210.gif"  >  consists of a single propositional
+variable.
+<P>
+2) The variable  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline761" SRC="img45.gif"  >  is moved to the front by repeated application of
+axiom 8. There are three cases:  <IMG WIDTH=235 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1587" SRC="img236.gif"  >  to which axiom 8 is directly applicable;
+ <IMG WIDTH=162 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1589" SRC="img237.gif"  >  where axiom 8 becomes
+applicable after axiom 1 is used to make it  <IMG WIDTH=248 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1591" SRC="img238.gif"  >  the case  <IMG WIDTH=159 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1593" SRC="img239.gif"  >  which is handled in a manner similar to that
+of case 2.
+<P>
+Once the main expression has the form  <IMG WIDTH=93 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1595" SRC="img240.gif"  >  we move any  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline761" SRC="img45.gif"  > 's which occur in  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  and  <IMG WIDTH=11 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1465" SRC="img209.gif"  >  to the front and
+eliminate them using axioms 5 and 6. We then bring  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline1603" SRC="img241.gif"  >  to the front of  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  > 
+and  <IMG WIDTH=11 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1465" SRC="img209.gif"  >  using axiom 1 if necessary to guarantee at least one occurrence
+of  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline1603" SRC="img241.gif"  >  in each of  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  and  <IMG WIDTH=11 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1465" SRC="img209.gif"  > . The process is continued until the
+canonical form is achieved.
+<P>
+There is also a canonical form for strong equivalence. Any gbf <I>a</I> is
+strongly equivalent to one of the form  <IMG WIDTH=93 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1595" SRC="img240.gif"  > ,
+where  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  and  <IMG WIDTH=11 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1465" SRC="img209.gif"  >  do not contain  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline761" SRC="img45.gif"  >  and are themselves in
+canonical form. However, the variable  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline761" SRC="img45.gif"  >  may not be chosen
+arbitrarily but must be an <EM>inevitable</EM> propositional variable of
+the original gbf and can be chosen to be any inevitable variable. An
+inevitable variable of a gbf  <IMG WIDTH=87 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1467" SRC="img210.gif"  >  is defined to
+be either the first propositional variable or else an inevitable
+variable of both  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  and  <IMG WIDTH=11 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1465" SRC="img209.gif"  > . Thus <I>p</I> and <I>q</I> are the inevitable
+variables of
+<P>
+<P> <IMG WIDTH=441 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1637" SRC="img242.gif"  > <P><BR>
+<P>
+A gbf <I>a</I> may be put in strong canonical form as follows:
+<P>
+1) Use axiom 7 to get all premisses as propositional variables.
+<P>
+2) Choose any inevitable variable, say  <IMG WIDTH=22 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline1641" SRC="img243.gif"  >  and put <I>a</I> in the form  <IMG WIDTH=93 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1595" SRC="img240.gif"  >  by using axiom 8.
+<P>
+3) The next step is to eliminate occurrences of  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline761" SRC="img45.gif"  >  in  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  and
+ <IMG WIDTH=11 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1465" SRC="img209.gif"  > . This can be done by the general rule that in any ecf
+occurrences of the premiss in the conclusion can be replaced by T and
+occurrences in the alternative by F.  However, if we wish to use
+substitution and replacement on formulas we need the additional
+axioms<BR>
+<P>
+(9)  <IMG WIDTH=489 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1653" SRC="img244.gif"  > <BR>
+<P>
+and<BR>
+<P>
+(10)  <IMG WIDTH=493 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1655" SRC="img245.gif"  > <BR>
+<P>
+Suppose there is an occurrence of  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline761" SRC="img45.gif"  >  in the conclusion; we want to
+replace it by T. To do this, we use axioms 9 and 10 to move in a  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline761" SRC="img45.gif"  > 
+until the objectionable  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline761" SRC="img45.gif"  >  occurs as the inner  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline761" SRC="img45.gif"  >  of one of the
+forms<BR> <P> <IMG WIDTH=331 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1665" SRC="img246.gif"  > <P>
+<P>
+or
+<P> <IMG WIDTH=334 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1667" SRC="img247.gif"  > <P>
+<P>
+In either case, the objectionable  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline761" SRC="img45.gif"  >  can be removed by axiom 5 or 6, and the
+ <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline761" SRC="img45.gif"  > 's that were moved in can be moved out again.
+<P>
+Thus we have  <IMG WIDTH=93 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1595" SRC="img240.gif"  >  with  <IMG WIDTH=16 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline761" SRC="img45.gif"  >  missing from  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  and  <IMG WIDTH=15 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1679" SRC="img248.gif"  > 
+<P>
+        4) Inevitable variables are then brought to the front of  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  and  <IMG WIDTH=11 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1465" SRC="img209.gif"  >  and so forth.
+<P>
+Two gbfs are equivalent (weakly or strongly) if and only if they have
+the same (weak or strong) canonical form. One way this is easy to
+prove; if two gbfs have the same canonical form they can be
+transformed into each other via the canonical form. Suppose two gbfs
+have different weak canonical forms when the variables are taken in
+the same order. Then values can be chosen for the <I>p</I>'s giving
+different values for the form proving non-equivalence. In the strong
+case, suppose that two gbfs do not have the same inevitable
+propositional variables. Let <I>p</I> be inevitable in <I>a</I> but not in
+<I>b</I>. Then if the other variables are assigned suitable values <I>b</I> will
+be defined with <I>p</I> undefined. However, <I>a</I> will be undefined since
+<I>p</I> is inevitable in <I>a</I> which proves non-equivalence. Therefore,
+strongly equivalent gbfs have the same inevitable variables, so let
+one of them be put in front of both gbfs. The process is then repeated
+in the conclusion and alternative etc.
+<P>
+The general conditional form
+<P> <IMG WIDTH=340 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath713" SRC="img36.gif"  > <P>
+<P>
+can be regarded as having the form
+<P> <IMG WIDTH=413 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath1705" SRC="img249.gif"  > <P>
+<P>
+where <I>u</I> is a special undefined variable and their properties can be
+derived from those of gbf's.
+<P>
+The relation of functions to conditional forms is given by the distributive law
+<P>
+<P> <IMG WIDTH=658 HEIGHT=50 ALIGN=BOTTOM ALT="eqnarray264" SRC="img250.gif"  > <P>
+<P>
+The rule of replacement can be extended in the case of conditional
+expressions. Suppose  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  is an occurrence of a subexpression of an
+expression  <IMG WIDTH=11 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1465" SRC="img209.gif"  > . We define a certain propositional expression  <IMG WIDTH=9 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1461" SRC="img207.gif"  > 
+called the premiss of  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  in  <IMG WIDTH=11 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1465" SRC="img209.gif"  >  as follows:
+<P>
+1) The premiss of  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  in  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  is T
+<P>
+2) The premiss of  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  in  <IMG WIDTH=148 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1725" SRC="img251.gif"  >  where  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  is part of  <IMG WIDTH=15 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline565" SRC="img15.gif"  >  is the premiss of  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  in  <IMG WIDTH=20 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline1733" SRC="img252.gif"  > 
+<P>
+3) If  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  occurs in  <IMG WIDTH=13 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline763" SRC="img46.gif"  >  and the premiss of  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  in  <IMG WIDTH=12 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline815" SRC="img56.gif"  >  is  <IMG WIDTH=9 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1461" SRC="img207.gif"  > , then the premiss of  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  in  <IMG WIDTH=275 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1747" SRC="img253.gif"  >  is  <IMG WIDTH=239 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1749" SRC="img254.gif"  > 
+<P>
+4) If  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  occurs in  <IMG WIDTH=15 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline1753" SRC="img255.gif"  >  and the premiss of  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  in  <IMG WIDTH=15 HEIGHT=18 ALIGN=MIDDLE ALT="tex2html_wrap_inline1753" SRC="img255.gif"  >  is  <IMG WIDTH=9 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1461" SRC="img207.gif"  > , then the premiss of  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  in  <IMG WIDTH=275 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1747" SRC="img253.gif"  >  is  <IMG WIDTH=186 HEIGHT=23 ALIGN=MIDDLE ALT="tex2html_wrap_inline1765" SRC="img256.gif"  > 
+<P>
+The extension of the rule of replacement is that an occurrence
+of  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  in  <IMG WIDTH=11 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1465" SRC="img209.gif"  >  may be replaced by  <IMG WIDTH=14 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline1771" SRC="img257.gif"  >  if  <IMG WIDTH=177 HEIGHT=32 ALIGN=MIDDLE ALT="tex2html_wrap_inline1773" SRC="img258.gif"  >  where  <IMG WIDTH=9 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1461" SRC="img207.gif"  >  is the premiss of  <IMG WIDTH=10 HEIGHT=9 ALIGN=BOTTOM ALT="tex2html_wrap_inline1463" SRC="img208.gif"  >  in
+ <IMG WIDTH=11 HEIGHT=29 ALIGN=MIDDLE ALT="tex2html_wrap_inline1465" SRC="img209.gif"  > . Thus in a subcase one needs only prove equivalence under the
+premiss of the subcase.<BR>
+<P>
+<HR><A NAME="tex2html126" HREF="node11.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="next.png"></A> <A NAME="tex2html124" HREF="node9.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="up.png"></A> <A NAME="tex2html118" HREF="node9.html"><IMG WIDTH=24 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="prev.png"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html127" HREF="node11.html">Recursion Induction</A>
+<B>Up:</B> <A NAME="tex2html125" HREF="node9.html">Properties of Computable Functions</A>
+<B> Previous:</B> <A NAME="tex2html119" HREF="node9.html">Properties of Computable Functions</A>
+<P><ADDRESS>
+<I>John McCarthy <BR>
+Wed May  1 20:03:21 PDT 1996</I>
+</ADDRESS>
+</BODY>
+</HTML>
