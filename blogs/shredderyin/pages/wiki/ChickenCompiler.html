@@ -4,7 +4,7 @@
     <title>Chicken Compiler</title>
     <meta name="generator" content="emacs-wiki.el">
     <meta http-equiv="Content-Type"
-	  content="text/html; charset=gb2312">
+	  content="text/html; charset=utf-8">
     <link rev="made" href="mailto:webmaster@wangyin.com">
     <link rel="home" href="WelcomePage.html">
     <link rel="index" href="WikiIndex.html">
@@ -19,12 +19,12 @@
 
 
 
-<h2>Ê¹ÓÃ·½·¨£º</h2>
+<h2>ä½¿ç”¨æ–¹æ³•ï¼š</h2>
 
-<h3>°Ñ Scheme ±àÒë³É C:</h3>
+<h3>æŠŠ Scheme ç¼–è¯‘æˆ C:</h3>
 
 <p>
-±ÈÈçÓÐÒ»¸öÎÄ¼þ½Ð foo.scm.
+æ¯”å¦‚æœ‰ä¸€ä¸ªæ–‡ä»¶å« foo.scm.
 
 </p>
 
@@ -32,14 +32,14 @@
 </pre>
 
 <p>
-¾Í»á°Ñ foo.scm ±àÒë³É foo.c
+å°±ä¼šæŠŠ foo.scm ç¼–è¯‘æˆ foo.c
 
 </p>
 
-<h3>°Ñ C ±àÒë³É»úÆ÷´úÂë</h3>
+<h3>æŠŠ C ç¼–è¯‘æˆæœºå™¨ä»£ç </h3>
 
 <p>
-½Ó×Å£º
+æŽ¥ç€ï¼š
 
 </p>
 
@@ -47,69 +47,69 @@
 </pre>
 
 <p>
-¾Í±àÒë³ÉÁË¿ÉÖ´ÐÐ³ÌÐò¡£
+å°±ç¼–è¯‘æˆäº†å¯æ‰§è¡Œç¨‹åºã€‚
 
 </p>
 
-<h3>Ö»¼ì²éÓï·¨</h3>
+<h3>åªæ£€æŸ¥è¯­æ³•</h3>
 
 <pre class="example">chicken foo.scm -check-syntax
 </pre>
 
 <p>
-ÒòÎª°ÑÒ»¸öÉÏÍòÐÐµÄ Scheme ±àÒë³É C ÊÇÒ»¸öºÜÂþ³¤µÄ¹ý³Ì£¬Ò»¸ö
-9000 ÐÐµÄ Scheme ·­Òë³É C ¾ÍÊÇ 11 ÍòÐÐÖ®¶à£¬»¹Ã»ÓÐ´øÔËÐÐÊ±µÄ
-ºêÕ¹¿ª»úÖÆ£¡
+å› ä¸ºæŠŠä¸€ä¸ªä¸Šä¸‡è¡Œçš„ Scheme ç¼–è¯‘æˆ C æ˜¯ä¸€ä¸ªå¾ˆæ¼«é•¿çš„è¿‡ç¨‹ï¼Œä¸€ä¸ª
+9000 è¡Œçš„ Scheme ç¿»è¯‘æˆ C å°±æ˜¯ 11 ä¸‡è¡Œä¹‹å¤šï¼Œè¿˜æ²¡æœ‰å¸¦è¿è¡Œæ—¶çš„
+å®å±•å¼€æœºåˆ¶ï¼
 
 </p>
 
 <p>
-ÖÐ¼äÒ»µ©ÓÐÓï·¨´íÎó¾ÍÈ«²¿µÃÖØÀ´£¬ËùÒÔÔÚÄãÈ·ÐÅÓï·¨ÎÞÎóÖ®Ç°¿ÉÒÔ
-ÏÈ°ÑÓï·¨¼ì²éÒ»ÏÂ¡£
+ä¸­é—´ä¸€æ—¦æœ‰è¯­æ³•é”™è¯¯å°±å…¨éƒ¨å¾—é‡æ¥ï¼Œæ‰€ä»¥åœ¨ä½ ç¡®ä¿¡è¯­æ³•æ— è¯¯ä¹‹å‰å¯ä»¥
+å…ˆæŠŠè¯­æ³•æ£€æŸ¥ä¸€ä¸‹ã€‚
 
 </p>
 
 <p>
-¼ì²éÓï·¨Ê±£¬Ëü»á°ÑºêÈ«²¿Õ¹¿ª¡£ËùÒÔÈç¹ûÕâÒ»²½ÄÜÍ¨¹ý£¬±àÒëÓ¦¸Ã
-¾ÍÃ»ÓÐÎÊÌâ¡£
+æ£€æŸ¥è¯­æ³•æ—¶ï¼Œå®ƒä¼šæŠŠå®å…¨éƒ¨å±•å¼€ã€‚æ‰€ä»¥å¦‚æžœè¿™ä¸€æ­¥èƒ½é€šè¿‡ï¼Œç¼–è¯‘åº”è¯¥
+å°±æ²¡æœ‰é—®é¢˜ã€‚
 
 </p>
 
-<h3>ÆôÓÃ syntax-case</h3>
+<h3>å¯ç”¨ syntax-case</h3>
 
 <p>
-Ê¹ÓÃÑ¡Ïî  -hygienic ¿ÉÒÔÆôÓÃ  syntax-case »úÖÆ¡£ÕâÑù±»±àÒëµÄ
-ÎÄ¼þÀïµÄ syntax-case ²ÅÄÜ±»ÕýÈ·´¦Àí¡£
-
-</p>
-
-<p>
-Èç¹ûÐèÒªÔÚÔËÐÐÊ±Ö§³Ö syntax-case, ÐèÒªÊ¹ÓÃ -hygienic-at-run-time Ñ¡Ïî¡£
-Èç¹ûÄãµÄ³ÌÐòÐèÒªÄÜ¹»ÔÚÔËÐÐÊ±¶¨ÒåÒ»Ð©ºê£¬ÄÇÃ´±ØÐëÆð¶¯Õâ¸ö¿ª
-¹Ø¡£
+ä½¿ç”¨é€‰é¡¹  -hygienic å¯ä»¥å¯ç”¨  syntax-case æœºåˆ¶ã€‚è¿™æ ·è¢«ç¼–è¯‘çš„
+æ–‡ä»¶é‡Œçš„ syntax-case æ‰èƒ½è¢«æ­£ç¡®å¤„ç†ã€‚
 
 </p>
 
 <p>
-·ñÔò£¬ÄãµÄ³ÌÐòÈç¹ûÏë eval Ò»¸öº¬ÓÐºê£¬±ÈÈç "unless" µÄÎÄ¼þ£¬
-¾Í²»ÄÜ¹¤×÷£¡
+å¦‚æžœéœ€è¦åœ¨è¿è¡Œæ—¶æ”¯æŒ syntax-case, éœ€è¦ä½¿ç”¨ -hygienic-at-run-time é€‰é¡¹ã€‚
+å¦‚æžœä½ çš„ç¨‹åºéœ€è¦èƒ½å¤Ÿåœ¨è¿è¡Œæ—¶å®šä¹‰ä¸€äº›å®ï¼Œé‚£ä¹ˆå¿…é¡»èµ·åŠ¨è¿™ä¸ªå¼€
+å…³ã€‚
 
 </p>
 
 <p>
--hygienic-at-run-time Ö»°üÀ¨ÁË R5RS µÄºê»úÖÆ¡£Èç¹ûÄãÏëÒªÈÃËù
-ÓÐºêµÄÊµÏÖ¶¼ÄÜÔÚÔËÐÐÊ±Ê¹ÓÃ£¬¾ÍÔÚÎÄ¼þÀï¼ÓÒ»¾ä£º
+å¦åˆ™ï¼Œä½ çš„ç¨‹åºå¦‚æžœæƒ³ eval ä¸€ä¸ªå«æœ‰å®ï¼Œæ¯”å¦‚ "unless" çš„æ–‡ä»¶ï¼Œ
+å°±ä¸èƒ½å·¥ä½œï¼
+
+</p>
+
+<p>
+-hygienic-at-run-time åªåŒ…æ‹¬äº† R5RS çš„å®æœºåˆ¶ã€‚å¦‚æžœä½ æƒ³è¦è®©æ‰€
+æœ‰å®çš„å®žçŽ°éƒ½èƒ½åœ¨è¿è¡Œæ—¶ä½¿ç”¨ï¼Œå°±åœ¨æ–‡ä»¶é‡ŒåŠ ä¸€å¥ï¼š
 
 </p>
 
 <pre class="example">(require 'moremacros)
 </pre>
 
-<h3>¶àÎÄ¼þ±àÒë</h3>
+<h3>å¤šæ–‡ä»¶ç¼–è¯‘</h3>
 
 <p>
-Èç¹ûÒ»¸ö£¬ÎÄ¼þºÜ³¤±àÒëÊ±²»ºÃ¹ÜÀí¡£ÕâÑùµÄ»°£¬Äã¿ÉÒÔ°Ñ³ÌÐò·Ö¿ª
-ÔÚ¼¸¸ö scm ÎÄ¼þÀï£¬±ÈÈç£º
+å¦‚æžœä¸€ä¸ªï¼Œæ–‡ä»¶å¾ˆé•¿ç¼–è¯‘æ—¶ä¸å¥½ç®¡ç†ã€‚è¿™æ ·çš„è¯ï¼Œä½ å¯ä»¥æŠŠç¨‹åºåˆ†å¼€
+åœ¨å‡ ä¸ª scm æ–‡ä»¶é‡Œï¼Œæ¯”å¦‚ï¼š
 
 </p>
 
@@ -127,8 +127,8 @@
 </pre>
 
 <p>
-foo.scm µ÷ÓÃÁË bar.scm ÀïµÄº¯Êý fac. bar ÊÇ±»×÷ÎªÒ»¸ö¿â¡£ÄÇ
-Ã´ bar ÒªÔÚÍ·²¿Ê¹ÓÃ unit ÉùÃ÷
+foo.scm è°ƒç”¨äº† bar.scm é‡Œçš„å‡½æ•° fac. bar æ˜¯è¢«ä½œä¸ºä¸€ä¸ªåº“ã€‚é‚£
+ä¹ˆ bar è¦åœ¨å¤´éƒ¨ä½¿ç”¨ unit å£°æ˜Ž
 
 </p>
 
@@ -136,7 +136,7 @@ foo.scm µ÷ÓÃÁË bar.scm ÀïµÄº¯Êý fac. bar ÊÇ±»×÷ÎªÒ»¸ö¿â¡£ÄÇ
 </pre>
 
 <p>
-foo ÒªÔÚÍ·²¿Ê¹ÓÃ use ÉùÃ÷:
+foo è¦åœ¨å¤´éƒ¨ä½¿ç”¨ use å£°æ˜Ž:
 
 </p>
 
@@ -144,7 +144,7 @@ foo ÒªÔÚÍ·²¿Ê¹ÓÃ use ÉùÃ÷:
 </pre>
 
 <p>
-±àÒëÊ±£º
+ç¼–è¯‘æ—¶ï¼š
 
 </p>
 
@@ -153,12 +153,12 @@ foo ÒªÔÚÍ·²¿Ê¹ÓÃ use ÉùÃ÷:
 </pre>
 
 <p>
-¶Ô bar Ê¹ÓÃ -explicit-use ²ÎÊý£¬ÕâÑù bar.c ²»»áÊ¹ÓÃ¿â¡£
+å¯¹ bar ä½¿ç”¨ -explicit-use å‚æ•°ï¼Œè¿™æ · bar.c ä¸ä¼šä½¿ç”¨åº“ã€‚
 
 </p>
 
 <p>
-È»ºó£¬°ÑËüÃÇ±àÒë³ÉÄ¿±êÎÄ¼þ£º 
+ç„¶åŽï¼ŒæŠŠå®ƒä»¬ç¼–è¯‘æˆç›®æ ‡æ–‡ä»¶ï¼š 
 
 </p>
 
@@ -167,25 +167,25 @@ foo ÒªÔÚÍ·²¿Ê¹ÓÃ use ÉùÃ÷:
 </pre>
 
 <p>
-È»ºó°ÑËüÃÇÁ¬½ÓÔÚÒ»Æð£º
+ç„¶åŽæŠŠå®ƒä»¬è¿žæŽ¥åœ¨ä¸€èµ·ï¼š
 
 </p>
 
 <pre class="example">% gcc foo.o bar.o -o foo `chicken-config -libs`
 </pre>
 
-<h3>ÓÅ»¯</h3>
+<h3>ä¼˜åŒ–</h3>
 
 <pre class="example">-optimize-level LEVEL 
 </pre>
 
 <p>
-¿ÉÒÔÖ¸¶¨´Ó 0 µ½ 3 µÄÓÅ»¯¼¶±ð¡£
+å¯ä»¥æŒ‡å®šä»Ž 0 åˆ° 3 çš„ä¼˜åŒ–çº§åˆ«ã€‚
 
 </p>
 
 <p>
-ËüÊµ¼ÊÉÏÊÇÒ»ÏÂÓÅ»¯Ñ¡ÏîµÄ×éºÏ£º
+å®ƒå®žé™…ä¸Šæ˜¯ä¸€ä¸‹ä¼˜åŒ–é€‰é¡¹çš„ç»„åˆï¼š
 
 </p>
 
@@ -194,8 +194,8 @@ foo ÒªÔÚÍ·²¿Ê¹ÓÃ use ÉùÃ÷:
 </pre>
 
 <p>
-½øÐÐÁ½ÖÖÓÅ»¯£¬·Ö±ð½Ð×ö leaf routine optimization ºÍ
-lambda-lifting¡£
+è¿›è¡Œä¸¤ç§ä¼˜åŒ–ï¼Œåˆ†åˆ«å«åš leaf routine optimization å’Œ
+lambda-liftingã€‚
 
 </p>
 
@@ -203,7 +203,7 @@ lambda-lifting¡£
 </pre>
 
 <p>
-ËüµÄº¬ÒåÊÇ¡°¾Íµ±±ê×¼µÄº¯Êý´ÓÀ´Ã»ÓÐ±»ÖØÐÂ¶¨Òå¹ý¡±¡£
+å®ƒçš„å«ä¹‰æ˜¯â€œå°±å½“æ ‡å‡†çš„å‡½æ•°ä»Žæ¥æ²¡æœ‰è¢«é‡æ–°å®šä¹‰è¿‡â€ã€‚
 
 </p>
 
@@ -211,37 +211,37 @@ lambda-lifting¡£
 </pre>
 
 <p>
-²»ÔÚÔËÐÐÊ±½øÐÐ°²È«¼ì²é¡£
+ä¸åœ¨è¿è¡Œæ—¶è¿›è¡Œå®‰å…¨æ£€æŸ¥ã€‚
 
 </p>
 
 <h3>Debug</h3>
 
 <p>
-Chicken ±àÒë´óÎÄ¼þÊÇÐèÒªºÜ¶àÊ±¼äµÄ£¬ËùÒÔ±àÒëÕâÑùµÄÎÄ¼þÊ±×îºÃ
-Ê¹ÓÃÒ»Ð© debug Ñ¡Ïî¡£ËüÃÇ¿ÉÒÔÖ¸¶¨ÔÚ -debug ºóµÄ×Ö·û´®Àï¡£ÎÒ
-¾õµÃ×îÓÐÓÃµÄÊÇ£º
+Chicken ç¼–è¯‘å¤§æ–‡ä»¶æ˜¯éœ€è¦å¾ˆå¤šæ—¶é—´çš„ï¼Œæ‰€ä»¥ç¼–è¯‘è¿™æ ·çš„æ–‡ä»¶æ—¶æœ€å¥½
+ä½¿ç”¨ä¸€äº› debug é€‰é¡¹ã€‚å®ƒä»¬å¯ä»¥æŒ‡å®šåœ¨ -debug åŽçš„å­—ç¬¦ä¸²é‡Œã€‚æˆ‘
+è§‰å¾—æœ€æœ‰ç”¨çš„æ˜¯ï¼š
 
 </p>
 
 <table border="2" cellpadding="5">
 <thead>
 <tr>
-<th>-debug Ñ¡Ïî</th><th>×÷ÓÃ</th>
+<th>-debug é€‰é¡¹</th><th>ä½œç”¨</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>t</td><td>ÏÔÊ¾ÐèÒªµÄÊ±¼ä</td>
+<td>t</td><td>æ˜¾ç¤ºéœ€è¦çš„æ—¶é—´</td>
 </tr>
 <tr>
-<td>b</td><td>ÏÔÊ¾Ò»¸ö pass ÒÑ¾­½øÐÐµÄÊ±¼ä</td>
+<td>b</td><td>æ˜¾ç¤ºä¸€ä¸ª pass å·²ç»è¿›è¡Œçš„æ—¶é—´</td>
 </tr>
 <tr>
-<td>o</td><td>ÏÔÊ¾½øÐÐµÄÓÅ»¯</td>
+<td>o</td><td>æ˜¾ç¤ºè¿›è¡Œçš„ä¼˜åŒ–</td>
 </tr>
 <tr>
-<td>p</td><td>ÏÔÊ¾ pass ÐÅÏ¢</td>
+<td>p</td><td>æ˜¾ç¤º pass ä¿¡æ¯</td>
 </tr>
 </tbody>
 </table>
@@ -252,11 +252,11 @@ Chicken ±àÒë´óÎÄ¼þÊÇÐèÒªºÜ¶àÊ±¼äµÄ£¬ËùÒÔ±àÒëÕâÑùµÄÎÄ¼þÊ±×îºÃ
       <table width="100%" border="0" summary="Footer navigation">
 	<tr>
 	  <td width="33%" align="left">
-	    <span class="footdate">×îºó¸üÐÂ£º2003-06-09</span>
+	    <span class="footdate">æœ€åŽæ›´æ–°ï¼š2003-06-09</span>
 	  </td>
 	  <td width="60%" align="center">
 	    <span class="foothome">
-	      <a href="../index.html">ÍõÛóµÄÖ÷Ò³</a> / <a href="WelcomePage.html">WiKiÊ×Ò³</a>/<a href="WikiIndex.html">Ë÷Òý</a>/<a href="wiki_frame.html" target=_parent>¿ò¼ÜÒ³</a>/<a href="ChickenCompiler.html" target=_parent>È¡Ïû¿ò¼Ü</a>
+	      <a href="../index.html">çŽ‹åž çš„ä¸»é¡µ</a> / <a href="WelcomePage.html">WiKié¦–é¡µ</a>/<a href="WikiIndex.html">ç´¢å¼•</a>/<a href="wiki_frame.html" target=_parent>æ¡†æž¶é¡µ</a>/<a href="ChickenCompiler.html" target=_parent>å–æ¶ˆæ¡†æž¶</a>
 	    </span>
 	  </td>
 	  <td width="33%" align="right">

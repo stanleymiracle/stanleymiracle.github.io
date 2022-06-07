@@ -4,7 +4,7 @@
     <title>Sawfish Window Manager</title>
     <meta name="generator" content="emacs-wiki.el">
     <meta http-equiv="Content-Type"
-	  content="text/html; charset=gb2312">
+	  content="text/html; charset=utf-8">
     <link rev="made" href="mailto:webmaster@wangyin.com">
     <link rel="home" href="WelcomePage.html">
     <link rel="index" href="WikiIndex.html">
@@ -19,77 +19,77 @@
 
 
 
-<h2>Sawfish --- ÎÒµÄÐÂ WM</h2>
+<h2>Sawfish --- æˆ‘çš„æ–° WM</h2>
 
 <p>
-ÎÒÒ»Ö±ÓÃµÄÊÇ FVWM£¬Ö±µ½ÎÒ·¢ÏÖ Sawfish ¿ÉÒÔÓÃ lisp ºÍ Scheme 
-À´ÅäÖÃ¡£ÕâÑùÎÒ¿ÉÒÔÈÎÒâÀ©Õ¹Õâ¸ö WM ´ïµ½ÎÒµÄ¹¦ÄÜ¡£ÎÒ¿ÉÒÔÔÚÀïÃæ
-Ê¹ÓÃº¯Êý£¬Æð¶¯½ø³Ì£¬Ïß³Ì£¬ÉèÖÃ±äÁ¿£¬»·¾³£¬continuation£¬¡­¡­ 
-ÎÒÓµÓÐ´óÁ¿ÆäËüÈËµÄÀ©Õ¹£¬ÎÒ¿ÉÒÔÐÞ¸ÄËüÃÇÀ´ÊÊÓ¦×Ô¼ºµÄÐèÒª¡£»¹¿É
-ÒÔÔÚÊ¹ÓÃµÄÍ¬Ê±Á·Ï°ÎÒµÄ Scheme ºÍ Common Lisp £¡Ì«°ôÁË£¡
+æˆ‘ä¸€ç›´ç”¨çš„æ˜¯ FVWMï¼Œç›´åˆ°æˆ‘å‘çŽ° Sawfish å¯ä»¥ç”¨ lisp å’Œ Scheme 
+æ¥é…ç½®ã€‚è¿™æ ·æˆ‘å¯ä»¥ä»»æ„æ‰©å±•è¿™ä¸ª WM è¾¾åˆ°æˆ‘çš„åŠŸèƒ½ã€‚æˆ‘å¯ä»¥åœ¨é‡Œé¢
+ä½¿ç”¨å‡½æ•°ï¼Œèµ·åŠ¨è¿›ç¨‹ï¼Œçº¿ç¨‹ï¼Œè®¾ç½®å˜é‡ï¼ŒçŽ¯å¢ƒï¼Œcontinuationï¼Œâ€¦â€¦ 
+æˆ‘æ‹¥æœ‰å¤§é‡å…¶å®ƒäººçš„æ‰©å±•ï¼Œæˆ‘å¯ä»¥ä¿®æ”¹å®ƒä»¬æ¥é€‚åº”è‡ªå·±çš„éœ€è¦ã€‚è¿˜å¯
+ä»¥åœ¨ä½¿ç”¨çš„åŒæ—¶ç»ƒä¹ æˆ‘çš„ Scheme å’Œ Common Lisp ï¼å¤ªæ£’äº†ï¼
 
 </p>
 
 <p>
-Sawfish ºÜÏñ Emacs£¬ËüµÄÅäÖÃÓïÑÔ·Ç³£Ïñ(Êµ¼ÊÉÏ¾ÍÊÇ) elisp£¬²»
-¹ýËüÒ²¿ÉÒÔÊ¹ÓÃ Scheme µÄ lexical binding ºÍ first class
-continuation. Äã¿ÉÒÔ¿´µ½ÎÒÔÚºóÃæÓÐÒ»¸öÀý×ÓÀïÊ¹ÓÃÁËScheme µÄ 
-closure¡£
+Sawfish å¾ˆåƒ Emacsï¼Œå®ƒçš„é…ç½®è¯­è¨€éžå¸¸åƒ(å®žé™…ä¸Šå°±æ˜¯) elispï¼Œä¸
+è¿‡å®ƒä¹Ÿå¯ä»¥ä½¿ç”¨ Scheme çš„ lexical binding å’Œ first class
+continuation. ä½ å¯ä»¥çœ‹åˆ°æˆ‘åœ¨åŽé¢æœ‰ä¸€ä¸ªä¾‹å­é‡Œä½¿ç”¨äº†Scheme çš„ 
+closureã€‚
 
 </p>
 
 <p>
-¹ØÓÚ FVWM£¬FVWM ÊÇºÜºÃµÄ WM£¬ÒÔÇ°ÎÒÒ»Ö±ÓÃËü¡£²»¹ýÎÒ¾õµÃÒªÊÇ
-ËüÄÜÓÃ LISP »òÕß Scheme ÅäÖÃ¾ÍºÃÁË¡£Èç¹ûÄã²»ÏëÁË½â LISP£¬ÄÇ
-Ã´Äã¿ÉÒÔÊÔÊÔ <a href="../fvwm_frame.html">FVWM</a>¡£
+å…³äºŽ FVWMï¼ŒFVWM æ˜¯å¾ˆå¥½çš„ WMï¼Œä»¥å‰æˆ‘ä¸€ç›´ç”¨å®ƒã€‚ä¸è¿‡æˆ‘è§‰å¾—è¦æ˜¯
+å®ƒèƒ½ç”¨ LISP æˆ–è€… Scheme é…ç½®å°±å¥½äº†ã€‚å¦‚æžœä½ ä¸æƒ³äº†è§£ LISPï¼Œé‚£
+ä¹ˆä½ å¯ä»¥è¯•è¯• <a href="../fvwm_frame.html">FVWM</a>ã€‚
 
 </p>
 
-<h2>ÅäÖÃÒªµã¡£</h2>
+<h2>é…ç½®è¦ç‚¹ã€‚</h2>
 
 <ul>
-<li>ÅäÖÃÎÄ¼þÊÇ ~/.sawfishrc¡£
+<li>é…ç½®æ–‡ä»¶æ˜¯ ~/.sawfishrcã€‚
 </li>
-<li>±äÁ¿ load-path ¸ú Emacs µÄ load-path ¹¦ÄÜÒ»Ñù¡£
+<li>å˜é‡ load-path è·Ÿ Emacs çš„ load-path åŠŸèƒ½ä¸€æ ·ã€‚
 </li>
-<li>sawfish-client ¿ÉÒÔÁ¬½Óµ½ sawfish Ö±½Ó²Ù×Ý¡£Õâ¸öºÜÏñFVWMµÄ
-  Fvwmcommand, ²»¹ýËü²»ÐèÒªÓÉ sawfish fork() ³öÀ´£¬¶øÊÇÍ¨¹ý
-  X11 »òÕß TCP/IP Á¬½Ó¡£
+<li>sawfish-client å¯ä»¥è¿žæŽ¥åˆ° sawfish ç›´æŽ¥æ“çºµã€‚è¿™ä¸ªå¾ˆåƒFVWMçš„
+  Fvwmcommand, ä¸è¿‡å®ƒä¸éœ€è¦ç”± sawfish fork() å‡ºæ¥ï¼Œè€Œæ˜¯é€šè¿‡
+  X11 æˆ–è€… TCP/IP è¿žæŽ¥ã€‚
 </li>
 </ul>
 
 <blockquote>
 <p>
-  sawfish-client ÀïÃæ¿ÉÒÔÊ¹ÓÃÀàËÆ Scheme48 µÄÃüÁî£¬±ÈÈç
-  ,open ,in ,quit ... ×¢ÒâÕâ¸ö ,quit ÊÇÍË³ö sawfish WM ¶ø²»
-  ÊÇ sawfish-client! Ð¡ÐÄ£¡,describe ¿ÉÒÔµÃµ½Ò»¸öº¯ÊýµÄ
-  docstring °ïÖú¡£»¹ÓÐ ,apropos, ...
+  sawfish-client é‡Œé¢å¯ä»¥ä½¿ç”¨ç±»ä¼¼ Scheme48 çš„å‘½ä»¤ï¼Œæ¯”å¦‚
+  ,open ,in ,quit ... æ³¨æ„è¿™ä¸ª ,quit æ˜¯é€€å‡º sawfish WM è€Œä¸
+  æ˜¯ sawfish-client! å°å¿ƒï¼,describe å¯ä»¥å¾—åˆ°ä¸€ä¸ªå‡½æ•°çš„
+  docstring å¸®åŠ©ã€‚è¿˜æœ‰ ,apropos, ...
 
 </p>
 </blockquote>
 
 <ul>
-<li>sawfish-ui ¿ÉÒÔ·½±ãµÄÅäÖÃÒ»Ð©ÎÒÀÁµÃ¹ÜµÄ¶«Î÷¡£±ÈÈç´°¿Ú·ç¸ñ£¬
-  °ÑÄ³Ð©´°¿Ú²»¼Ó×°ÊÎ£¬¡­¡­
+<li>sawfish-ui å¯ä»¥æ–¹ä¾¿çš„é…ç½®ä¸€äº›æˆ‘æ‡’å¾—ç®¡çš„ä¸œè¥¿ã€‚æ¯”å¦‚çª—å£é£Žæ ¼ï¼Œ
+  æŠŠæŸäº›çª—å£ä¸åŠ è£…é¥°ï¼Œâ€¦â€¦
 </li>
-<li>Ê¹ÓÃ (system "...") µÄÊ±ºòÒªÌØ±ðÐ¡ÐÄ¡£Èç¹ûÆô¶¯Ò»¸ö X ³ÌÐò£¬
-  ±ØÐëÔÚÃüÁîÐÐºó¼Ó "&"£¬·ñÔò»áÒýÆðËÀËø¡£¼´Ê¹ÄãÊ¹ÓÃ thread Ò²
-  ²»¿É±ÜÃâÕâÖÖÇé¿ö¡£²»¹ýÄã¿ÉÒÔÉè¼ÆÒ»¸öº¯ÊýÀ´·ÀÖ¹ÕâÖÖÇé¿ö¡£¿´ 
-  <a href="SawfishWindowManager.html#wyrun">ÕâÀï</a>.
+<li>ä½¿ç”¨ (system "...") çš„æ—¶å€™è¦ç‰¹åˆ«å°å¿ƒã€‚å¦‚æžœå¯åŠ¨ä¸€ä¸ª X ç¨‹åºï¼Œ
+  å¿…é¡»åœ¨å‘½ä»¤è¡ŒåŽåŠ  "&"ï¼Œå¦åˆ™ä¼šå¼•èµ·æ­»é”ã€‚å³ä½¿ä½ ä½¿ç”¨ thread ä¹Ÿ
+  ä¸å¯é¿å…è¿™ç§æƒ…å†µã€‚ä¸è¿‡ä½ å¯ä»¥è®¾è®¡ä¸€ä¸ªå‡½æ•°æ¥é˜²æ­¢è¿™ç§æƒ…å†µã€‚çœ‹ 
+  <a href="SawfishWindowManager.html#wyrun">è¿™é‡Œ</a>.
 </li>
-<li>Emacs ÓÐÒ»¸ö sawfish-mode£¬¿ÉÒÔÔÚ
-  <a href="http://www.davep.org/emacs/#sawfish.el">http://www.davep.org/emacs/#sawfish.el</a> ÏÂÔØ¡£ÓÃ·¨ÀàËÆ
-  elisp. C-x C-e Ö´ÐÐÉÏÒ»Ìõ sexp.
+<li>Emacs æœ‰ä¸€ä¸ª sawfish-modeï¼Œå¯ä»¥åœ¨
+  <a href="http://www.davep.org/emacs/#sawfish.el">http://www.davep.org/emacs/#sawfish.el</a> ä¸‹è½½ã€‚ç”¨æ³•ç±»ä¼¼
+  elisp. C-x C-e æ‰§è¡Œä¸Šä¸€æ¡ sexp.
 </li>
-<li><a href="http://sawfish.skylab.org/WikiSawfishLibrary">http://sawfish.skylab.org/WikiSawfishLibrary</a> ÓÐºÜ¶àÀ©
-  Õ¹£¬¶¼·Ç³£ºÃ¡£ºÜÐÂ¡£
+<li><a href="http://sawfish.skylab.org/WikiSawfishLibrary">http://sawfish.skylab.org/WikiSawfishLibrary</a> æœ‰å¾ˆå¤šæ‰©
+  å±•ï¼Œéƒ½éžå¸¸å¥½ã€‚å¾ˆæ–°ã€‚
 </li>
-<li><a href="https://www.sics.se/~lofgren/sawmill/repository.html">http://www.sics.se/~lofgren/sawmill/repository.html</a> Ò²
-  ÓÐºÜ¶àÀ©Õ¹¡£¿ÉÄÜÓÐÐ©ºÜÀÏ¡£µ«ÊÇÕæµÄºÜ¶à£¡
+<li><a href="https://www.sics.se/~lofgren/sawmill/repository.html">http://www.sics.se/~lofgren/sawmill/repository.html</a> ä¹Ÿ
+  æœ‰å¾ˆå¤šæ‰©å±•ã€‚å¯èƒ½æœ‰äº›å¾ˆè€ã€‚ä½†æ˜¯çœŸçš„å¾ˆå¤šï¼
 </li>
-<li>ÓÐºÜ¶àº¯ÊýÐèÒª¼ÓÔØÄ£¿é²ÅÄÜÊ¹ÓÃ¡£±ÈÈç read-event ÐèÒª 
-  sawfish.wm.util.decode-events, popup-menu ÐèÒª 
-  sawfish.wm.menus. ËüÃÇ¿ÉÒÔÓÃ require ¼ÓÔØ¡£±ÈÈç£º
+<li>æœ‰å¾ˆå¤šå‡½æ•°éœ€è¦åŠ è½½æ¨¡å—æ‰èƒ½ä½¿ç”¨ã€‚æ¯”å¦‚ read-event éœ€è¦ 
+  sawfish.wm.util.decode-events, popup-menu éœ€è¦ 
+  sawfish.wm.menus. å®ƒä»¬å¯ä»¥ç”¨ require åŠ è½½ã€‚æ¯”å¦‚ï¼š
 </li>
 </ul>
 
@@ -97,21 +97,21 @@ closure¡£
 </pre>
 
 <p>
-<a name="wmmodifier" id="wmmodifier"></a>- Sawfish ¿ÉÒÔÉèÖÃÒ»¸ö wm-modifier-value£¬×÷Îª "W-next" ÕâÑù
+<a name="wmmodifier" id="wmmodifier"></a>- Sawfish å¯ä»¥è®¾ç½®ä¸€ä¸ª wm-modifier-valueï¼Œä½œä¸º "W-next" è¿™æ ·
   <blockquote>
 <p>
-  µÄÈÈ¼üµÄ modifier¡£È±Ê¡µÄÉèÖÃÊÇ super ¼ü£¬Í¨³£ÔÚ PC ¼üÅÌÉÏ
-  ÊÇ Win ¼ü£¬ÎÒ¾õµÃÕâÊÇºÜ×ÔÈ»µÄÓÃÀ´²Ù×Ý¡°´°¿Ú¡±µÄÈÈ¼ü
-  modifier¡£ËùÒÔÒÔºóµÄÉèÖÃÖÐÈç¹ûÓÃµ½ "W-next" ÕâÑùµÄËµ·¨£¬Êµ
-  ¼ÊÉÏ¾ÍÊÇÖ¸ Win ºÍ <a class="nonexistent" href="/cdn-cgi/l/email-protection#710614131c10020514033106101f1608181f5f121e1c">PageDown</a> Í¬Ê±°´ÏÂ¡£
+  çš„çƒ­é”®çš„ modifierã€‚ç¼ºçœçš„è®¾ç½®æ˜¯ super é”®ï¼Œé€šå¸¸åœ¨ PC é”®ç›˜ä¸Š
+  æ˜¯ Win é”®ï¼Œæˆ‘è§‰å¾—è¿™æ˜¯å¾ˆè‡ªç„¶çš„ç”¨æ¥æ“çºµâ€œçª—å£â€çš„çƒ­é”®
+  modifierã€‚æ‰€ä»¥ä»¥åŽçš„è®¾ç½®ä¸­å¦‚æžœç”¨åˆ° "W-next" è¿™æ ·çš„è¯´æ³•ï¼Œå®ž
+  é™…ä¸Šå°±æ˜¯æŒ‡ Win å’Œ <a class="nonexistent" href="/cdn-cgi/l/email-protection#710614131c10020514033106101f1608181f5f121e1c">PageDown</a> åŒæ—¶æŒ‰ä¸‹ã€‚
 
 </p>
 </blockquote>
 
 <blockquote>
 <p>
-  Èç¹ûÄãµÄ Win ¼üËÆºõ²»Æð×÷ÓÃ£¬¿ÉÒÔ°ÑÕâÐ©ÄÚÈÝ¼Óµ½
-  ~/.sawfish/custom ÎÄ¼þ¡£
+  å¦‚æžœä½ çš„ Win é”®ä¼¼ä¹Žä¸èµ·ä½œç”¨ï¼Œå¯ä»¥æŠŠè¿™äº›å†…å®¹åŠ åˆ°
+  ~/.sawfish/custom æ–‡ä»¶ã€‚
 
 </p>
 </blockquote>
@@ -122,24 +122,24 @@ closure¡£
 
 <h2>FAQ</h2>
 
-<h3>"W-next"  ÀïµÄ "W" ÊÇÖ¸ÄÄ¸ö¼ü£¿</h3>
+<h3>"W-next"  é‡Œçš„ "W" æ˜¯æŒ‡å“ªä¸ªé”®ï¼Ÿ</h3>
 
 <p>
-Õâ¸öÎÊÌâÇë²Î¿¼ <a href="SawfishWindowManager.html#wmmodifier">ÕâÀï</a>.
+è¿™ä¸ªé—®é¢˜è¯·å‚è€ƒ <a href="SawfishWindowManager.html#wmmodifier">è¿™é‡Œ</a>.
 
 </p>
 
-<h3>ÈçºÎÉèÖÃÆð¶¯Ê±ÐèÒªÆð¶¯µÄ³ÌÐò£¿</h3>
+<h3>å¦‚ä½•è®¾ç½®èµ·åŠ¨æ—¶éœ€è¦èµ·åŠ¨çš„ç¨‹åºï¼Ÿ</h3>
 
 <p>
-¿ÉÒÔÒ»¸öÒ»¸öÊ¹ÓÃ system µ÷ÓÃ£¬µ«ÊÇÄãÒ»µ©Íü¼ÇÐ´Ò»¸ö "&" ¾Í»á
-°ÑÕû¸ö WM ¹ÒÔÚÄÇÀï¡£ËùÒÔ×îºÃÉú³ÉÐÂµÄ½ø³ÌÔËÐÐ³ÌÐò¡£
+å¯ä»¥ä¸€ä¸ªä¸€ä¸ªä½¿ç”¨ system è°ƒç”¨ï¼Œä½†æ˜¯ä½ ä¸€æ—¦å¿˜è®°å†™ä¸€ä¸ª "&" å°±ä¼š
+æŠŠæ•´ä¸ª WM æŒ‚åœ¨é‚£é‡Œã€‚æ‰€ä»¥æœ€å¥½ç”Ÿæˆæ–°çš„è¿›ç¨‹è¿è¡Œç¨‹åºã€‚
 
 </p>
 
 <p>
-¿ÉÒÔ×öÒ»¸ö±í£¬È»ºó°ÑÄÇÐ©³ÌÐòºÍ²ÎÊý·Å½ø±íÀï£¬È»ºóÆð¶¯ÕâÐ©½ø³Ì
-¾ÍÐÐÁË£¬¾ÍÏñÎÒÕâÑù£º
+å¯ä»¥åšä¸€ä¸ªè¡¨ï¼Œç„¶åŽæŠŠé‚£äº›ç¨‹åºå’Œå‚æ•°æ”¾è¿›è¡¨é‡Œï¼Œç„¶åŽèµ·åŠ¨è¿™äº›è¿›ç¨‹
+å°±è¡Œäº†ï¼Œå°±åƒæˆ‘è¿™æ ·ï¼š
 
 </p>
 
@@ -195,23 +195,23 @@ closure¡£
 </pre>
 
 <p>
-ÎÒ¹ÒÁËÒ»¸ö wy-cleanup-on-exit µ½ before-exit-hook, ÍË³öÊ±Õâ
-Ð©±» wy-start-up Æð¶¯µÄ³ÌÐò¶¼»á±»¹Ø±Õ¡£
+æˆ‘æŒ‚äº†ä¸€ä¸ª wy-cleanup-on-exit åˆ° before-exit-hook, é€€å‡ºæ—¶è¿™
+äº›è¢« wy-start-up èµ·åŠ¨çš„ç¨‹åºéƒ½ä¼šè¢«å…³é—­ã€‚
 
 </p>
 
 <p>
-wy-construct-arg-list ÊÇÎÒ×Ô¼ºÐ´µÄÒ»¸öº¯ÊýÓÃÀ´°ÑÃüÁîÐÐ·Ö½â³É
-Ò»¸ö±í¡£ÎÒ²»ÖªµÀ rep ÓÐÃ»ÓÐÏÖ³ÉµÄº¯Êý¿ÉÒÔ×öÕâ¸öÊÂ£¬ËùÒÔ×Ô¼º
-Ð´ÁËÒ»¸ö¡£
+wy-construct-arg-list æ˜¯æˆ‘è‡ªå·±å†™çš„ä¸€ä¸ªå‡½æ•°ç”¨æ¥æŠŠå‘½ä»¤è¡Œåˆ†è§£æˆ
+ä¸€ä¸ªè¡¨ã€‚æˆ‘ä¸çŸ¥é“ rep æœ‰æ²¡æœ‰çŽ°æˆçš„å‡½æ•°å¯ä»¥åšè¿™ä¸ªäº‹ï¼Œæ‰€ä»¥è‡ªå·±
+å†™äº†ä¸€ä¸ªã€‚
 
 </p>
 
-<h3>¼ÓÔØÀ©Õ¹Ê±ÈçºÎ±ÜÃâÕÒ²»µ½ÎÄ¼þÊ±Æð¶¯Ê§°Ü£¿</h3>
+<h3>åŠ è½½æ‰©å±•æ—¶å¦‚ä½•é¿å…æ‰¾ä¸åˆ°æ–‡ä»¶æ—¶èµ·åŠ¨å¤±è´¥ï¼Ÿ</h3>
 
 <p>
-Äã¿ÉÒÔÊ¹ÓÃÒ»¸ö½Ð×ö require-try µÄº¯Êý£¬Èç¹ûÒªÓÃµÄÀ©Õ¹ÕÒ²»µ½
-¾Í·µ»Ø nil. ¶ø²»»á±¨´í¡£
+ä½ å¯ä»¥ä½¿ç”¨ä¸€ä¸ªå«åš require-try çš„å‡½æ•°ï¼Œå¦‚æžœè¦ç”¨çš„æ‰©å±•æ‰¾ä¸åˆ°
+å°±è¿”å›ž nil. è€Œä¸ä¼šæŠ¥é”™ã€‚
 
 </p>
 
@@ -232,22 +232,22 @@ wy-construct-arg-list ÊÇÎÒ×Ô¼ºÐ´µÄÒ»¸öº¯ÊýÓÃÀ´°ÑÃüÁîÐÐ·Ö½â³É
    result))
 </pre>
 
-<h3>ÈçºÎ¸Ä±ä×ÖÌå£¿</h3>
+<h3>å¦‚ä½•æ”¹å˜å­—ä½“ï¼Ÿ</h3>
 
 <pre class="example">(setq default-font (get-font &quot;-*-simsun-medium-r-*-*-14-*-*-*-*-*-*-*&quot;))
 </pre>
 
-<h3>ÈçºÎÈÃ Shift + ÓÒ¼ü¿ÉÒÔÍÏ¶¯´°¿Ú£¿</h3>
+<h3>å¦‚ä½•è®© Shift + å³é”®å¯ä»¥æ‹–åŠ¨çª—å£ï¼Ÿ</h3>
 
 <p>
-°ó¶¨ "W-Button1-Click1" µ½ Ò»¸öº¯Êý£¬ÔÚÀïÃæµ÷ÓÃ
-move-window-interactively ¾ÍÐÐÁË¡£±ÈÈçÏÂÃæÕâ¸ö
+ç»‘å®š "W-Button1-Click1" åˆ° ä¸€ä¸ªå‡½æ•°ï¼Œåœ¨é‡Œé¢è°ƒç”¨
+move-window-interactively å°±è¡Œäº†ã€‚æ¯”å¦‚ä¸‹é¢è¿™ä¸ª
 wy-move-window.
 
 </p>
 
 <p>
-×¢Òâ±ØÐëÏÈ´ò¿ª sawfish.wm.commands.move-resize, ·ñÔò½âÎö²»µ½
+æ³¨æ„å¿…é¡»å…ˆæ‰“å¼€ sawfish.wm.commands.move-resize, å¦åˆ™è§£æžä¸åˆ°
 move-window-interactively.
 
 </p>
@@ -260,16 +260,16 @@ move-window-interactively.
 (bind-keys window-keymap &quot;W-Button1-Click1&quot; 'wy-move-window)
 </pre>
 
-<h3>ÈçºÎÊ¹µÃ C-S-Button1 ¿ÉÒÔ¹Ø±Õ³ÌÐò´°¿Ú£¿</h3>
+<h3>å¦‚ä½•ä½¿å¾— C-S-Button1 å¯ä»¥å…³é—­ç¨‹åºçª—å£ï¼Ÿ</h3>
 
 <pre class="example">(bind-keys window-keymap &quot;C-S-Button3-Click1&quot;
 '(delete-window (current-event-window)))
 </pre>
 
-<h3>ÈçºÎ¶Ô´°¿Ú×öÉÏ±ê¼Ç£¿</h3>
+<h3>å¦‚ä½•å¯¹çª—å£åšä¸Šæ ‡è®°ï¼Ÿ</h3>
 
 <p>
-Äã¿ÉÒÔÓÃÒ»¸ö¼òµ¥µÄº¯Êý£º
+ä½ å¯ä»¥ç”¨ä¸€ä¸ªç®€å•çš„å‡½æ•°ï¼š
 
 </p>
 
@@ -287,27 +287,27 @@ move-window-interactively.
 </pre>
 
 <p>
-ÒÔºó°´ M-s ½Ó×ÅÔÙ°´Ò»¸öÈÈ¼ü¾Í¿ÉÒÔ±ê¼ÇÒ»¸ö´°¿Ú¡£µ«ÊÇÕâÑùÓÐ¿É
-ÄÜÒýÆðºÜ¶àÈÈ¼ü±» WM ½Ø»ñ¡£¶ÔÓÚ Emacs Ö®ÀàµÄ³ÌÐò²»Ì«ºÃ¡£
+ä»¥åŽæŒ‰ M-s æŽ¥ç€å†æŒ‰ä¸€ä¸ªçƒ­é”®å°±å¯ä»¥æ ‡è®°ä¸€ä¸ªçª—å£ã€‚ä½†æ˜¯è¿™æ ·æœ‰å¯
+èƒ½å¼•èµ·å¾ˆå¤šçƒ­é”®è¢« WM æˆªèŽ·ã€‚å¯¹äºŽ Emacs ä¹‹ç±»çš„ç¨‹åºä¸å¤ªå¥½ã€‚
 
 </p>
 
 <p>
-ËùÒÔ×îºÃÊ¹ÓÃ bookmark.jl¡£ Ëü¿ÉÒÔ¶Ô´°¿ÚÊ¹ÓÃÈÎÒâÈÈ¼ü±ê¼Ç£¬µ«
-ÊÇÄã±ØÐëÔÚÕâ¸öÈÈ¼üÖ®Ç°Ö´ÐÐ bookmark-goto¡£ÔÚbookmark-set Ö®
-ºó°´Ò»¸öÈÈ¼ü£¬ÒÔºó bookmark-goto£¬È»ºóÔÙ°´ÄÇ¸öÈÈ¼ü¾Í¿ÉÒÔÖ±½Ó
-µ½´ïÄÇ¸ö´°¿ÚÁË¡£
+æ‰€ä»¥æœ€å¥½ä½¿ç”¨ bookmark.jlã€‚ å®ƒå¯ä»¥å¯¹çª—å£ä½¿ç”¨ä»»æ„çƒ­é”®æ ‡è®°ï¼Œä½†
+æ˜¯ä½ å¿…é¡»åœ¨è¿™ä¸ªçƒ­é”®ä¹‹å‰æ‰§è¡Œ bookmark-gotoã€‚åœ¨bookmark-set ä¹‹
+åŽæŒ‰ä¸€ä¸ªçƒ­é”®ï¼Œä»¥åŽ bookmark-gotoï¼Œç„¶åŽå†æŒ‰é‚£ä¸ªçƒ­é”®å°±å¯ä»¥ç›´æŽ¥
+åˆ°è¾¾é‚£ä¸ªçª—å£äº†ã€‚
 
 </p>
 
 <p>
-bookmark.jl ¿ÉÒÔÔÚÕâÀï
-<a href="http://sawfish.skylab.org/WikiSawfishLibrary">http://sawfish.skylab.org/WikiSawfishLibrary</a> ÕÒµ½¡£
+bookmark.jl å¯ä»¥åœ¨è¿™é‡Œ
+<a href="http://sawfish.skylab.org/WikiSawfishLibrary">http://sawfish.skylab.org/WikiSawfishLibrary</a> æ‰¾åˆ°ã€‚
 
 </p>
 
 <p>
-ÒÔÏÂÊÇÒ»Ð©¼òµ¥µÄÅäÖÃ£º
+ä»¥ä¸‹æ˜¯ä¸€äº›ç®€å•çš„é…ç½®ï¼š
 
 </p>
 
@@ -328,20 +328,20 @@ bookmark.jl ¿ÉÒÔÔÚÕâÀï
 
 </pre>
 
-<h3>ÈçºÎÏÔÊ¾ÎÒÒ»¸ö¼üµÄ°ó¶¨ÐÅÏ¢£¿</h3>
+<h3>å¦‚ä½•æ˜¾ç¤ºæˆ‘ä¸€ä¸ªé”®çš„ç»‘å®šä¿¡æ¯ï¼Ÿ</h3>
 
 <p>
-ÎÒÉè¼ÆÁËÒ»¸öº¯Êý£¬¿ÉÒÔÖªµÀÒ»¸ö¼üÕýÔÚ½øÐÐÊ²Ã´²Ù×÷¡£ÄãÖ»ÐèÒª°´ 
-W-w È»ºó°´ÄãµÄÈÈ¼ü£¬¾ÍÄÜÖªµÀËüÔÚËùÓÐ keymap ÀïµÄ binding ºÍ
-ËüÃÇµÄÃèÊö¡£ÎÒ°Ñ describe-symbol ºÍ describe-key ÐÞ¸Ä³ÉÁË¿É
-ÒÔÏò string port Êä³ö£¬¶øÇÒÐÞÕýÁËÒ»¸ö²»ÄÜÏÔÊ¾¸´ºÏÃüÁîµÄbug¡£
-´Ó¶ø¿ÉÒÔ°ÑËüÃÇÊæ·þµÄÏÔÊ¾ÔÚÆÁÄ»ÉÏ¡£¾ÍÏñ <a
-href="../images/describe-key-in-all-keymaps.png">ÕâÑù</a>.
+æˆ‘è®¾è®¡äº†ä¸€ä¸ªå‡½æ•°ï¼Œå¯ä»¥çŸ¥é“ä¸€ä¸ªé”®æ­£åœ¨è¿›è¡Œä»€ä¹ˆæ“ä½œã€‚ä½ åªéœ€è¦æŒ‰ 
+W-w ç„¶åŽæŒ‰ä½ çš„çƒ­é”®ï¼Œå°±èƒ½çŸ¥é“å®ƒåœ¨æ‰€æœ‰ keymap é‡Œçš„ binding å’Œ
+å®ƒä»¬çš„æè¿°ã€‚æˆ‘æŠŠ describe-symbol å’Œ describe-key ä¿®æ”¹æˆäº†å¯
+ä»¥å‘ string port è¾“å‡ºï¼Œè€Œä¸”ä¿®æ­£äº†ä¸€ä¸ªä¸èƒ½æ˜¾ç¤ºå¤åˆå‘½ä»¤çš„bugã€‚
+ä»Žè€Œå¯ä»¥æŠŠå®ƒä»¬èˆ’æœçš„æ˜¾ç¤ºåœ¨å±å¹•ä¸Šã€‚å°±åƒ <a
+href="../images/describe-key-in-all-keymaps.png">è¿™æ ·</a>.
 
 </p>
 
 <p>
-ÏÂÃæÊÇº¯Êý£º
+ä¸‹é¢æ˜¯å‡½æ•°ï¼š
 
 </p>
 
@@ -420,18 +420,18 @@ href="../images/describe-key-in-all-keymaps.png">ÕâÑù</a>.
 (bind-keys global-keymap &quot;W-w&quot; 'describe-what-am-i-doing)
 </pre>
 
-<h3>ÈçºÎÔÚÆÁÄ»ÉÏÏÔÊ¾ÐÅÏ¢£¿</h3>
+<h3>å¦‚ä½•åœ¨å±å¹•ä¸Šæ˜¾ç¤ºä¿¡æ¯ï¼Ÿ</h3>
 
 <p>
-ÓÃ display-message ¿ÉÒÔÔÚÆÁÄ»ÖÐÑëÏÔÊ¾×Ö·û´®£¬ÓÃ
-display-tooltip ¿ÉÒÔÔÚÊó±ê´¦ÏÔÊ¾×Ö·û´®¡£
+ç”¨ display-message å¯ä»¥åœ¨å±å¹•ä¸­å¤®æ˜¾ç¤ºå­—ç¬¦ä¸²ï¼Œç”¨
+display-tooltip å¯ä»¥åœ¨é¼ æ ‡å¤„æ˜¾ç¤ºå­—ç¬¦ä¸²ã€‚
 
 </p>
 
-<h3>ÈçºÎ¶¨Ê±Ö´ÐÐ²Ù×÷£¿</h3>
+<h3>å¦‚ä½•å®šæ—¶æ‰§è¡Œæ“ä½œï¼Ÿ</h3>
 
 <p>
-ÓÃ rep µÄ make-timer º¯Êý¾Í¿ÉÒÔ¡£±ÈÈç£º
+ç”¨ rep çš„ make-timer å‡½æ•°å°±å¯ä»¥ã€‚æ¯”å¦‚ï¼š
 
 </p>
 
@@ -443,15 +443,15 @@ display-tooltip ¿ÉÒÔÔÚÊó±ê´¦ÏÔÊ¾×Ö·û´®¡£
 </pre>
 
 <p>
-»áÔÚ 2 ÃëÖ®ºó×îÐ¡»¯¾Û½¹´°¿Ú¡£
+ä¼šåœ¨ 2 ç§’ä¹‹åŽæœ€å°åŒ–èšç„¦çª—å£ã€‚
 
 </p>
 
-<h3>ÈçºÎµÃµ½ sawfish ÖªµÀÒ»¸ö´°¿ÚµÄÒ»ÇÐ£¿</h3>
+<h3>å¦‚ä½•å¾—åˆ° sawfish çŸ¥é“ä¸€ä¸ªçª—å£çš„ä¸€åˆ‡ï¼Ÿ</h3>
 
 <p>
-ÓÃ window-snooper ¿ÉÒÔµÃµ½ sawfish ÖªµÀµÄÒ»ÇÐÐÅÏ¢¡£°üÀ¨´°¿Ú
-²ÎÊý£¬¼ü°ó¶¨£¬´°¿ÚÊôÐÔ¡­¡­
+ç”¨ window-snooper å¯ä»¥å¾—åˆ° sawfish çŸ¥é“çš„ä¸€åˆ‡ä¿¡æ¯ã€‚åŒ…æ‹¬çª—å£
+å‚æ•°ï¼Œé”®ç»‘å®šï¼Œçª—å£å±žæ€§â€¦â€¦
 
 </p>
 
@@ -461,16 +461,16 @@ display-tooltip ¿ÉÒÔÔÚÊó±ê´¦ÏÔÊ¾×Ö·û´®¡£
           ,@(cddr window-ops-menu)))
 </pre>
 
-<h3>ÈçºÎ·½±ãµÄÇÐ»»´°¿Ú£¿</h3>
+<h3>å¦‚ä½•æ–¹ä¾¿çš„åˆ‡æ¢çª—å£ï¼Ÿ</h3>
 
 <p>
-ÓÃ iswitch-window ×îºÃ¡£²»µ«¿ÉÒÔÕýÔò±í´ïÊ½Ñ¡È¡´°¿Ú£¬¶øÇÒ¿ÉÒÔ
-ÓÃÈÈ¼ü¶ÔËüÃÇ½øÐÐ iconify, shade, ... µÈ²Ù×÷¡£
+ç”¨ iswitch-window æœ€å¥½ã€‚ä¸ä½†å¯ä»¥æ­£åˆ™è¡¨è¾¾å¼é€‰å–çª—å£ï¼Œè€Œä¸”å¯ä»¥
+ç”¨çƒ­é”®å¯¹å®ƒä»¬è¿›è¡Œ iconify, shade, ... ç­‰æ“ä½œã€‚
 
 </p>
 
 <p>
-¾ßÌå¿ÉÒÔµÄ²Ù×÷ÓÐÕâÐ©£º
+å…·ä½“å¯ä»¥çš„æ“ä½œæœ‰è¿™äº›ï¼š
 
 </p>
 
@@ -484,17 +484,17 @@ display-tooltip ¿ÉÒÔÔÚÊó±ê´¦ÏÔÊ¾×Ö·û´®¡£
 ;; RET            select window
 </pre>
 
-<h3>ÈçºÎÈÃ W-next ¿ÉÒÔÂÖ»»´°¿Ú£¿</h3>
+<h3>å¦‚ä½•è®© W-next å¯ä»¥è½®æ¢çª—å£ï¼Ÿ</h3>
 
 <p>
-iswitch-window ¿ÉÒÔ·½±ãµÄÑ°ÕÒµ½´°¿Ú£¬µ«ÊÇÄã×ÜÊÇÐèÒª°´Ò»ÏÂRET 
-²ÅÄÜµ½´ï¡£Èç¹ûÄãÖ»ÊÇÏë¿ìËÙµÄÂÖ»»´°¿Ú£¬sawfish ÓÐÒ»¸öº¯Êý½Ð 
-cycle-windows£¬°ÑËü°ó¶¨µ½Ò»¸ö¼ü¾ÍÐÐÁË¡£
+iswitch-window å¯ä»¥æ–¹ä¾¿çš„å¯»æ‰¾åˆ°çª—å£ï¼Œä½†æ˜¯ä½ æ€»æ˜¯éœ€è¦æŒ‰ä¸€ä¸‹RET 
+æ‰èƒ½åˆ°è¾¾ã€‚å¦‚æžœä½ åªæ˜¯æƒ³å¿«é€Ÿçš„è½®æ¢çª—å£ï¼Œsawfish æœ‰ä¸€ä¸ªå‡½æ•°å« 
+cycle-windowsï¼ŒæŠŠå®ƒç»‘å®šåˆ°ä¸€ä¸ªé”®å°±è¡Œäº†ã€‚
 
 </p>
 
 <p>
-±ÈÈçÎÒ°ó¶¨µ½ÁË W-next:
+æ¯”å¦‚æˆ‘ç»‘å®šåˆ°äº† W-next:
 
 </p>
 
@@ -502,22 +502,22 @@ cycle-windows£¬°ÑËü°ó¶¨µ½Ò»¸ö¼ü¾ÍÐÐÁË¡£
 </pre>
 
 <p>
-ÒòÎªÎÒµÄ Emacs ÓÃ C-next ÂÖ»» buffer£¬
-Sawfish ÓÃ W-next µ±È»ºÜ×ÔÈ»ÁË¡£
+å› ä¸ºæˆ‘çš„ Emacs ç”¨ C-next è½®æ¢ bufferï¼Œ
+Sawfish ç”¨ W-next å½“ç„¶å¾ˆè‡ªç„¶äº†ã€‚
 
 </p>
 
-<h3>ÈçºÎÈÃÒ»¸ö´°¿ÚÒ»Ö±ÔÚ×îÉÏÃæ£¿</h3>
+<h3>å¦‚ä½•è®©ä¸€ä¸ªçª—å£ä¸€ç›´åœ¨æœ€ä¸Šé¢ï¼Ÿ</h3>
 
 <p>
-¸Ä±ä´°¿ÚµÄ²ã¾ÍÐÐÁË¡£ÕâÀïÓÐ3¸öº¯Êý¿ÉÒÔ°ïÖúÄãÉèÖÃ´°¿ÚµÄ²ã£º
+æ”¹å˜çª—å£çš„å±‚å°±è¡Œäº†ã€‚è¿™é‡Œæœ‰3ä¸ªå‡½æ•°å¯ä»¥å¸®åŠ©ä½ è®¾ç½®çª—å£çš„å±‚ï¼š
 
 </p>
 
 <p>
-wy-raise-window-layer ¿ÉÒÔ°ïÄã°Ñ´°¿Ú·Åµ½¸üÉÏÃæÒ»²ã£¬
-wy-lower-window-layer ¿ÉÒÔ°ïÄã°Ñ´°¿Ú·Åµ½ÏÂÃæÒ»²ã£¬
-wy-reset-window-layer ¿ÉÒÔ°Ñ´°¿Ú·Åµ½µÚ 0 ²ã¡£
+wy-raise-window-layer å¯ä»¥å¸®ä½ æŠŠçª—å£æ”¾åˆ°æ›´ä¸Šé¢ä¸€å±‚ï¼Œ
+wy-lower-window-layer å¯ä»¥å¸®ä½ æŠŠçª—å£æ”¾åˆ°ä¸‹é¢ä¸€å±‚ï¼Œ
+wy-reset-window-layer å¯ä»¥æŠŠçª—å£æ”¾åˆ°ç¬¬ 0 å±‚ã€‚
 
 </p>
 
@@ -550,17 +550,17 @@ wy-reset-window-layer ¿ÉÒÔ°Ñ´°¿Ú·Åµ½µÚ 0 ²ã¡£
 (bind-keys window-keymap &quot;W-=&quot; 'wy-reset-window-layer)
 </pre>
 
-<h3><a name="wyrun" id="wyrun"></a>ÈçºÎ·ÀÖ¹ system Æð¶¯µÄ³ÌÐò°Ñ WM ¹ÒÆð£¿</h3>
+<h3><a name="wyrun" id="wyrun"></a>å¦‚ä½•é˜²æ­¢ system èµ·åŠ¨çš„ç¨‹åºæŠŠ WM æŒ‚èµ·ï¼Ÿ</h3>
 
 <p>
-Ê¹ÓÃ system Ê±Ò»¶¨ÒªÐ¡ÐÄ£¬Èç¹ûÓÃ X µÄ³ÌÐò£¬ºóÃæÒ»¶¨Òª¼Ó "&"
-ÈÃËüÔÚºóÌ¨ÔËÐÐ£¬·ñÔò WM ¾Í»á±»¹ÒÆð£¬¼üÅÌ»á±»Ëø¶¨¡£ÓÐÊ±Äã²»µÃ
-²»ÖØÐÂÆð¶¯¡£
+ä½¿ç”¨ system æ—¶ä¸€å®šè¦å°å¿ƒï¼Œå¦‚æžœç”¨ X çš„ç¨‹åºï¼ŒåŽé¢ä¸€å®šè¦åŠ  "&"
+è®©å®ƒåœ¨åŽå°è¿è¡Œï¼Œå¦åˆ™ WM å°±ä¼šè¢«æŒ‚èµ·ï¼Œé”®ç›˜ä¼šè¢«é”å®šã€‚æœ‰æ—¶ä½ ä¸å¾—
+ä¸é‡æ–°èµ·åŠ¨ã€‚
 
 </p>
 
 <p>
-ÎªÁË±ÜÃâÕâÖÖÇé¿ö£¬ÈÃ³ÌÐòµÄÆð¶¯¸ü¼ÓÁ÷³©¡£Äã¿ÉÒÔ²Î¿¼Õâ¸öº¯Êý£º
+ä¸ºäº†é¿å…è¿™ç§æƒ…å†µï¼Œè®©ç¨‹åºçš„èµ·åŠ¨æ›´åŠ æµç•…ã€‚ä½ å¯ä»¥å‚è€ƒè¿™ä¸ªå‡½æ•°ï¼š
 
 </p>
 
@@ -575,18 +575,18 @@ background. Without stop the current WM execution&quot;
 </pre>
 
 <p>
-ÎÒÃÇÓÃ (wy-run "³ÌÐò") ´úÌæ (system "³ÌÐò")¡£ÕâÑùÃ¿´ÎÆð¶¯³Ì
-ÐòÊ±£¬»áÊ×ÏÈÆð¶¯Ò»¸öÐÂµÄÏß³Ì¡£ÔÚÕâ¸öÏß³ÌÀïµ÷ÓÃ system Æð¶¯ÄÇ
-¸ö³ÌÐò¡£Èç¹ûÃüÁîÐÐ×îºóÃ»ÓÐ "&", ÎÒÃÇ×Ô¼º¸øËü¼ÓÒ»¸ö "&". ÕâÑù
-¾Í²»»á¹ÒÆðÎÒÃÇµÄ WM ÁË¡£
+æˆ‘ä»¬ç”¨ (wy-run "ç¨‹åº") ä»£æ›¿ (system "ç¨‹åº")ã€‚è¿™æ ·æ¯æ¬¡èµ·åŠ¨ç¨‹
+åºæ—¶ï¼Œä¼šé¦–å…ˆèµ·åŠ¨ä¸€ä¸ªæ–°çš„çº¿ç¨‹ã€‚åœ¨è¿™ä¸ªçº¿ç¨‹é‡Œè°ƒç”¨ system èµ·åŠ¨é‚£
+ä¸ªç¨‹åºã€‚å¦‚æžœå‘½ä»¤è¡Œæœ€åŽæ²¡æœ‰ "&", æˆ‘ä»¬è‡ªå·±ç»™å®ƒåŠ ä¸€ä¸ª "&". è¿™æ ·
+å°±ä¸ä¼šæŒ‚èµ·æˆ‘ä»¬çš„ WM äº†ã€‚
 
 </p>
 
-<h3>ÄÜ²»ÄÜÑ¡ÖÐÒ»Ð©×Ö·û¾Í½øÐÐÆ´Ð´¼ì²é£¿</h3>
+<h3>èƒ½ä¸èƒ½é€‰ä¸­ä¸€äº›å­—ç¬¦å°±è¿›è¡Œæ‹¼å†™æ£€æŸ¥ï¼Ÿ</h3>
 
 <p>
-ÓÃ sawfish-spell ¾ÍÐÐÁË¡£Ëæ±ãÔÚÄÇ¸ö´°¿ÚÑ¡ÖÐÒ»Ð©×Ö·ûÈ»ºó°´
-C-W-c ¾ÍÐÐÁË¡£
+ç”¨ sawfish-spell å°±è¡Œäº†ã€‚éšä¾¿åœ¨é‚£ä¸ªçª—å£é€‰ä¸­ä¸€äº›å­—ç¬¦ç„¶åŽæŒ‰
+C-W-c å°±è¡Œäº†ã€‚
 
 </p>
 
@@ -595,11 +595,11 @@ C-W-c ¾ÍÐÐÁË¡£
              &quot;C-W-c&quot; spellcheck-interactive))
 </pre>
 
-<h3>ÄÜ²»ÄÜ·½±ãµÄËõÐ¡´°¿ÚÊ¹Ëü²»Òªµ²×¡ËüÏÂÃæµÄ´°¿Ú£¿</h3>
+<h3>èƒ½ä¸èƒ½æ–¹ä¾¿çš„ç¼©å°çª—å£ä½¿å®ƒä¸è¦æŒ¡ä½å®ƒä¸‹é¢çš„çª—å£ï¼Ÿ</h3>
 
 <p>
-Äã¿ÉÒÔÊ¹ÓÃ shrink-windows-to-fit À©Õ¹¡£°ó¶¨4¸ö¼üµ½4¸ö·½ÏòËõ
-Ð¡µÄº¯Êý¾ÍÐÐÁË¡£Magic!
+ä½ å¯ä»¥ä½¿ç”¨ shrink-windows-to-fit æ‰©å±•ã€‚ç»‘å®š4ä¸ªé”®åˆ°4ä¸ªæ–¹å‘ç¼©
+å°çš„å‡½æ•°å°±è¡Œäº†ã€‚Magic!
 
 </p>
 
@@ -612,11 +612,11 @@ C-W-c ¾ÍÐÐÁË¡£
 
 </pre>
 
-<h3>ÈçºÎÉèÖÃ²Ëµ¥£¿</h3>
+<h3>å¦‚ä½•è®¾ç½®èœå•ï¼Ÿ</h3>
 
 <p>
-Ö»Òª¶¨ÒåÒ»¸ö²Ëµ¥£¬°ÑËü°ó¶¨µ½Ò»¸ö¼üÉÏ¾ÍÐÐÁË¡£×¢Òâ£¬±ØÐëÏÈ¼ÓÔØ
-sawfish.wm.menus ²ÅÄÜÊ¹ÓÃ popup-menu º¯Êý¡£
+åªè¦å®šä¹‰ä¸€ä¸ªèœå•ï¼ŒæŠŠå®ƒç»‘å®šåˆ°ä¸€ä¸ªé”®ä¸Šå°±è¡Œäº†ã€‚æ³¨æ„ï¼Œå¿…é¡»å…ˆåŠ è½½
+sawfish.wm.menus æ‰èƒ½ä½¿ç”¨ popup-menu å‡½æ•°ã€‚
 
 </p>
 
@@ -646,20 +646,20 @@ sawfish.wm.menus ²ÅÄÜÊ¹ÓÃ popup-menu º¯Êý¡£
 
 </pre>
 
-<h3>ÈçºÎ°ó¶¨Ò»¸öÈÈ¼ü²åÈëÒ»¸öÐÂµÄ workspace ÔÚµ±Ç°µÄ workspace</h3>
-   Ö®ºó£¿
+<h3>å¦‚ä½•ç»‘å®šä¸€ä¸ªçƒ­é”®æ’å…¥ä¸€ä¸ªæ–°çš„ workspace åœ¨å½“å‰çš„ workspace</h3>
+   ä¹‹åŽï¼Ÿ
 
 </p>
 
 <pre class="example">(bind-keys window-keymap &quot;W-Insert&quot; 'insert-workspace-after)
 </pre>
 
-<h3>ÈçºÎ·µ»ØÉÏ´Î·ÃÎÊ¹ýµÄ´°¿ÚºÍ workspace?</h3>
+<h3>å¦‚ä½•è¿”å›žä¸Šæ¬¡è®¿é—®è¿‡çš„çª—å£å’Œ workspace?</h3>
 
 <p>
-ÎÒ×Ô¶¨ÒåÁËÒ»Ð©º¯Êý¡£Èç¹ûÄãÉÏ´ÎÇÐ»»ÁË´°¿Ú£¬ÄÇÃ´°´ M-` ¾Í¿ÉÒÔ
-»Øµ½ÉÏÒ»¸ö´°¿Ú£¬Èç¹ûÄãÉÏ´ÎÇÐ»»ÁË workspace£¬ÄÇÃ´ M-` ¾Í»Øµ½
-ÉÏÒ»¸ö¹¤×÷Çø¡£
+æˆ‘è‡ªå®šä¹‰äº†ä¸€äº›å‡½æ•°ã€‚å¦‚æžœä½ ä¸Šæ¬¡åˆ‡æ¢äº†çª—å£ï¼Œé‚£ä¹ˆæŒ‰ M-` å°±å¯ä»¥
+å›žåˆ°ä¸Šä¸€ä¸ªçª—å£ï¼Œå¦‚æžœä½ ä¸Šæ¬¡åˆ‡æ¢äº† workspaceï¼Œé‚£ä¹ˆ M-` å°±å›žåˆ°
+ä¸Šä¸€ä¸ªå·¥ä½œåŒºã€‚
 
 </p>
 
@@ -684,7 +684,7 @@ sawfish.wm.menus ²ÅÄÜÊ¹ÓÃ popup-menu º¯Êý¡£
 
 </pre>
 
-<h3>ÈçºÎ°ó¶¨Ò»Ð©¼ü¿ÉÒÔÔÚ4¸ö½ÇÂäÒÆ¶¯´°¿Ú£¿</h3>
+<h3>å¦‚ä½•ç»‘å®šä¸€äº›é”®å¯ä»¥åœ¨4ä¸ªè§’è½ç§»åŠ¨çª—å£ï¼Ÿ</h3>
 
 <pre class="example">(defun shove-window (dir &amp;optional no-focus)
   &quot;Move focused window 'left, 'right, 'up or 'down to screen edges.&quot;
@@ -710,10 +710,10 @@ sawfish.wm.menus ²ÅÄÜÊ¹ÓÃ popup-menu º¯Êý¡£
 
 </pre>
 
-<h3>ÈçºÎ°ó¶¨Ò»Ð©¼ü½øÐÐ×îÐ¡»¯£¬È¡Ïû×îÐ¡»¯£¬shade, unshade?</h3>
+<h3>å¦‚ä½•ç»‘å®šä¸€äº›é”®è¿›è¡Œæœ€å°åŒ–ï¼Œå–æ¶ˆæœ€å°åŒ–ï¼Œshade, unshade?</h3>
 
 <p>
-ÏÈ×öÒ»Ð©°ü×°º¯Êý£¬È»ºó°ó¶¨µ½¼üÉÏ£º
+å…ˆåšä¸€äº›åŒ…è£…å‡½æ•°ï¼Œç„¶åŽç»‘å®šåˆ°é”®ä¸Šï¼š
 
 </p>
 
@@ -767,7 +767,7 @@ sawfish.wm.menus ²ÅÄÜÊ¹ÓÃ popup-menu º¯Êý¡£
 
 </pre>
 
-<h3>ÈçºÎ°ó¶¨Ò»¸ö¼ü¿ÉÒÔ°ÑÊó±ê×¥µ½¾Û½¹´°¿ÚÖÐÑë£¿</h3>
+<h3>å¦‚ä½•ç»‘å®šä¸€ä¸ªé”®å¯ä»¥æŠŠé¼ æ ‡æŠ“åˆ°èšç„¦çª—å£ä¸­å¤®ï¼Ÿ</h3>
 
 <pre class="example">
 (require 'sawfish.wm.focus)
@@ -783,14 +783,14 @@ sawfish.wm.menus ²ÅÄÜÊ¹ÓÃ popup-menu º¯Êý¡£
 </pre>
 
 <p>
-×¢Òâ£¬Äã±ØÐëÉèÖÃ warp-to-window-enabled Îª t.
+æ³¨æ„ï¼Œä½ å¿…é¡»è®¾ç½® warp-to-window-enabled ä¸º t.
 
 </p>
 
-<h3>ÈçºÎ°Ñ´°¿ÚÒÆ¶¯µ½ÆÁÄ»ÖÐ¼ä£¬ÈçºÎÔÚËÄ½ÇÑ­»·ÒÆ¶¯´°¿Ú£¿</h3>
+<h3>å¦‚ä½•æŠŠçª—å£ç§»åŠ¨åˆ°å±å¹•ä¸­é—´ï¼Œå¦‚ä½•åœ¨å››è§’å¾ªçŽ¯ç§»åŠ¨çª—å£ï¼Ÿ</h3>
 
 <p>
-¿ÉÒÔÊ¹ÓÃÒ»¸öÀ©Õ¹½Ð×ö animate-move.
+å¯ä»¥ä½¿ç”¨ä¸€ä¸ªæ‰©å±•å«åš animate-move.
 
 </p>
 
@@ -804,10 +804,10 @@ sawfish.wm.menus ²ÅÄÜÊ¹ÓÃ popup-menu º¯Êý¡£
 
 </pre>
 
-<h3>ÈçºÎ¸Ä±ä´°¿ÚµÄ·ç¸ñ</h3>
+<h3>å¦‚ä½•æ”¹å˜çª—å£çš„é£Žæ ¼</h3>
 
 <p>
-Ê¹ÓÃ set-frame-style ¿ÉÒÔ¸Ä±ä´°¿Ú±ß¿ò·ç¸ñ¡£±ÈÈç
+ä½¿ç”¨ set-frame-style å¯ä»¥æ”¹å˜çª—å£è¾¹æ¡†é£Žæ ¼ã€‚æ¯”å¦‚
 
 </p>
 
@@ -816,7 +816,7 @@ sawfish.wm.menus ²ÅÄÜÊ¹ÓÃ popup-menu º¯Êý¡£
 </pre>
 
 <p>
-¿ÉÒÔ°ÑÃû×ÖÆ¥Åä "rxvt" µÄ´°¿Ú£¬¶¼ÉèÖÃ³ÉmicroGUI µÄ·ç¸ñ¡£
+å¯ä»¥æŠŠåå­—åŒ¹é… "rxvt" çš„çª—å£ï¼Œéƒ½è®¾ç½®æˆmicroGUI çš„é£Žæ ¼ã€‚
 
 </p>
 
@@ -824,15 +824,15 @@ sawfish.wm.menus ²ÅÄÜÊ¹ÓÃ popup-menu º¯Êý¡£
 </pre>
 
 <p>
-¿ÉÒÔµÃµ½Ò»¸öËùÓÐ frame-style µÄ list. style ¾ÍÊÇËùÎ½¡°Ö÷Ìâ¡±¡£
+å¯ä»¥å¾—åˆ°ä¸€ä¸ªæ‰€æœ‰ frame-style çš„ list. style å°±æ˜¯æ‰€è°“â€œä¸»é¢˜â€ã€‚
 
 </p>
 
-<h3>ÈçºÎÊ¹Ò»¸ö´°¿Ú²»±»×°ÊÎ£¿</h3>
+<h3>å¦‚ä½•ä½¿ä¸€ä¸ªçª—å£ä¸è¢«è£…é¥°ï¼Ÿ</h3>
 
 <p>
-Õâ¸öÄãÐèÒªÓÃ set-window-type ÐÞ¸Ä´°¿ÚµÄ window-type ÊôÐÔ¡£±È
-Èç£¬
+è¿™ä¸ªä½ éœ€è¦ç”¨ set-window-type ä¿®æ”¹çª—å£çš„ window-type å±žæ€§ã€‚æ¯”
+å¦‚ï¼Œ
 
 </p>
 
@@ -840,7 +840,7 @@ sawfish.wm.menus ²ÅÄÜÊ¹ÓÃ popup-menu º¯Êý¡£
 </pre>
 
 <p>
-¿ÉÒÔ°Ñ xdaliclock µÄ´°¿ÚÉèÖÃÎª²»¼Ó±êÌâºÍ±ß¿ò¡£ÁíÍâ»¹ÓÐºÜ¶à
+å¯ä»¥æŠŠ xdaliclock çš„çª—å£è®¾ç½®ä¸ºä¸åŠ æ ‡é¢˜å’Œè¾¹æ¡†ã€‚å¦å¤–è¿˜æœ‰å¾ˆå¤š
 window-type:
 
 </p>
@@ -848,39 +848,39 @@ window-type:
 <dl>
 <dt>default</dt>
 <dd>
-È±Ê¡ÀàÐÍ¡£
+ç¼ºçœç±»åž‹ã€‚
 </dd>
 <dt>transient</dt>
 <dd>
-ÁÙÊ±´°¿Ú¡£¾ÍÏñÄÇÖÖµ¯³ö´°¿Ú¡£
+ä¸´æ—¶çª—å£ã€‚å°±åƒé‚£ç§å¼¹å‡ºçª—å£ã€‚
 </dd>
 <dt>shaped</dt>
 <dd>
-·Ç¾ØÐÎ´°¿Ú¡£Ö»¸øËü±êÌâÀ¸£¬¶øÃ»ÓÐ±ß¿ò¡£
+éžçŸ©å½¢çª—å£ã€‚åªç»™å®ƒæ ‡é¢˜æ ï¼Œè€Œæ²¡æœ‰è¾¹æ¡†ã€‚
 </dd>
 <dt>shaped-transient</dt>
 <dd>
-ÉÏÃæÁ½¸öµÄ×éºÏ¡£
+ä¸Šé¢ä¸¤ä¸ªçš„ç»„åˆã€‚
 </dd>
 <dt>shaded</dt>
 <dd>
-Ö»ÓÐ±êÌâÀ¸¡£
+åªæœ‰æ ‡é¢˜æ ã€‚
 </dd>
 <dt>shaded-transient</dt>
 <dd>
-shaded ¶øÇÒ transient.
+shaded è€Œä¸” transient.
 </dd>
 <dt>unframed</dt>
 <dd>
-Ã»ÓÐÈÎºÎ×°ÊÎ¡£
+æ²¡æœ‰ä»»ä½•è£…é¥°ã€‚
 </dd>
 </dl>
 
-<h3>ÈçºÎ¿ÉÒÔ°´·½Ïò¾Û½¹´°¿Ú£¿</h3>
+<h3>å¦‚ä½•å¯ä»¥æŒ‰æ–¹å‘èšç„¦çª—å£ï¼Ÿ</h3>
 
 <p>
-±ÈÈç¡°°Ñ½¹µãÒÆ¶¯µ½ÓÒ±ßµÄ´°¿Ú¡±£¿ÓÃÒ»¸öÀ©Õ¹½Ð×ö
-focus-by-direction ¾ÍÐÐÁË£º
+æ¯”å¦‚â€œæŠŠç„¦ç‚¹ç§»åŠ¨åˆ°å³è¾¹çš„çª—å£â€ï¼Ÿç”¨ä¸€ä¸ªæ‰©å±•å«åš
+focus-by-direction å°±è¡Œäº†ï¼š
 
 </p>
 
@@ -891,15 +891,15 @@ focus-by-direction ¾ÍÐÐÁË£º
 (bind-keys window-keymap &quot;C-W-KP_Down&quot; 'focus-south-warp)
 </pre>
 
-<h3>ÈçºÎ undo?</h3>
+<h3>å¦‚ä½• undo?</h3>
 
 <p>
-Ê¹ÓÃ undo À©Õ¹¾Í¿ÉÒÔÁË¡£¼¸ºõËùÓÐ´°¿Ú²Ù×÷£¬±ÈÈç×î´ó»¯£¬×îÐ¡»¯£¬
-shade, ¸Ä±ä´óÐ¡£¬ÒÆ¶¯£¬¡­¡­¶¼¿ÉÒÔ undo.
+ä½¿ç”¨ undo æ‰©å±•å°±å¯ä»¥äº†ã€‚å‡ ä¹Žæ‰€æœ‰çª—å£æ“ä½œï¼Œæ¯”å¦‚æœ€å¤§åŒ–ï¼Œæœ€å°åŒ–ï¼Œ
+shade, æ”¹å˜å¤§å°ï¼Œç§»åŠ¨ï¼Œâ€¦â€¦éƒ½å¯ä»¥ undo.
 
 </p>
 
-<h3>ÈçºÎ°ó¶¨Ò»Ð©¼ü¿ÉÒÔ·½±ãµÄ×¥Í¼£¿</h3>
+<h3>å¦‚ä½•ç»‘å®šä¸€äº›é”®å¯ä»¥æ–¹ä¾¿çš„æŠ“å›¾ï¼Ÿ</h3>
 
 <pre class="example">(defun capture-root-window ()
   (interactive)
@@ -935,18 +935,18 @@ shade, ¸Ä±ä´óÐ¡£¬ÒÆ¶¯£¬¡­¡­¶¼¿ÉÒÔ undo.
 
 </pre>
 
-<h3>ÈçºÎ°ó¶¨Ò»Ð©¼ü¿ÉÒÔ·½±ãµÄ¹Ø±Õ´°¿Ú£¿</h3>
+<h3>å¦‚ä½•ç»‘å®šä¸€äº›é”®å¯ä»¥æ–¹ä¾¿çš„å…³é—­çª—å£ï¼Ÿ</h3>
 
 <pre class="example">(bind-keys window-keymap &quot;C-S-Button3-Click1&quot;
 '(delete-window (current-event-window)))
 </pre>
 
-<h3>ÈçºÎ°ó¶¨Ò»Ð©¼ü¿ÉÒÔ·½±ãµÄÖ´ÐÐ shell ÃüÁî£¿</h3>
+<h3>å¦‚ä½•ç»‘å®šä¸€äº›é”®å¯ä»¥æ–¹ä¾¿çš„æ‰§è¡Œ shell å‘½ä»¤ï¼Ÿ</h3>
 
 <pre class="example">(bind-keys window-keymap &quot;W-F9&quot; 'run-shell-command)
 </pre>
 
-<h3>ÈçºÎÉè¶¨Ò»Ð©ÈÈ¼ü·½±ãµÄ²Ù×Ý xmms?</h3>
+<h3>å¦‚ä½•è®¾å®šä¸€äº›çƒ­é”®æ–¹ä¾¿çš„æ“çºµ xmms?</h3>
 
 <pre class="example">;; short cuts for xmms
 (bind-keys global-keymap &quot;Pause&quot; '(wy-run &quot;xmms -u&amp;&quot;))
@@ -957,11 +957,11 @@ shade, ¸Ä±ä´óÐ¡£¬ÒÆ¶¯£¬¡­¡­¶¼¿ÉÒÔ undo.
 (bind-keys global-keymap &quot;W-KP_Enter&quot; '(wy-run &quot;xmms -u &amp;&quot;))
 </pre>
 
-<h3>ÈçºÎ°ó¶¨Ò»Ð©¼ü¿ÉÒÔ·½±ãµÄÔÚ rxvt Ö®¼äÂÖ»»£¿</h3>
+<h3>å¦‚ä½•ç»‘å®šä¸€äº›é”®å¯ä»¥æ–¹ä¾¿çš„åœ¨ rxvt ä¹‹é—´è½®æ¢ï¼Ÿ</h3>
 
 <p>
-Éè¼ÆÒ»Ð©º¯Êý¾Í¿ÉÒÔÍê³ÉÕâ¸ö¹¦ÄÜ¡£²»¹ýÕâÐ©º¯Êý»¹ÓÐ¸ü¶àµÄ¹¦ÄÜ¡£
-²»µ«¿ÉÒÔÔÚ rxvt Ö®¼äÂÖ×ª£¬¶øÇÒ¿ÉÒÔÔÚÈÎÒâÌõ¼þµÄ´°¿ÚÖ®¼äÂÖ×ª¡£
+è®¾è®¡ä¸€äº›å‡½æ•°å°±å¯ä»¥å®Œæˆè¿™ä¸ªåŠŸèƒ½ã€‚ä¸è¿‡è¿™äº›å‡½æ•°è¿˜æœ‰æ›´å¤šçš„åŠŸèƒ½ã€‚
+ä¸ä½†å¯ä»¥åœ¨ rxvt ä¹‹é—´è½®è½¬ï¼Œè€Œä¸”å¯ä»¥åœ¨ä»»æ„æ¡ä»¶çš„çª—å£ä¹‹é—´è½®è½¬ã€‚
 
 </p>
 
@@ -1009,13 +1009,13 @@ shade, ¸Ä±ä´óÐ¡£¬ÒÆ¶¯£¬¡­¡­¶¼¿ÉÒÔ undo.
 </pre>
 
 <p>
-×îºóÁ½¾ä¿ÉÒÔÊ¹µÃÃ¿°´Ò»ÏÂ H-r ¾ÍÌøµ½ÏÂÒ»¸ö rxvt, Ã¿°´Ò»ÏÂ H-e
-¾ÍÌøµ½ÏÂÒ»¸ö emacs. Ã¿°´Ò»ÏÂ H-M-r ¾ÍÌøµ½ÏÂÒ»¸ö rxvt »òÕß
-xterm, ¶øÇÒ¿ÉÒÔ¿ç¹ý workspace ÂÖ×ª¡£
+æœ€åŽä¸¤å¥å¯ä»¥ä½¿å¾—æ¯æŒ‰ä¸€ä¸‹ H-r å°±è·³åˆ°ä¸‹ä¸€ä¸ª rxvt, æ¯æŒ‰ä¸€ä¸‹ H-e
+å°±è·³åˆ°ä¸‹ä¸€ä¸ª emacs. æ¯æŒ‰ä¸€ä¸‹ H-M-r å°±è·³åˆ°ä¸‹ä¸€ä¸ª rxvt æˆ–è€…
+xterm, è€Œä¸”å¯ä»¥è·¨è¿‡ workspace è½®è½¬ã€‚
 
 </p>
 
-<h3>ÈçºÎÉèÖÃÈÈ¼üËø¶¨ÆÁÄ»£¿</h3>
+<h3>å¦‚ä½•è®¾ç½®çƒ­é”®é”å®šå±å¹•ï¼Ÿ</h3>
 
 <pre class="example">(bind-keys global-keymap
 	&quot;C-Pause&quot; '(system &quot;xscreensaver-command -activate&amp;&quot;))
@@ -1029,26 +1029,26 @@ xterm, ¶øÇÒ¿ÉÒÔ¿ç¹ý workspace ÂÖ×ª¡£
 </pre>
 
 <p>
-ÒÔÉÏµÄÉè¶¨ÊÇ£ºC-Pause Æð¶¯ÆÁÄ»±£»¤£¬ C-Break Æð¶¯ÆÁ±£Ëø¶¨ÆÁ
-Ä»£¬M-Pause Æð¶¯ÆÁ±££¬Ëø¶¨ÆÁÄ»£¬²¢ÇÒ¹Ø±ÕÏÔÊ¾Æ÷¡£
+ä»¥ä¸Šçš„è®¾å®šæ˜¯ï¼šC-Pause èµ·åŠ¨å±å¹•ä¿æŠ¤ï¼Œ C-Break èµ·åŠ¨å±ä¿é”å®šå±
+å¹•ï¼ŒM-Pause èµ·åŠ¨å±ä¿ï¼Œé”å®šå±å¹•ï¼Œå¹¶ä¸”å…³é—­æ˜¾ç¤ºå™¨ã€‚
 
 </p>
 
-<h3>ÈçºÎÉèÖÃÈÈ¼ü¿ÉÒÔÂíÉÏÌøµ½ Emacs µÄ´°¿Ú£¿</h3>
+<h3>å¦‚ä½•è®¾ç½®çƒ­é”®å¯ä»¥é©¬ä¸Šè·³åˆ° Emacs çš„çª—å£ï¼Ÿ</h3>
 
 <p>
-ÏÂÃæÕâ¸öÉèÖÃÊ¹ÓÃÁË jump-or-exec¡£°´ÏÂ W-e Ê±£º
+ä¸‹é¢è¿™ä¸ªè®¾ç½®ä½¿ç”¨äº† jump-or-execã€‚æŒ‰ä¸‹ W-e æ—¶ï¼š
 
 </p>
 
 <ul>
-<li>Èç¹ûÒÑ¾­ÓÐ Emacs ÔÚÔËÐÐ£¬ÄÇÃ´Ìøµ½Õâ¸ö Emacs ´°¿Ú
+<li>å¦‚æžœå·²ç»æœ‰ Emacs åœ¨è¿è¡Œï¼Œé‚£ä¹ˆè·³åˆ°è¿™ä¸ª Emacs çª—å£
 </li>
-<li>Èç¹ûÃ»ÓÐ Emacs ÄÇÃ´Æð¶¯Ò»¸ö Emacs, ²¢ÇÒÏÔÊ¾ÌáÊ¾ "emacs
+<li>å¦‚æžœæ²¡æœ‰ Emacs é‚£ä¹ˆèµ·åŠ¨ä¸€ä¸ª Emacs, å¹¶ä¸”æ˜¾ç¤ºæç¤º "emacs
   loading...".
 </li>
-<li>Èç¹ûÒÑ¾­ÔÚ Emacs µÄ´°¿Ú£¬ÄÇÃ´·¢ËÍ "F12" µ½ Emacs. ÔÚÎÒµÄ
-  Emacs Àï£¬F12 ÊÇÌøµ½ Todo.
+<li>å¦‚æžœå·²ç»åœ¨ Emacs çš„çª—å£ï¼Œé‚£ä¹ˆå‘é€ "F12" åˆ° Emacs. åœ¨æˆ‘çš„
+  Emacs é‡Œï¼ŒF12 æ˜¯è·³åˆ° Todo.
 </li>
 </ul>
 
@@ -1066,11 +1066,11 @@ xterm, ¶øÇÒ¿ÉÒÔ¿ç¹ý workspace ÂÖ×ª¡£
                         (synthesize-event &quot;F12&quot; wind)))))
 </pre>
 
-<h3>Sawfish ¿ÉÒÔÓÃ Scheme Âð£¿</h3>
+<h3>Sawfish å¯ä»¥ç”¨ Scheme å—ï¼Ÿ</h3>
 
 <p>
-¿ÉÒÔ¡£ÒòÎª librep Ö§³Ö Scheme. Äã¿ÉÒÔÊ¹ÓÃ lexical binding ºÍ
-first class continuation. ¾ÙÒ»¸öÀý×Ó£º
+å¯ä»¥ã€‚å› ä¸º librep æ”¯æŒ Scheme. ä½ å¯ä»¥ä½¿ç”¨ lexical binding å’Œ
+first class continuation. ä¸¾ä¸€ä¸ªä¾‹å­ï¼š
 
 </p>
 
@@ -1079,27 +1079,27 @@ first class continuation. ¾ÙÒ»¸öÀý×Ó£º
 (con &quot;haha&quot;)
 </pre>
 
-<h2>³£ÓÃº¯Êý</h2>
+<h2>å¸¸ç”¨å‡½æ•°</h2>
 
-<h3>Ñ¡Ôñ´°¿Ú£º</h3>
+<h3>é€‰æ‹©çª—å£ï¼š</h3>
 
 <dl>
 <dt>current-event-window</dt>
 <dd>
-Õâ¾ÍÊÇµÃµ½·¢ÉúÊÂ¼þÊ±¿Ì´°¿ÚµÄ×îºÃ°ì·¨¡£
+è¿™å°±æ˜¯å¾—åˆ°å‘ç”Ÿäº‹ä»¶æ—¶åˆ»çª—å£çš„æœ€å¥½åŠžæ³•ã€‚
 </dd>
 <dt>get-window-by-name(-re)</dt>
 <dd>
-°´Ãû×ÖÑ°ÕÒ´°¿Ú£¬·µ»ØÒ»¸ö´°¿Ú¶ÔÏó¡£
+æŒ‰åå­—å¯»æ‰¾çª—å£ï¼Œè¿”å›žä¸€ä¸ªçª—å£å¯¹è±¡ã€‚
 </dd>
 <dt>get-window-by-id</dt>
 <dd>
-ÒÔ window id ·µ»Ø´°¿Ú¶ÔÏó¡£
+ä»¥ window id è¿”å›žçª—å£å¯¹è±¡ã€‚
 </dd>
 <dt>get-window-by-class-re</dt>
 <dd>
-Õâ¸öÈ±Ê¡Ã»ÓÐÌá¹©¡£²»¹ýÎÒÃÇ¿ÉÒÔÇáËÉ
-ÊµÏÖÒ»¸ö£º
+è¿™ä¸ªç¼ºçœæ²¡æœ‰æä¾›ã€‚ä¸è¿‡æˆ‘ä»¬å¯ä»¥è½»æ¾
+å®žçŽ°ä¸€ä¸ªï¼š
 </dd>
 </dl>
 
@@ -1119,15 +1119,15 @@ first class continuation. ¾ÙÒ»¸öÀý×Ó£º
 <dl>
 <dt>window-order</dt>
 <dd>
-µÃµ½Ò»¸öËùÓÐ´°¿ÚµÄ list. Èç¹û¼ÓÒ»¸ö²ÎÊý
-workspace ¾ÍµÃµ½Ä³¸ö workspace µÄËùÓÐ´°¿Ú list.
+å¾—åˆ°ä¸€ä¸ªæ‰€æœ‰çª—å£çš„ list. å¦‚æžœåŠ ä¸€ä¸ªå‚æ•°
+workspace å°±å¾—åˆ°æŸä¸ª workspace çš„æ‰€æœ‰çª—å£ list.
 </dd>
 </dl>
 
-<h3>Ò»Ð©×Ô¶¨ÒåµÄ·½±ãº¯Êý</h3>
+<h3>ä¸€äº›è‡ªå®šä¹‰çš„æ–¹ä¾¿å‡½æ•°</h3>
 
 <ul>
-<li>Æ¥Åä name ºÍ class µÄÅÐ¶Ïº¯Êý¡£ÕâÁ½¸ö¶¼·µ»Ø t »òÕß nil.
+<li>åŒ¹é… name å’Œ class çš„åˆ¤æ–­å‡½æ•°ã€‚è¿™ä¸¤ä¸ªéƒ½è¿”å›ž t æˆ–è€… nil.
 </li>
 </ul>
 
@@ -1140,13 +1140,13 @@ workspace ¾ÍµÃµ½Ä³¸ö workspace µÄËùÓÐ´°¿Ú list.
 </pre>
 
 <ul>
-<li>°´Ìõ¼þÑ°ÕÒ´°¿Ú¡£
+<li>æŒ‰æ¡ä»¶å¯»æ‰¾çª—å£ã€‚
 </li>
 </ul>
 
 <p>
-ÓÐÁËÕâÁ½¸öÅÐ¶Ïº¯ÊýÎÒÃÇ¿ÉÒÔ¶¨ÒåÒ»Ð©º¯Êý¿ÉÒÔÌø×ª£¬»òÕß²Ù×ÝÄÇ¸ö
-Âú×ãÌõ¼þµÄ´°¿Ú¡£
+æœ‰äº†è¿™ä¸¤ä¸ªåˆ¤æ–­å‡½æ•°æˆ‘ä»¬å¯ä»¥å®šä¹‰ä¸€äº›å‡½æ•°å¯ä»¥è·³è½¬ï¼Œæˆ–è€…æ“çºµé‚£ä¸ª
+æ»¡è¶³æ¡ä»¶çš„çª—å£ã€‚
 
 </p>
 
@@ -1181,25 +1181,25 @@ workspace ¾ÍµÃµ½Ä³¸ö workspace µÄËùÓÐ´°¿Ú list.
 </pre>
 
 <p>
-±ÈÈç£¬°ó¶¨ F4 ¿ÉÒÔÔÚ rxvt Ö®¼äÑ­»·£º
+æ¯”å¦‚ï¼Œç»‘å®š F4 å¯ä»¥åœ¨ rxvt ä¹‹é—´å¾ªçŽ¯ï¼š
 
 </p>
 
 <pre class="example">(bind-keys global-keymap &quot;F4&quot; '(focus-next class-match-p &quot;rxvt&quot;))
 </pre>
 
-<h3>²Ù×Ý´°¿Ú£º</h3>
+<h3>æ“çºµçª—å£ï¼š</h3>
 
 <dl>
 <dt>delete-window-safely</dt>
 <dd>
-¹Ø±Õ´°¿Ú¡£¾ÍÊÇËµ£¬Èç¹û´°¿ÚÖ§³Ö£¬ÄÇÃ´
-·¢ËÍÒ»¸öWM_DELETE_WINDOW µ½Ä¿±ê´°¿Ú£¬Èç¹û²»Ö§³Ö£¬ÄÇÃ´ÃùÏì¡£
+å…³é—­çª—å£ã€‚å°±æ˜¯è¯´ï¼Œå¦‚æžœçª—å£æ”¯æŒï¼Œé‚£ä¹ˆ
+å‘é€ä¸€ä¸ªWM_DELETE_WINDOW åˆ°ç›®æ ‡çª—å£ï¼Œå¦‚æžœä¸æ”¯æŒï¼Œé‚£ä¹ˆé¸£å“ã€‚
 </dd>
 <dt>move-window-interactively</dt>
 <dd>
-ÒÆ¶¯´°¿Ú¡£µ«ÊÇËüÐèÒªÒ»¸ö²ÎÊý
-win. ËùÒÔÐèÒª°ü×°Ò»ÏÂ£º
+ç§»åŠ¨çª—å£ã€‚ä½†æ˜¯å®ƒéœ€è¦ä¸€ä¸ªå‚æ•°
+win. æ‰€ä»¥éœ€è¦åŒ…è£…ä¸€ä¸‹ï¼š
 </dd>
 </dl>
 
@@ -1208,10 +1208,10 @@ win. ËùÒÔÐèÒª°ü×°Ò»ÏÂ£º
   (move-window-interactively (current-event-window)))
 </pre>
 
-<h3>ÒÆ¶¯¹â±ê</h3>
+<h3>ç§»åŠ¨å…‰æ ‡</h3>
 
 <ul>
-<li>°´°Ù·Ö±ÈÒÆ¶¯¹â±êµ½´°¿ÚµÄÄ³¸öµØ·½£º
+<li>æŒ‰ç™¾åˆ†æ¯”ç§»åŠ¨å…‰æ ‡åˆ°çª—å£çš„æŸä¸ªåœ°æ–¹ï¼š
 </li>
 </ul>
 
@@ -1224,7 +1224,7 @@ win. ËùÒÔÐèÒª°ü×°Ò»ÏÂ£º
 </pre>
 
 <p>
-±ÈÈçÎÒÃÇ¿ÉÒÔ°ó¶¨£º
+æ¯”å¦‚æˆ‘ä»¬å¯ä»¥ç»‘å®šï¼š
 
 </p>
 
@@ -1232,18 +1232,18 @@ win. ËùÒÔÐèÒª°ü×°Ò»ÏÂ£º
 </pre>
 
 <p>
-ÕâÑùÊó±ê²»¹ÜÔÚÄÄÀï£¬Ò»°´ W-w, Ëü¾Íµ½´°¿ÚÖÐÑë¡£
+è¿™æ ·é¼ æ ‡ä¸ç®¡åœ¨å“ªé‡Œï¼Œä¸€æŒ‰ W-w, å®ƒå°±åˆ°çª—å£ä¸­å¤®ã€‚
 
 </p>
 
-<h3>ÖØÒªµÄ±äÁ¿</h3>
+<h3>é‡è¦çš„å˜é‡</h3>
 
 <dl>
 <dt>last-command</dt>
 <dd>
-ÉÏÒ»¸öÖ´ÐÐµÄÃüÁî¡£¿ÉÒÔÒÀ¾ÝÕâ¸öÀ´ÅÐ¶ÏÄ³Ð©¶«Î÷¡£
-±ÈÈçÎÒÃÇÉÏÃæµÄ focus-next º¯Êý¾ÍÓÃÕâ¸öÀ´ÅÐ¶Ï×Ô¼ºÊÇ·ñÔÚ±»·´¸´
-Ö´ÐÐ£¬Èç¹ûÊÇÕâÑùËü¾Í²»¸üÐÂ´°¿ÚÁÐ±í¡£
+ä¸Šä¸€ä¸ªæ‰§è¡Œçš„å‘½ä»¤ã€‚å¯ä»¥ä¾æ®è¿™ä¸ªæ¥åˆ¤æ–­æŸäº›ä¸œè¥¿ã€‚
+æ¯”å¦‚æˆ‘ä»¬ä¸Šé¢çš„ focus-next å‡½æ•°å°±ç”¨è¿™ä¸ªæ¥åˆ¤æ–­è‡ªå·±æ˜¯å¦åœ¨è¢«åå¤
+æ‰§è¡Œï¼Œå¦‚æžœæ˜¯è¿™æ ·å®ƒå°±ä¸æ›´æ–°çª—å£åˆ—è¡¨ã€‚
 </dd>
 </dl>
 <br>
@@ -1254,11 +1254,11 @@ win. ËùÒÔÐèÒª°ü×°Ò»ÏÂ£º
       <table width="100%" border="0" summary="Footer navigation">
 	<tr>
 	  <td width="33%" align="left">
-	    <span class="footdate">×îºó¸üÐÂ£º2003-09-06</span>
+	    <span class="footdate">æœ€åŽæ›´æ–°ï¼š2003-09-06</span>
 	  </td>
 	  <td width="60%" align="center">
 	    <span class="foothome">
-	      <a href="../index.html">ÍõÛóµÄÖ÷Ò³</a> / <a href="WelcomePage.html">WiKiÊ×Ò³</a>/<a href="WikiIndex.html">Ë÷Òý</a>/<a href="wiki_frame.html" target=_parent>¿ò¼ÜÒ³</a>/<a href="SawfishWindowManager.html" target=_parent>È¡Ïû¿ò¼Ü</a>
+	      <a href="../index.html">çŽ‹åž çš„ä¸»é¡µ</a> / <a href="WelcomePage.html">WiKié¦–é¡µ</a>/<a href="WikiIndex.html">ç´¢å¼•</a>/<a href="wiki_frame.html" target=_parent>æ¡†æž¶é¡µ</a>/<a href="SawfishWindowManager.html" target=_parent>å–æ¶ˆæ¡†æž¶</a>
 	    </span>
 	  </td>
 	  <td width="33%" align="right">

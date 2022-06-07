@@ -4,7 +4,7 @@
     <title>Tail Recursion</title>
     <meta name="generator" content="emacs-wiki.el">
     <meta http-equiv="Content-Type"
-	  content="text/html; charset=gb2312">
+	  content="text/html; charset=utf-8">
     <link rev="made" href="mailto:webmaster@wangyin.com">
     <link rel="home" href="WelcomePage.html">
     <link rel="index" href="WikiIndex.html">
@@ -19,10 +19,10 @@
 
 
 
-<h2>���� fibonacci ����</h2>
+<h2>两个 fibonacci 函数</h2>
 
 <p>
-��һ������β�ݹ�ģ��ڶ����ǡ��Ƚ�һ���ٶȡ�
+第一个不是尾递归的，第二个是。比较一下速度。
 
 </p>
 
@@ -50,13 +50,13 @@
 </pre>
 
 <p>
-���ֵ�һ���� (fibonacci 35) ��ʱ���Ѿ������޷����ܡ���Ϊ����
-�ĵݹ���ó�ָ��������
+发现第一个在 (fibonacci 35) 的时候已经慢得无法忍受。因为这里
+的递归调用成指数增长。
 
 </p>
 
 <p>
-���ڶ����汾ȴ�ܿ졣��Ϊ����β�ݹ飬���ô���������������
+而第二个版本却很快。因为它是尾递归，调用次数是线性增长。
 
 </p>
 
@@ -66,11 +66,11 @@
       <table width="100%" border="0" summary="Footer navigation">
 	<tr>
 	  <td width="33%" align="left">
-	    <span class="footdate">�����£�2003-06-08</span>
+	    <span class="footdate">最后更新：2003-06-08</span>
 	  </td>
 	  <td width="60%" align="center">
 	    <span class="foothome">
-	      <a href="../index.html">�������ҳ</a> / <a href="WelcomePage.html">WiKi��ҳ</a>/<a href="WikiIndex.html">����</a>/<a href="wiki_frame.html" target=_parent>���ҳ</a>/<a href="TailRecursion.html" target=_parent>ȡ�����</a>
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="TailRecursion.html" target=_parent>取消框架</a>
 	    </span>
 	  </td>
 	  <td width="33%" align="right">

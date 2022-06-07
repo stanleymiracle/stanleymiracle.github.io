@@ -4,7 +4,7 @@
     <title>Scheme48 Module Experiments</title>
     <meta name="generator" content="emacs-wiki.el">
     <meta http-equiv="Content-Type"
-	  content="text/html; charset=gb2312">
+	  content="text/html; charset=utf-8">
     <link rev="made" href="mailto:webmaster@wangyin.com">
     <link rel="home" href="WelcomePage.html">
     <link rel="index" href="WikiIndex.html">
@@ -20,14 +20,14 @@
 
 
 <p>
-ÕâÀïÎÒÃÇ¶Ô Scheme48 µÄÄ£¿é²Ù×÷½øÐÐÒ»Ð©ÊµÑé¡£
+è¿™é‡Œæˆ‘ä»¬å¯¹ Scheme48 çš„æ¨¡å—æ“ä½œè¿›è¡Œä¸€äº›å®žéªŒã€‚
 
 </p>
 
-<h2>Ñ¡Ïî</h2>
+<h2>é€‰é¡¹</h2>
 
 <p>
-Ê×ÏÈ£¬ÎÒÃÇ´ò¿ª Scheme48 µÄÒ»¸öÑ¡Ïî£º
+é¦–å…ˆï¼Œæˆ‘ä»¬æ‰“å¼€ Scheme48 çš„ä¸€ä¸ªé€‰é¡¹ï¼š
 
 </p>
 
@@ -35,14 +35,14 @@
 </pre>
 
 <p>
-ÕâÑù£¬¼ÓÔØÄ£¿é£¬¸ü¸ÄÄ£¿é interface µÄÊ±ºò£¬ÎÒÃÇ¶¼»áµÃµ½ÓÐÒæ
-µÄÐÅÏ¢¡£
+è¿™æ ·ï¼ŒåŠ è½½æ¨¡å—ï¼Œæ›´æ”¹æ¨¡å— interface çš„æ—¶å€™ï¼Œæˆ‘ä»¬éƒ½ä¼šå¾—åˆ°æœ‰ç›Š
+çš„ä¿¡æ¯ã€‚
 
 </p>
 
-<h2>¶¨Òå structure</h2>
+<h2>å®šä¹‰ structure</h2>
 
-<h3>ÔÚ scheme48 ½»»¥Ê½½âÊÍÆ÷(command processor)ÖÐÎÒÃÇ¶¨ÒåÁ½¸ö structure: foo ºÍ bar.</h3>
+<h3>åœ¨ scheme48 äº¤äº’å¼è§£é‡Šå™¨(command processor)ä¸­æˆ‘ä»¬å®šä¹‰ä¸¤ä¸ª structure: foo å’Œ bar.</h3>
 
 <pre class="example">,config
 (define-interface foo-interface (export foo1 foo2))
@@ -63,32 +63,32 @@
 </pre>
 
 <p>
-ÎªÁËÑÝÊ¾Ä£¿éÃû×Ö¿Õ¼äµÄ¸÷ÖÖ²Ù×÷£¬Ð´µÄ¸´ÔÓÒ»Ð©¡£ÏÖÔÚ½âÊÍÒ»ÏÂ£º
+ä¸ºäº†æ¼”ç¤ºæ¨¡å—åå­—ç©ºé—´çš„å„ç§æ“ä½œï¼Œå†™çš„å¤æ‚ä¸€äº›ã€‚çŽ°åœ¨è§£é‡Šä¸€ä¸‹ï¼š
 
 </p>
 
 <ul>
-<li>ÎÒÃÇÊ×ÏÈÍ¨¹ý ,config ÃüÁî½øÈë config ¿Õ¼ä£¬ÒòÎªÖ»ÓÐÔÚÕâÀï
-  define-structure ºÍ define-interface ²ÅÓÐº¬Òå¡£
+<li>æˆ‘ä»¬é¦–å…ˆé€šè¿‡ ,config å‘½ä»¤è¿›å…¥ config ç©ºé—´ï¼Œå› ä¸ºåªæœ‰åœ¨è¿™é‡Œ
+  define-structure å’Œ define-interface æ‰æœ‰å«ä¹‰ã€‚
 </li>
-<li>foo, bar ¶¼±»¶¨ÒåÎªÔÚÐèÒªµÄÊ±ºò´ò¿ªÎÄ¼þ¡£Í¨¹ý (files foo) 
-  ºÍ (files bar) À´µÃµ½½Ó¿ÚµÄ¾ßÌå¶¨Òå¡£
+<li>foo, bar éƒ½è¢«å®šä¹‰ä¸ºåœ¨éœ€è¦çš„æ—¶å€™æ‰“å¼€æ–‡ä»¶ã€‚é€šè¿‡ (files foo) 
+  å’Œ (files bar) æ¥å¾—åˆ°æŽ¥å£çš„å…·ä½“å®šä¹‰ã€‚
 </li>
-<li>ÆäÖÐ foo Õâ¸ö structure Ê¹ÓÃÁËÔ¤ÏÈ¶¨ÒåµÄ½Ó¿Ú¶ÔÏó 
-  foo-interface£¬Ê¹ÓÃÕâÑùµÄ¶¨ÒåÓÐ¼¸¸öºÃ´¦£¬ÎÒÃÇºóÀ´»á¿´µ½¡£
+<li>å…¶ä¸­ foo è¿™ä¸ª structure ä½¿ç”¨äº†é¢„å…ˆå®šä¹‰çš„æŽ¥å£å¯¹è±¡ 
+  foo-interfaceï¼Œä½¿ç”¨è¿™æ ·çš„å®šä¹‰æœ‰å‡ ä¸ªå¥½å¤„ï¼Œæˆ‘ä»¬åŽæ¥ä¼šçœ‹åˆ°ã€‚
 </li>
-<li>ÔÚ bar µÄ¶¨ÒåÖÐ£¬´ò¿ªÁË foo£¬ÕâÑù foo ÖÐµÄËùÓÐ export µÄ 
-  interface£¬ÔÚbar ÖÐ¶¼¿ÉÒÔ¿´µ½ÁË¡£
+<li>åœ¨ bar çš„å®šä¹‰ä¸­ï¼Œæ‰“å¼€äº† fooï¼Œè¿™æ · foo ä¸­çš„æ‰€æœ‰ export çš„ 
+  interfaceï¼Œåœ¨bar ä¸­éƒ½å¯ä»¥çœ‹åˆ°äº†ã€‚
 </li>
-<li>foo ºÍ bar ¶¼´ò¿ªÁË scheme Õâ¸ö structure£¬ÒòÎªÈç¹û²»´ò¿ª
-  Ëü£¬"define" Õâ¸öÃû×Ö½«Ã»ÓÐº¬Òå£¬ÎÒÃÇ¼¸ºõ²»ÄÜ¸ÉÈÎºÎÓÐÓÃµÄ
-  ÊÂÇé¡£
+<li>foo å’Œ bar éƒ½æ‰“å¼€äº† scheme è¿™ä¸ª structureï¼Œå› ä¸ºå¦‚æžœä¸æ‰“å¼€
+  å®ƒï¼Œ"define" è¿™ä¸ªåå­—å°†æ²¡æœ‰å«ä¹‰ï¼Œæˆ‘ä»¬å‡ ä¹Žä¸èƒ½å¹²ä»»ä½•æœ‰ç”¨çš„
+  äº‹æƒ…ã€‚
 </li>
-<li>bar ²»µ«´ò¿ªÁË scheme£¬¶øÇÒ°Ñ + »»ÃûÎª -, °Ñ cons Òþ²ØÆðÀ´£¬
-  Îª car ¶¨ÒåÁËÒ»¸ö±ðÃû head, È»ºó°ÑÕâÐ©¶¼¼ÓÉÏÇ°×º "bar/"¡£
-  ÕâÐ©Ãû×Ö½«³öÏÖÔÚ bar µÄÃû×Ö¿Õ¼äÖÐ¡£
+<li>bar ä¸ä½†æ‰“å¼€äº† schemeï¼Œè€Œä¸”æŠŠ + æ¢åä¸º -, æŠŠ cons éšè—èµ·æ¥ï¼Œ
+  ä¸º car å®šä¹‰äº†ä¸€ä¸ªåˆ«å head, ç„¶åŽæŠŠè¿™äº›éƒ½åŠ ä¸Šå‰ç¼€ "bar/"ã€‚
+  è¿™äº›åå­—å°†å‡ºçŽ°åœ¨ bar çš„åå­—ç©ºé—´ä¸­ã€‚
 </li>
-<li>bar Ê¹ÓÃ
+<li>bar ä½¿ç”¨
 </li>
 </ul>
 
@@ -96,16 +96,16 @@
 </pre>
 
 <p>
-¿ª·ÅÁËÒ»Ð©Ãû×Ö¡£ÎÒÃÇ¿´µ½Ëü°Ñ foo ÖÐµÄ foo3 Ò²¿ª·ÅÁË¡£µ«ÊÇÏÖ
-ÔÚ foo-interface ÖÐÖ»¿ª·ÅÁË foo1 ºÍ foo2£¬¶øÃ»ÓÐ¿ª·Åfoo3. Ê¹
-ÓÃ foo3 ½«»á³ö´í£¬ÒÔºóÎÒÃÇ»á¿´µ½¡£
+å¼€æ”¾äº†ä¸€äº›åå­—ã€‚æˆ‘ä»¬çœ‹åˆ°å®ƒæŠŠ foo ä¸­çš„ foo3 ä¹Ÿå¼€æ”¾äº†ã€‚ä½†æ˜¯çŽ°
+åœ¨ foo-interface ä¸­åªå¼€æ”¾äº† foo1 å’Œ foo2ï¼Œè€Œæ²¡æœ‰å¼€æ”¾foo3. ä½¿
+ç”¨ foo3 å°†ä¼šå‡ºé”™ï¼Œä»¥åŽæˆ‘ä»¬ä¼šçœ‹åˆ°ã€‚
 
 </p>
 
-<h3>´óÍ¼¾°</h3>
+<h3>å¤§å›¾æ™¯</h3>
 
 <p>
-¿´¿´£¬ÏÖÔÚµÄÇé¿ö¾ÍÊÇÕâ¸öÑù×Ó£º
+çœ‹çœ‹ï¼ŒçŽ°åœ¨çš„æƒ…å†µå°±æ˜¯è¿™ä¸ªæ ·å­ï¼š
 
 </p>
 
@@ -114,19 +114,19 @@
 
 </p>
 
-<h3>Ä£¿é¶¨ÒåÎÄ¼þ</h3>
+<h3>æ¨¡å—å®šä¹‰æ–‡ä»¶</h3>
 
 <p>
-define-structure Ö»¶¨ÒåÁË½Ó¿Ú£¬¶øÃ»ÓÐ¶¨Òå¾ßÌåµÄº¯Êý£¬ÎÒÃÇÊ¹
-ÓÃ (files foo) ºÍ (files bar) ÈÃ Scheme48 ÔÚÐèÒªÕâÐ©º¯Êý¶¨Òå
-µÄÊ±ºò²Å´ò¿ªÎÄ¼þ¡£ÕâÊÇ¶¨ÒåÄ£¿éÊ±Í¨³£¶¼²ÉÓÃµÄ·½·¨¡£ÄãÒ²¿ÉÒÔ¾Í
-ÔÚ define-structure ÀïÊ¹ÓÃ (begin ...) Ö±½Ó°Ñº¯Êý¶¨ÒåÔÚÀïÃæ£¬
-µ«ÊÇÕâÖÖ·½·¨³ýÁËÑÝÊ¾£¬¼¸ºõÃ»ÓÐÈËÊ¹ÓÃ¡£
+define-structure åªå®šä¹‰äº†æŽ¥å£ï¼Œè€Œæ²¡æœ‰å®šä¹‰å…·ä½“çš„å‡½æ•°ï¼Œæˆ‘ä»¬ä½¿
+ç”¨ (files foo) å’Œ (files bar) è®© Scheme48 åœ¨éœ€è¦è¿™äº›å‡½æ•°å®šä¹‰
+çš„æ—¶å€™æ‰æ‰“å¼€æ–‡ä»¶ã€‚è¿™æ˜¯å®šä¹‰æ¨¡å—æ—¶é€šå¸¸éƒ½é‡‡ç”¨çš„æ–¹æ³•ã€‚ä½ ä¹Ÿå¯ä»¥å°±
+åœ¨ define-structure é‡Œä½¿ç”¨ (begin ...) ç›´æŽ¥æŠŠå‡½æ•°å®šä¹‰åœ¨é‡Œé¢ï¼Œ
+ä½†æ˜¯è¿™ç§æ–¹æ³•é™¤äº†æ¼”ç¤ºï¼Œå‡ ä¹Žæ²¡æœ‰äººä½¿ç”¨ã€‚
 
 </p>
 
 <p>
-ºÃÁË£¬ÎÒÃÇÊ¹ÓÃ¡°Õý×Ú¡±µÄ×÷·¨£¬±à¼­Á½¸öÎÄ¼þ£ºfoo.scm ºÍ bar.scm
+å¥½äº†ï¼Œæˆ‘ä»¬ä½¿ç”¨â€œæ­£å®—â€çš„ä½œæ³•ï¼Œç¼–è¾‘ä¸¤ä¸ªæ–‡ä»¶ï¼šfoo.scm å’Œ bar.scm
 
 </p>
 
@@ -143,8 +143,8 @@ foo.scm:
 </pre>
 
 <p>
-ÎÄ¼þÀï foo2 µÄÁ½¸ö¶¨Òå£¬ÎÒÃÇÏÈ°ÑµÚ¶þ¸ö×¢ÊÍµô¡£ÒÔºóÎÒÃÇÒª»»¶¨
-ÒåÊ±¾Í°ÑµÚÒ»¸ö×¢ÊÍµô£¬°ÑµÚ¶þ¸öµÄ×¢ÊÍ·ûºÅÉ¾µô¡£
+æ–‡ä»¶é‡Œ foo2 çš„ä¸¤ä¸ªå®šä¹‰ï¼Œæˆ‘ä»¬å…ˆæŠŠç¬¬äºŒä¸ªæ³¨é‡ŠæŽ‰ã€‚ä»¥åŽæˆ‘ä»¬è¦æ¢å®š
+ä¹‰æ—¶å°±æŠŠç¬¬ä¸€ä¸ªæ³¨é‡ŠæŽ‰ï¼ŒæŠŠç¬¬äºŒä¸ªçš„æ³¨é‡Šç¬¦å·åˆ æŽ‰ã€‚
 
 </p>
 
@@ -161,21 +161,21 @@ bar.scm:
 </pre>
 
 <p>
-×¢Òâµ½£¬bar.scm ÀïÊ¹ÓÃµÄÆæ¹ÖµÄÃû×Ö bar/define, ÒòÎªÎÒÃÇÔÚ
-structure bar µÄ¶¨ÒåÖÐ£¬°Ñ scheme µÄËùÓÐÃû×Ö¶¼¼ÓÉÏÁËÇ°×ºbar, 
-ËùÒÔÔÚ bar µÄ package ÖÐ£¬Ã»ÓÐ define ÕâÖÖÃû×Ö£¬Ö»ÓÐ 
+æ³¨æ„åˆ°ï¼Œbar.scm é‡Œä½¿ç”¨çš„å¥‡æ€ªçš„åå­— bar/define, å› ä¸ºæˆ‘ä»¬åœ¨
+structure bar çš„å®šä¹‰ä¸­ï¼ŒæŠŠ scheme çš„æ‰€æœ‰åå­—éƒ½åŠ ä¸Šäº†å‰ç¼€bar, 
+æ‰€ä»¥åœ¨ bar çš„ package ä¸­ï¼Œæ²¡æœ‰ define è¿™ç§åå­—ï¼Œåªæœ‰ 
 bar/define.
 
 </p>
 
-<h2>¼ÓÔØÄ£¿é</h2>
+<h2>åŠ è½½æ¨¡å—</h2>
 
 <pre class="example">,user
 ,open bar
 </pre>
 
 <p>
-ÎÒÃÇ»Øµ½ user ¿Õ¼ä£¬´ò¿ª structure bar¡£ÎÒÃÇ¿´µ½ÒÔÏÂÐÅÏ¢£º
+æˆ‘ä»¬å›žåˆ° user ç©ºé—´ï¼Œæ‰“å¼€ structure barã€‚æˆ‘ä»¬çœ‹åˆ°ä»¥ä¸‹ä¿¡æ¯ï¼š
 
 </p>
 
@@ -187,32 +187,32 @@ Warning: Structure has undefined exports
 </pre>
 
 <p>
-ÌáÊ¾ÎÒÃÇ£º bar ÏëÒªÊä³öµÄ½Ó¿Ú foo3, bar/cons ºÍ bar/+ Ã»ÓÐ¶¨
-Òå¡£ÕâÊÇÒòÎª£º
+æç¤ºæˆ‘ä»¬ï¼š bar æƒ³è¦è¾“å‡ºçš„æŽ¥å£ foo3, bar/cons å’Œ bar/+ æ²¡æœ‰å®š
+ä¹‰ã€‚è¿™æ˜¯å› ä¸ºï¼š
 
 </p>
 
 <ul>
-<li>foo ËäÈ»¶¨ÒåÁË foo3£¬µ«ÊÇËüÃ»ÓÐ¿ª·ÅËü×÷Îª½Ó¿Ú¡£
+<li>foo è™½ç„¶å®šä¹‰äº† foo3ï¼Œä½†æ˜¯å®ƒæ²¡æœ‰å¼€æ”¾å®ƒä½œä¸ºæŽ¥å£ã€‚
 </li>
-<li>scheme µÄ cons ±» bar ¶¨ÒåÀïµÄ (hide cons) Òþ²ØÆðÀ´¿´²»µ½
-  ÁË¡£ËùÒÔ¼ÓÉÏÇ°×ºµÄ bar/cons Ò²¿´²»µ½ÁË¡£
+<li>scheme çš„ cons è¢« bar å®šä¹‰é‡Œçš„ (hide cons) éšè—èµ·æ¥çœ‹ä¸åˆ°
+  äº†ã€‚æ‰€ä»¥åŠ ä¸Šå‰ç¼€çš„ bar/cons ä¹Ÿçœ‹ä¸åˆ°äº†ã€‚
 </li>
-<li>scheme µÄ + ±» bar ¸ÄÃûÎª -, ²¢ÇÒ¼ÓÉÏÁËÇ°×º bar/¡£ËùÒÔ bar 
-  ÀïÖ»ÓÐ bar/-, ¶øÃ»ÓÐ bar/+.
+<li>scheme çš„ + è¢« bar æ”¹åä¸º -, å¹¶ä¸”åŠ ä¸Šäº†å‰ç¼€ bar/ã€‚æ‰€ä»¥ bar 
+  é‡Œåªæœ‰ bar/-, è€Œæ²¡æœ‰ bar/+.
 </li>
 </ul>
 
 <p>
-ÒÔºóÎÒÃÇ»á¿´µ½ÕâÐ©ÎÊÌâÒýÆðµÄ½á¹û¡£
+ä»¥åŽæˆ‘ä»¬ä¼šçœ‹åˆ°è¿™äº›é—®é¢˜å¼•èµ·çš„ç»“æžœã€‚
 
 </p>
 
-<h2>²âÊÔ¿ª·ÅµÄ½Ó¿Ú</h2>
+<h2>æµ‹è¯•å¼€æ”¾çš„æŽ¥å£</h2>
 
 <p>
-ÎÒÃÇÊ×ÏÈÀ´ÊÔÒ»ÏÂ bar ¿ª·ÅµÄ½Ó¿Ú£¬Óï¾äÏÂµÄ×¢ÊÍÊÇÓ¦¸ÃµÃµ½µÄÊä
-³ö¡£
+æˆ‘ä»¬é¦–å…ˆæ¥è¯•ä¸€ä¸‹ bar å¼€æ”¾çš„æŽ¥å£ï¼Œè¯­å¥ä¸‹çš„æ³¨é‡Šæ˜¯åº”è¯¥å¾—åˆ°çš„è¾“
+å‡ºã€‚
 
 </p>
 
@@ -231,26 +231,26 @@ Warning: Structure has undefined exports
 </pre>
 
 <p>
-ÎÒÃÇ¿´µ½£º
+æˆ‘ä»¬çœ‹åˆ°ï¼š
 
 </p>
 
 <ul>
-<li>(alias (car head)) Ê¹µÃ scheme µÄ car ÓÐÁËÒ»¸ö±ðÃû head. 
-  ¼ÓÉÏÒ»¸öÇ°×º³ÉÁË bar/head, Ëü¾ßÓÐ car µÄ¹¦ÄÜ¡£
+<li>(alias (car head)) ä½¿å¾— scheme çš„ car æœ‰äº†ä¸€ä¸ªåˆ«å head. 
+  åŠ ä¸Šä¸€ä¸ªå‰ç¼€æˆäº† bar/head, å®ƒå…·æœ‰ car çš„åŠŸèƒ½ã€‚
 </li>
-<li>Í¬Ê±ÎÒÃÇ»¹ÓÐÒ»¸öº¯Êý½Ð×ö bar/car, ËüÊÇÓÉ scheme Ô­À´µÄ car
-  ÔÚ bar µÄ package Àï±»¼ÓÉÏÒ»¸öÇ°×º bar/ ¶ø³ÉµÄ¡£
+<li>åŒæ—¶æˆ‘ä»¬è¿˜æœ‰ä¸€ä¸ªå‡½æ•°å«åš bar/car, å®ƒæ˜¯ç”± scheme åŽŸæ¥çš„ car
+  åœ¨ bar çš„ package é‡Œè¢«åŠ ä¸Šä¸€ä¸ªå‰ç¼€ bar/ è€Œæˆçš„ã€‚
 </li>
-<li>Í¨¹ý eq? µÄ²âÊÔ£¬ÎÒÃÇ·¢ÏÖ£¬bar/head, bar/car, car Êµ¼ÊÉÏ¶¼
-  ÊÇÍ¬Ò»¸öº¯Êý¡£
+<li>é€šè¿‡ eq? çš„æµ‹è¯•ï¼Œæˆ‘ä»¬å‘çŽ°ï¼Œbar/head, bar/car, car å®žé™…ä¸Šéƒ½
+  æ˜¯åŒä¸€ä¸ªå‡½æ•°ã€‚
 </li>
 </ul>
 
-<h2>²âÊÔÃ»ÓÐ¿ª·ÅµÄ½Ó¿Ú</h2>
+<h2>æµ‹è¯•æ²¡æœ‰å¼€æ”¾çš„æŽ¥å£</h2>
 
 <p>
-ÎÒÃÇÊÔÒ»ÏÂÒ»¸öÃ»ÓÐ¿ª·ÅµÄ½Ó¿Ú bar/cdr, ½á¹û³ö´í£º 
+æˆ‘ä»¬è¯•ä¸€ä¸‹ä¸€ä¸ªæ²¡æœ‰å¼€æ”¾çš„æŽ¥å£ bar/cdr, ç»“æžœå‡ºé”™ï¼š 
 
 </p>
 
@@ -262,8 +262,8 @@ Warning: Structure has undefined exports
 </pre>
 
 <p>
-ÒòÎªµ±Ç°»·¾³ÀïÃ»ÓÐ bar/cdr Õâ¸öº¯Êý¡£ÎÒÃÇ½øÈë  bar package
-ÔÙÊÔÒ»ÏÂ£º
+å› ä¸ºå½“å‰çŽ¯å¢ƒé‡Œæ²¡æœ‰ bar/cdr è¿™ä¸ªå‡½æ•°ã€‚æˆ‘ä»¬è¿›å…¥  bar package
+å†è¯•ä¸€ä¸‹ï¼š
 
 </p>
 
@@ -276,7 +276,7 @@ Warning: Structure has undefined exports
 </pre>
 
 <p>
-»¹ÊÇ³ö´í£¬Ëµ b ÊÇÃ»ÓÐ¶¨ÒåµÄ±äÁ¿£¡¹ÖÊÂ¡­¡­ ÔÙÀ´£º
+è¿˜æ˜¯å‡ºé”™ï¼Œè¯´ b æ˜¯æ²¡æœ‰å®šä¹‰çš„å˜é‡ï¼æ€ªäº‹â€¦â€¦ å†æ¥ï¼š
 
 </p>
 
@@ -287,15 +287,15 @@ Warning: Structure has undefined exports
 </pre>
 
 <p>
-ÎÒÃÇ´ò¿ª scheme Ö®ºó£¬·¢ÏÖÐÅÏ¢¡°Newly accessible in bar:
-(quote)¡±£¬ ÕâËµÃ÷ÎÒÃÇÉÏÒ»¸ö (bar/cdr '(a b c)) ³ö´íµÄÔ­ÒòÊÇ£º
- <em>bar ¿Õ¼äÖÐ "quote" Ã»ÓÐ¶¨Òå</em> £¡
+æˆ‘ä»¬æ‰“å¼€ scheme ä¹‹åŽï¼Œå‘çŽ°ä¿¡æ¯â€œNewly accessible in bar:
+(quote)â€ï¼Œ è¿™è¯´æ˜Žæˆ‘ä»¬ä¸Šä¸€ä¸ª (bar/cdr '(a b c)) å‡ºé”™çš„åŽŸå› æ˜¯ï¼š
+ <em>bar ç©ºé—´ä¸­ "quote" æ²¡æœ‰å®šä¹‰</em> ï¼
 
 </p>
 
 <p>
-»ØÏëÒ»ÏÂ£¬ÎÒÃÇÒÑ¾­°Ñ scheme ÀïµÄËùÓÐÃû×Ö¼ÓÁËÇ°×º bar/ °¡£¡ÏÖ
-ÔÚ quote Ó¦¸Ã½Ð×ö bar/quote ÎÒÃÇÔÙÊÔÊÔ£º
+å›žæƒ³ä¸€ä¸‹ï¼Œæˆ‘ä»¬å·²ç»æŠŠ scheme é‡Œçš„æ‰€æœ‰åå­—åŠ äº†å‰ç¼€ bar/ å•Šï¼çŽ°
+åœ¨ quote åº”è¯¥å«åš bar/quote æˆ‘ä»¬å†è¯•è¯•ï¼š
 
 </p>
 
@@ -304,11 +304,11 @@ Warning: Structure has undefined exports
 </pre>
 
 <p>
-µÃµ½ÕýÈ·½á¹û¡£Ô­À´Èç´Ë£¡
+å¾—åˆ°æ­£ç¡®ç»“æžœã€‚åŽŸæ¥å¦‚æ­¤ï¼
 
 </p>
 
-<h2>²âÊÔÒþ²ØºÍ¸ÄÃûµÄ½Ó¿Ú</h2>
+<h2>æµ‹è¯•éšè—å’Œæ”¹åçš„æŽ¥å£</h2>
 
 <pre class="example">(bar/cons 10 '(a b c))
 ; Error: undefined variable
@@ -325,25 +325,25 @@ Warning: Structure has undefined exports
 </pre>
 
 <p>
-½âÊÍ£º
+è§£é‡Šï¼š
 
 </p>
 
 <ul>
-<li>bar/cons Ã»ÓÐº¬Òå£¬ÒòÎªÎÒÃÇÔÚ¶¨Òå bar structure Ê±Ê¹ÓÃ
-  (hide cons) Òþ²ØÁË scheme µÄ cons, ËùÒÔ bar/cons ÔÚ bar
-  package ÀïÃ»ÓÐº¬Òå¡£
+<li>bar/cons æ²¡æœ‰å«ä¹‰ï¼Œå› ä¸ºæˆ‘ä»¬åœ¨å®šä¹‰ bar structure æ—¶ä½¿ç”¨
+  (hide cons) éšè—äº† scheme çš„ cons, æ‰€ä»¥ bar/cons åœ¨ bar
+  package é‡Œæ²¡æœ‰å«ä¹‰ã€‚
 </li>
-<li>bar/+ Ã»ÓÐº¬Òå£¬¶ø bar/- ¾ßÓÐ + µÄ¹¦ÄÜ¡£ÒòÎªÎÒÃÇÔÚ bar µÄ
-  ¶¨ÒåÀï£¬Ê¹ÓÃ (rename (+ -)) °Ñ scheme µÄ + ¸ÄÃûÎª -£¬ÔÙ¼Ó
-  ÉÏÒ»¸ö bar/ Ç°×º¡£
+<li>bar/+ æ²¡æœ‰å«ä¹‰ï¼Œè€Œ bar/- å…·æœ‰ + çš„åŠŸèƒ½ã€‚å› ä¸ºæˆ‘ä»¬åœ¨ bar çš„
+  å®šä¹‰é‡Œï¼Œä½¿ç”¨ (rename (+ -)) æŠŠ scheme çš„ + æ”¹åä¸º -ï¼Œå†åŠ 
+  ä¸Šä¸€ä¸ª bar/ å‰ç¼€ã€‚
 </li>
 </ul>
 
-<h2>²âÊÔÃû×ÖÖØ¶¨Òå</h2>
+<h2>æµ‹è¯•åå­—é‡å®šä¹‰</h2>
 
 <p>
-ÎÒÃÇÊ×ÏÈÊÔÒ»ÏÂ£¬bar ÖÐ¿ª·ÅµÄ foo package ÀïµÄº¯Êý foo2:
+æˆ‘ä»¬é¦–å…ˆè¯•ä¸€ä¸‹ï¼Œbar ä¸­å¼€æ”¾çš„ foo package é‡Œçš„å‡½æ•° foo2:
 
 </p>
 
@@ -352,7 +352,7 @@ Warning: Structure has undefined exports
 </pre>
 
 <p>
-È»ºóÎÒÃÇ°Ñ foo.scm ÀïµÄ foo2 º¯ÊýµÄ¶¨Òå¸Ä³É£º
+ç„¶åŽæˆ‘ä»¬æŠŠ foo.scm é‡Œçš„ foo2 å‡½æ•°çš„å®šä¹‰æ”¹æˆï¼š
 
 </p>
 
@@ -360,7 +360,7 @@ Warning: Structure has undefined exports
 </pre>
 
 <p>
-½Ó×ÅÔËÐÐ£º
+æŽ¥ç€è¿è¡Œï¼š
 
 </p>
 
@@ -370,30 +370,30 @@ Warning: Structure has undefined exports
 </pre>
 
 <p>
-ÎÒÃÇ¿´µ½ÎÒÃÇÖ» reload ÁË foo, ¶øÃ»ÓÐ reload bar, µ«ÊÇÎÒÃÇÍ¨
-¹ý bar ·ÃÎÊ foo2 º¯ÊýÊ±£¬º¯Êý¶¨ÒåÒÑ¾­¸Ä±ä¡£
+æˆ‘ä»¬çœ‹åˆ°æˆ‘ä»¬åª reload äº† foo, è€Œæ²¡æœ‰ reload bar, ä½†æ˜¯æˆ‘ä»¬é€š
+è¿‡ bar è®¿é—® foo2 å‡½æ•°æ—¶ï¼Œå‡½æ•°å®šä¹‰å·²ç»æ”¹å˜ã€‚
 
 </p>
 
 <p>
-ÕâËµÃ÷ Scheme48 µÄÃû×Ö½âÊÍ¾ßÓÐ¼´Ê±ÐÔ¡£ÕâÀï£¬ÎÒÃÇÏëÒª·ÃÎÊ
-foo2, Scheme48 ¾ÍÔÚµ±Ç°»·¾³ÀïÑ°ÕÒ foo2, ·¢ÏÖ  foo2 ÊÇ bar ¿ª
-·ÅµÄÒ»¸ö½Ó¿Ú£¬ÄÇÃ´Ëü¾Íµ½ bar ÀïÈ¥ÕÒ£¬È»ºó·¢ÏÖ foo2 ÊÇ foo Àï
-¿ª·ÅµÄ½Ó¿Ú£¬ÓÚÊÇËüË³ÌÙÃþ¹ÏÕÒµ½ foo. Ö´ÐÐÄÇÀïµÄº¯Êý¡£
+è¿™è¯´æ˜Ž Scheme48 çš„åå­—è§£é‡Šå…·æœ‰å³æ—¶æ€§ã€‚è¿™é‡Œï¼Œæˆ‘ä»¬æƒ³è¦è®¿é—®
+foo2, Scheme48 å°±åœ¨å½“å‰çŽ¯å¢ƒé‡Œå¯»æ‰¾ foo2, å‘çŽ°  foo2 æ˜¯ bar å¼€
+æ”¾çš„ä¸€ä¸ªæŽ¥å£ï¼Œé‚£ä¹ˆå®ƒå°±åˆ° bar é‡ŒåŽ»æ‰¾ï¼Œç„¶åŽå‘çŽ° foo2 æ˜¯ foo é‡Œ
+å¼€æ”¾çš„æŽ¥å£ï¼ŒäºŽæ˜¯å®ƒé¡ºè—¤æ‘¸ç“œæ‰¾åˆ° foo. æ‰§è¡Œé‚£é‡Œçš„å‡½æ•°ã€‚
 
 </p>
 
 <p>
-ÕâÖÖ»úÖÆËÆºõÃ¿Ò»¸öº¯Êýµ÷ÓÃ¶¼»á·ÑºÜ¶àÖÜÕÛ£¬»áºÜÂý¡£µ«ÊÇ
-Scheme48 ²ÉÓÃÁËÀàËÆ´¦ÀíÆ÷ÀïµÄ cache with cache invalidation£¬
-²»»á·ÑºÜ¶àÊ±¼äÕÒµ½º¯Êý¶¨ÒåµÄ¡£
+è¿™ç§æœºåˆ¶ä¼¼ä¹Žæ¯ä¸€ä¸ªå‡½æ•°è°ƒç”¨éƒ½ä¼šè´¹å¾ˆå¤šå‘¨æŠ˜ï¼Œä¼šå¾ˆæ…¢ã€‚ä½†æ˜¯
+Scheme48 é‡‡ç”¨äº†ç±»ä¼¼å¤„ç†å™¨é‡Œçš„ cache with cache invalidationï¼Œ
+ä¸ä¼šè´¹å¾ˆå¤šæ—¶é—´æ‰¾åˆ°å‡½æ•°å®šä¹‰çš„ã€‚
 
 </p>
 
-<h2>²âÊÔ´ÓÔ´Í·´ò¿ªÐÂµÄ½Ó¿Ú</h2>
+<h2>æµ‹è¯•ä»Žæºå¤´æ‰“å¼€æ–°çš„æŽ¥å£</h2>
 
 <p>
-ÎÒÃÇÀ´ÊÔÒ»ÏÂ£¬Ê¹ÓÃ foo ¶¨ÒåÁËÈ´Ã»ÓÐ¿ª·ÅµÄº¯Êý foo3£º
+æˆ‘ä»¬æ¥è¯•ä¸€ä¸‹ï¼Œä½¿ç”¨ foo å®šä¹‰äº†å´æ²¡æœ‰å¼€æ”¾çš„å‡½æ•° foo3ï¼š
 
 </p>
 
@@ -404,13 +404,13 @@ Scheme48 ²ÉÓÃÁËÀàËÆ´¦ÀíÆ÷ÀïµÄ cache with cache invalidation£¬
 </pre>
 
 <p>
-bar Àï¿ª·ÅÁË foo3, µ«ÊÇ foo3 ÊÇ foo ¶¨ÒåµÄ£¬foo ²¢Ã»ÓÐ¿ª·Å
-foo3¡£ËùÒÔÍ¨¹ý bar ·ÃÎÊ foo3 ÊÇ·Ç·¨µÄ¡£
+bar é‡Œå¼€æ”¾äº† foo3, ä½†æ˜¯ foo3 æ˜¯ foo å®šä¹‰çš„ï¼Œfoo å¹¶æ²¡æœ‰å¼€æ”¾
+foo3ã€‚æ‰€ä»¥é€šè¿‡ bar è®¿é—® foo3 æ˜¯éžæ³•çš„ã€‚
 
 </p>
 
 <p>
-ÄÇÎÒÃÇ°Ñ foo3 ¼Óµ½ foo µÄ¿ª·Å½Ó¿ÚÖÐÊÔÊÔ£º
+é‚£æˆ‘ä»¬æŠŠ foo3 åŠ åˆ° foo çš„å¼€æ”¾æŽ¥å£ä¸­è¯•è¯•ï¼š
 
 </p>
 
@@ -422,7 +422,7 @@ foo3¡£ËùÒÔÍ¨¹ý bar ·ÃÎÊ foo3 ÊÇ·Ç·¨µÄ¡£
 </pre>
 
 <p>
-»Øµ½ user ¿Õ¼ä£¬·¢ÏÖÌáÊ¾£ºbar ¿Õ¼äÖÐ¿ÉÒÔ·ÃÎÊÐÂµÄÃû×Ö foo3.
+å›žåˆ° user ç©ºé—´ï¼Œå‘çŽ°æç¤ºï¼šbar ç©ºé—´ä¸­å¯ä»¥è®¿é—®æ–°çš„åå­— foo3.
 
 </p>
 
@@ -431,12 +431,12 @@ foo3¡£ËùÒÔÍ¨¹ý bar ·ÃÎÊ foo3 ÊÇ·Ç·¨µÄ¡£
 </pre>
 
 <p>
-foo3 ¾Í¿ÉÒÔÊ¹ÓÃÁË¡£
+foo3 å°±å¯ä»¥ä½¿ç”¨äº†ã€‚
 
 </p>
 
 <p>
-ÏÖÔÚÃû×ÖÖ®¼äµÄ¹ØÏµ¾ÍÊÇÕâÑù£º
+çŽ°åœ¨åå­—ä¹‹é—´çš„å…³ç³»å°±æ˜¯è¿™æ ·ï¼š
 
 </p>
 
@@ -445,38 +445,38 @@ foo3 ¾Í¿ÉÒÔÊ¹ÓÃÁË¡£
 
 </p>
 
-<h2>²åÒ»¾ä£ºµ¥¶À¶¨Òå interface ¶ÔÏóµÄºÃ´¦</h2>
+<h2>æ’ä¸€å¥ï¼šå•ç‹¬å®šä¹‰ interface å¯¹è±¡çš„å¥½å¤„</h2>
 
 <p>
-´ÓÉÏÃæÄã¿ÉÒÔ¿´³öÎÒÃÇ°Ñ foo-interface ¶ÀÁ¢³öÀ´¶¨ÒåµÄºÃ´¦Âð£¿
-ÎÒÃÇÖµÖØÐÂ¶¨ÒåÁË foo-interface£¬ÔÚÀïÃæ¼ÓÈëÁË foo3 ½Ó¿Ú£¬user
-¿Õ¼ä¾Í×Ô¶¯¿´µ½ÁËÕâ¸ö½Ó¿Ú¡£
+ä»Žä¸Šé¢ä½ å¯ä»¥çœ‹å‡ºæˆ‘ä»¬æŠŠ foo-interface ç‹¬ç«‹å‡ºæ¥å®šä¹‰çš„å¥½å¤„å—ï¼Ÿ
+æˆ‘ä»¬å€¼é‡æ–°å®šä¹‰äº† foo-interfaceï¼Œåœ¨é‡Œé¢åŠ å…¥äº† foo3 æŽ¥å£ï¼Œuser
+ç©ºé—´å°±è‡ªåŠ¨çœ‹åˆ°äº†è¿™ä¸ªæŽ¥å£ã€‚
 
 </p>
 
 <p>
-Õâ±ÜÃâÁËÎÒÃÇÓÃ define-structure ÖØÐÂ¶¨Òå foo structure µÄÂé
-·³¡£
+è¿™é¿å…äº†æˆ‘ä»¬ç”¨ define-structure é‡æ–°å®šä¹‰ foo structure çš„éº»
+çƒ¦ã€‚
 
 </p>
 
 <p>
-·Ö¿ª¶¨Òå interface »¹ÓÐÒ»¸öºÃ´¦¾ÍÊÇ£ºÈç¹ûÄãµÄ¼¸¸ö structure
-ÓÐÏàÍ¬µÄ interface, ÄãÖ»ÐèÒªÐ´Ò»´Î¡£
+åˆ†å¼€å®šä¹‰ interface è¿˜æœ‰ä¸€ä¸ªå¥½å¤„å°±æ˜¯ï¼šå¦‚æžœä½ çš„å‡ ä¸ª structure
+æœ‰ç›¸åŒçš„ interface, ä½ åªéœ€è¦å†™ä¸€æ¬¡ã€‚
 
 </p>
 
 <p>
-¶øÇÒ£¬°Ñ interface ´Ó structure µÄ¶¨ÒåÖÐ·Ö³öÈ¥£¬´úÂë»á¸ü¼ÓºÃ
-¶®¡£Äã¿ÉÒÔ¿´¿´ bar µÄ structure ¶¨ÒåÖÐ£¬interface µÄ²¿·ÖÕ¼¾Ý
-ÁË´óÁ¿µØ·½£¬¿´ÆðÀ´ºÜ»ìÏý¡£
+è€Œä¸”ï¼ŒæŠŠ interface ä»Ž structure çš„å®šä¹‰ä¸­åˆ†å‡ºåŽ»ï¼Œä»£ç ä¼šæ›´åŠ å¥½
+æ‡‚ã€‚ä½ å¯ä»¥çœ‹çœ‹ bar çš„ structure å®šä¹‰ä¸­ï¼Œinterface çš„éƒ¨åˆ†å æ®
+äº†å¤§é‡åœ°æ–¹ï¼Œçœ‹èµ·æ¥å¾ˆæ··æ·†ã€‚
 
 </p>
 
-<h2>²âÊÔÃ»ÓÐ±»¼ä½Ó¿ª·ÅµÄÃû×Ö</h2>
+<h2>æµ‹è¯•æ²¡æœ‰è¢«é—´æŽ¥å¼€æ”¾çš„åå­—</h2>
 
 <p>
-ÎÒÃÇÊÔÊÔ foo Àï¶¨ÒåÁË£¬²¢ÇÒÒ²¿ª·ÅÁËµÄº¯Êý foo1 ÄÜ²»ÄÜÊ¹ÓÃ£º
+æˆ‘ä»¬è¯•è¯• foo é‡Œå®šä¹‰äº†ï¼Œå¹¶ä¸”ä¹Ÿå¼€æ”¾äº†çš„å‡½æ•° foo1 èƒ½ä¸èƒ½ä½¿ç”¨ï¼š
 
 </p>
 
@@ -487,13 +487,13 @@ foo3 ¾Í¿ÉÒÔÊ¹ÓÃÁË¡£
 </pre>
 
 <p>
-²»ÐÐ¡£ÒòÎª foo ÀïµÄº¯Êý¶¼ÊÇÍ¨¹ý bar ½øÈë user ¿Õ¼äµÄ¡£¶ø bar
-Ã»ÓÐ¿ª·Å foo1. ËùÒÔÎÒÃÇÔÚ user ¿Õ¼ä·ÃÎÊ²»µ½ foo1.
+ä¸è¡Œã€‚å› ä¸º foo é‡Œçš„å‡½æ•°éƒ½æ˜¯é€šè¿‡ bar è¿›å…¥ user ç©ºé—´çš„ã€‚è€Œ bar
+æ²¡æœ‰å¼€æ”¾ foo1. æ‰€ä»¥æˆ‘ä»¬åœ¨ user ç©ºé—´è®¿é—®ä¸åˆ° foo1.
 
 </p>
 
 <p>
-ÄÇÎÒÃÇ´ò¿ª foo:
+é‚£æˆ‘ä»¬æ‰“å¼€ foo:
 <pre class="example">,open foo
 ;  Newly accessible in user: (foo1)
 (foo1)
@@ -501,24 +501,24 @@ foo3 ¾Í¿ÉÒÔÊ¹ÓÃÁË¡£
 </pre>
 
 <p>
-·¢ÏÖ foo1 ¿ÉÒÔ·ÃÎÊÁË¡£
+å‘çŽ° foo1 å¯ä»¥è®¿é—®äº†ã€‚
 
 </p>
 
 <p>
-Õû¸ö²âÊÔµÄ´úÂë¿ÉÒÔÔÚÕâÀï 
-<a href="http://learn.tsinghua.edu.cn:8080/2001315450/src/scheme/s48module-test.tar.gz">ÏÂÔØ</a>¡£
+æ•´ä¸ªæµ‹è¯•çš„ä»£ç å¯ä»¥åœ¨è¿™é‡Œ 
+<a href="http://learn.tsinghua.edu.cn:8080/2001315450/src/scheme/s48module-test.tar.gz">ä¸‹è½½</a>ã€‚
 </p><!-- Page published by Emacs Wiki ends here -->
     <div class="navfoot">
     <hr>
       <table width="100%" border="0" summary="Footer navigation">
 	<tr>
 	  <td width="33%" align="left">
-	    <span class="footdate">×îºó¸üÐÂ£º2003-10-19</span>
+	    <span class="footdate">æœ€åŽæ›´æ–°ï¼š2003-10-19</span>
 	  </td>
 	  <td width="60%" align="center">
 	    <span class="foothome">
-	      <a href="../index.html">ÍõÛóµÄÖ÷Ò³</a> / <a href="WelcomePage.html">WiKiÊ×Ò³</a>/<a href="WikiIndex.html">Ë÷Òý</a>/<a href="wiki_frame.html" target=_parent>¿ò¼ÜÒ³</a>/<a href="ModuleExperiment.html" target=_parent>È¡Ïû¿ò¼Ü</a>
+	      <a href="../index.html">çŽ‹åž çš„ä¸»é¡µ</a> / <a href="WelcomePage.html">WiKié¦–é¡µ</a>/<a href="WikiIndex.html">ç´¢å¼•</a>/<a href="wiki_frame.html" target=_parent>æ¡†æž¶é¡µ</a>/<a href="ModuleExperiment.html" target=_parent>å–æ¶ˆæ¡†æž¶</a>
 	    </span>
 	  </td>
 	  <td width="33%" align="right">

@@ -1,17 +1,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
 <html>
   <head>
-    <title>MzScheme Ê¹ÓÃ¼¼ÇÉ</title>
+    <title>MzScheme ä½¿ç”¨æŠ€å·§</title>
     <meta name="generator" content="emacs-wiki.el">
     <meta http-equiv="Content-Type"
-	  content="text/html; charset=gb2312">
+	  content="text/html; charset=utf-8">
     <link rev="made" href="mailto:webmaster@wangyin.com">
     <link rel="home" href="WelcomePage.html">
     <link rel="index" href="WikiIndex.html">
     <LINK rel="stylesheet" href="../main.css" media="screen">
   </head>
   <body>
-    <h1>MzScheme Ê¹ÓÃ¼¼ÇÉ</h1>
+    <h1>MzScheme ä½¿ç”¨æŠ€å·§</h1>
     <!-- Page published by Emacs Wiki begins here -->
 
 
@@ -19,33 +19,33 @@
 
 
 
-<h2>¸Ä±ä <a href="MzScheme.html">MzScheme</a> µÄ REPL</h2>
+<h2>æ”¹å˜ <a href="MzScheme.html">MzScheme</a> çš„ REPL</h2>
 
 <p>
-ÕâÒ»½Ú½éÉÜÔõÑù¸Ä±ä <a href="MzScheme.html">MzScheme</a> µÄ REPL (Read Eval Prit Loop)¡£
+è¿™ä¸€èŠ‚ä»‹ç»æ€Žæ ·æ”¹å˜ <a href="MzScheme.html">MzScheme</a> çš„ REPL (Read Eval Prit Loop)ã€‚
 
 </p>
 
-<h3>¸Ä±äÃüÁîÌáÊ¾·û (Read)</h3>
+<h3>æ”¹å˜å‘½ä»¤æç¤ºç¬¦ (Read)</h3>
 
 <pre class="example">(current-prompt-read [proc])
 </pre>
 
 <p>
-¿ÉÒÔÊ¹ÓÃ current-prompt-read À´¸Ä±ä¶ÁÈ¡ÃüÁîµÄº¯Êý¡£Õâ¸öº¯Êý
-±ØÐëÊÇÒ»¸ö²»ÐèÒª²ÎÊýµÄº¯Êý£¬Ëü¸ºÔðÏÔÊ¾ÌáÊ¾·û£¬¶ÁÈ¡ÊäÈë£¬È»ºó
-°ÑÊäÈë×ö³ÉÒ»¸ö syntax ¶ÔÏó·µ»Ø¸ø½âÊÍÆ÷¡£
+å¯ä»¥ä½¿ç”¨ current-prompt-read æ¥æ”¹å˜è¯»å–å‘½ä»¤çš„å‡½æ•°ã€‚è¿™ä¸ªå‡½æ•°
+å¿…é¡»æ˜¯ä¸€ä¸ªä¸éœ€è¦å‚æ•°çš„å‡½æ•°ï¼Œå®ƒè´Ÿè´£æ˜¾ç¤ºæç¤ºç¬¦ï¼Œè¯»å–è¾“å…¥ï¼Œç„¶åŽ
+æŠŠè¾“å…¥åšæˆä¸€ä¸ª syntax å¯¹è±¡è¿”å›žç»™è§£é‡Šå™¨ã€‚
 
 </p>
 
 <p>
-Èç¹û²»´ø²ÎÊý¾Í·µ»Øµ±Ç°µÄ Read º¯Êý¡£
+å¦‚æžœä¸å¸¦å‚æ•°å°±è¿”å›žå½“å‰çš„ Read å‡½æ•°ã€‚
 
 </p>
 
 <p>
-Í¨³£¶ÁÈ¡ÊäÈë¿ÉÒÔÊ¹ÓÃ read-syntax º¯ÊýÀ´°ïÖú¡£±ÈÈç£¬ÏÂÃæÕâ¸ö
-Àý×Ó£¬°ÑÌáÊ¾·û»»³ÉÁË "wangyin:"£¬¶øÊäÈë·½Ê½²»±ä¡£
+é€šå¸¸è¯»å–è¾“å…¥å¯ä»¥ä½¿ç”¨ read-syntax å‡½æ•°æ¥å¸®åŠ©ã€‚æ¯”å¦‚ï¼Œä¸‹é¢è¿™ä¸ª
+ä¾‹å­ï¼ŒæŠŠæç¤ºç¬¦æ¢æˆäº† "wangyin:"ï¼Œè€Œè¾“å…¥æ–¹å¼ä¸å˜ã€‚
 
 </p>
 
@@ -55,33 +55,33 @@
    (read-syntax (current-input-port))))
 </pre>
 
-<h3>¸Ä±ä Eval</h3>
+<h3>æ”¹å˜ Eval</h3>
 
 <pre class="example">(current-eval [proc])
 </pre>
 
 <p>
-Ê¹ÓÃ current-eval ¿ÉÒÔ°Ñµ±Ç°µÄ½âÊÍÆ÷»»³ÉÁíÒ»¸öº¯Êý¡£Õâ¸öº¯Êý
-½ÓÊÜÒ»¸ö syntax ¶ÔÏó£¬·µ»ØËüµÄÖµ¡£
+ä½¿ç”¨ current-eval å¯ä»¥æŠŠå½“å‰çš„è§£é‡Šå™¨æ¢æˆå¦ä¸€ä¸ªå‡½æ•°ã€‚è¿™ä¸ªå‡½æ•°
+æŽ¥å—ä¸€ä¸ª syntax å¯¹è±¡ï¼Œè¿”å›žå®ƒçš„å€¼ã€‚
 
 </p>
 
-<h3>¸Ä±ä Print</h3>
+<h3>æ”¹å˜ Print</h3>
 
 <p>
-proc ½ÓÊÜÒ»¸ö¶ÔÏó£¬È»ºóÏÔÊ¾Ëü¡£
+proc æŽ¥å—ä¸€ä¸ªå¯¹è±¡ï¼Œç„¶åŽæ˜¾ç¤ºå®ƒã€‚
 
 </p>
 
 <pre class="example">(current-print [proc])
 </pre>
 
-<h2>¸Ä±ä <a href="MzScheme.html">MzScheme</a> µÄ´¦Àíº¯Êý</h2>
+<h2>æ”¹å˜ <a href="MzScheme.html">MzScheme</a> çš„å¤„ç†å‡½æ•°</h2>
 
-<h3>¸Ä±äÍË³öº¯Êý</h3>
+<h3>æ”¹å˜é€€å‡ºå‡½æ•°</h3>
 
 <p>
-¿ÉÒÔÔÚÕâÀï¼ÓÈë½âÊÍÆ÷ÍË³öÊ±µÄÉÆºó´¦Àí¡£±ÈÈç£º
+å¯ä»¥åœ¨è¿™é‡ŒåŠ å…¥è§£é‡Šå™¨é€€å‡ºæ—¶çš„å–„åŽå¤„ç†ã€‚æ¯”å¦‚ï¼š
 
 </p>
 
@@ -89,12 +89,12 @@ proc ½ÓÊÜÒ»¸ö¶ÔÏó£¬È»ºóÏÔÊ¾Ëü¡£
 (exit-handler (lambda (x) (display &quot;exit&quot;)(newline) (e1 #t)))
 </pre>
 
-<h2>Ïß³ÌºÍ½ø³Ì</h2>
+<h2>çº¿ç¨‹å’Œè¿›ç¨‹</h2>
 
-<h3>Ïß³ÌµÄÊ¹ÓÃ</h3>
+<h3>çº¿ç¨‹çš„ä½¿ç”¨</h3>
 
 <ul>
-<li>Æð¶¯Ïß³Ì
+<li>èµ·åŠ¨çº¿ç¨‹
 </li>
 </ul>
 
@@ -102,7 +102,7 @@ proc ½ÓÊÜÒ»¸ö¶ÔÏó£¬È»ºóÏÔÊ¾Ëü¡£
 </pre>
 
 <p>
-thunk ÊÇÒ»¸ö²»ÐèÒª²ÎÊýµÄº¯Êý£¬·µ»ØÒ»¸öÏß³Ì¶ÔÏó¡£
+thunk æ˜¯ä¸€ä¸ªä¸éœ€è¦å‚æ•°çš„å‡½æ•°ï¼Œè¿”å›žä¸€ä¸ªçº¿ç¨‹å¯¹è±¡ã€‚
 
 </p>
 
@@ -120,12 +120,12 @@ thunk ÊÇÒ»¸ö²»ÐèÒª²ÎÊýµÄº¯Êý£¬·µ»ØÒ»¸öÏß³Ì¶ÔÏó¡£
 </pre>
 
 <ul>
-<li>É±²»ËÀµÄÏß³Ì
+<li>æ€ä¸æ­»çš„çº¿ç¨‹
 </li>
 </ul>
 
 <p>
-Ê¹ÓÃ
+ä½¿ç”¨
 
 </p>
 
@@ -133,29 +133,29 @@ thunk ÊÇÒ»¸ö²»ÐèÒª²ÎÊýµÄº¯Êý£¬·µ»ØÒ»¸öÏß³Ì¶ÔÏó¡£
 </pre>
 
 <p>
-Éú³ÉµÄÏß³ÌÊÇ kill ²»ËÀµÄ¡£Èç¹ûËü±» kill£¬¾Í»á suspend.
+ç”Ÿæˆçš„çº¿ç¨‹æ˜¯ kill ä¸æ­»çš„ã€‚å¦‚æžœå®ƒè¢« killï¼Œå°±ä¼š suspend.
 
 </p>
 
 <ul>
-<li>µÈ´ýÏß³Ì
+<li>ç­‰å¾…çº¿ç¨‹
 </li>
 </ul>
 
-<pre class="example">(thread-wait thread) ; µÈ´ýÒ»¸öÏß³ÌÖÕÖ¹
-(thread-dead-waitable thread) ; ÖÆÔìÒ»¸ö waitable£¬µ±Ïß³ÌÍê³ÉÊ±²Å unblock
-(thread-resume-waitable thread) ; ÖÆÔìÒ»¸ö waitable£¬µ±Ïß³Ì»Ö¸´ÔËÐÐÊ±²Å unblock
-(thread-suspend-waitable thread) ; ÖÆÔìÒ»¸ö waitable£¬µ±Ïß³Ì±»Í£Ö¹Ê±²Å unblock
+<pre class="example">(thread-wait thread) ; ç­‰å¾…ä¸€ä¸ªçº¿ç¨‹ç»ˆæ­¢
+(thread-dead-waitable thread) ; åˆ¶é€ ä¸€ä¸ª waitableï¼Œå½“çº¿ç¨‹å®Œæˆæ—¶æ‰ unblock
+(thread-resume-waitable thread) ; åˆ¶é€ ä¸€ä¸ª waitableï¼Œå½“çº¿ç¨‹æ¢å¤è¿è¡Œæ—¶æ‰ unblock
+(thread-suspend-waitable thread) ; åˆ¶é€ ä¸€ä¸ª waitableï¼Œå½“çº¿ç¨‹è¢«åœæ­¢æ—¶æ‰ unblock
 </pre>
 
 <ul>
-<li>Ë¯Ãß
+<li>ç¡çœ 
 </li>
 </ul>
 
 <p>
-sleep º¯ÊýÊ¹Ïß³ÌÖÁÉÙË¯Ãß x Ãë¡£Èç¹û²»Ìá¹© x£¬È±Ê¡Îª 0£¬Ò²¾Í
-ÊÇ°Ñ´¦ÀíÆ÷ÈÃ¸øÆäËüÏß³Ì¡£
+sleep å‡½æ•°ä½¿çº¿ç¨‹è‡³å°‘ç¡çœ  x ç§’ã€‚å¦‚æžœä¸æä¾› xï¼Œç¼ºçœä¸º 0ï¼Œä¹Ÿå°±
+æ˜¯æŠŠå¤„ç†å™¨è®©ç»™å…¶å®ƒçº¿ç¨‹ã€‚
 
 </p>
 
@@ -163,27 +163,27 @@ sleep º¯ÊýÊ¹Ïß³ÌÖÁÉÙË¯Ãß x Ãë¡£Èç¹û²»Ìá¹© x£¬È±Ê¡Îª 0£¬Ò²¾Í
 </pre>
 
 <ul>
-<li>ÐÅºÅÁ¿
+<li>ä¿¡å·é‡
 </li>
 </ul>
 
 <pre class="example">(make-semaphore [init-k])
 (semaphore? v)
-(semaphore-post sema) ;Ôö¼ÓÐÅºÅÁ¿
-(semaphore-wait sema) ;×èÈûÖ±µ½ÐÅºÅÁ¿²»Îª0£¬È»ºó¼õÉÙÐÅºÅÁ¿£¬·µ»Ø void.
-(semaphore-try-wait? sema) ;¾ÍÏñ semaphore-wait£¬Ö»ÊÇ´ÓÀ´²»×èÈû¡£
-(make-semaphore-peek sema) ;·µ»ØÒ»¸ö waitable, µ± sema unblock Ê±¾Í unblock.
+(semaphore-post sema) ;å¢žåŠ ä¿¡å·é‡
+(semaphore-wait sema) ;é˜»å¡žç›´åˆ°ä¿¡å·é‡ä¸ä¸º0ï¼Œç„¶åŽå‡å°‘ä¿¡å·é‡ï¼Œè¿”å›ž void.
+(semaphore-try-wait? sema) ;å°±åƒ semaphore-waitï¼Œåªæ˜¯ä»Žæ¥ä¸é˜»å¡žã€‚
+(make-semaphore-peek sema) ;è¿”å›žä¸€ä¸ª waitable, å½“ sema unblock æ—¶å°± unblock.
 </pre>
 
 <ul>
-<li>Í¨µÀ
+<li>é€šé“
 </li>
 </ul>
 
 <p>
-Í¨µÀÊÇÁ¬½ÓÏß³ÌµÄ¹ÜµÀ¡£Ò»Ð©Ïß³Ì¿ÉÒÔÍùÍ¨µÀÐ´¶«Î÷£¬ÁíÒ»Ð©Ïß³Ì°Ñ
-Í¨µÀÀïµÄ¶«Î÷¶Á³öÀ´¡£Èç¹û¶Á²»µ½¶«Î÷£¬Ïß³Ì¾Í»á×èÈû¡£»òÕßÊ¹ÓÃÁË 
-channel-try-get ¾Í²»»á×èÈû¶ø·µ»Ø #f.
+é€šé“æ˜¯è¿žæŽ¥çº¿ç¨‹çš„ç®¡é“ã€‚ä¸€äº›çº¿ç¨‹å¯ä»¥å¾€é€šé“å†™ä¸œè¥¿ï¼Œå¦ä¸€äº›çº¿ç¨‹æŠŠ
+é€šé“é‡Œçš„ä¸œè¥¿è¯»å‡ºæ¥ã€‚å¦‚æžœè¯»ä¸åˆ°ä¸œè¥¿ï¼Œçº¿ç¨‹å°±ä¼šé˜»å¡žã€‚æˆ–è€…ä½¿ç”¨äº† 
+channel-try-get å°±ä¸ä¼šé˜»å¡žè€Œè¿”å›ž #f.
 
 </p>
 
@@ -196,13 +196,13 @@ channel-try-get ¾Í²»»á×èÈû¶ø·µ»Ø #f.
 </pre>
 
 <ul>
-<li>µÈ´ý¶à¸öÍ¬²½¶ÔÏó (object-wait-multiple)
+<li>ç­‰å¾…å¤šä¸ªåŒæ­¥å¯¹è±¡ (object-wait-multiple)
 </li>
 </ul>
 
 <p>
-Ê¹ÓÃ object-wait-multiple ¿ÉÒÔÍ¬Ê±µÈ´ý¶à¸öÍ¬²½¶ÔÏó¡£ÕâÓÐµãÏñ
-C º¯Êý select¡£ËüµÄÓï·¨ÊÇ£º
+ä½¿ç”¨ object-wait-multiple å¯ä»¥åŒæ—¶ç­‰å¾…å¤šä¸ªåŒæ­¥å¯¹è±¡ã€‚è¿™æœ‰ç‚¹åƒ
+C å‡½æ•° selectã€‚å®ƒçš„è¯­æ³•æ˜¯ï¼š
 
 </p>
 
@@ -210,20 +210,20 @@ C º¯Êý select¡£ËüµÄÓï·¨ÊÇ£º
 </pre>
 
 <p>
-¿ÉÒÔÉèÖÃÒ»¸öÊ±¼ä timeout ×÷Îª³¬Ê±Ê±¼ä¡£Èç¹ûÔÚ timeout Ö®ÄÚÓÐ
-Ä³¸ö¶ÔÏóµÃµ½ÁËÊäÈë£¬ÄÇÃ´·µ»ØÕâ¸öÊäÈë¡£Èç¹ûÃ»ÓÐ¶ÔÏóÄÜµÃµ½ÊäÈë
-ÄÇÃ´·µ»Ø #f¡£
+å¯ä»¥è®¾ç½®ä¸€ä¸ªæ—¶é—´ timeout ä½œä¸ºè¶…æ—¶æ—¶é—´ã€‚å¦‚æžœåœ¨ timeout ä¹‹å†…æœ‰
+æŸä¸ªå¯¹è±¡å¾—åˆ°äº†è¾“å…¥ï¼Œé‚£ä¹ˆè¿”å›žè¿™ä¸ªè¾“å…¥ã€‚å¦‚æžœæ²¡æœ‰å¯¹è±¡èƒ½å¾—åˆ°è¾“å…¥
+é‚£ä¹ˆè¿”å›ž #fã€‚
 
 </p>
 
 <p>
-timeout Èç¹ûÊÇ 0£¬ ÄÇ¾ÍÂíÉÏ·µ»Ø£¬ÕâÏàµ±ÓÚÂÖÑ¯¡£timeout Èç¹û
-ÊÇ #f ¾ÍÓÀÔ¶²»³¬Ê±¡£
+timeout å¦‚æžœæ˜¯ 0ï¼Œ é‚£å°±é©¬ä¸Šè¿”å›žï¼Œè¿™ç›¸å½“äºŽè½®è¯¢ã€‚timeout å¦‚æžœ
+æ˜¯ #f å°±æ°¸è¿œä¸è¶…æ—¶ã€‚
 
 </p>
 
 <p>
-¾ÙÒ»¸öÀý×Ó£º
+ä¸¾ä¸€ä¸ªä¾‹å­ï¼š
 
 </p>
 
@@ -241,13 +241,13 @@ timeout Èç¹ûÊÇ 0£¬ ÄÇ¾ÍÂíÉÏ·µ»Ø£¬ÕâÏàµ±ÓÚÂÖÑ¯¡£timeout Èç¹û
 </pre>
 
 <p>
-Èç¹ûÔÚµÚÒ»¸ö sexp Ö´ÐÐÖ®ºó 5 ÃëÖ®ÄÚÖ´ÐÐµÚÁËµÚ¶þ¸ö¡£ÄÇÃ´Ïß³Ì
-th1 ¾Í»áÏÔÊ¾ "haha"£¬·ñÔòÏÔÊ¾ "No input"¡£
+å¦‚æžœåœ¨ç¬¬ä¸€ä¸ª sexp æ‰§è¡Œä¹‹åŽ 5 ç§’ä¹‹å†…æ‰§è¡Œç¬¬äº†ç¬¬äºŒä¸ªã€‚é‚£ä¹ˆçº¿ç¨‹
+th1 å°±ä¼šæ˜¾ç¤º "haha"ï¼Œå¦åˆ™æ˜¾ç¤º "No input"ã€‚
 
 </p>
 
 <ul>
-<li>ÁíÍâÒ»Ð©ÓÐÓÃµÄº¯Êý
+<li>å¦å¤–ä¸€äº›æœ‰ç”¨çš„å‡½æ•°
 </li>
 </ul>
 
@@ -258,10 +258,10 @@ th1 ¾Í»áÏÔÊ¾ "haha"£¬·ñÔòÏÔÊ¾ "No input"¡£
 (break-thread thread)
 </pre>
 
-<h3>µ÷ÊÔ³ÌÐò</h3>
+<h3>è°ƒè¯•ç¨‹åº</h3>
 
 <p>
-¿ÉÒÔÊ¹ÓÃ errortrace:
+å¯ä»¥ä½¿ç”¨ errortrace:
 
 </p>
 
@@ -269,7 +269,7 @@ th1 ¾Í»áÏÔÊ¾ "haha"£¬·ñÔòÏÔÊ¾ "No input"¡£
 </pre>
 
 <p>
-ÓÐÕâÐ©º¯Êý¿ÉÓÃ£º
+æœ‰è¿™äº›å‡½æ•°å¯ç”¨ï¼š
 
 </p>
 
@@ -284,11 +284,11 @@ th1 ¾Í»áÏÔÊ¾ "haha"£¬·ñÔòÏÔÊ¾ "No input"¡£
 (get-execute-counts)
 </pre>
 
-<h3>ÔõÑùÔÚ <a href="MzScheme.html">MzScheme</a> ÀïÊ¹ÓÃ SRFI?</h3>
+<h3>æ€Žæ ·åœ¨ <a href="MzScheme.html">MzScheme</a> é‡Œä½¿ç”¨ SRFI?</h3>
 
 <p>
-µ½ <a href="https://sourceforge.net/projects/schematics/">http://sourceforge.net/projects/schematics/</a> ÏÂÔØ
-srfi. È»ºóÊ¹ÓÃ
+åˆ° <a href="https://sourceforge.net/projects/schematics/">http://sourceforge.net/projects/schematics/</a> ä¸‹è½½
+srfi. ç„¶åŽä½¿ç”¨
 
 </p>
 
@@ -296,19 +296,19 @@ srfi. È»ºóÊ¹ÓÃ
 </pre>
 
 <p>
-¾ÍÐÐÁË¡£
+å°±è¡Œäº†ã€‚
 
 </p>
 
-<h3>ÔÚ <a href="MzScheme.html">MzScheme</a> ÀïÔõÑùÊ¹ÓÃ Tiny-CLOS?</h3>
+<h3>åœ¨ <a href="MzScheme.html">MzScheme</a> é‡Œæ€Žæ ·ä½¿ç”¨ Tiny-CLOS?</h3>
 
 <p>
-¿ÉÒÔÊ¹ÓÃ Swindle(<a href="http://www.barzilay.org/Swindle/">http://www.barzilay.org/Swindle/</a>).
+å¯ä»¥ä½¿ç”¨ Swindle(<a href="http://www.barzilay.org/Swindle/">http://www.barzilay.org/Swindle/</a>).
 
 </p>
 
 <p>
-È»ºóÔÚ <a href="MzScheme.html">MzScheme</a> Àï£º
+ç„¶åŽåœ¨ <a href="MzScheme.html">MzScheme</a> é‡Œï¼š
 
 </p>
 
@@ -316,12 +316,12 @@ srfi. È»ºóÊ¹ÓÃ
 </pre>
 
 <p>
-¾Í¿ÉÒÔÊ¹ÓÃ Tiny-CLOS ÁË¡£
+å°±å¯ä»¥ä½¿ç”¨ Tiny-CLOS äº†ã€‚
 
 </p>
 
 <p>
-Swindle ²»Ö¹Ìá¹© CLOS¡£»¹ÓÐºÜ¶àÇ¿´óµÄ¹¦ÄÜ¡£±ÈÈç£º
+Swindle ä¸æ­¢æä¾› CLOSã€‚è¿˜æœ‰å¾ˆå¤šå¼ºå¤§çš„åŠŸèƒ½ã€‚æ¯”å¦‚ï¼š
 
 </p>
 
@@ -342,11 +342,11 @@ Swindle ²»Ö¹Ìá¹© CLOS¡£»¹ÓÐºÜ¶àÇ¿´óµÄ¹¦ÄÜ¡£±ÈÈç£º
       <table width="100%" border="0" summary="Footer navigation">
 	<tr>
 	  <td width="33%" align="left">
-	    <span class="footdate">×îºó¸üÐÂ£º2003-06-23</span>
+	    <span class="footdate">æœ€åŽæ›´æ–°ï¼š2003-06-23</span>
 	  </td>
 	  <td width="60%" align="center">
 	    <span class="foothome">
-	      <a href="../index.html">ÍõÛóµÄÖ÷Ò³</a> / <a href="WelcomePage.html">WiKiÊ×Ò³</a>/<a href="WikiIndex.html">Ë÷Òý</a>/<a href="wiki_frame.html" target=_parent>¿ò¼ÜÒ³</a>/<a href="MzScheme.html" target=_parent>È¡Ïû¿ò¼Ü</a>
+	      <a href="../index.html">çŽ‹åž çš„ä¸»é¡µ</a> / <a href="WelcomePage.html">WiKié¦–é¡µ</a>/<a href="WikiIndex.html">ç´¢å¼•</a>/<a href="wiki_frame.html" target=_parent>æ¡†æž¶é¡µ</a>/<a href="MzScheme.html" target=_parent>å–æ¶ˆæ¡†æž¶</a>
 	    </span>
 	  </td>
 	  <td width="33%" align="right">

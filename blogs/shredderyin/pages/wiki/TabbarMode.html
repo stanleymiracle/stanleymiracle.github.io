@@ -1,17 +1,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
 <html>
   <head>
-    <title>tabbar ���޸�</title>
+    <title>tabbar 的修改</title>
     <meta name="generator" content="emacs-wiki.el">
     <meta http-equiv="Content-Type"
-	  content="text/html; charset=gb2312">
+	  content="text/html; charset=utf-8">
     <link rev="made" href="mailto:webmaster@wangyin.com">
     <link rel="home" href="WelcomePage.html">
     <link rel="index" href="WikiIndex.html">
     <LINK rel="stylesheet" href="../main.css" media="screen">
   </head>
   <body>
-    <h1>tabbar ���޸�</h1>
+    <h1>tabbar 的修改</h1>
     <!-- Page published by Emacs Wiki begins here -->
 
 
@@ -19,22 +19,22 @@
 
 
 
-<h2>�ı� tabbar-buffer-groups-function</h2>
+<h2>改变 tabbar-buffer-groups-function</h2>
 
 <p>
-ԭ���� tabbar ǿ�ж���� buffer ���з��飬�������������
-��༭��buffer���л�������������ʲô�飬��ô�ƺ�û��һ���ð�
-�������� tabbar �����ṩ��һ�����ƣ���������Լ�ȷ�� tab ��
-�����飬ֻҪ�޸� <em>tabbar-buffer-groups-function</em> �����ˡ�
+原来的 tabbar 强行对你的 buffer 进行分组，但是如果你想在
+你编辑的buffer间切换而不论它们是什么组，那么似乎没有一个好办
+法。但是 tabbar 本来提供了一个机制，让你可以自己确定 tab 属
+于哪组，只要修改 <em>tabbar-buffer-groups-function</em> 就行了。
 
 </p>
 
 <p>
-�������ҿ��԰�ÿ�� buffer ͬʱ���������ڵ� major mode �����
-һ������ "default" ���飬�������� default ����Ϳ��Է�����
-�������е� buffer �ˡ����л���������Ϳ��Է���������㻹����
-���а�ĳЩ buffer �ֵ�һ�飬�����ҿ��԰� scheme-mode ��
-buffer  �� inferer-scheme-mode �� buffer �ֵ�ͬһ���顣
+这样，我可以把每个 buffer 同时加入它所在的 major mode 的组和
+一个叫做 "default" 的组，这样我在 default 组里就可以方便的浏
+览到所有的 buffer 了。而切换到其它组就可以分组浏览。你还可以
+自行把某些 buffer 分到一组，比如我可以把 scheme-mode 的
+buffer  和 inferer-scheme-mode 的 buffer 分到同一个组。
 
 </p>
 
@@ -86,11 +86,11 @@ Return only one group for each buffer.&quot;
       <table width="100%" border="0" summary="Footer navigation">
 	<tr>
 	  <td width="33%" align="left">
-	    <span class="footdate">�����£�2003-05-17</span>
+	    <span class="footdate">最后更新：2003-05-17</span>
 	  </td>
 	  <td width="60%" align="center">
 	    <span class="foothome">
-	      <a href="../index.html">�������ҳ</a> / <a href="WelcomePage.html">WiKi��ҳ</a>/<a href="WikiIndex.html">����</a>/<a href="wiki_frame.html" target=_parent>���ҳ</a>/<a href="TabbarMode.html" target=_parent>ȡ�����</a>
+	      <a href="../index.html">王垠的主页</a> / <a href="WelcomePage.html">WiKi首页</a>/<a href="WikiIndex.html">索引</a>/<a href="wiki_frame.html" target=_parent>框架页</a>/<a href="TabbarMode.html" target=_parent>取消框架</a>
 	    </span>
 	  </td>
 	  <td width="33%" align="right">

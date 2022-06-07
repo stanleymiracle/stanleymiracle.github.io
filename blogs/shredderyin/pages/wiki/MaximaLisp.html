@@ -1,17 +1,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
 <html>
   <head>
-    <title>Maxima ºÍ LISP</title>
+    <title>Maxima å’Œ LISP</title>
     <meta name="generator" content="emacs-wiki.el">
     <meta http-equiv="Content-Type"
-	  content="text/html; charset=gb2312">
+	  content="text/html; charset=utf-8">
     <link rev="made" href="mailto:webmaster@wangyin.com">
     <link rel="home" href="WelcomePage.html">
     <link rel="index" href="WikiIndex.html">
     <LINK rel="stylesheet" href="../main.css" media="screen">
   </head>
   <body>
-    <h1>Maxima ºÍ LISP</h1>
+    <h1>Maxima å’Œ LISP</h1>
     <!-- Page published by Emacs Wiki begins here -->
 
 
@@ -20,30 +20,30 @@
 
 
 <p>
-Maxima ÊÇº¯ÊýÊ½µÄ£¬ËüÊ¹ÓÃ Common Lisp Ð´µÄ¡£ËùÒÔÓÐºÜ¶à LISP
-µÄÌØÐÔ¡£ÏÂÃæÁÐ¾ÙÒ»Ð©£º
+Maxima æ˜¯å‡½æ•°å¼çš„ï¼Œå®ƒä½¿ç”¨ Common Lisp å†™çš„ã€‚æ‰€ä»¥æœ‰å¾ˆå¤š LISP
+çš„ç‰¹æ€§ã€‚ä¸‹é¢åˆ—ä¸¾ä¸€äº›ï¼š
 
 </p>
 
 <h3>Quote</h3>
 
 <p>
-¸ú LISP Ò»Ñù£¬ÓÃµ¥ÒýºÅ ' ¿ÉÒÔ·ÀÖ¹ºóÃæµÄÄÚÈÝ±»¼ÆËã³öÀ´¡£
+è·Ÿ LISP ä¸€æ ·ï¼Œç”¨å•å¼•å· ' å¯ä»¥é˜²æ­¢åŽé¢çš„å†…å®¹è¢«è®¡ç®—å‡ºæ¥ã€‚
 
 </p>
 
-<pre class="example">'F(x); /* Ô­·â²»¶¯·µ»Ø F(x) */
+<pre class="example">'F(x); /* åŽŸå°ä¸åŠ¨è¿”å›ž F(x) */
 </pre>
 
-<h3>FUNMAKE(f,[b]); Ïàµ±ÓÚ `(f ,b)</h3>
+<h3>FUNMAKE(f,[b]); ç›¸å½“äºŽ `(f ,b)</h3>
 
 <p>
-quosiquote. ²ÎÊýµÄÖµ±»¼ÆËã³öÀ´£¬µ«ÊÇº¯Êý²¢²»±»µ÷ÓÃ¡£
+quosiquote. å‚æ•°çš„å€¼è¢«è®¡ç®—å‡ºæ¥ï¼Œä½†æ˜¯å‡½æ•°å¹¶ä¸è¢«è°ƒç”¨ã€‚
 
 </p>
 
 <p>
-±ÈÈç:
+æ¯”å¦‚:
 
 </p>
 
@@ -53,34 +53,34 @@ FUNMAKE(f,[b]);
 </pre>
 
 <p>
-½«µÃµ½ F(b) Õâ¸ö±í´ïÊ½¡£¶ø²»»áµÃµ½ 20.
+å°†å¾—åˆ° F(b) è¿™ä¸ªè¡¨è¾¾å¼ã€‚è€Œä¸ä¼šå¾—åˆ° 20.
 
 </p>
 
-<h3>" Ïàµ±ÓÚ eval. Ëü»á°ÑµÃµ½µÄ±í´ïÊ½ÔÙ evaluate Ò»´Î¡£±ÈÈç£º</h3>
+<h3>" ç›¸å½“äºŽ eval. å®ƒä¼šæŠŠå¾—åˆ°çš„è¡¨è¾¾å¼å† evaluate ä¸€æ¬¡ã€‚æ¯”å¦‚ï¼š</h3>
 
 <pre class="example">b:10;
 f(x):=x*2;
-exp:FUNMAKE(f, [b]); /* µÃµ½Ò»¸ö±í´ïÊ½ F(10) */
-''exp; /* µÃµ½Õâ¸ö F(10) µÄÖµ£º20 */
+exp:FUNMAKE(f, [b]); /* å¾—åˆ°ä¸€ä¸ªè¡¨è¾¾å¼ F(10) */
+''exp; /* å¾—åˆ°è¿™ä¸ª F(10) çš„å€¼ï¼š20 */
 </pre>
 
-<h3>DEFINE(f(x1...), body) Ïàµ±ÓÚ f(x1,...):="body</h3>
+<h3>DEFINE(f(x1...), body) ç›¸å½“äºŽ f(x1,...):="body</h3>
 
 <p>
-ÕâÖÖ¶¨Òå·½Ê½¿ÉÒÔÔÚÔËÐÐÊ±½øÐÐ£¬ÕâÑùÎÒÃÇ¿ÉÒÔ°´Ìõ¼þÈ·¶¨ÊÇ·ñÖ´ÐÐ
-º¯Êý¶¨Òå¡£
+è¿™ç§å®šä¹‰æ–¹å¼å¯ä»¥åœ¨è¿è¡Œæ—¶è¿›è¡Œï¼Œè¿™æ ·æˆ‘ä»¬å¯ä»¥æŒ‰æ¡ä»¶ç¡®å®šæ˜¯å¦æ‰§è¡Œ
+å‡½æ•°å®šä¹‰ã€‚
 
 </p>
 
 <p>
-±ÈÈç£º
+æ¯”å¦‚ï¼š
 
 </p>
 
 <pre class="example">body:x+2;
 DEFINE(g(x), body);
-g(3); /* µÃµ½ 5 */
+g(3); /* å¾—åˆ° 5 */
 </pre>
 
 <!-- Page published by Emacs Wiki ends here -->
@@ -89,11 +89,11 @@ g(3); /* µÃµ½ 5 */
       <table width="100%" border="0" summary="Footer navigation">
 	<tr>
 	  <td width="33%" align="left">
-	    <span class="footdate">×îºó¸üÐÂ£º2003-07-17</span>
+	    <span class="footdate">æœ€åŽæ›´æ–°ï¼š2003-07-17</span>
 	  </td>
 	  <td width="60%" align="center">
 	    <span class="foothome">
-	      <a href="../index.html">ÍõÛóµÄÖ÷Ò³</a> / <a href="WelcomePage.html">WiKiÊ×Ò³</a>/<a href="WikiIndex.html">Ë÷Òý</a>/<a href="wiki_frame.html" target=_parent>¿ò¼ÜÒ³</a>/<a href="MaximaLisp.html" target=_parent>È¡Ïû¿ò¼Ü</a>
+	      <a href="../index.html">çŽ‹åž çš„ä¸»é¡µ</a> / <a href="WelcomePage.html">WiKié¦–é¡µ</a>/<a href="WikiIndex.html">ç´¢å¼•</a>/<a href="wiki_frame.html" target=_parent>æ¡†æž¶é¡µ</a>/<a href="MaximaLisp.html" target=_parent>å–æ¶ˆæ¡†æž¶</a>
 	    </span>
 	  </td>
 	  <td width="33%" align="right">

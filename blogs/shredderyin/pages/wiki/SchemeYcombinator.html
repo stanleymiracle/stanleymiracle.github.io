@@ -1,17 +1,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
 <html>
   <head>
-    <title>Y Combinator µÄ Scheme ÊµÏÖ</title>
+    <title>Y Combinator çš„ Scheme å®žçŽ°</title>
     <meta name="generator" content="emacs-wiki.el">
     <meta http-equiv="Content-Type"
-	  content="text/html; charset=gb2312">
+	  content="text/html; charset=utf-8">
     <link rev="made" href="mailto:webmaster@wangyin.com">
     <link rel="home" href="WelcomePage.html">
     <link rel="index" href="WikiIndex.html">
     <LINK rel="stylesheet" href="../main.css" media="screen">
   </head>
   <body>
-    <h1>Y Combinator µÄ Scheme ÊµÏÖ</h1>
+    <h1>Y Combinator çš„ Scheme å®žçŽ°</h1>
     <!-- Page published by Emacs Wiki begins here -->
 
 
@@ -19,18 +19,18 @@
 
 
 
-<h2>Ê²Ã´ÊÇ Y Combinator?</h2>
+<h2>ä»€ä¹ˆæ˜¯ Y Combinator?</h2>
 
 <p>
-ÓÃ Scheme µÄ¹ÛµãÀ´¿´£¬Y ¾ÍÊÇÕâÑùÒ»¸ö²Ù×÷·û£¬Ëü×÷ÓÃÓÚÈÎºÎÒ»¸ö
-(½ÓÊÜÒ»¸öº¯Êý×÷Îª²ÎÊýµÄ) º¯Êý F£¬¾Í»á·µ»ØÒ»¸öº¯Êý X¡£ÔÙ°Ñ F 
-×÷ÓÃÓÚÕâ¸öº¯Êý X£¬»¹ÊÇµÃµ½ X¡£ËùÒÔ X ±»½Ð×ö F µÄ²»¶¯µã(fixed
-point)¡£
+ç”¨ Scheme çš„è§‚ç‚¹æ¥çœ‹ï¼ŒY å°±æ˜¯è¿™æ ·ä¸€ä¸ªæ“ä½œç¬¦ï¼Œå®ƒä½œç”¨äºŽä»»ä½•ä¸€ä¸ª
+(æŽ¥å—ä¸€ä¸ªå‡½æ•°ä½œä¸ºå‚æ•°çš„) å‡½æ•° Fï¼Œå°±ä¼šè¿”å›žä¸€ä¸ªå‡½æ•° Xã€‚å†æŠŠ F 
+ä½œç”¨äºŽè¿™ä¸ªå‡½æ•° Xï¼Œè¿˜æ˜¯å¾—åˆ° Xã€‚æ‰€ä»¥ X è¢«å«åš F çš„ä¸åŠ¨ç‚¹(fixed
+point)ã€‚
 
 </p>
 
 <p>
-ËùÒÔÎÒÃÇ³£³£¼ûµ½ "(Y F) = (F (Y F))" ÕâÖÖËµ·¨¡£±ÈÈçÔÚÕâÀï£º
+æ‰€ä»¥æˆ‘ä»¬å¸¸å¸¸è§åˆ° "(Y F) = (F (Y F))" è¿™ç§è¯´æ³•ã€‚æ¯”å¦‚åœ¨è¿™é‡Œï¼š
 
 </p>
 
@@ -40,28 +40,28 @@ point)¡£
 </p>
 
 <p>
-¡­¡­ ÎªÁË·ÀÖ¹ÎóÈË×ÓµÜ£¬Äã×îºÃÏÈÕÒ±¾ Lambda Calculus µÄÊéÀ´¿´
-¿´¡£Lambda calculas ÀïµÄ Y Conbinator Òª¹ã·ºµÄ¶à¡£F ²»Ò»¶¨Ö»
-½ÓÊÜÒ»¸öº¯Êý×÷Îª²ÎÊý¡£Fixed point ²»µ«¿ÉÒÔÊÇº¯Êý£¬»¹¿ÉÒÔÊÇÈÎ
-ºÎ lambda term¡£
+â€¦â€¦ ä¸ºäº†é˜²æ­¢è¯¯äººå­å¼Ÿï¼Œä½ æœ€å¥½å…ˆæ‰¾æœ¬ Lambda Calculus çš„ä¹¦æ¥çœ‹
+çœ‹ã€‚Lambda calculas é‡Œçš„ Y Conbinator è¦å¹¿æ³›çš„å¤šã€‚F ä¸ä¸€å®šåª
+æŽ¥å—ä¸€ä¸ªå‡½æ•°ä½œä¸ºå‚æ•°ã€‚Fixed point ä¸ä½†å¯ä»¥æ˜¯å‡½æ•°ï¼Œè¿˜å¯ä»¥æ˜¯ä»»
+ä½• lambda termã€‚
 
 </p>
 
 <p>
-ÒòÎªScheme ÊÇÒ»ÖÖÊµ¼ÊµÄÓïÑÔ£¬¸ú´¿´âµÄÀíÂÛ»¹ÊÇÓÐÒ»¶¨²î¾à¡£Èç
-¹ûÒªÍêÈ«ÊµÑé lambda calculas, ×îºÃÊ¹ÓÃÒ»Ð©×¨ÓÃµÄ lambda ¼ÆËã
-Æ÷¡£±ÈÈç£º<a href="http://okmij.org/ftp/Computation/lambda-calc.html">http://okmij.org/ftp/Computation/lambda-calc.html</a>
-¾ÍÓÐ¶àÖÖÓïÑÔÊµÏÖµÄ lambda ¼ÆËãÆ÷¡£
+å› ä¸ºScheme æ˜¯ä¸€ç§å®žé™…çš„è¯­è¨€ï¼Œè·Ÿçº¯ç²¹çš„ç†è®ºè¿˜æ˜¯æœ‰ä¸€å®šå·®è·ã€‚å¦‚
+æžœè¦å®Œå…¨å®žéªŒ lambda calculas, æœ€å¥½ä½¿ç”¨ä¸€äº›ä¸“ç”¨çš„ lambda è®¡ç®—
+å™¨ã€‚æ¯”å¦‚ï¼š<a href="http://okmij.org/ftp/Computation/lambda-calc.html">http://okmij.org/ftp/Computation/lambda-calc.html</a>
+å°±æœ‰å¤šç§è¯­è¨€å®žçŽ°çš„ lambda è®¡ç®—å™¨ã€‚
 
 </p>
 
 <p>
-ÔÚ Scheme Àï£¬Í¨³£ Y Combinator ÊÇÓÃÀ´ÊµÏÖÒ»Ð©ºÜ hack µÄ±à³Ì
-¼¼ÇÉ£¬ÓÃÀ´¶¨Òå¡°Ã»ÓÐÃû×ÖµÄµÝ¹é¡±¡£
+åœ¨ Scheme é‡Œï¼Œé€šå¸¸ Y Combinator æ˜¯ç”¨æ¥å®žçŽ°ä¸€äº›å¾ˆ hack çš„ç¼–ç¨‹
+æŠ€å·§ï¼Œç”¨æ¥å®šä¹‰â€œæ²¡æœ‰åå­—çš„é€’å½’â€ã€‚
 
 </p>
 
-<h2>ÓÃ Scheme À´¶¨Òå Y Combinator</h2>
+<h2>ç”¨ Scheme æ¥å®šä¹‰ Y Combinator</h2>
 
 <pre class="example">(define Y
   (lambda (F)
@@ -71,14 +71,14 @@ point)¡£
 </pre>
 
 <p>
-¿´ÆðÀ´ºÜÏñ½² lambda calculas µÄÊéÀïµÄ¶¨Òå¡£
+çœ‹èµ·æ¥å¾ˆåƒè®² lambda calculas çš„ä¹¦é‡Œçš„å®šä¹‰ã€‚
 
 </p>
 
-<h2>²âÊÔ</h2>
+<h2>æµ‹è¯•</h2>
 
 <p>
-ÎÒÃÇÏÈ¶¨ÒåÒ»¸öº¯Êý F*£¬ËüµÄ²»¶¯µãÊÇÒ»¸ö factorial º¯Êý¡£
+æˆ‘ä»¬å…ˆå®šä¹‰ä¸€ä¸ªå‡½æ•° F*ï¼Œå®ƒçš„ä¸åŠ¨ç‚¹æ˜¯ä¸€ä¸ª factorial å‡½æ•°ã€‚
 
 </p>
 
@@ -91,7 +91,7 @@ point)¡£
 </pre>
 
 <p>
-È»ºóÔËÐÐ£º
+ç„¶åŽè¿è¡Œï¼š
 
 </p>
 
@@ -99,7 +99,7 @@ point)¡£
 </pre>
 
 <p>
-µÃµ½ 120. ÔÙÔËÐÐ£º
+å¾—åˆ° 120. å†è¿è¡Œï¼š
 
 </p>
 
@@ -107,14 +107,14 @@ point)¡£
 </pre>
 
 <p>
-½á¹û»¹ÊÇ 120¡£ÕâËµÃ÷ÎÒÃÇµÄ¶¨ÒåÕýÈ·¡£
+ç»“æžœè¿˜æ˜¯ 120ã€‚è¿™è¯´æ˜Žæˆ‘ä»¬çš„å®šä¹‰æ­£ç¡®ã€‚
 
 </p>
 
-<h2>²Î¿¼×ÊÁÏ</h2>
+<h2>å‚è€ƒèµ„æ–™</h2>
 
 <p>
-Franco ½ÌÊÚµÄÍøÒ³
+Franco æ•™æŽˆçš„ç½‘é¡µ
 
 </p>
 
@@ -124,15 +124,15 @@ Franco ½ÌÊÚµÄÍøÒ³
 </p>
 
 <p>
-ÐðÊöÁËÕâ¸ö Y Combinator µÄ¶¨ÒåÊÇÔõÑùÒ»²½Ò»²½Ð´³öÀ´µÄ£¬·Ç³£Æô
-·¢ÈËµÄË¼Î¬¡£¿´ÁËÕâÐ©ÍÆµ¼£¬Äã¿ÉÄÜ¾ÍÌå»áµ½µ±³õ Fixed Point
-Theorem ÊÇÔõÃ´Ïë³öÀ´µÄ¡£
+å™è¿°äº†è¿™ä¸ª Y Combinator çš„å®šä¹‰æ˜¯æ€Žæ ·ä¸€æ­¥ä¸€æ­¥å†™å‡ºæ¥çš„ï¼Œéžå¸¸å¯
+å‘äººçš„æ€ç»´ã€‚çœ‹äº†è¿™äº›æŽ¨å¯¼ï¼Œä½ å¯èƒ½å°±ä½“ä¼šåˆ°å½“åˆ Fixed Point
+Theorem æ˜¯æ€Žä¹ˆæƒ³å‡ºæ¥çš„ã€‚
 
 </p>
 
 <p>
-²»¹ýËûµÄ¶¨ÒåÓÐÒ»¸öÎÊÌâ£¬ÄÇ¾ÍÊÇ°´ÕÕËûÔ­À´µÄ¶¨Òå£¬²»¶¯µãº¯ÊýÖ»
-ÄÜ½ÓÊÜÒ»¸ö²ÎÊý¡£
+ä¸è¿‡ä»–çš„å®šä¹‰æœ‰ä¸€ä¸ªé—®é¢˜ï¼Œé‚£å°±æ˜¯æŒ‰ç…§ä»–åŽŸæ¥çš„å®šä¹‰ï¼Œä¸åŠ¨ç‚¹å‡½æ•°åª
+èƒ½æŽ¥å—ä¸€ä¸ªå‚æ•°ã€‚
 
 </p>
 
@@ -142,11 +142,11 @@ Theorem ÊÇÔõÃ´Ïë³öÀ´µÄ¡£
       <table width="100%" border="0" summary="Footer navigation">
 	<tr>
 	  <td width="33%" align="left">
-	    <span class="footdate">×îºó¸üÐÂ£º2003-08-01</span>
+	    <span class="footdate">æœ€åŽæ›´æ–°ï¼š2003-08-01</span>
 	  </td>
 	  <td width="60%" align="center">
 	    <span class="foothome">
-	      <a href="../index.html">ÍõÛóµÄÖ÷Ò³</a> / <a href="WelcomePage.html">WiKiÊ×Ò³</a>/<a href="WikiIndex.html">Ë÷Òý</a>/<a href="wiki_frame.html" target=_parent>¿ò¼ÜÒ³</a>/<a href="SchemeYcombinator.html" target=_parent>È¡Ïû¿ò¼Ü</a>
+	      <a href="../index.html">çŽ‹åž çš„ä¸»é¡µ</a> / <a href="WelcomePage.html">WiKié¦–é¡µ</a>/<a href="WikiIndex.html">ç´¢å¼•</a>/<a href="wiki_frame.html" target=_parent>æ¡†æž¶é¡µ</a>/<a href="SchemeYcombinator.html" target=_parent>å–æ¶ˆæ¡†æž¶</a>
 	    </span>
 	  </td>
 	  <td width="33%" align="right">

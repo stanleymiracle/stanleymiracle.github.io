@@ -2,163 +2,163 @@
 <HTML lang=cn>
 <HEAD>
 <TITLE>Emacs Outline Mode</title>
-<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
 <LINK rel="stylesheet" href="main.css" media="screen">
 </HEAD>
 
 <body>
-<h1 id=header>Emacs Outline Mode Ê¾Àı</h1>
+<h1 id=header>Emacs Outline Mode ç¤ºä¾‹</h1>
 
-<p class=note><q>Outline mode</q> ÊÇ Emacs µÄÒ»¸öÇ¿ÓĞÁ¦µÄÄ£Ê½¡£Ëü¿ÉÒÔÊ¹ÄãÇáËÉµÄ²Ù×İ½á¹¹
-»¯µÄÎÄµµ¡£Ëü¿ÉÒÔÈÃÄãÖ»ÏÔÊ¾ÎÄµµµÄÄ³Ò»¸ö·ÖÖ§£¬Ö»ÏÔÊ¾Ö÷¸É£¬Ö»ÏÔÊ¾Ò»¸ö×ÓÊ÷¡£
+<p class=note><q>Outline mode</q> æ˜¯ Emacs çš„ä¸€ä¸ªå¼ºæœ‰åŠ›çš„æ¨¡å¼ã€‚å®ƒå¯ä»¥ä½¿ä½ è½»æ¾çš„æ“çºµç»“æ„
+åŒ–çš„æ–‡æ¡£ã€‚å®ƒå¯ä»¥è®©ä½ åªæ˜¾ç¤ºæ–‡æ¡£çš„æŸä¸€ä¸ªåˆ†æ”¯ï¼Œåªæ˜¾ç¤ºä¸»å¹²ï¼Œåªæ˜¾ç¤ºä¸€ä¸ªå­æ ‘ã€‚
 
-<p>ÏÂÃæ¾ÍÊÇÒ»¸ö LaTeX ÎÄµµµÄ¸÷ÖÖ outline ²Ù×÷µÄ½á¹ûÊ¾·¶¡£ÓÉÓÚ
-outline-minor-mode µÄ¼ü°ó¶¨Ç°×º C-c @ ¹ıÓÚ¸´ÔÓ£¬´ó²¿·Ö¾­³£Ê¹ÓÃ outline 
-µÄÈËÏë°ÑËüÉèÖÃÎªÁíÒ»¸ö¼ü£¬ËùÒÔÒÔºóÎÒÔÚĞğÊöÊ±Ö±½Ó³Æºôº¯ÊıÃû×ÖºÍ¼ò»¯Ç°×º
-µÄ¼ü°ó¶¨¡£¾ßÌåµÄ¼ü°ó¶¨ÇëÓÃ C-h w ²éÑ¯¡£
+<p>ä¸‹é¢å°±æ˜¯ä¸€ä¸ª LaTeX æ–‡æ¡£çš„å„ç§ outline æ“ä½œçš„ç»“æœç¤ºèŒƒã€‚ç”±äº
+outline-minor-mode çš„é”®ç»‘å®šå‰ç¼€ C-c @ è¿‡äºå¤æ‚ï¼Œå¤§éƒ¨åˆ†ç»å¸¸ä½¿ç”¨ outline 
+çš„äººæƒ³æŠŠå®ƒè®¾ç½®ä¸ºå¦ä¸€ä¸ªé”®ï¼Œæ‰€ä»¥ä»¥åæˆ‘åœ¨å™è¿°æ—¶ç›´æ¥ç§°å‘¼å‡½æ•°åå­—å’Œç®€åŒ–å‰ç¼€
+çš„é”®ç»‘å®šã€‚å…·ä½“çš„é”®ç»‘å®šè¯·ç”¨ C-h w æŸ¥è¯¢ã€‚
 
-<p>¸ü¸ÄÇ°×º¿ÉÒÔÔÚÆô¶¯ outline-minor-mode Ö®Ç°£¬ÓÃ¸Ä±ä 
-outline-minor-mode-prefix ±äÁ¿µÄ°ì·¨Ò»´ÎÍê³É¡£±ÈÈç£º
+<p>æ›´æ”¹å‰ç¼€å¯ä»¥åœ¨å¯åŠ¨ outline-minor-mode ä¹‹å‰ï¼Œç”¨æ”¹å˜ 
+outline-minor-mode-prefix å˜é‡çš„åŠæ³•ä¸€æ¬¡å®Œæˆã€‚æ¯”å¦‚ï¼š
 
 <pre>(setq outline-minor-mode-prefix [(control o)])
 </pre>
 
-¾Í¿ÉÒÔ°ÑÇ°×º¸Ä³É C-o. ÒÔºóÎÒÃÇÊµÀıÖĞµÄ¼ü°ó¶¨¶¼Ê¹ÓÃ C-o.
+å°±å¯ä»¥æŠŠå‰ç¼€æ”¹æˆ C-o. ä»¥åæˆ‘ä»¬å®ä¾‹ä¸­çš„é”®ç»‘å®šéƒ½ä½¿ç”¨ C-o.
 
-<h2>±¾ÎÄµÄ Outline</h2>
+<h2>æœ¬æ–‡çš„ Outline</h2>
 
-<p>Ê×ÏÈ£¬¸ø´ó¼ÒÒ»¸ö outline µÄ×ÜÌåÓ¡Ïó¡£ÎÒÃÇÊ¹ÓÃ outline À´¿´¿´±¾ÎÄµÄÖ÷ÒªÄÚÈİ :)
+<p>é¦–å…ˆï¼Œç»™å¤§å®¶ä¸€ä¸ª outline çš„æ€»ä½“å°è±¡ã€‚æˆ‘ä»¬ä½¿ç”¨ outline æ¥çœ‹çœ‹æœ¬æ–‡çš„ä¸»è¦å†…å®¹ :)
 
 <p><img src="emacs-outline-self.png">
 
-<h2>Ô­ÎÄµµ<a name="original"></a></h2>
+<h2>åŸæ–‡æ¡£<a name="original"></a></h2>
 
-<p>ÕâÊÇÒ»¸ö·Ç³£¼òµ¥µÄ LaTeX ÎÄµµ: <a href="http://learn.tsinghua.edu.cn:8080/2001315450/src/outline.tex">outline.tex</a>
+<p>è¿™æ˜¯ä¸€ä¸ªéå¸¸ç®€å•çš„ LaTeX æ–‡æ¡£: <a href="http://learn.tsinghua.edu.cn:8080/2001315450/src/outline.tex">outline.tex</a>
 
 <p><img src="emacs-outline-original.png">
 
-<p>ÎÒÃÇÀ´°ÑÎÄµµµÄ¸÷²¿·ÖÊõÓï½âÊÍÒ»ÏÂ¡£
+<p>æˆ‘ä»¬æ¥æŠŠæ–‡æ¡£çš„å„éƒ¨åˆ†æœ¯è¯­è§£é‡Šä¸€ä¸‹ã€‚
 
 <ol>
-<li>heading: ÊÇÖ¸ÎÄµµÀïµÄ±êÌâ£¬±ÈÈç Chapter 1, Chapter 2, Section 1,
-... µÄÄÇĞ©ĞĞ¡£
-<li>branch: ÊÇÖ¸Ò»¿Å×ÓÊ÷ÏÂËùÓĞ heading µÄ¼¯ºÏ¡£ÏëÒ»Ïë¡°Ê÷¸É¡±¡£
-<li>entry: ÊÇÖ¸ÎÄµµÀï²»ÊÇ heading µÄÄÇĞ©ÄÚÈİ¡£±ÈÈç£¬"Entry for topmost
-level", "Entry for Chapter 1", "Entry for Chapter 2", ... ÕâĞ©²ÅÊÇÎÄµµ
-µÄÖ÷ÒªÄÚÈİ¡£
-<li>leaves: ÊÇÖ¸Ò»¿Ã×ÓÊ÷ÀïµÄËùÓĞ entry¡£
-<li>body: ÊÇÖ¸ÎÄµµÀïËùÓĞ entry µÄ¼¯ºÏ¡£×¢ÒâÕâ¸ö¸ÅÄî¸ú leaves µÄÇø±ğÊÇ
-·¶Î§ÉÏµÄÇø±ğ¡£
+<li>heading: æ˜¯æŒ‡æ–‡æ¡£é‡Œçš„æ ‡é¢˜ï¼Œæ¯”å¦‚ Chapter 1, Chapter 2, Section 1,
+... çš„é‚£äº›è¡Œã€‚
+<li>branch: æ˜¯æŒ‡ä¸€é¢—å­æ ‘ä¸‹æ‰€æœ‰ heading çš„é›†åˆã€‚æƒ³ä¸€æƒ³â€œæ ‘å¹²â€ã€‚
+<li>entry: æ˜¯æŒ‡æ–‡æ¡£é‡Œä¸æ˜¯ heading çš„é‚£äº›å†…å®¹ã€‚æ¯”å¦‚ï¼Œ"Entry for topmost
+level", "Entry for Chapter 1", "Entry for Chapter 2", ... è¿™äº›æ‰æ˜¯æ–‡æ¡£
+çš„ä¸»è¦å†…å®¹ã€‚
+<li>leaves: æ˜¯æŒ‡ä¸€æ£µå­æ ‘é‡Œçš„æ‰€æœ‰ entryã€‚
+<li>body: æ˜¯æŒ‡æ–‡æ¡£é‡Œæ‰€æœ‰ entry çš„é›†åˆã€‚æ³¨æ„è¿™ä¸ªæ¦‚å¿µè·Ÿ leaves çš„åŒºåˆ«æ˜¯
+èŒƒå›´ä¸Šçš„åŒºåˆ«ã€‚
 
 </ol>
 
-<h2>Æô¶¯ Outline</h2>
+<h2>å¯åŠ¨ Outline</h2>
 
-<p>M-x outline-minor-mode ¾Í¿ÉÒÔÆô¶¯ Outline¡£»¹ÓĞÒ»¸ö outline-mode ÊÇ
-Ò»¸ö major mode£¬Ò»°ã¶¼²»ÓÃËü¡£
+<p>M-x outline-minor-mode å°±å¯ä»¥å¯åŠ¨ Outlineã€‚è¿˜æœ‰ä¸€ä¸ª outline-mode æ˜¯
+ä¸€ä¸ª major modeï¼Œä¸€èˆ¬éƒ½ä¸ç”¨å®ƒã€‚
 
-<h2>È«¾ÖÒş²Ø²Ù×÷</h2>
+<h2>å…¨å±€éšè—æ“ä½œ</h2>
 
-<p>¹â±êÔÚÈÎºÎÎ»ÖÃ£¬Ö»ÒªÖ´ĞĞÕâĞ©²Ù×÷£¬ÎÄµµµÄÏÔÊ¾¾Í»á±ä»¯³ÉĞèÒªµÄÑù×Ó¡£
+<p>å…‰æ ‡åœ¨ä»»ä½•ä½ç½®ï¼Œåªè¦æ‰§è¡Œè¿™äº›æ“ä½œï¼Œæ–‡æ¡£çš„æ˜¾ç¤ºå°±ä¼šå˜åŒ–æˆéœ€è¦çš„æ ·å­ã€‚
 
 <h3>hide-sublevels(C-o C-q)</h3>
 
-<p>Õâ¸ö²Ù×÷Èç¹û²»´ø²ÎÊı£¬Òş²ØËùÓĞÎÄµµ×Ó½á¹¹£¬Ö»Ê£×îÉÏ²ã¡£
+<p>è¿™ä¸ªæ“ä½œå¦‚æœä¸å¸¦å‚æ•°ï¼Œéšè—æ‰€æœ‰æ–‡æ¡£å­ç»“æ„ï¼Œåªå‰©æœ€ä¸Šå±‚ã€‚
 
 <p><img src="emacs-outline-hide-sublevels.png">
 
 <h3>M-4 hide-sublevels(M-4 C-o C-q)</h3>
 
-<p>ÕâÊÇ²ÎÊıÎª4µÄ²Ù×÷£¬ÏÔÊ¾ÖÁÎÄµµµÚ4²ã×Ó½á¹¹¡£
+<p>è¿™æ˜¯å‚æ•°ä¸º4çš„æ“ä½œï¼Œæ˜¾ç¤ºè‡³æ–‡æ¡£ç¬¬4å±‚å­ç»“æ„ã€‚
 <p><img src="emacs-outline-M-4-hide-sublevels.png">
 
 <h3>hide-body(C-o C-t)</h3>
 
-<p>ÎÄµµµÄËùÓĞ Entry ¶¼±»Òş²Ø¡£Ö»ÏÔÊ¾Ö÷¸É¡£
+<p>æ–‡æ¡£çš„æ‰€æœ‰ Entry éƒ½è¢«éšè—ã€‚åªæ˜¾ç¤ºä¸»å¹²ã€‚
 
 <p><img src="emacs-outline-hide-body.png">
 
-<h2>¶ÔÒ»¸ö×ÓÊ÷(Chapter 1)µÄÒş²Ø²Ù×÷</h2>
+<h2>å¯¹ä¸€ä¸ªå­æ ‘(Chapter 1)çš„éšè—æ“ä½œ</h2>
 
 <h3>hide-subtree(C-o C-d)</h3>
 
-<p>ËùÓĞÎÄµµ²¿·ÖÕ¹¿ªÊ±£¬¹â±êÒÆ¶¯µ½ Chapter 1£¬Ö´ĞĞ hide-subtree¡£Õû¸ö Chapter 1 µÄ×ÓÊ÷±»ÕÛµşÆğÀ´¡£
+<p>æ‰€æœ‰æ–‡æ¡£éƒ¨åˆ†å±•å¼€æ—¶ï¼Œå…‰æ ‡ç§»åŠ¨åˆ° Chapter 1ï¼Œæ‰§è¡Œ hide-subtreeã€‚æ•´ä¸ª Chapter 1 çš„å­æ ‘è¢«æŠ˜å èµ·æ¥ã€‚
 
 <p><img src="emacs-outline-hide-subtree.png">
 
 <h3>hide-other(C-o C-o)</h3>
 
-<p>ËùÓĞÎÄµµ²¿·ÖÕ¹¿ªÊ±£¬¹â±êÒÆ¶¯µ½ Chapter 1£¬Ö´ĞĞ hide-other¡£³ıÁË Chapter 1£¬
-ÆäËü×ÓÊ÷È«²¿±»ÕÛµşÆğÀ´¡£Õâ¸ö²Ù×÷ÕıºÃÓë hide-subtree »¥²¹¡£
+<p>æ‰€æœ‰æ–‡æ¡£éƒ¨åˆ†å±•å¼€æ—¶ï¼Œå…‰æ ‡ç§»åŠ¨åˆ° Chapter 1ï¼Œæ‰§è¡Œ hide-otherã€‚é™¤äº† Chapter 1ï¼Œ
+å…¶å®ƒå­æ ‘å…¨éƒ¨è¢«æŠ˜å èµ·æ¥ã€‚è¿™ä¸ªæ“ä½œæ­£å¥½ä¸ hide-subtree äº’è¡¥ã€‚
 
 <p><img src="emacs-outline-hide-other.png">
 
 <h3>hide-leaves(C-o C-l)</h3>
 
-<p>ËùÓĞÎÄµµ²¿·ÖÕ¹¿ªÊ±£¬¹â±êÒÆ¶¯µ½ Chapter 1£¬Ö´ĞĞ hide-leaves¡£ËùÓĞ 
-Chapter 1 ×ÓÊ÷ÏÂµÄËùÓĞ¼¶±ğµÄ entry ±»Òş²Ø¡£Ò²¾ÍÊÇËµ£¬Chapter 1 ÏÂ£¬Ö»
-ÏÔÊ¾ branch.
+<p>æ‰€æœ‰æ–‡æ¡£éƒ¨åˆ†å±•å¼€æ—¶ï¼Œå…‰æ ‡ç§»åŠ¨åˆ° Chapter 1ï¼Œæ‰§è¡Œ hide-leavesã€‚æ‰€æœ‰ 
+Chapter 1 å­æ ‘ä¸‹çš„æ‰€æœ‰çº§åˆ«çš„ entry è¢«éšè—ã€‚ä¹Ÿå°±æ˜¯è¯´ï¼ŒChapter 1 ä¸‹ï¼Œåª
+æ˜¾ç¤º branch.
 
 <p><img src="emacs-outline-hide-leaves.png">
 
 <h3>hide-entry(C-o C-c)</h3>
-<p>ËùÓĞÎÄµµ²¿·ÖÕ¹¿ªÊ±£¬¹â±êÒÆ¶¯µ½ Chapter 1£¬Ö´ĞĞ hide-entry¡£Chapter
-1 µÄ Entry ±»Òş²Ø£¬µ«ÊÇËùÓĞ×ÓÊ÷¶¼²»¶¯¡£
+<p>æ‰€æœ‰æ–‡æ¡£éƒ¨åˆ†å±•å¼€æ—¶ï¼Œå…‰æ ‡ç§»åŠ¨åˆ° Chapter 1ï¼Œæ‰§è¡Œ hide-entryã€‚Chapter
+1 çš„ Entry è¢«éšè—ï¼Œä½†æ˜¯æ‰€æœ‰å­æ ‘éƒ½ä¸åŠ¨ã€‚
 
 <p><img src="emacs-outline-hide-entry.png">
 
 
-<h2>È«¾ÖÏÔÊ¾²Ù×÷</h2>
+<h2>å…¨å±€æ˜¾ç¤ºæ“ä½œ</h2>
 <h3>show-all(C-o C-a)</h3>
 
-<p>ÏÔÊ¾ËùÓĞÎÄµµ¡£½á¹û¾ÍÊÇ<a href="emacs_outline.html#original">Ô­ÎÄµµ</a>¡£
+<p>æ˜¾ç¤ºæ‰€æœ‰æ–‡æ¡£ã€‚ç»“æœå°±æ˜¯<a href="emacs_outline.html#original">åŸæ–‡æ¡£</a>ã€‚
 
-<h2>¶ÔÒ»¸ö×ÓÊ÷µÄÏÔÊ¾²Ù×÷</h2>
+<h2>å¯¹ä¸€ä¸ªå­æ ‘çš„æ˜¾ç¤ºæ“ä½œ</h2>
 
-<p>ÎªÁËÑİÊ¾£¬ÎÒÃÇ´ÓÈ«²¿Òş²ØµÄÇé¿ö¿ªÊ¼£º
+<p>ä¸ºäº†æ¼”ç¤ºï¼Œæˆ‘ä»¬ä»å…¨éƒ¨éšè—çš„æƒ…å†µå¼€å§‹ï¼š
 
 <p><img src="emacs-outline-hide-sublevels.png">
 
 <h3>show-children(C-o C-i)</h3>
 
-<p>show-children Ö»ÏÔÊ¾Ö±½ÓµÄÏÂÒ»´ú×ÓÊ÷£¬¶ø²»ÏÔÊ¾¼ä½ÓµÄÏÂÒ»´ú¡£ÕâÀï£¬
-\begin{document} µÄÖ±½ÓµÄÏÂÒ»´ú¾ÍÊÇ \chapter{...}¡£
+<p>show-children åªæ˜¾ç¤ºç›´æ¥çš„ä¸‹ä¸€ä»£å­æ ‘ï¼Œè€Œä¸æ˜¾ç¤ºé—´æ¥çš„ä¸‹ä¸€ä»£ã€‚è¿™é‡Œï¼Œ
+\begin{document} çš„ç›´æ¥çš„ä¸‹ä¸€ä»£å°±æ˜¯ \chapter{...}ã€‚
 
 <p><img src="emacs-outline-show-children.png">
 
 <h3>show-entry(C-o C-e)</h3>
 
-<p>°Ñ¹â±êÒÆ¶¯µ½ Chapter 1£¬Ö´ĞĞ show-entry¡£Chapter 1 µÄ Entry ±»ÏÔÊ¾£¬
-µ«ÊÇËùÓĞ×Ó½á¹¹»¹ÊÇ±£³ÖÒş²Ø¡£
+<p>æŠŠå…‰æ ‡ç§»åŠ¨åˆ° Chapter 1ï¼Œæ‰§è¡Œ show-entryã€‚Chapter 1 çš„ Entry è¢«æ˜¾ç¤ºï¼Œ
+ä½†æ˜¯æ‰€æœ‰å­ç»“æ„è¿˜æ˜¯ä¿æŒéšè—ã€‚
 <img src="emacs-outline-show-entry.png">
 
 <h3>show-branches(C-o C-k)</h3>
 
-<p>°Ñ¹â±êÒÆ¶¯µ½ Chapter 1£¬Ö´ĞĞ show-branches¡£Chapter 1 Õâ¿Ã×ÓÊ÷Ö®ÏÂ
-µÄ¸÷¼¶¡°Ê÷¸É¡±±»ÏÔÊ¾£¬µ«ÊÇ¸÷¼¶ entry »¹ÊÇ±£³ÖÒş²Ø¡£Chapter 1 ×Ô¼ºµÄ
-entry£¬ÓÉÓÚÎÒÃÇÉÏÒ»²½ÒÑ¾­ÏÔÊ¾£¬ËùÒÔ±£³Ö²»±ä¡£
+<p>æŠŠå…‰æ ‡ç§»åŠ¨åˆ° Chapter 1ï¼Œæ‰§è¡Œ show-branchesã€‚Chapter 1 è¿™æ£µå­æ ‘ä¹‹ä¸‹
+çš„å„çº§â€œæ ‘å¹²â€è¢«æ˜¾ç¤ºï¼Œä½†æ˜¯å„çº§ entry è¿˜æ˜¯ä¿æŒéšè—ã€‚Chapter 1 è‡ªå·±çš„
+entryï¼Œç”±äºæˆ‘ä»¬ä¸Šä¸€æ­¥å·²ç»æ˜¾ç¤ºï¼Œæ‰€ä»¥ä¿æŒä¸å˜ã€‚
 
 <p><img src="emacs-outline-show-branches.png">
 
 <h3>show-subtree(C-o C-s)</h3>
 
-<p>°Ñ¹â±êÒÆ¶¯µ½ Chapter 1£¬Ö´ĞĞ show-subtree¡£Chapter 1 ¼°ÆäËùÓĞ×Ó½á¹¹
-È«²¿±»À©Õ¹¡£
+<p>æŠŠå…‰æ ‡ç§»åŠ¨åˆ° Chapter 1ï¼Œæ‰§è¡Œ show-subtreeã€‚Chapter 1 åŠå…¶æ‰€æœ‰å­ç»“æ„
+å…¨éƒ¨è¢«æ‰©å±•ã€‚
 
 <p><img src="emacs-outline-show-subtree.png">
 
-<h2>Outline mode ÏÂµÄÒÆ¶¯²Ù×÷</h2>
+<h2>Outline mode ä¸‹çš„ç§»åŠ¨æ“ä½œ</h2>
 
-<p>ÔÚ outline Ä£Ê½ÏÂ£¬ÓĞ¼¸ÖÖÌØÊâ·½±ãµÄÒÆ¶¯·½Ê½¡£
+<p>åœ¨ outline æ¨¡å¼ä¸‹ï¼Œæœ‰å‡ ç§ç‰¹æ®Šæ–¹ä¾¿çš„ç§»åŠ¨æ–¹å¼ã€‚
 <ol>
-<li>C-o C-n (outline-next-visible-heading) ÒÆ¶¯µ½ÏÂÒ»¸ö¿É¼û±êÌâ¡£
-<li>C-o C-p (outline-previous-visible-heading) ÒÆ¶¯µ½ÉÏÒ»¸ö¿É¼û±êÌâ¡£
-<li>C-o C-f (outline-forward-same-level) ÒÆ¶¯µ½ÏÂÒ»¸öÍ¬¼¶¿É¼û±êÌâ¡£
-<li>C-o C-b (outline-backward-same-level) ÒÆ¶¯µ½ÉÏÒ»¸öÍ¬¼¶¿É¼û±êÌâ¡£
-<li>C-o C-u (outline-up-heading) µ½ÉÏÒ»¼¶±êÌâ¡£
+<li>C-o C-n (outline-next-visible-heading) ç§»åŠ¨åˆ°ä¸‹ä¸€ä¸ªå¯è§æ ‡é¢˜ã€‚
+<li>C-o C-p (outline-previous-visible-heading) ç§»åŠ¨åˆ°ä¸Šä¸€ä¸ªå¯è§æ ‡é¢˜ã€‚
+<li>C-o C-f (outline-forward-same-level) ç§»åŠ¨åˆ°ä¸‹ä¸€ä¸ªåŒçº§å¯è§æ ‡é¢˜ã€‚
+<li>C-o C-b (outline-backward-same-level) ç§»åŠ¨åˆ°ä¸Šä¸€ä¸ªåŒçº§å¯è§æ ‡é¢˜ã€‚
+<li>C-o C-u (outline-up-heading) åˆ°ä¸Šä¸€çº§æ ‡é¢˜ã€‚
 </ol>
 
 <hr>
-<a href="emacs_tips.html" target="_parent">·µ»Ø</a>
+<a href="emacs_tips.html" target="_parent">è¿”å›</a>
 </body>
 </html>

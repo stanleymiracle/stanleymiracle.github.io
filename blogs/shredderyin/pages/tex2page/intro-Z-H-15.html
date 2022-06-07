@@ -10,20 +10,20 @@ http://www.ccs.neu.edu/~dorai/tex2page/tex2page-doc.html
 -->
 <head>
 <title>
-tex2page Ê¹ÓÃÖ¸ÄÏ
+tex2page ä½¿ç”¨æŒ‡å—
 </title>
 <link rel="stylesheet" type="text/css" href="intro-Z-S.css" title=default>
 <link rel="stylesheet" type="text/css" href="tex2page.css" title=default>
 <meta name=robots content="noindex,follow">
-<meta http-equiv="Content-Type" content="text/html;charset=gb2312"></head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"></head>
 <body>
 <div id=content>
-<div align=right class=navigation><i>[<span><a href="intro.html">Ê×Ò³</a>, <a href="intro-Z-H-14.html">ÉÏÒ»Ò³</a></span><span>, <a href="intro-Z-H-16.html">ÏÂÒ»Ò³</a></span><span>; &nbsp;&nbsp;</span><span><a href="intro-Z-H-1.html#node_toc_start">Ä¿Â¼ </a></span><span><span>; &nbsp;&nbsp;</span><a href="intro-Z-H-21.html#node_index_start"> Ë÷Òý </a></span>]</i></div>
+<div align=right class=navigation><i>[<span><a href="intro.html">é¦–é¡µ</a>, <a href="intro-Z-H-14.html">ä¸Šä¸€é¡µ</a></span><span>, <a href="intro-Z-H-16.html">ä¸‹ä¸€é¡µ</a></span><span>; &nbsp;&nbsp;</span><span><a href="intro-Z-H-1.html#node_toc_start">ç›®å½• </a></span><span><span>; &nbsp;&nbsp;</span><a href="intro-Z-H-21.html#node_index_start"> ç´¢å¼• </a></span>]</i></div>
 <p></p>
 <a name="node_chap_14"></a>
 <h1 class=chapter>
-<div class=chapterheading><a href="intro-Z-H-1.html#node_toc_node_chap_14">µÚÊ®ËÄÕÂ</a></div><br>
-<a href="intro-Z-H-1.html#node_toc_node_chap_14">ÅÅ°æ Scheme</a></h1>
+<div class=chapterheading><a href="intro-Z-H-1.html#node_toc_node_chap_14">ç¬¬åå››ç« </a></div><br>
+<a href="intro-Z-H-1.html#node_toc_node_chap_14">æŽ’ç‰ˆ Scheme</a></h1>
 <p><a name="node_idx_144"></a>
 <a name="node_idx_146"></a>
 <a name="node_idx_148"></a></p>
@@ -31,9 +31,9 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 </p>
 <a name="node_sec_14.1"></a>
 <h2><a href="intro-Z-H-1.html#node_toc_node_sec_14.1">14.1&nbsp;&nbsp;<code class=verbatim>\scm</code></a></h2>
-<p>ÓÃ <code class=verbatim>\scm</code> °Ñ Scheme ³ÌÐòÀ¨ÆðÀ´¾Í¿ÉÒÔ½øÐÐÏÔÊ¾ÁË£¬²¢ÇÒº¬
-ÓÐÓï·¨¼ÓÁÁÐÅÏ¢¡£ÄãÖ»ÒªÊÔÓÃ css.t2p ÀïÌá¹©µÄ CSS ÑùÊ½¾Í¿ÉÒÔµÃ
-µ½ºÜÆ¯ÁÁµÄ Scheme Óï·¨¼ÓÁÁ¡£±ÈÈç£º</p>
+<p>ç”¨ <code class=verbatim>\scm</code> æŠŠ Scheme ç¨‹åºæ‹¬èµ·æ¥å°±å¯ä»¥è¿›è¡Œæ˜¾ç¤ºäº†ï¼Œå¹¶ä¸”å«
+æœ‰è¯­æ³•åŠ äº®ä¿¡æ¯ã€‚ä½ åªè¦è¯•ç”¨ css.t2p é‡Œæä¾›çš„ CSS æ ·å¼å°±å¯ä»¥å¾—
+åˆ°å¾ˆæ¼‚äº®çš„ Scheme è¯­æ³•åŠ äº®ã€‚æ¯”å¦‚ï¼š</p>
 <p>
 </p>
 <pre class=verbatim>\scm{&nbsp;
@@ -43,7 +43,7 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
     (if (= n 0) 1 ;the base case&nbsp;
         (* n (fact (- n 1))))))&nbsp;
 }</pre><p></p>
-<p>½á¹ûÊÇ£º</p>
+<p>ç»“æžœæ˜¯ï¼š</p>
 <p></p>
 <pre class=scheme>(<span class=keyword>define</span> <span class=variable>fact</span>
   <span class=selfeval>&quot;The factorial function&quot;</span>
@@ -54,11 +54,11 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 <p>
 </p>
 <a name="node_sec_14.2"></a>
-<h2><a href="intro-Z-H-1.html#node_toc_node_sec_14.2">14.2&nbsp;&nbsp;Scheme µÄÑùÊ½</a></h2>
-<p>ÓÐÁËÓï·¨¼ÓÁÁµÄÐÅÏ¢»¹²»ÄÜ°Ñ¸÷ÖÖ¹Ø¼ü×ÖÓÃ²»Í¬µÄÑÕÉ«ÏÔÊ¾¡£
-Äã±ØÐëÔÚ CSS ÎÄ¼þÀï¶¨ÒåÑùÊ½£¬»òÕß°ÑÕâÐ©ÑùÊ½Ê¹ÓÃ
-<code class=verbatim>\cssblock ...\endcssblock</code> µÄÐÎÊ½ Ç¶Èë HTML ÖÐ¡£
-±ÈÈç£º</p>
+<h2><a href="intro-Z-H-1.html#node_toc_node_sec_14.2">14.2&nbsp;&nbsp;Scheme çš„æ ·å¼</a></h2>
+<p>æœ‰äº†è¯­æ³•åŠ äº®çš„ä¿¡æ¯è¿˜ä¸èƒ½æŠŠå„ç§å…³é”®å­—ç”¨ä¸åŒçš„é¢œè‰²æ˜¾ç¤ºã€‚
+ä½ å¿…é¡»åœ¨ CSS æ–‡ä»¶é‡Œå®šä¹‰æ ·å¼ï¼Œæˆ–è€…æŠŠè¿™äº›æ ·å¼ä½¿ç”¨
+<code class=verbatim>\cssblock ...\endcssblock</code> çš„å½¢å¼ åµŒå…¥ HTML ä¸­ã€‚
+æ¯”å¦‚ï¼š</p>
 <p>
 <a name="node_idx_150"></a></p>
 <p>
@@ -74,12 +74,12 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 \endcssblock&nbsp;
 </pre><p></p>
 <p>
-¾Í¿ÉÒÔ¶Ô Scheme Óï¾äµÄ¸÷ÖÖ¹Ø¼ü×Ö£¬±äÁ¿µÈ½øÐÐÓï·¨¼ÓÁÁÁË¡£</p>
+å°±å¯ä»¥å¯¹ Scheme è¯­å¥çš„å„ç§å…³é”®å­—ï¼Œå˜é‡ç­‰è¿›è¡Œè¯­æ³•åŠ äº®äº†ã€‚</p>
 <p>
 </p>
 <a name="node_sec_14.3"></a>
-<h2><a href="intro-Z-H-1.html#node_toc_node_sec_14.3">14.3&nbsp;&nbsp;¶¨Òå¹Ø¼ü×Ö</a></h2>
-<p>Äã¿ÉÒÔÊ¹ÓÃ</p>
+<h2><a href="intro-Z-H-1.html#node_toc_node_sec_14.3">14.3&nbsp;&nbsp;å®šä¹‰å…³é”®å­—</a></h2>
+<p>ä½ å¯ä»¥ä½¿ç”¨</p>
 <p>
 <a name="node_idx_152"></a></p>
 <p>
@@ -87,16 +87,16 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 <pre class=verbatim>\scmbuiltin{cons car cdr}&nbsp;
 </pre><p></p>
 <p>
-ÕâÑùµÄÐÎÊ½¶¨ÒåÄÚ²¿º¯Êý¡£</p>
+è¿™æ ·çš„å½¢å¼å®šä¹‰å†…éƒ¨å‡½æ•°ã€‚</p>
 <p>
 <a name="node_idx_154"></a>
 </p>
 <pre class=verbatim>\scmkeyword{define-class unwind-protect}&nbsp;
 </pre><p></p>
 <p>
-ÕâÑùµÄÐÎÊ½¶¨Òå¹Ø¼ü×Ö¡£</p>
+è¿™æ ·çš„å½¢å¼å®šä¹‰å…³é”®å­—ã€‚</p>
 <p>
-Ê¹ÓÃ</p>
+ä½¿ç”¨</p>
 <p>
 <a name="node_idx_156"></a></p>
 <p>
@@ -104,32 +104,32 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 <pre class=verbatim>\scmvariable{and 42 +i}&nbsp;
 </pre><p></p>
 <p>
-µÄÐÎÊ½¶¨Òå±äÁ¿¡£ÕâÑùËüÃÇ¾ÍÄÜ±»¼ÓÉÏÌØÊâµÄÑÕÉ«ÁË¡£</p>
+çš„å½¢å¼å®šä¹‰å˜é‡ã€‚è¿™æ ·å®ƒä»¬å°±èƒ½è¢«åŠ ä¸Šç‰¹æ®Šçš„é¢œè‰²äº†ã€‚</p>
 <p>
 </p>
 <a name="node_sec_14.4"></a>
 <h2><a href="intro-Z-H-1.html#node_toc_node_sec_14.4">14.4&nbsp;&nbsp;slatex</a></h2>
 <p><a name="node_idx_158"></a></p>
 <p>
-ÒÔÉÏ¶¼ÊÇ tex2page ×Ô¼ºÌá¹©µÄÅÅ°æ SchemeµÄ·½Ê½¡£
-¶Ô Scheme ÅÅ°æ£¬×îºÃÊ¹ÓÃ Slatex, Ëü¿ÉÒÔÔÚ</p>
+ä»¥ä¸Šéƒ½æ˜¯ tex2page è‡ªå·±æä¾›çš„æŽ’ç‰ˆ Schemeçš„æ–¹å¼ã€‚
+å¯¹ Scheme æŽ’ç‰ˆï¼Œæœ€å¥½ä½¿ç”¨ Slatex, å®ƒå¯ä»¥åœ¨</p>
 <p>
 <a href="http://www.ccs.neu.edu/home/dorai/slatex/slatxdoc.html">http://www.ccs.neu.edu/home/dorai/slatex/slatxdoc.html</a></p>
 <p>
-ÏÂÔØ¡£</p>
+ä¸‹è½½ã€‚</p>
 <p>
-ÔÚ×°ºÃ slatex Ö®ºó¡£Ö»Òª</p>
+åœ¨è£…å¥½ slatex ä¹‹åŽã€‚åªè¦</p>
 <p>
 </p>
 <pre class=verbatim>\usepackage{slatex}&nbsp;
 </pre><p></p>
 <p>
-¾Í¿ÉÒÔÊ¹ÓÃ slatex Ìá¹©µÄ¸÷ÖÖ¹¦ÄÜÁË¡£</p>
+å°±å¯ä»¥ä½¿ç”¨ slatex æä¾›çš„å„ç§åŠŸèƒ½äº†ã€‚</p>
 <p>
 </p>
 <a name="node_sec_14.4.1"></a>
-<h3><a href="intro-Z-H-1.html#node_toc_node_sec_14.4.1">14.4.1&nbsp;&nbsp;schemedisplay »·¾³</a></h3>
-<p>Ê¹ÓÃ tex2page Ìá¹©µÄ <code class=verbatim>\scm{...}</code> Èç¹ûÄÚÈÝÌ«³¤ÈÝÒ×³ö´í£¬ËùÒÔÓÃ</p>
+<h3><a href="intro-Z-H-1.html#node_toc_node_sec_14.4.1">14.4.1&nbsp;&nbsp;schemedisplay çŽ¯å¢ƒ</a></h3>
+<p>ä½¿ç”¨ tex2page æä¾›çš„ <code class=verbatim>\scm{...}</code> å¦‚æžœå†…å®¹å¤ªé•¿å®¹æ˜“å‡ºé”™ï¼Œæ‰€ä»¥ç”¨</p>
 <p>
 <a name="node_idx_160"></a></p>
 <p>
@@ -139,12 +139,12 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 \end{schemedisplay}&nbsp;
 </pre><p></p>
 <p>
-¾ÍºÃ¶àÁË¡£</p>
+å°±å¥½å¤šäº†ã€‚</p>
 <p>
 </p>
 <a name="node_sec_14.4.2"></a>
-<h3><a href="intro-Z-H-1.html#node_toc_node_sec_14.4.2">14.4.2&nbsp;&nbsp;²åÈë¶ÎÂäµÄ Scheme Óï¾ä</a></h3>
-<p>¶ÎÂäÖÐµÄ Scheme Óï¾ä£¬±ÈÈç <code class=scheme>(<span class=variable>cons</span> <span class=keyword>'</span><span class=variable>a</span> <span class=keyword>'</span>(<span class=variable>b</span> <span class=variable>c</span>))</code>, ¿ÉÒÔÕâÑùÊäÈë£º</p>
+<h3><a href="intro-Z-H-1.html#node_toc_node_sec_14.4.2">14.4.2&nbsp;&nbsp;æ’å…¥æ®µè½çš„ Scheme è¯­å¥</a></h3>
+<p>æ®µè½ä¸­çš„ Scheme è¯­å¥ï¼Œæ¯”å¦‚ <code class=scheme>(<span class=variable>cons</span> <span class=keyword>'</span><span class=variable>a</span> <span class=keyword>'</span>(<span class=variable>b</span> <span class=variable>c</span>))</code>, å¯ä»¥è¿™æ ·è¾“å…¥ï¼š</p>
 <p>
 
 <a name="node_idx_162"></a>
@@ -154,20 +154,20 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 <p>
 </p>
 <a name="node_sec_14.4.3"></a>
-<h3><a href="intro-Z-H-1.html#node_toc_node_sec_14.4.3">14.4.3&nbsp;&nbsp;²åÈë Scheme ³ÌÐòÎÄ¼þ</a></h3>
-<p>Èç¹ûÒª¶ÁÈëÒ»¸ö Scheme ³ÌÐòÎÄ¼þ¾ÍÊ¹ÓÃ</p>
+<h3><a href="intro-Z-H-1.html#node_toc_node_sec_14.4.3">14.4.3&nbsp;&nbsp;æ’å…¥ Scheme ç¨‹åºæ–‡ä»¶</a></h3>
+<p>å¦‚æžœè¦è¯»å…¥ä¸€ä¸ª Scheme ç¨‹åºæ–‡ä»¶å°±ä½¿ç”¨</p>
 <p>
 </p>
 <pre class=verbatim>\schemeinput{evenodd.scm}&nbsp;
 % the .scm is optional!&nbsp;
 </pre><p></p>
 <p>
-ÉÏÃæ½éÉÜµÄÕâÐ©ÕâÐ©»ù±¾¹»ÓÃÁË¡£Èç¹ûÄã»¹²»Âú×ã¾Í¼ÌÐø¿´ÏÂÒ»½Ú¡£</p>
+ä¸Šé¢ä»‹ç»çš„è¿™äº›è¿™äº›åŸºæœ¬å¤Ÿç”¨äº†ã€‚å¦‚æžœä½ è¿˜ä¸æ»¡è¶³å°±ç»§ç»­çœ‹ä¸‹ä¸€èŠ‚ã€‚</p>
 <p>
 </p>
 <a name="node_sec_14.4.4"></a>
 <h3><a href="intro-Z-H-1.html#node_toc_node_sec_14.4.4">14.4.4&nbsp;&nbsp;<code class=verbatim>\schemeresult</code></a></h3>
-<p>Scheme ½âÊÍÆ÷µÄÊä³ö½á¹û¿ÉÒÔÓÃÒ»ÖÖÌØÊâµÄÑÕÉ«ÏÔÊ¾£º</p>
+<p>Scheme è§£é‡Šå™¨çš„è¾“å‡ºç»“æžœå¯ä»¥ç”¨ä¸€ç§ç‰¹æ®Šçš„é¢œè‰²æ˜¾ç¤ºï¼š</p>
 <p>
 </p>
 <pre class=verbatim>\scheme|((lambda () (cons 'lambda&nbsp;
@@ -175,7 +175,7 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 \schemeresult|(lambda . cons)|.&nbsp;
 </pre><p></p>
 <p>
-½á¹ûÊÇ£º</p>
+ç»“æžœæ˜¯ï¼š</p>
 <p>
 <code class=scheme>((<span class=keyword>lambda</span> () (<span class=variable>cons</span> <span class=keyword>'</span><span class=keyword>lambda</span>
 <span class=keyword>'</span><span class=variable>cons</span>)))</code> yields
@@ -183,12 +183,12 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 <p>
 </p>
 <a name="node_sec_14.4.5"></a>
-<h3><a href="intro-Z-H-1.html#node_toc_node_sec_14.4.5">14.4.5&nbsp;&nbsp;ÌØÊâ·ûºÅ</a></h3>
-<p>ÄãÏë²»Ïë°Ñ <code class=scheme>(<span class=keyword>lambda</span> () (<span class=keyword>begin</span> ...)</code> ¶¼ÓÃ
+<h3><a href="intro-Z-H-1.html#node_toc_node_sec_14.4.5">14.4.5&nbsp;&nbsp;ç‰¹æ®Šç¬¦å·</a></h3>
+<p>ä½ æƒ³ä¸æƒ³æŠŠ <code class=scheme>(<span class=keyword>lambda</span> () (<span class=keyword>begin</span> ...)</code> éƒ½ç”¨
 
-<code class=scheme>(<img src="intro-Z-G-17.png" border="0" alt="\lambda"> () (<span class=keyword>begin</span> ...)</code> À´ÏÔÊ¾£¿</p>
+<code class=scheme>(<img src="intro-Z-G-17.png" border="0" alt="\lambda"> () (<span class=keyword>begin</span> ...)</code> æ¥æ˜¾ç¤ºï¼Ÿ</p>
 <p>
-ÓÃ</p>
+ç”¨</p>
 <p>
 <a name="node_idx_164"></a>
 <a name="node_idx_166"></a></p>
@@ -197,7 +197,7 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 <pre class=verbatim>\setspecialsymbol{lambda}{$\lambda$}&nbsp;
 </pre><p></p>
 <p>
-¾Í¿ÉÒÔ´ïµ½ÄãµÄÄ¿µÄ¡£ÎÒÃÇ»¹¿ÉÒÔ»¨ÉÚÒ»µã£º</p>
+å°±å¯ä»¥è¾¾åˆ°ä½ çš„ç›®çš„ã€‚æˆ‘ä»¬è¿˜å¯ä»¥èŠ±å“¨ä¸€ç‚¹ï¼š</p>
 <p>
 </p>
 <pre class=verbatim>\setspecialsymbol{lambda}{$\lambda$}&nbsp;
@@ -216,7 +216,7 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 \end{schemedisplay}&nbsp;
 </pre><p></p>
 <p>
-ÏÔÊ¾Îª£º
+æ˜¾ç¤ºä¸ºï¼š
 
 
 
@@ -234,7 +234,7 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 <p>
 </p>
 <a name="node_sec_14.4.6"></a>
-<h3><a href="intro-Z-H-1.html#node_toc_node_sec_14.4.6">14.4.6&nbsp;&nbsp;¶¨Òå¹Ø¼ü×Ö</a></h3>
+<h3><a href="intro-Z-H-1.html#node_toc_node_sec_14.4.6">14.4.6&nbsp;&nbsp;å®šä¹‰å…³é”®å­—</a></h3>
 <p><a name="node_idx_168"></a>
 <a name="node_idx_170"></a>
 <a name="node_idx_172"></a>
@@ -247,14 +247,14 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 \setdata&nbsp;
 </pre><p></p>
 <p>
-¿ÉÒÔ¶¨ÒåÄã×Ô¼ºÐèÒªµÄ¹Ø¼ü×Ö£¬³£Êý£¬±äÁ¿£¬Êý¾Ý£¬ËüÃÇ»á±»ÕýÈ·µÄ
-Óï·¨¼ÓÁÁ¡£±ÈÈç£¬Í¨³£ cons ²»ÊÇÒ»¸ö¹Ø¼ü×Ö£¬ËüÒ»°ãÏÔÊ¾Îª£º</p>
+å¯ä»¥å®šä¹‰ä½ è‡ªå·±éœ€è¦çš„å…³é”®å­—ï¼Œå¸¸æ•°ï¼Œå˜é‡ï¼Œæ•°æ®ï¼Œå®ƒä»¬ä¼šè¢«æ­£ç¡®çš„
+è¯­æ³•åŠ äº®ã€‚æ¯”å¦‚ï¼Œé€šå¸¸ cons ä¸æ˜¯ä¸€ä¸ªå…³é”®å­—ï¼Œå®ƒä¸€èˆ¬æ˜¾ç¤ºä¸ºï¼š</p>
 <p>
 </p>
 <pre class=scheme>(<span class=variable>cons</span> <span class=keyword>'</span><span class=variable>a</span> <span class=keyword>'</span>(<span class=variable>b</span> <span class=variable>c</span>))
 </pre><p></p>
 <p>
-ÎÒÃÇÓÃÁË</p>
+æˆ‘ä»¬ç”¨äº†</p>
 <p>
 <a name="node_idx_176"></a></p>
 <p>
@@ -262,7 +262,7 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 <pre class=verbatim>\setkeyword{cons}&nbsp;
 </pre><p></p>
 <p>
-Ö®ºó£¬cons ¾ÍÓÃ¸ú define Ò»ÑùµÄ·½Ê½ÏÔÊ¾ÁË£º</p>
+ä¹‹åŽï¼Œcons å°±ç”¨è·Ÿ define ä¸€æ ·çš„æ–¹å¼æ˜¾ç¤ºäº†ï¼š</p>
 <p>
 </p>
 <p>
@@ -276,11 +276,11 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 <p><a name="node_idx_178"></a>
 <a name="node_idx_180"></a></p>
 <p>
-Õâ¸öÃüÁî¿ÉÒÔ°Ñ <code class=verbatim>\scm</code> ÇøÓòÀïµÄÄÚÈÝËÍµ½×î½üµÄÒ»¸ö
-<a href="intro-Z-H-13.html#node_tag_Temp_6"><code class=verbatim>\verbwritefile</code></a> Ö¸¶¨µÄÎÄ¼þÀï£¬Í¬Ê±°ÑÕâÐ©´úÂëÓï·¨¼ÓÁÁÔÚ
-ÎÄµµÖÐÏÔÊ¾¡£</p>
+è¿™ä¸ªå‘½ä»¤å¯ä»¥æŠŠ <code class=verbatim>\scm</code> åŒºåŸŸé‡Œçš„å†…å®¹é€åˆ°æœ€è¿‘çš„ä¸€ä¸ª
+<a href="intro-Z-H-13.html#node_tag_Temp_6"><code class=verbatim>\verbwritefile</code></a> æŒ‡å®šçš„æ–‡ä»¶é‡Œï¼ŒåŒæ—¶æŠŠè¿™äº›ä»£ç è¯­æ³•åŠ äº®åœ¨
+æ–‡æ¡£ä¸­æ˜¾ç¤ºã€‚</p>
 <p>
-Õâ¿ÉÒÔ±»×÷ÎªÒ»ÖÖ Scheme ¡°ÎÄÑ§±à³Ì¡±µÄ·½Ê½¡£ÎÒÀ´ÊÔÊÔ£º</p>
+è¿™å¯ä»¥è¢«ä½œä¸ºä¸€ç§ Scheme â€œæ–‡å­¦ç¼–ç¨‹â€çš„æ–¹å¼ã€‚æˆ‘æ¥è¯•è¯•ï¼š</p>
 <p>
 </p>
 <pre class=verbatim>\verbwritefile test1.scm&nbsp;
@@ -295,7 +295,7 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 }&nbsp;
 </pre><p></p>
 <p>
-àÅ¡£»¹ÕæÊÇÉú³ÉÁËÒ»¸öÎÄ¼þ½Ð×ö test1.scm. ÀïÃæÊÇÕâÐ©´úÂë¡£</p>
+å—¯ã€‚è¿˜çœŸæ˜¯ç”Ÿæˆäº†ä¸€ä¸ªæ–‡ä»¶å«åš test1.scm. é‡Œé¢æ˜¯è¿™äº›ä»£ç ã€‚</p>
 <p>
 </p>
 <pre class=scheme>(<span class=keyword>define</span> <span class=variable>factorial</span>
@@ -310,7 +310,7 @@ tex2page Ê¹ÓÃÖ¸ÄÏ
 </p>
 <p>
 </p>
-<div align=right class=navigation><i>[<span><a href="intro.html">Ê×Ò³</a>, <a href="intro-Z-H-14.html">ÉÏÒ»Ò³</a></span><span>, <a href="intro-Z-H-16.html">ÏÂÒ»Ò³</a></span><span>; &nbsp;&nbsp;</span><span><a href="intro-Z-H-1.html#node_toc_start">Ä¿Â¼ </a></span><span><span>; &nbsp;&nbsp;</span><a href="intro-Z-H-21.html#node_index_start"> Ë÷Òý </a></span>]</i></div>
+<div align=right class=navigation><i>[<span><a href="intro.html">é¦–é¡µ</a>, <a href="intro-Z-H-14.html">ä¸Šä¸€é¡µ</a></span><span>, <a href="intro-Z-H-16.html">ä¸‹ä¸€é¡µ</a></span><span>; &nbsp;&nbsp;</span><span><a href="intro-Z-H-1.html#node_toc_start">ç›®å½• </a></span><span><span>; &nbsp;&nbsp;</span><a href="intro-Z-H-21.html#node_index_start"> ç´¢å¼• </a></span>]</i></div>
 <p></p>
 </div>
 </body>

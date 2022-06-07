@@ -4,7 +4,7 @@
     <title>Continuation Passing Style</title>
     <meta name="generator" content="emacs-wiki.el">
     <meta http-equiv="Content-Type"
-	  content="text/html; charset=gb2312">
+	  content="text/html; charset=utf-8">
     <link rev="made" href="mailto:webmaster@wangyin.com">
     <link rel="home" href="WelcomePage.html">
     <link rel="index" href="WikiIndex.html">
@@ -19,22 +19,22 @@
 
 
 
-<h3>Ò»¸ö CPS µÄÀý×Ó</h3>
+<h3>ä¸€ä¸ª CPS çš„ä¾‹å­</h3>
 
 <p>
-¼´Ê¹Ã»ÓÐ call/cc, Scheme Í¬Ñù¿ÉÒÔÊ¹ÓÃ Continuation. Ö»²»¹ý³Ì
-ÐòÓÐ¿ÉÄÜÐèÒªÍêÈ«ÖØÐ´¡£
+å³ä½¿æ²¡æœ‰ call/cc, Scheme åŒæ ·å¯ä»¥ä½¿ç”¨ Continuation. åªä¸è¿‡ç¨‹
+åºæœ‰å¯èƒ½éœ€è¦å®Œå…¨é‡å†™ã€‚
 
 </p>
 
 <p>
-ÎÒÃÇ¿ÉÒÔ°Ñ continuation ÏÔÊ¾µÄÓÃº¯Êý±íÊ¾³öÀ´¡£°ÑËü×÷Îªº¯ÊýµÄ
-²ÎÊý´«µÝ¸øº¯Êý£¬ÔÚº¯ÊýÄÚ²¿ÏÔÊ¾Ê¹ÓÃÕâ¸ö²ÎÊý½øÐÐ¾ßÌå²Ù×÷¡£
+æˆ‘ä»¬å¯ä»¥æŠŠ continuation æ˜¾ç¤ºçš„ç”¨å‡½æ•°è¡¨ç¤ºå‡ºæ¥ã€‚æŠŠå®ƒä½œä¸ºå‡½æ•°çš„
+å‚æ•°ä¼ é€’ç»™å‡½æ•°ï¼Œåœ¨å‡½æ•°å†…éƒ¨æ˜¾ç¤ºä½¿ç”¨è¿™ä¸ªå‚æ•°è¿›è¡Œå…·ä½“æ“ä½œã€‚
 
 </p>
 
 <p>
-¿´¿´Õâ¸öÀý×Ó£º
+çœ‹çœ‹è¿™ä¸ªä¾‹å­ï¼š
 
 </p>
 
@@ -45,12 +45,12 @@
 </pre>
 
 <p>
-ÕâÀïÓÐ¼¸¸ö¿´²»µ½µÄ continuation. ÎÒÃÇ´Ó×î¿ªÊ¼µÄº¯Êýµ÷ÓÃËµÆð£¬
+è¿™é‡Œæœ‰å‡ ä¸ªçœ‹ä¸åˆ°çš„ continuation. æˆ‘ä»¬ä»Žæœ€å¼€å§‹çš„å‡½æ•°è°ƒç”¨è¯´èµ·ï¼Œ
 
 </p>
 
 <ul>
-<li>ÔÚµ÷ÓÃ h Ê±£¬Ò²¾ÍÊÇÕâ¾ä£º
+<li>åœ¨è°ƒç”¨ h æ—¶ï¼Œä¹Ÿå°±æ˜¯è¿™å¥ï¼š
 </li>
 </ul>
 
@@ -58,33 +58,33 @@
 </pre>
 
 <p>
-ÕâÀïµÄ continuation ÊÇËµ£º¡°ÎÒÏëÊ¹ÓÃ²ÎÊý '() µ÷ÓÃ h, µÃµ½Ëü
-µÄ·µ»ØÖµ(Æð¸öÃû×Ö½Ðv°É), È»ºóÎÒ°Ñ (cons 'd v) ·µ»Ø¸øÎÒµÄµ÷ÓÃ
-Õß¡£
+è¿™é‡Œçš„ continuation æ˜¯è¯´ï¼šâ€œæˆ‘æƒ³ä½¿ç”¨å‚æ•° '() è°ƒç”¨ h, å¾—åˆ°å®ƒ
+çš„è¿”å›žå€¼(èµ·ä¸ªåå­—å«vå§), ç„¶åŽæˆ‘æŠŠ (cons 'd v) è¿”å›žç»™æˆ‘çš„è°ƒç”¨
+è€…ã€‚
 
 </p>
 
 <ul>
-<li>ÔÚº¯Êý h ÄÚ²¿µ÷ÓÃ g Ê±µÄ continuation ÊÇËµ£º¡°ÓÃ²ÎÊý (cons
-  'c x) µ÷ÓÃ g, È»ºó°ÑËü·µ»ØµÄÖµ·µ»Ø¸øÎÒµÄµ÷ÓÃÕß¡£¡±
+<li>åœ¨å‡½æ•° h å†…éƒ¨è°ƒç”¨ g æ—¶çš„ continuation æ˜¯è¯´ï¼šâ€œç”¨å‚æ•° (cons
+  'c x) è°ƒç”¨ g, ç„¶åŽæŠŠå®ƒè¿”å›žçš„å€¼è¿”å›žç»™æˆ‘çš„è°ƒç”¨è€…ã€‚â€
 </li>
-<li>ÔÚº¯Êý g ÄÚ²¿µ÷ÓÃ f Ê±µÄ continuation ÊÇËµ£º¡°ÓÃ²ÎÊý x µ÷
-  ÓÃ f, µÃµ½ËüµÄ·µ»ØÖµ v, È»ºó°Ñ (cons 'b v) ·µ»Ø¸øÎÒµÄµ÷ÓÃ
-  Õß¡£
+<li>åœ¨å‡½æ•° g å†…éƒ¨è°ƒç”¨ f æ—¶çš„ continuation æ˜¯è¯´ï¼šâ€œç”¨å‚æ•° x è°ƒ
+  ç”¨ f, å¾—åˆ°å®ƒçš„è¿”å›žå€¼ v, ç„¶åŽæŠŠ (cons 'b v) è¿”å›žç»™æˆ‘çš„è°ƒç”¨
+  è€…ã€‚
 </li>
-<li>º¯Êý f µÄ continuation ÊÇËµ£º¡°°Ñ (cons 'a x) ·µ»Ø¸øÎÒµÄµ÷
-  ÓÃÕß¡£¡±
+<li>å‡½æ•° f çš„ continuation æ˜¯è¯´ï¼šâ€œæŠŠ (cons 'a x) è¿”å›žç»™æˆ‘çš„è°ƒ
+  ç”¨è€…ã€‚â€
 </li>
 </ul>
 
 <p>
-ÓÚÊÇ£¬ÎÒÃÇ¾Í¿ÉÒÔ°ÑÕâÐ© continuation ×÷ÎªÒ»¸ö²ÎÊý´«µÝ¸ø±»µ÷ÓÃ
-µÄº¯Êý£¬¸æËßËüÃÇÎÒÃÇÏëÔõÑù´¦ÀíËüÃÇµÄ½á¹û¡£
+äºŽæ˜¯ï¼Œæˆ‘ä»¬å°±å¯ä»¥æŠŠè¿™äº› continuation ä½œä¸ºä¸€ä¸ªå‚æ•°ä¼ é€’ç»™è¢«è°ƒç”¨
+çš„å‡½æ•°ï¼Œå‘Šè¯‰å®ƒä»¬æˆ‘ä»¬æƒ³æ€Žæ ·å¤„ç†å®ƒä»¬çš„ç»“æžœã€‚
 
 </p>
 
 <p>
-ÉÏÃæµÄ³ÌÐò¿ÉÒÔÖØÐÂÐ´³É£º
+ä¸Šé¢çš„ç¨‹åºå¯ä»¥é‡æ–°å†™æˆï¼š
 
 </p>
 
@@ -96,12 +96,12 @@
 </pre>
 
 <p>
-ÕâÀïÃ¿¸öº¯Êý¶àÁËÒ»¸ö²ÎÊý k£¬ ±íÊ¾Ò»¸ö continuation¡£
+è¿™é‡Œæ¯ä¸ªå‡½æ•°å¤šäº†ä¸€ä¸ªå‚æ•° kï¼Œ è¡¨ç¤ºä¸€ä¸ª continuationã€‚
 
 </p>
 
 <p>
-¿´ÎÒÃÇµ÷ÓÃ h µÄµØ·½£º
+çœ‹æˆ‘ä»¬è°ƒç”¨ h çš„åœ°æ–¹ï¼š
 
 </p>
 
@@ -109,24 +109,24 @@
 </pre>
 
 <p>
-ÎÒ°Ñ (lambda (v) (cons 'd v)) ×÷Îª²ÎÊý k µÄÖµ´«µÝ¸øÁË h, ¾Í
-ÊÇÔÚ¸æËß h£º¡°ÎÒÏëµÃµ½ÄãµÄ·µ»ØÖµ v£¬È»ºó°Ñ 'd ºÍ v cons ÔÚÒ»
-Æð£¬È»ºó·µ»Ø¸øÉÏÒ»²ãµ÷ÓÃ¡£ÕâÑù h ¾Í¿ÉÒÔÔÚÄÚ²¿µ÷ÓÃÕâ¸ö k£¬°Ñ
-Ó¦¸Ã·µ»ØµÄÖµ£¬°´ÕÕµ÷ÓÃÕßµÄÒâÍ¼´¦Àí¡£ÕâÀï£¬¡°µ÷ÓÃÕßµÄÒâÍ¼¡±¾Í
-ÊÇ continuation¡£
+æˆ‘æŠŠ (lambda (v) (cons 'd v)) ä½œä¸ºå‚æ•° k çš„å€¼ä¼ é€’ç»™äº† h, å°±
+æ˜¯åœ¨å‘Šè¯‰ hï¼šâ€œæˆ‘æƒ³å¾—åˆ°ä½ çš„è¿”å›žå€¼ vï¼Œç„¶åŽæŠŠ 'd å’Œ v cons åœ¨ä¸€
+èµ·ï¼Œç„¶åŽè¿”å›žç»™ä¸Šä¸€å±‚è°ƒç”¨ã€‚è¿™æ · h å°±å¯ä»¥åœ¨å†…éƒ¨è°ƒç”¨è¿™ä¸ª kï¼ŒæŠŠ
+åº”è¯¥è¿”å›žçš„å€¼ï¼ŒæŒ‰ç…§è°ƒç”¨è€…çš„æ„å›¾å¤„ç†ã€‚è¿™é‡Œï¼Œâ€œè°ƒç”¨è€…çš„æ„å›¾â€å°±
+æ˜¯ continuationã€‚
 
 </p>
 
 <p>
-½Ó×Å¿´£ºh µ÷ÓÃ g Ê±£¬°Ñ k Ö±½Ó´«µÝ¸øÁË g, ÒâË¼ÊÇËµ£º¡°g, Äã
-µÄ·µ»ØÖµ£¬ÎÒ½«°ÑËüÔ­·â²»¶¯·µ»Ø¸øÎÒµÄµ÷ÓÃÕß¡£¡± ÕâÑù£¬g Ïë·µ
-»ØµÄÊ±ºò¾Íµ÷ÓÃÕâ¸ö k, ÕâÑù¾Í»á°ÑÖµÔ­·â²»¶¯´«µÝ¸ø h µÄµ÷ÓÃÕß£¬
-Ò²¾ÍÊÇ×îÉÏ²ãµ÷ÓÃ¡£
+æŽ¥ç€çœ‹ï¼šh è°ƒç”¨ g æ—¶ï¼ŒæŠŠ k ç›´æŽ¥ä¼ é€’ç»™äº† g, æ„æ€æ˜¯è¯´ï¼šâ€œg, ä½ 
+çš„è¿”å›žå€¼ï¼Œæˆ‘å°†æŠŠå®ƒåŽŸå°ä¸åŠ¨è¿”å›žç»™æˆ‘çš„è°ƒç”¨è€…ã€‚â€ è¿™æ ·ï¼Œg æƒ³è¿”
+å›žçš„æ—¶å€™å°±è°ƒç”¨è¿™ä¸ª k, è¿™æ ·å°±ä¼šæŠŠå€¼åŽŸå°ä¸åŠ¨ä¼ é€’ç»™ h çš„è°ƒç”¨è€…ï¼Œ
+ä¹Ÿå°±æ˜¯æœ€ä¸Šå±‚è°ƒç”¨ã€‚
 
 </p>
 
 <p>
-g µ÷ÓÃ f Ê±£¬Ê¹ÓÃÁË 
+g è°ƒç”¨ f æ—¶ï¼Œä½¿ç”¨äº† 
 
 </p>
 
@@ -134,28 +134,28 @@ g µ÷ÓÃ f Ê±£¬Ê¹ÓÃÁË
 </pre>
 
 <p>
-×÷ÎªµÚ¶þ¸ö²ÎÊý£¬ÕâÊÇËµ£º¡°f, Äã·µ»Ø¸øÎÒµÄÖµ v, ÎÒ½«°Ñ 'b ºÍ v
-cons ÔÚÒ»Æð(cons 'b v)£¬È»ºó°ÑËü·µ»Ø¸øÎÒµÄµ÷ÓÃÕß¡£¡±
+ä½œä¸ºç¬¬äºŒä¸ªå‚æ•°ï¼Œè¿™æ˜¯è¯´ï¼šâ€œf, ä½ è¿”å›žç»™æˆ‘çš„å€¼ v, æˆ‘å°†æŠŠ 'b å’Œ v
+cons åœ¨ä¸€èµ·(cons 'b v)ï¼Œç„¶åŽæŠŠå®ƒè¿”å›žç»™æˆ‘çš„è°ƒç”¨è€…ã€‚â€
 
 </p>
 
 <p>
-f Ã»ÓÐµ÷ÓÃÆäËüº¯Êý£¬ËùÒÔËüÖ»ÊÇËµ£º¡°µÃµ½ (cons 'a x) µÄÖµ£¬
-È»ºó°ÑËü·µ»Ø¸øÎÒµÄµ÷ÓÃÕß¡£¡±
+f æ²¡æœ‰è°ƒç”¨å…¶å®ƒå‡½æ•°ï¼Œæ‰€ä»¥å®ƒåªæ˜¯è¯´ï¼šâ€œå¾—åˆ° (cons 'a x) çš„å€¼ï¼Œ
+ç„¶åŽæŠŠå®ƒè¿”å›žç»™æˆ‘çš„è°ƒç”¨è€…ã€‚â€
 
 </p>
 
-<h3>CPS µÄÓÃÍ¾</h3>
+<h3>CPS çš„ç”¨é€”</h3>
 
 <p>
-¿´ÆðÀ´ CPS ÊÇ°ÑÊÂÇé¸ãµÄºÜ¸´ÔÓ¡£ÉÏÃæÕâ¸öÀý×Óµ±È»ÊÇ²»Ç¡µ±µÄÊ¹
-ÓÃ CPS¡£CPS ¿ÉÒÔÊµÏÖËùÓÐ call/cc ÄÜÊµÏÖµÄ¹¦ÄÜ£¬µ«ÊÇÄãµÄ³ÌÐò
-ÓÐ¿ÉÄÜÐèÒªÍêÈ«ÖØÐ´¡£
+çœ‹èµ·æ¥ CPS æ˜¯æŠŠäº‹æƒ…æžçš„å¾ˆå¤æ‚ã€‚ä¸Šé¢è¿™ä¸ªä¾‹å­å½“ç„¶æ˜¯ä¸æ°å½“çš„ä½¿
+ç”¨ CPSã€‚CPS å¯ä»¥å®žçŽ°æ‰€æœ‰ call/cc èƒ½å®žçŽ°çš„åŠŸèƒ½ï¼Œä½†æ˜¯ä½ çš„ç¨‹åº
+æœ‰å¯èƒ½éœ€è¦å®Œå…¨é‡å†™ã€‚
 
 </p>
 
 <p>
-ËùÓÐµÄ 
+æ‰€æœ‰çš„ 
 
 </p>
 
@@ -165,7 +165,7 @@ f Ã»ÓÐµ÷ÓÃÆäËüº¯Êý£¬ËùÒÔËüÖ»ÊÇËµ£º¡°µÃµ½ (cons 'a x) µÄÖµ£¬
 </pre>
 
 <p>
-¶¼¿ÉÒÔ±»¸ÄÐ´Îª£º
+éƒ½å¯ä»¥è¢«æ”¹å†™ä¸ºï¼š
 
 </p>
 
@@ -173,19 +173,19 @@ f Ã»ÓÐµ÷ÓÃÆäËüº¯Êý£¬ËùÒÔËüÖ»ÊÇËµ£º¡°µÃµ½ (cons 'a x) µÄÖµ£¬
 </pre>
 
 <p>
-µ«ÊÇ£¬Õâ¸ö thunk1 ºÍ thunk2 µ½µ×ÓÐ¶à³¤£¿ËüÃÇÓÐ¿ÉÄÜÊÇ¾­¹ýÁËºÜ
-¶à´Îº¯ÊýÇ¶Ì×µ÷ÓÃµ½´ï call/cc µÄ£¬Èç¹ûÒªÊ¹ÓÃ CPS£¬ÕâÐ©º¯ÊýÈ«
-²¿Òª¼ÓÒ»¸ö²ÎÊý k£¬¾ÍÏñÉÏÃæµÄÀý×Ó¡£ÕâÊÇ²»Êµ¼ÊµÄ¡£
+ä½†æ˜¯ï¼Œè¿™ä¸ª thunk1 å’Œ thunk2 åˆ°åº•æœ‰å¤šé•¿ï¼Ÿå®ƒä»¬æœ‰å¯èƒ½æ˜¯ç»è¿‡äº†å¾ˆ
+å¤šæ¬¡å‡½æ•°åµŒå¥—è°ƒç”¨åˆ°è¾¾ call/cc çš„ï¼Œå¦‚æžœè¦ä½¿ç”¨ CPSï¼Œè¿™äº›å‡½æ•°å…¨
+éƒ¨è¦åŠ ä¸€ä¸ªå‚æ•° kï¼Œå°±åƒä¸Šé¢çš„ä¾‹å­ã€‚è¿™æ˜¯ä¸å®žé™…çš„ã€‚
 
 </p>
 
 <p>
-µ«ÊÇ CPS ÓÐÄ³Ð© call/cc Ã»ÓÐµÄ¹¦ÄÜ¡£
+ä½†æ˜¯ CPS æœ‰æŸäº› call/cc æ²¡æœ‰çš„åŠŸèƒ½ã€‚
 
 </p>
 
 <ul>
-<li>CPS ÄÜÊµÏÖ¶à²ÎÊý continuation£¬¶ø call/cc ²»ÐÐ¡£¾Ù¸öÀý×Ó£º
+<li>CPS èƒ½å®žçŽ°å¤šå‚æ•° continuationï¼Œè€Œ call/cc ä¸è¡Œã€‚ä¸¾ä¸ªä¾‹å­ï¼š
 </li>
 </ul>
 
@@ -211,8 +211,8 @@ f Ã»ÓÐµ÷ÓÃÆäËüº¯Êý£¬ËùÒÔËüÖ»ÊÇËµ£º¡°µÃµ½ (cons 'a x) µÄÖµ£¬
 </pre>
 
 <p>
-ÕâÀï£¬º¯Êý car&cdr ½ÓÊÜÒ»¸öÁ½¸ö²ÎÊý£¬µÚÒ»¸ö²ÎÊýÊÇÒ»¸ö pair
-p, µÚ¶þ¸ö²ÎÊýÊÇÒ»¸ö continuation k. Ëü·µ»Ø
+è¿™é‡Œï¼Œå‡½æ•° car&cdr æŽ¥å—ä¸€ä¸ªä¸¤ä¸ªå‚æ•°ï¼Œç¬¬ä¸€ä¸ªå‚æ•°æ˜¯ä¸€ä¸ª pair
+p, ç¬¬äºŒä¸ªå‚æ•°æ˜¯ä¸€ä¸ª continuation k. å®ƒè¿”å›ž
 
 </p>
 
@@ -220,13 +220,13 @@ p, µÚ¶þ¸ö²ÎÊýÊÇÒ»¸ö continuation k. Ëü·µ»Ø
 </pre>
 
 <p>
-Ò²¾ÍÊÇËµ£¬ÎÒ°Ñ (car p) ºÍ (cdr p) ×÷Îª²ÎÊý´«µÝ¸ø k, Ëæ±ã k
-ÊÇ¸ÉÊ²Ã´µÄ¡£
+ä¹Ÿå°±æ˜¯è¯´ï¼Œæˆ‘æŠŠ (car p) å’Œ (cdr p) ä½œä¸ºå‚æ•°ä¼ é€’ç»™ k, éšä¾¿ k
+æ˜¯å¹²ä»€ä¹ˆçš„ã€‚
 
 </p>
 
 <p>
-ÕâÑù£¬Èç¹ûÓÃ 
+è¿™æ ·ï¼Œå¦‚æžœç”¨ 
 
 </p>
 
@@ -235,20 +235,20 @@ p, µÚ¶þ¸ö²ÎÊýÊÇÒ»¸ö continuation k. Ëü·µ»Ø
 </pre>
 
 <p>
-×÷Îª k£¬´«µÝ¸ø car&cdr£¬ÄÇÃ´ÒâË¼¾ÍÊÇËµ£º¡°Ç×°®µÄcar&cdrº¯Êý£¬
-Äã·µ»Ø¸øÎÒµÄÁ½¸öÖµ x ºÍ y£¬ÎÒ½«Òª°ÑËüÃÇ×÷Îª list µÄ²ÎÊý£¬ÎÒ
-½«Òª°Ñ (list y x) ·µ»Ø¸øÎÒµÄµ÷ÓÃÕß¡£
+ä½œä¸º kï¼Œä¼ é€’ç»™ car&cdrï¼Œé‚£ä¹ˆæ„æ€å°±æ˜¯è¯´ï¼šâ€œäº²çˆ±çš„car&cdrå‡½æ•°ï¼Œ
+ä½ è¿”å›žç»™æˆ‘çš„ä¸¤ä¸ªå€¼ x å’Œ yï¼Œæˆ‘å°†è¦æŠŠå®ƒä»¬ä½œä¸º list çš„å‚æ•°ï¼Œæˆ‘
+å°†è¦æŠŠ (list y x) è¿”å›žç»™æˆ‘çš„è°ƒç”¨è€…ã€‚
 
 </p>
 
 <p>
-ÁíÍâÁ½¸ö£¬cons ºÍ memv Ò²ºÜºÃÀí½âÁË¡£
+å¦å¤–ä¸¤ä¸ªï¼Œcons å’Œ memv ä¹Ÿå¾ˆå¥½ç†è§£äº†ã€‚
 
 </p>
 
 <ul>
-<li>CPS ÄÜ¹»´«µÝ¶à¸ö continuation£¬º¯Êý¿ÉÒÔ°´Çé¿öÑ¡Ôñ°Ñ½á¹û½»
-   ¸øÄÄÒ»¸ö. ¾Ù¸öÀý×Ó£º
+<li>CPS èƒ½å¤Ÿä¼ é€’å¤šä¸ª continuationï¼Œå‡½æ•°å¯ä»¥æŒ‰æƒ…å†µé€‰æ‹©æŠŠç»“æžœäº¤
+   ç»™å“ªä¸€ä¸ª. ä¸¾ä¸ªä¾‹å­ï¼š
 </li>
 </ul>
 
@@ -264,10 +264,10 @@ p, µÚ¶þ¸ö²ÎÊýÊÇÒ»¸ö continuation k. Ëü·µ»Ø
 </pre>
 
 <p>
-µ÷ÓÃ integer-divide µÄÊ±ºò£¬ÎÒÃÇ´«µÝÁ½¸ö continuation ¸øËü£¬
-µÚÒ»¸öÊÇÔÚ³É¹¦µÄÊ±ºòÊ¹ÓÃµÄ£¬ÊÇËµ£º¡°°Ñ·µ»ØÖµ×ö³ÉÒ»¸ö list ·µ
-»Ø¸øÎÒµÄÉÏ²ã¡£¡± µÚ¶þ¸öÊÇÔÚÊ§°ÜµÄÊ±ºòÊ¹ÓÃµÄ£¬ÊÇËµ£º¡°°Ñ·µ»Ø
-ÖµÔ­·â²»¶¯·µ»Ø¸øÎÒµÄÉÏ²ã¡£¡±
+è°ƒç”¨ integer-divide çš„æ—¶å€™ï¼Œæˆ‘ä»¬ä¼ é€’ä¸¤ä¸ª continuation ç»™å®ƒï¼Œ
+ç¬¬ä¸€ä¸ªæ˜¯åœ¨æˆåŠŸçš„æ—¶å€™ä½¿ç”¨çš„ï¼Œæ˜¯è¯´ï¼šâ€œæŠŠè¿”å›žå€¼åšæˆä¸€ä¸ª list è¿”
+å›žç»™æˆ‘çš„ä¸Šå±‚ã€‚â€ ç¬¬äºŒä¸ªæ˜¯åœ¨å¤±è´¥çš„æ—¶å€™ä½¿ç”¨çš„ï¼Œæ˜¯è¯´ï¼šâ€œæŠŠè¿”å›ž
+å€¼åŽŸå°ä¸åŠ¨è¿”å›žç»™æˆ‘çš„ä¸Šå±‚ã€‚â€
 
 </p>
 
@@ -277,11 +277,11 @@ p, µÚ¶þ¸ö²ÎÊýÊÇÒ»¸ö continuation k. Ëü·µ»Ø
       <table width="100%" border="0" summary="Footer navigation">
 	<tr>
 	  <td width="33%" align="left">
-	    <span class="footdate">×îºó¸üÐÂ£º2003-06-09</span>
+	    <span class="footdate">æœ€åŽæ›´æ–°ï¼š2003-06-09</span>
 	  </td>
 	  <td width="60%" align="center">
 	    <span class="foothome">
-	      <a href="../index.html">ÍõÛóµÄÖ÷Ò³</a> / <a href="WelcomePage.html">WiKiÊ×Ò³</a>/<a href="WikiIndex.html">Ë÷Òý</a>/<a href="wiki_frame.html" target=_parent>¿ò¼ÜÒ³</a>/<a href="ContinuationPassingStyle.html" target=_parent>È¡Ïû¿ò¼Ü</a>
+	      <a href="../index.html">çŽ‹åž çš„ä¸»é¡µ</a> / <a href="WelcomePage.html">WiKié¦–é¡µ</a>/<a href="WikiIndex.html">ç´¢å¼•</a>/<a href="wiki_frame.html" target=_parent>æ¡†æž¶é¡µ</a>/<a href="ContinuationPassingStyle.html" target=_parent>å–æ¶ˆæ¡†æž¶</a>
 	    </span>
 	  </td>
 	  <td width="33%" align="right">

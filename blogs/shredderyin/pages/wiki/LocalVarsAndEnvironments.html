@@ -4,7 +4,7 @@
     <title>Local Vars and Environments</title>
     <meta name="generator" content="emacs-wiki.el">
     <meta http-equiv="Content-Type"
-	  content="text/html; charset=gb2312">
+	  content="text/html; charset=utf-8">
     <link rev="made" href="mailto:webmaster@wangyin.com">
     <link rel="home" href="WelcomePage.html">
     <link rel="index" href="WikiIndex.html">
@@ -19,16 +19,16 @@
 
 
 
-<h2>¾Ö²¿±äÁ¿</h2>
+<h2>å±€éƒ¨å˜é‡</h2>
 
 <p>
-Ê¹ÓÃ let, let*, letrec ¶¼¿ÉÒÔÔÚµ±Ç°»·¾³ÖÐ¹¹Ôì¾Ö²¿±äÁ¿¡£ÕâÖÖ
-±äÁ¿µÄÉúÃü»áÑÓÐøµ½Õâ¸ö»·¾³ÏûÊ§ÎªÖ¹¡£
+ä½¿ç”¨ let, let*, letrec éƒ½å¯ä»¥åœ¨å½“å‰çŽ¯å¢ƒä¸­æž„é€ å±€éƒ¨å˜é‡ã€‚è¿™ç§
+å˜é‡çš„ç”Ÿå‘½ä¼šå»¶ç»­åˆ°è¿™ä¸ªçŽ¯å¢ƒæ¶ˆå¤±ä¸ºæ­¢ã€‚
 
 </p>
 
 <p>
-Õâ¾ÍÏñ C ÓïÑÔÀïµÄ
+è¿™å°±åƒ C è¯­è¨€é‡Œçš„
 
 </p>
 
@@ -40,21 +40,21 @@
 </pre>
 
 <p>
-µ«ÊÇÓÐÒ»µã²»Í¬¾ÍÊÇ£¬Scheme µÄ let Éú³ÉµÄ»·¾³ÊÇ·ÖÅäÔÚ¶ÑÀï¶ø²»
-ÊÇÏñ C ÄÇÑù·ÖÅäÔÚÕ»ÀïµÄ¡£ËùÒÔ let µÄ¾Ö²¿±äÁ¿ÓÐ¿ÉÄÜÔÚ let µÄ
-block Ö´ÐÐÍê±ÏÒÔºó»¹¼ÌÐø´æÔÚ£¬Ö»ÒªÓÐÄ³Ð©¶«Î÷ÒýÓÃµ½ËüÃÇ¡£
+ä½†æ˜¯æœ‰ä¸€ç‚¹ä¸åŒå°±æ˜¯ï¼ŒScheme çš„ let ç”Ÿæˆçš„çŽ¯å¢ƒæ˜¯åˆ†é…åœ¨å †é‡Œè€Œä¸
+æ˜¯åƒ C é‚£æ ·åˆ†é…åœ¨æ ˆé‡Œçš„ã€‚æ‰€ä»¥ let çš„å±€éƒ¨å˜é‡æœ‰å¯èƒ½åœ¨ let çš„
+block æ‰§è¡Œå®Œæ¯•ä»¥åŽè¿˜ç»§ç»­å­˜åœ¨ï¼Œåªè¦æœ‰æŸäº›ä¸œè¥¿å¼•ç”¨åˆ°å®ƒä»¬ã€‚
 
 </p>
 
 <p>
-ÕâÑùÎÒÃÇ¿ÉÒÔÖÆÔìÒ»Ð©·µ»Øº¯ÊýµÄº¯Êý£¬ÕâÐ©º¯ÊýÓµÓÐ×Ô¼ºµÄ×´Ì¬¼Ç
-Òä£¬¶øÕâÐ©¼ÇÒä²¢²»ÊÇÈ«¾Ö±äÁ¿£¬ËüÃÇÓÐµãÏñ C º¯ÊýµÄ static ±ä
-Á¿¡£
+è¿™æ ·æˆ‘ä»¬å¯ä»¥åˆ¶é€ ä¸€äº›è¿”å›žå‡½æ•°çš„å‡½æ•°ï¼Œè¿™äº›å‡½æ•°æ‹¥æœ‰è‡ªå·±çš„çŠ¶æ€è®°
+å¿†ï¼Œè€Œè¿™äº›è®°å¿†å¹¶ä¸æ˜¯å…¨å±€å˜é‡ï¼Œå®ƒä»¬æœ‰ç‚¹åƒ C å‡½æ•°çš„ static å˜
+é‡ã€‚
 
 </p>
 
 <p>
-ÏÂÃæÊÇ¼¸¸öÀý×Ó£º
+ä¸‹é¢æ˜¯å‡ ä¸ªä¾‹å­ï¼š
 
 </p>
 
@@ -74,40 +74,40 @@ block Ö´ÐÐÍê±ÏÒÔºó»¹¼ÌÐø´æÔÚ£¬Ö»ÒªÓÐÄ³Ð©¶«Î÷ÒýÓÃµ½ËüÃÇ¡£
 </pre>
 
 <p>
-º¯Êý function-gen ½ÓÊÜÒ»¸ö²ÎÊý n£¬²¢ÇÒ°ÑËü±£´æµ½×Ô¼ºµÄ¾Ö²¿±ä
-Á¿ local-var. Ëü·µ»ØÒ»¸öÐÂµÄº¯Êý£¬Õâ¸öº¯Êý±»µ÷ÓÃ¾Í»á´òÓ¡
-local-var µÄÖµ£¬²¢ÇÒ°Ñ local-var µÄÖµ¼Ó 1.
+å‡½æ•° function-gen æŽ¥å—ä¸€ä¸ªå‚æ•° nï¼Œå¹¶ä¸”æŠŠå®ƒä¿å­˜åˆ°è‡ªå·±çš„å±€éƒ¨å˜
+é‡ local-var. å®ƒè¿”å›žä¸€ä¸ªæ–°çš„å‡½æ•°ï¼Œè¿™ä¸ªå‡½æ•°è¢«è°ƒç”¨å°±ä¼šæ‰“å°
+local-var çš„å€¼ï¼Œå¹¶ä¸”æŠŠ local-var çš„å€¼åŠ  1.
 
 </p>
 
 <p>
-ÎÒÃÇÓÃ 0 ºÍ 100 ×÷Îª²ÎÊý´«µÝ¸ø function-gen£¬Éú³ÉÁËÁ½¸öº¯Êý 
-f1 ºÍ f2. ÕâÊÇÁ½¸öÆðµã²»Í¬µÄ¼ÆÊýÆ÷¡£f1 ´Ó 0 ¿ªÊ¼£¬¶ø f2 ´Ó
-100 ¿ªÊ¼¡£Ã¿´Î±»µ÷ÓÃÁ½¸öº¯Êý¶¼´òÓ¡×Ô¼ºµÄÊý×Ö£¬²¢ÇÒ¼Ó 1.
+æˆ‘ä»¬ç”¨ 0 å’Œ 100 ä½œä¸ºå‚æ•°ä¼ é€’ç»™ function-genï¼Œç”Ÿæˆäº†ä¸¤ä¸ªå‡½æ•° 
+f1 å’Œ f2. è¿™æ˜¯ä¸¤ä¸ªèµ·ç‚¹ä¸åŒçš„è®¡æ•°å™¨ã€‚f1 ä»Ž 0 å¼€å§‹ï¼Œè€Œ f2 ä»Ž
+100 å¼€å§‹ã€‚æ¯æ¬¡è¢«è°ƒç”¨ä¸¤ä¸ªå‡½æ•°éƒ½æ‰“å°è‡ªå·±çš„æ•°å­—ï¼Œå¹¶ä¸”åŠ  1.
 
 </p>
 
 <p>
-¿É¼û£¬f1 ºÍ f2 Ëù¼ûµ½µÄ local-var ÊÇÁ½¸ö²»Í¬µÄ¿Õ¼ä¡£Ò²¾ÍÊÇËµ£¬
-Ã¿´Îµ÷ÓÃ function-gen£¬¶¼»áÓÉ let Éú³ÉÒ»¸öÐÂµÄ±äÁ¿
-local-var, Õâ¸ö±äÁ¿½«Ò»Ö±°éËæÐÂÉú³ÉµÄº¯Êý¡£
+å¯è§ï¼Œf1 å’Œ f2 æ‰€è§åˆ°çš„ local-var æ˜¯ä¸¤ä¸ªä¸åŒçš„ç©ºé—´ã€‚ä¹Ÿå°±æ˜¯è¯´ï¼Œ
+æ¯æ¬¡è°ƒç”¨ function-genï¼Œéƒ½ä¼šç”± let ç”Ÿæˆä¸€ä¸ªæ–°çš„å˜é‡
+local-var, è¿™ä¸ªå˜é‡å°†ä¸€ç›´ä¼´éšæ–°ç”Ÿæˆçš„å‡½æ•°ã€‚
 
 </p>
 
-<h2>¾Ö²¿º¯Êý</h2>
+<h2>å±€éƒ¨å‡½æ•°</h2>
 
 <p>
-Ò»¸öº¯Êý¿ÉÒÔÓÐ×Ô¼ºÅäÌ×µÄ¾Ö²¿º¯Êý£¬ÕâÐ©º¯Êý¿ÉÒÔ´ÓÍâ²ãµÄ let,
-let* »òÕß letrec ¶¨Òå¡£¾Ö²¿º¯ÊýµÄÊ¹ÓÃ¿ÉÒÔ²Î¿¼ÕâÀï£º 
+ä¸€ä¸ªå‡½æ•°å¯ä»¥æœ‰è‡ªå·±é…å¥—çš„å±€éƒ¨å‡½æ•°ï¼Œè¿™äº›å‡½æ•°å¯ä»¥ä»Žå¤–å±‚çš„ let,
+let* æˆ–è€… letrec å®šä¹‰ã€‚å±€éƒ¨å‡½æ•°çš„ä½¿ç”¨å¯ä»¥å‚è€ƒè¿™é‡Œï¼š 
 <a href="TreeWalkerGenerator.html">TreeWalkerGenerator</a>.
 
 </p>
 
-<h2>Í¼Ê¾</h2>
+<h2>å›¾ç¤º</h2>
 
 <p>
-ÎÒÕÒµ½Ò»¸öºÜºÃµÄÍ¼Ê¾£¬¿ÉÒÔÊ¾ÒâÒÔÏÂ»·¾³µÄÉú³É¡£
-ÎÒÃÇÓÃÒ»¸ö¼òµ¥Ò»Ð©µÄÀý×Ó£º
+æˆ‘æ‰¾åˆ°ä¸€ä¸ªå¾ˆå¥½çš„å›¾ç¤ºï¼Œå¯ä»¥ç¤ºæ„ä»¥ä¸‹çŽ¯å¢ƒçš„ç”Ÿæˆã€‚
+æˆ‘ä»¬ç”¨ä¸€ä¸ªç®€å•ä¸€äº›çš„ä¾‹å­ï¼š
 
 </p>
 
@@ -115,7 +115,7 @@ let* »òÕß letrec ¶¨Òå¡£¾Ö²¿º¯ÊýµÄÊ¹ÓÃ¿ÉÒÔ²Î¿¼ÕâÀï£º
           (+ x y))
 </pre>
 
-<h3>Ö´ÐÐÇ°µÄ»·¾³</h3>
+<h3>æ‰§è¡Œå‰çš„çŽ¯å¢ƒ</h3>
 
 <pre class="example">     +-----+        +------+-----+
 envt |  * -+-------&gt;|  car |  *--+----&gt; #&lt;proc ...&gt;#
@@ -132,14 +132,14 @@ envt |  * -+-------&gt;|  car |  *--+----&gt; #&lt;proc ...&gt;#
                     +------+-----+
 </pre>
 
-<h3>Ö´ÐÐÖÐ</h3>
+<h3>æ‰§è¡Œä¸­</h3>
 
 <pre class="example">(let ((x 10) (y 20))
           (+ x y))
 </pre>
 
 <p>
-½øÈë let Ö®ºó£¬»·¾³±ä»¯£º
+è¿›å…¥ let ä¹‹åŽï¼ŒçŽ¯å¢ƒå˜åŒ–ï¼š
 
 </p>
 
@@ -169,26 +169,26 @@ envt |  +--+-------&gt;|[scope]|  *  |
                     +-------+-----+    
 </pre>
 
-<h3>Ö´ÐÐºó</h3>
+<h3>æ‰§è¡ŒåŽ</h3>
 
 <p>
-ÓÖ»Øµ½µÚÒ»·ùÍ¼¡£
+åˆå›žåˆ°ç¬¬ä¸€å¹…å›¾ã€‚
 
 </p>
 
-<h3>Èç¹û¾ÍÕâÃ´½áÊøÁË¡­¡­</h3>
+<h3>å¦‚æžœå°±è¿™ä¹ˆç»“æŸäº†â€¦â€¦</h3>
 
 <p>
-Èç¹ûÖ´ÐÐ let ºóÃ»ÓÐÈÎºÎÖ¸ÕëÔÙÖ¸ÏòÕâ¸ö»·¾³£¬ÄÇÃ´¹ýÒ»»á¶ù x, y 
-µÄ°ó¶¨Õâ¸ö frame ¾Í»á±»À¬»ø»ØÊÕµô¡£
+å¦‚æžœæ‰§è¡Œ let åŽæ²¡æœ‰ä»»ä½•æŒ‡é’ˆå†æŒ‡å‘è¿™ä¸ªçŽ¯å¢ƒï¼Œé‚£ä¹ˆè¿‡ä¸€ä¼šå„¿ x, y 
+çš„ç»‘å®šè¿™ä¸ª frame å°±ä¼šè¢«åžƒåœ¾å›žæ”¶æŽ‰ã€‚
 
 </p>
 
-<h3>Èç¹ûÖÐ¼äÉú³ÉÁËÒ»¸öº¯Êý¡­¡­</h3>
+<h3>å¦‚æžœä¸­é—´ç”Ÿæˆäº†ä¸€ä¸ªå‡½æ•°â€¦â€¦</h3>
 
 <p>
-Èç¹ûÎÒÃÇµÄ´úÂë²»ÊÇÄÇÃ´¼òµ¥£¬ÎÒÃÇÔÚ let ÀïÉú³ÉÁËÒ»¸öº¯Êý¡£±È
-ÈçÕâÑù£º
+å¦‚æžœæˆ‘ä»¬çš„ä»£ç ä¸æ˜¯é‚£ä¹ˆç®€å•ï¼Œæˆ‘ä»¬åœ¨ let é‡Œç”Ÿæˆäº†ä¸€ä¸ªå‡½æ•°ã€‚æ¯”
+å¦‚è¿™æ ·ï¼š
 
 </p>
 
@@ -201,21 +201,21 @@ envt |  +--+-------&gt;|[scope]|  *  |
 </pre>
 
 <p>
-func-gen º¯ÊýÖÐ±»µ÷ÓÃÊ±£¬ËüÔÚ let ¿Õ¼äÖÐÉú³ÉÁËÒ»¸öº¯Êý£¬²¢ÇÒ
-×÷Îª func-gen µÄ·µ»ØÖµËÍµ½Íâ²ã£¬Ëü±»°ó¶¨µ½×îÍâ²ãµÄ»·¾³ÖÐµÄ 
-bar ±äÁ¿¡£ÄÇÃ´Õâ¸öº¯ÊýÒýÓÃÁËÕâ¸ö»·¾³£¬Õâ¸ö let frame ²»»á±»
-»ØÊÕ¡£
+func-gen å‡½æ•°ä¸­è¢«è°ƒç”¨æ—¶ï¼Œå®ƒåœ¨ let ç©ºé—´ä¸­ç”Ÿæˆäº†ä¸€ä¸ªå‡½æ•°ï¼Œå¹¶ä¸”
+ä½œä¸º func-gen çš„è¿”å›žå€¼é€åˆ°å¤–å±‚ï¼Œå®ƒè¢«ç»‘å®šåˆ°æœ€å¤–å±‚çš„çŽ¯å¢ƒä¸­çš„ 
+bar å˜é‡ã€‚é‚£ä¹ˆè¿™ä¸ªå‡½æ•°å¼•ç”¨äº†è¿™ä¸ªçŽ¯å¢ƒï¼Œè¿™ä¸ª let frame ä¸ä¼šè¢«
+å›žæ”¶ã€‚
 
 </p>
 
 <p>
-bar Èç¹ûÔÚÍâ²ã²ã»·¾³±»µ÷ÓÃ£¬ÄÇÃ´ËüµÄÃû×Ö°ó¶¨»·¾³ÈÔÈ»ÊÇ let 
-ÀïÃæµÄ»·¾³¡£Ò²¾ÍÊÇËµ£¬ËüÈÔÈ»¿ÉÒÔÊ¹ÓÃ¾Ö²¿±äÁ¿ x ºÍ y!
+bar å¦‚æžœåœ¨å¤–å±‚å±‚çŽ¯å¢ƒè¢«è°ƒç”¨ï¼Œé‚£ä¹ˆå®ƒçš„åå­—ç»‘å®šçŽ¯å¢ƒä»ç„¶æ˜¯ let 
+é‡Œé¢çš„çŽ¯å¢ƒã€‚ä¹Ÿå°±æ˜¯è¯´ï¼Œå®ƒä»ç„¶å¯ä»¥ä½¿ç”¨å±€éƒ¨å˜é‡ x å’Œ y!
 
 </p>
 
 <p>
-Èç¹ûÎÒÃÇµ÷ÓÃ
+å¦‚æžœæˆ‘ä»¬è°ƒç”¨
 
 </p>
 
@@ -223,28 +223,28 @@ bar Èç¹ûÔÚÍâ²ã²ã»·¾³±»µ÷ÓÃ£¬ÄÇÃ´ËüµÄÃû×Ö°ó¶¨»·¾³ÈÔÈ»ÊÇ let
 </pre>
 
 <p>
-¾ÍµÃµ½½á¹û 33.
+å°±å¾—åˆ°ç»“æžœ 33.
 
 </p>
 
-<h2>Í¬Ê±¸³Öµ</h2>
+<h2>åŒæ—¶èµ‹å€¼</h2>
 
 <p>
-×¢Òâ let ÀïµÄ binding ÊÇÕâÑù²úÉúµÄ¡£Ê×ÏÈ£¬½øÈë let Ê±£¬ÎÒÃÇ
-Ö»¿´µ½Íâ²ãµÄ°ó¶¨£¬È»ºóÃ¿¸ö let °ó¶¨µÄÓÒ±ß±» eval£¬È»ºóÕâÐ©Öµ
-±»·Åµ½ÁÙÊ±µÄÒ»Ð©¿Õ¼ä£¬ËùÓÐµÄÓÒ±ß¶¼ÇóÖµÍê±Ïºó£¬ÕâÐ©Öµ±»Ò»Ò»¸³
-¸ø×ó±ßµÄÃû×Ö¡£
-
-</p>
-
-<p>
-ÕâÏàµ±ÓÚÍ¬Ê±¸³Öµ¡£
+æ³¨æ„ let é‡Œçš„ binding æ˜¯è¿™æ ·äº§ç”Ÿçš„ã€‚é¦–å…ˆï¼Œè¿›å…¥ let æ—¶ï¼Œæˆ‘ä»¬
+åªçœ‹åˆ°å¤–å±‚çš„ç»‘å®šï¼Œç„¶åŽæ¯ä¸ª let ç»‘å®šçš„å³è¾¹è¢« evalï¼Œç„¶åŽè¿™äº›å€¼
+è¢«æ”¾åˆ°ä¸´æ—¶çš„ä¸€äº›ç©ºé—´ï¼Œæ‰€æœ‰çš„å³è¾¹éƒ½æ±‚å€¼å®Œæ¯•åŽï¼Œè¿™äº›å€¼è¢«ä¸€ä¸€èµ‹
+ç»™å·¦è¾¹çš„åå­—ã€‚
 
 </p>
 
 <p>
-ËùÒÔÔÚÏÂÃæÕâÖÖÇé¿öÀï£¬ÄÚ²ãµÄ let °ó¶¨ b Ê±£¬Êµ¼ÊÉÏÊ¹ÓÃµÄÊÇÍâ
-²ãµÄ x ÔÚ¼ÆËã¡£
+è¿™ç›¸å½“äºŽåŒæ—¶èµ‹å€¼ã€‚
+
+</p>
+
+<p>
+æ‰€ä»¥åœ¨ä¸‹é¢è¿™ç§æƒ…å†µé‡Œï¼Œå†…å±‚çš„ let ç»‘å®š b æ—¶ï¼Œå®žé™…ä¸Šä½¿ç”¨çš„æ˜¯å¤–
+å±‚çš„ x åœ¨è®¡ç®—ã€‚
 
 </p>
 
@@ -268,11 +268,11 @@ bar Èç¹ûÔÚÍâ²ã²ã»·¾³±»µ÷ÓÃ£¬ÄÇÃ´ËüµÄÃû×Ö°ó¶¨»·¾³ÈÔÈ»ÊÇ let
       <table width="100%" border="0" summary="Footer navigation">
 	<tr>
 	  <td width="33%" align="left">
-	    <span class="footdate">×îºó¸üÐÂ£º2003-06-03</span>
+	    <span class="footdate">æœ€åŽæ›´æ–°ï¼š2003-06-03</span>
 	  </td>
 	  <td width="60%" align="center">
 	    <span class="foothome">
-	      <a href="../index.html">ÍõÛóµÄÖ÷Ò³</a> / <a href="WelcomePage.html">WiKiÊ×Ò³</a>/<a href="WikiIndex.html">Ë÷Òý</a>/<a href="wiki_frame.html" target=_parent>¿ò¼ÜÒ³</a>/<a href="LocalVarsAndEnvironments.html" target=_parent>È¡Ïû¿ò¼Ü</a>
+	      <a href="../index.html">çŽ‹åž çš„ä¸»é¡µ</a> / <a href="WelcomePage.html">WiKié¦–é¡µ</a>/<a href="WikiIndex.html">ç´¢å¼•</a>/<a href="wiki_frame.html" target=_parent>æ¡†æž¶é¡µ</a>/<a href="LocalVarsAndEnvironments.html" target=_parent>å–æ¶ˆæ¡†æž¶</a>
 	    </span>
 	  </td>
 	  <td width="33%" align="right">

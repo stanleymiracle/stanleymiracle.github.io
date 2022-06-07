@@ -3455,7 +3455,7 @@ regexps in `emacs-wiki-editable-pages'."
     (princ "Last-Modified: ")
     (princ (format-time-string "%a, %e %b %Y %T %Z" modified)))
   (princ httpd-line-terminator)
-  (princ "Content-Type: text/html; charset=iso-8859-1")
+  (princ "Content-Type: text/html; charset=utf-8")
   (princ httpd-line-terminator)
   (princ "Content-Length: ")
   (princ (1- (point-max)))
