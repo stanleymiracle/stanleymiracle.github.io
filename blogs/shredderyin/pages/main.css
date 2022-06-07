@@ -101,24 +101,24 @@ pre {
   margin-left: 1em;
   margin-right: 2em;
   white-space: pre;
-  background-color: #2b2b38;;
+  background-color: #2b2b38;
   color: #00c400;
-  font-family: Luxi Mono, Luxi Sans, Monospace, sans-serif, ����;
+  font-family: Luxi Mono, Luxi Sans, Monospace, sans-serif;
   font-size: 90%;
   overflow: auto;
   max-height: 3in;
 }
 
 pre.syntax {
-  background: lightblue;
+  background: #5e5e69;
 }
 
 pre.error {
-  background-color: pink;
+  background-color: #757583;
 }
 
 pre.url {
-  background: bisque;
+  background: #505068;
 }
 
 pre.verse {
@@ -143,7 +143,7 @@ h1 {
   padding-top: 0.2em;
   padding-left: 0.3em;
   padding-bottom: 2pt;
-  background: ;
+  background: inherit;
   color: #415d7a;
 }
 
@@ -195,10 +195,11 @@ LI {
 }
 
 LI.explained {
+  color: inherit;
 }
 
 p.adage {
-  background: lightyellow;
+  background: #515175;
   border: green;
   border-style: solid;
 }
@@ -229,4 +230,10 @@ div.tl {
   padding: 10pt;
   background: #2b2b38;
   overflow: auto;
+}
+
+.adage {
+  background: #515175;
+  border: green;
+  border-style: solid;
 }

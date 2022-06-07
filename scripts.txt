@@ -66,9 +66,8 @@ $headers = @{
   "OData-Version"="4.0";
 };
 
-$LinkPath = "http://www-formal.stanford.edu/jmc/basis1"
-$Path = "http://www-formal.stanford.edu/jmc/basis1"
-$Response = Invoke-WebRequest -URI $LinkPath -UseDefaultCredentials
+$LinkPath = "https://docs.huihoo.com/homepage/shredderyin/metapostexample.html"
+$Path = "https://docs.huihoo.com/homepage/shredderyin"
 $Response = Invoke-WebRequest -URI $LinkPath -UseBasicParsing
 echo $Response.Images.Count
 $Response.Images| Foreach-Object {
@@ -84,8 +83,8 @@ $Response.Images| Foreach-Object {
     Invoke-WebRequest -URI "$Path/$fileName" -UseBasicParsing -OutFile $fileName
 
 
-$LinkPath = "http://www-formal.stanford.edu/jmc/basis1"
-$Path = "http://www-formal.stanford.edu/jmc/basis1"
+$LinkPath = "https://docs.huihoo.com/homepage/shredderyin/metapostexample_files"
+$Path = "https://docs.huihoo.com/homepage/shredderyin/metapostexample_files"
 $Response = Invoke-WebRequest -URI $LinkPath -UseBasicParsing
 $Response.Links | Foreach-Object {
   $lnkPath = $_.Href
@@ -144,4 +143,5 @@ function sleep(milliseconds) {
 }
 
 
-
+regex:
+<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="([0-9a-zA-F]+)">\[email&#160;protected\]</a>

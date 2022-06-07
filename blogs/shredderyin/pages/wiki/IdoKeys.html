@@ -58,7 +58,7 @@ ido 缺省的按键设置不顺手，改为：
   (define-key ido-mode-map &quot;\C-m&quot; 'ido-exit-minibuffer)
   (define-key ido-mode-map &quot;?&quot; 'ido-completion-help) ;; list completions
   (define-key ido-mode-map [(control ? )] 'ido-restrict-to-matches)
-  (define-key ido-mode-map [(control <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0c334c">[email&#160;protected]</a>)] 'ido-restrict-to-matches)
+  (define-key ido-mode-map [(control ?@)] 'ido-restrict-to-matches)
 
   ;; cycle through matches
   (define-key ido-mode-map &quot;\C-r&quot; 'ido-prev-match)

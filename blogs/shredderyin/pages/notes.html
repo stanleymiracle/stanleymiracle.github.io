@@ -184,31 +184,31 @@ baz: dummy
 
 <LI>我们定义一个能匹配任何其它目标的 target。当 GNUmakefile 里没有定义的时候，让 make 到 Makefile 里去找。
 <pre>%: 
-	@$(MAKE) -f Makefile <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a581e5">[email&#160;protected]</a>
+	@$(MAKE) -f Makefile $@
 </pre>
 </OL>
 
-<p>但是这样定义是不对的。你可以发现，"@$(MAKE) -f Makefile <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cde98d">[email&#160;protected]</a>" 应该是一个不论目标 bar 是否存在都应该执行的操作。如果我们以前生成了一个文件 bar，但是由于它的 prerequisite dummy 后来被修改了，bar 应该被更新。
+<p>但是这样定义是不对的。你可以发现，"@$(MAKE) -f Makefile $@" 应该是一个不论目标 bar 是否存在都应该执行的操作。如果我们以前生成了一个文件 bar，但是由于它的 prerequisite dummy 后来被修改了，bar 应该被更新。
 
-<p>但是 make 看到 GNUmakefile 的这条规则，认为：“bar已经存在，而且是新的，因为没有 prerequiste 比它新。” 所以 make 决定不执行操作 "@$(MAKE) -f Makefile <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aa8eea">[email&#160;protected]</a>"。这是错误的，因为 bar: dummy 的依赖关系是在 Makefile 里定义的，我们必须让 make 无论如何也要检查 Makefile。所以，"@$(MAKE) -f Makefile <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e8cca8">[email&#160;protected]</a>" 是一个无论 bar 文件存在与否，“必须执行的操作”。
+<p>但是 make 看到 GNUmakefile 的这条规则，认为：“bar已经存在，而且是新的，因为没有 prerequiste 比它新。” 所以 make 决定不执行操作 "@$(MAKE) -f Makefile $@"。这是错误的，因为 bar: dummy 的依赖关系是在 Makefile 里定义的，我们必须让 make 无论如何也要检查 Makefile。所以，"@$(MAKE) -f Makefile $@" 是一个无论 bar 文件存在与否，“必须执行的操作”。
 
 <p>GNU make 的文档里的 GNUmakefile 是这样写的：
 <pre>%: force
 	@echo using Makefile
-	@$(MAKE) -f Makefile <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="604420">[email&#160;protected]</a>
+	@$(MAKE) -f Makefile $@
 
 force: ;
 </pre>
 
-<p>它的思想跟我们开头看到的是一样的：让 % 依赖于一个“不可能存在的文件”(force)。那么 make bar 的时候，make 发现 bar 依赖于 force，那么它去更新 force，而 force 是一个“不可能存在的文件”，它每次都会被“更新成功”，从而导致 bar 每次都需要被更新，引起 "@$(MAKE) -f Makefile <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c1e581">[email&#160;protected]</a>" 被执行。这里的 % 也会匹配 force，所以为了避免循环依赖关系，给 force 一个空的命令定义。
+<p>它的思想跟我们开头看到的是一样的：让 % 依赖于一个“不可能存在的文件”(force)。那么 make bar 的时候，make 发现 bar 依赖于 force，那么它去更新 force，而 force 是一个“不可能存在的文件”，它每次都会被“更新成功”，从而导致 bar 每次都需要被更新，引起 "@$(MAKE) -f Makefile $@" 被执行。这里的 % 也会匹配 force，所以为了避免循环依赖关系，给 force 一个空的命令定义。
 
-<p>但是其实这里有一个同样的问题：当目录里真的存在一个文件叫 "force"，而且 force 比 bar “旧”时，make 认为：“bar 的所有 prerequisite 都比它旧，所以 bar 不需要更新。” 那么它不执行 "@$(MAKE) -f Makefile <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aa8eea">[email&#160;protected]</a>"！这是错误的，我们前面已经得出了结论，这个命令必须执行，才能知道 bar 是否因为 dummy 得改变而需要更新！
+<p>但是其实这里有一个同样的问题：当目录里真的存在一个文件叫 "force"，而且 force 比 bar “旧”时，make 认为：“bar 的所有 prerequisite 都比它旧，所以 bar 不需要更新。” 那么它不执行 "@$(MAKE) -f Makefile $@"！这是错误的，我们前面已经得出了结论，这个命令必须执行，才能知道 bar 是否因为 dummy 得改变而需要更新！
 
 <p>解决的办法是一样的。让 force 成为一个“永远不存在的文件”：一个 .PHONY target. 所以完全正确的 GNUmakefile 应该这样写：
 
 <pre>%: force
 	@echo using Makefile
-	@$(MAKE) -f Makefile <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d0f490">[email&#160;protected]</a>
+	@$(MAKE) -f Makefile $@
 
 .PHONY: force
 </pre>

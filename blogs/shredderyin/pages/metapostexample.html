@@ -3869,20 +3869,20 @@ let OLD_boxit = boxit;
 let OLD_sizebox_ = sizebox_;
 let OLD_clearb_ = clearb_;
 
-vardef <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="96f4f9eeffe2d6">[email&#160;protected]</a>#(text tt) =
+vardef boxit@#(text tt) =
   beginbox_("boxpath_","sizebox_",@#,tt);
   generic_declare(pair) _n.sw, _n.s, _n.se, _n.e, _n.ne, _n.n, _n.nw, _n.w;
-  0 = xpart (@#<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6e0019432e">[email&#160;protected]</a>#sw) = ypart(@#<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85f6e0a8c5">[email&#160;protected]</a>#sw);
-  0 = xpart(@#<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cfa1aae28f">[email&#160;protected]</a>#se) = ypart(@#<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="49272c6409">[email&#160;protected]</a>#nw);
+  0 = xpart (@#nw-@#sw) = ypart(@#se-@#sw);
+  0 = xpart(@#ne-@#se) = ypart(@#ne-@#nw);
   @#s = .5[@#sw,@#se];
   @#n = .5[@#ne,@#nw];
   xpart @#w = xpart @#nw;
   xpart @#e = xpart @#ne;
   ypart @#w = ypart @#c = ypart @#e;
-  @#<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85ebe0a8c5">[email&#160;protected]</a>#c = (@#dx,@#dy) +
-             (xpart(.5*(urcorner <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="64140d073b24">[email&#160;protected]</a># - llcorner <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a5d5ccc6fae5">[email&#160;protected]</a>#)), ypart urcorner <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ee9e878db1ae">[email&#160;protected]</a>#);
-  @#<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="97f4bad7">[email&#160;protected]</a>#sw = (@#dx,@#dy) +
-             (xpart(.5*(urcorner <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="88f8e1ebd7c8">[email&#160;protected]</a># - llcorner <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="96e6fff5c9d6">[email&#160;protected]</a>#)), -ypart lrcorner <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e999808ab6a9">[email&#160;protected]</a>#);
+  @#ne-@#c = (@#dx,@#dy) +
+              (xpart(.5*(urcorner pic_@# - llcorner pic_@#)), ypart urcorner pic_@#);
+  @#c-@#sw = (@#dx,@#dy) +
+              (xpart(.5*(urcorner pic_@# - llcorner pic_@#)), -ypart lrcorner pic_@#);
   endbox_(clearb_,@#);
 enddef;
 
@@ -3906,20 +3906,20 @@ endfig;
   drawboxed(a,b,c,d,e);
 endfig;
 </pre><hr><img width="437" height="36" src="metapostexample_files/metapost_133.gif"><pre>beginfig(259)
-vardef <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="52303d2a3b2612">[email&#160;protected]</a>#(text tt) =
+vardef boxit@#(text tt) =
   beginbox_("boxpath_","sizebox_",@#,tt);
   generic_declare(pair) _n.sw, _n.s, _n.se, _n.e, _n.ne, _n.n, _n.nw, _n.w;
-  0 = xpart (@#<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c2acb5ef82">[email&#160;protected]</a>#sw) = ypart(@#<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6f1c0a422f">[email&#160;protected]</a>#sw);
-  0 = xpart(@#<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="29474c0469">[email&#160;protected]</a>#se) = ypart(@#<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5e303b731e">[email&#160;protected]</a>#nw);
+  0 = xpart (@#nw-@#sw) = ypart(@#se-@#sw);
+  0 = xpart(@#ne-@#se) = ypart(@#ne-@#nw);
   @#s = .5[@#sw,@#se];
   @#n = .5[@#ne,@#nw];
   xpart @#w = xpart @#nw;
   xpart @#e = xpart @#ne;
   ypart @#w = ypart @#c = ypart @#e;
-  @#<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="640a014924">[email&#160;protected]</a>#c = (@#dx,@#dyup) +
-             (xpart(.5*(urcorner <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="33435a506c73">[email&#160;protected]</a># - llcorner <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1e6e777d415e">[email&#160;protected]</a>#)), ypart urcorner <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="12627b714d52">[email&#160;protected]</a>#);
-  @#<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4c2f610c">[email&#160;protected]</a>#sw = (@#dx,@#dydown) +
-             (xpart(.5*(urcorner <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="adddc4cef2ed">[email&#160;protected]</a># - llcorner <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="63130a003c23">[email&#160;protected]</a>#)), -ypart lrcorner <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4939202a1609">[email&#160;protected]</a>#);
+  @#ne-@#c = (@#dx,@#dyup) +
+             (xpart(.5*(urcorner pic_@# - llcorner pic_@#)), ypart urcorner pic_@#);
+  @#c-@#sw = (@#dx,@#dydown) +
+             (xpart(.5*(urcorner pic_@# - llcorner pic_@#)), -ypart lrcorner pic_@#);
   endbox_(clearb_,@#);
 enddef;
 

@@ -8,7 +8,7 @@
 
 <body class="framed">
 <H1><img src="mong.gif">Mutt email 程序使用入门</H1>
-<p style="background: lightyellow; border: green; border-style: solid">"All mail clients suck. This one just sucks less." -me, circa 1995
+<p class="adage">"All mail clients suck. This one just sucks less." -me, circa 1995
 
 <p>你也许听说过这句话？这不是危言耸听，我还没有遇到一个令我满意的
 email 程序，直到我遇到 mutt。它不是图形界面的，但是它非常强大和方便。
@@ -28,7 +28,7 @@ email 而不愿把 Gnus 配置来处理 email.
 
 <LI><em>信件打分排序功能</em>
 <p>你可以给你的信件打分，比如我说：
-	<UL style="background: lightyellow;list-style-type: square; margin:0">
+	<UL class="adage">
 	<LI>主题包含 "Circulation Notices" 的 +3 分。否则小心被图书馆罚款 :P
 	<LI>从我爸爸发来的信件 +2 分。听爸爸话……
 	<LI>主题包含"通知"两个字 +2 分。随时听取党中央号召 :)
@@ -140,7 +140,7 @@ href="programs.html#bbsbot">helloooo</a> 机器人连接到过滤器，恐怕你
 <OL style="list-style-type: decimal">
 <LI>alternates
 <p>这个变量应该设置为一个正则表达式，它是你有可能收到信件的地址。比如我的很简单，只有一个地址：
-<pre>set alternates="<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7d0a1c131a50044d4c3d101c14110e53090e14131a15081c53181908531e13">[email&#160;protected]</a>"
+<pre>set alternates="wang-y01@mails.tsinghua.edu.cn"
 </pre>
 <p>这个变量有助于 Mutt 显示邮件的地址特征。一般 Mutt 会在index中显示几种不同的邮件地址特征，它们是由 $to_chars 变量指定的。
 
@@ -210,8 +210,8 @@ href="programs.html#bbsbot">helloooo</a> 机器人连接到过滤器，恐怕你
 </pre>
 
 <LI>my_hdr
-<p>设置你自己的邮件头。比如我想让信件看上去是从 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6e190f000943175e5f2e030f07021d401a1d070009061b0f400b0a1b400d00">[email&#160;protected]</a> 发出的，而不是从 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3f48467f485e5158465651115c5052">[email&#160;protected]</a> 发出的。因为 wangyin.com 是我自己设置的主机名，不是注册的合法域名。我想让别人看到我的信是从我的清华信箱发出的，让他们直接回信到我的清华信箱，就这么干：
-<pre>my_hdr From: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1f687e717832662f2e5f727e76736c316b6c767178776a7e317a7b6a317c71">[email&#160;protected]</a>
+<p>设置你自己的邮件头。比如我想让信件看上去是从 wang-y01@mails.tsinghua.edu.cn 发出的，而不是从 wy@wangyin.com 发出的。因为 wangyin.com 是我自己设置的主机名，不是注册的合法域名。我想让别人看到我的信是从我的清华信箱发出的，让他们直接回信到我的清华信箱，就这么干：
+<pre>my_hdr From: wang-y01@mails.tsinghua.edu.cn
 </pre>
 
 <LI>打分
@@ -294,20 +294,20 @@ score "~s believe" -10
 <img src="mutt-indexpager.png">
 <LI>subscribe <a name=subscribe></a>
 <p>告诉 Mutt 你已经订阅了那些邮件列表(mailing-list). 这有助于 Mutt 判断那些信件是邮件列表转过来的，避免你错误的回复到别人的私人信箱。也避免别人回复到你的私人信箱。
-<pre>subscribe <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="87e1f1f0eac7e1f1f0eaa9e8f5e0">[email&#160;protected]</a>
+<pre>subscribe fvwm@fvwm.org
 </pre>
-<p>之后，收到的 To: 是 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d2b4a4a5bf92b4a4a5bffcbda0b5">[email&#160;protected]</a> 的信件看起来是这样：
+<p>之后，收到的 To: 是 fvwm@fvwm.org 的信件看起来是这样：
 <p style="text-indent:0"><img src="mutt-list.png">
-<p>地址前面那个 "L" 表示这是一个邮件列表转过来的。你看到以后就不要按 "r" 回信，这样会回到别人的私人信箱去。按 "L"，就可以回复到邮件列表地址，这里就是 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85e3f3f2e8c5e3f3f2e8abeaf7e2">[email&#160;protected]</a>。
+<p>地址前面那个 "L" 表示这是一个邮件列表转过来的。你看到以后就不要按 "r" 回信，这样会回到别人的私人信箱去。按 "L"，就可以回复到邮件列表地址，这里就是 fvwm@fvwm.org。
 </OL>
 
 <h3>Mutt中文FAQ<a name=chinese></a></h3>
 <p>以下是一些常见问题和解决方法。很多是我遇到的一些不能直接连接国外网络，没有自己的域名和邮件服务器的人遇到的问题。
 
 <OL style="list-style-type: decimal">
-<LI>怎样才能让我发出的信件使用我的POP邮箱的地址，而不是 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cdbfa2a2b98da0b4a5a2beb9e3aea2a0">[email&#160;protected]</a> 这样的地址？
+<LI>怎样才能让我发出的信件使用我的POP邮箱的地址，而不是 root@myhost.com 这样的地址？
 <p>用 my_hdr 把你的 From: 设置为你想要的地址就行了。比如我是这样设置的：
-<pre>my_hdr From: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e493858a83c99dd4d5a489858d8897ca90978d8a838c9185ca818091ca878a">[email&#160;protected]</a>
+<pre>my_hdr From: wang-y01@mails.tsinghua.edu.cn
 </pre>
 <p>注意 From: 的冒号之后有空格！
 
@@ -435,10 +435,10 @@ folder-hook sent.* "ignore *; unignore to subject date"
 
 <LI>Mutt 怎么使用地址簿呢？
 <p>你可以用 alias 来实现一个地址簿。alias 命令的形式是这样的，举个例子：
-<pre>alias wy Wang Yin &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7304121d145e0a4342331e121a1f005d07001a1d141b06125d1617065d101d">[email&#160;protected]</a>&gt;
+<pre>alias wy Wang Yin &lt;wang-y01@mails.tsinghua.edu.cn&gt;
 </pre>
 
-<p>alias 是命令，wy 是别名，Wang Yin &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a8dfc9c6cf85d19899e8c5c9c1c4db86dcdbc1c6cfc0ddc986cdccdd86cbc6">[email&#160;protected]</a>&gt; 是一个标准的 email 地址。这样，如果你在 index 里按 "m"，在 To: 的提示下输入 "wy"，就可以发信给 Wang Yin &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="84f3e5eae3a9fdb4b5c4e9e5ede8f7aaf0f7edeae3ecf1e5aae1e0f1aae7ea">[email&#160;protected]</a>&gt; 。
+<p>alias 是命令，wy 是别名，Wang Yin &lt;wang-y01@mails.tsinghua.edu.cn&gt; 是一个标准的 email 地址。这样，如果你在 index 里按 "m"，在 To: 的提示下输入 "wy"，就可以发信给 Wang Yin &lt;wang-y01@mails.tsinghua.edu.cn&gt; 。
 <p>在 To: 的提示下按 Tab 就可以显示联系人列表，然后你可以移动光标选择联系人。
 
 <p>如果你有很多 alias 要写，最好把它们写到另外一个文件，比如叫 .mutt.alias. 然后在 .muttrc 里加上:
@@ -604,7 +604,7 @@ relayhost = mails.tsinghua.edu.cn
 </pre>
 
 <p>比如我的口令文件是这样的：
-<pre>mails.tsinghua.edu.cn          wang-y01:<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d2b39694e0bf92e1b6">[email&#160;protected]</a>$q=+
+<pre>mails.tsinghua.edu.cn          wang-y01:aDF2m@3d$q=+
 </pre>
 <p>当然密码不是那个 :P
 

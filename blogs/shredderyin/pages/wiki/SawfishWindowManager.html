@@ -1057,7 +1057,7 @@ xterm, 而且可以跨过 workspace 轮转。
   ;; or switch to it
   ;; and toggle my notes buffer (bound to F1) if already focused
   (bind-keys global-keymap
-             &quot;W-e&quot; `(jump-or-exec &quot;^<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e58088848696a5">[email&#160;protected]</a>&quot;
+             &quot;W-e&quot; `(jump-or-exec &quot;^emacs@&quot;
                      ,(lambda ()
                         (display-message &quot;emacs loading...&quot;)
                         (wy-run &quot;emacs &amp;&quot;))

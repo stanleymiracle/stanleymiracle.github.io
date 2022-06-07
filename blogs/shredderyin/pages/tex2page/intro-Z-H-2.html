@@ -145,15 +145,15 @@ Scheme.  Scheme 语言比 T<small>E</small>X的宏语言还要方便强大的多
 <pre class=verbatim>\def\gobble#1{}
 \def\ic#1{\expandafter\expandafter\expandafter%
 \index\expandafter\expandafter\expandafter{%
-\expandafter\gobble\string#<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0c3d4c">[email&#160;protected]</a>\verb{#1}}}
+\expandafter\gobble\string#1@\verb{#1}}}
 </pre><p></p>
 <p>
 比如 <code class=verbatim>\ic{\section}</code> 会展开成
-<code class=verbatim>\index{<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="afdccaccdbc6c0c1ef">[email&#160;protected]</a>\p{\section}}</code>。 这样你会在索引里 <q>S</q>
+<code class=verbatim>\index{section@\p{\section}}</code>。 这样你会在索引里 <q>S</q>
 开头的字母那组看到 <code class=verbatim>\section</code>，而不 是在反斜杠开头那组。</p>
 <p>
 当然你可以直接打
-<code class=verbatim>\index{<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fa899f998e939594ba">[email&#160;protected]</a>\p{\section}}</code>，但是我定义了
+<code class=verbatim>\index{section@\p{\section}}</code>，但是我定义了
 这个宏就可以少按很多键盘。</p>
 <p>
 你可能从来没用过 <code class=verbatim>\expandafter</code>, <code class=verbatim>\csname</code>,

@@ -137,7 +137,7 @@ function color_prompt
     PROMPT_COMMAND=prompt_command
     local current_tty=`tty | sed -e &quot;s/\/dev\/\(.*\)/\1/&quot;`
 
-    PS1=&quot;$dark_gray&gt; \033[\$(echo -n \$TTY_COLOR)m\]$current_tty \033[\$(echo -n \$USER_COLOR)m\]\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1560317174677e4a7267746c55">[email&#160;protected]</a>$purple\H$dark_gray:$light_blue\w\n$dark_gray&gt; $cyan\t \033[\$(echo -n \$HIST_COLOR)m\]\$ERR\033[\$(echo -n \$TTY_COLOR)m\]&quot;'\$'&quot;$none &quot;
+    PS1=&quot;$dark_gray> \033[\$(echo -n \$TTY_COLOR)m\]$current_tty \033[\$(echo -n \$USER_COLOR)m\]\u$dark_gray@$purple\H$dark_gray:$light_blue\w\n$dark_gray> $cyan\t \033[\$(echo -n \$HIST_COLOR)m\]\$ERR\033[\$(echo -n \$TTY_COLOR)m\]&quot;'\$'&quot;$none &quot;
 
     PS2=&quot;$dark_gray&gt;$none &quot;
 }
@@ -168,7 +168,7 @@ function top_prompt
 if [ &quot;$PS1&quot; ]; then
    local top_prompt_color=&quot;\[\033[1;30;46m\]&quot;
     # set the prompt 
-    PS1=&quot;$(tput sc)$(tput cup 0 0)$(tput el)$top_prompt_color     \w : \<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b2c7f2">[email&#160;protected]</a>\H { \$(date +%T) }$(tput rc)$&quot;
+    PS1=&quot;$(tput sc)$(tput cup 0 0)$(tput el)$top_prompt_color     \w : \u@\H { \$(date +%T) }$(tput rc)$&quot;
     
     # move one line
     tput cup 1 0
@@ -179,7 +179,7 @@ fi
 function plain_prompt
 {
     local current_tty=`tty | sed -e &quot;s/\/dev\/\(.*\)/\1/&quot;`
-    PS1=&quot;&gt; $current_tty \<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="304570">[email&#160;protected]</a>\H:\w\n&gt; \$? \t \! &quot;'\$'&quot; &quot;
+    PS1=&quot;> $current_tty \u@\H:\w\n> \$? \t \! &quot;'\$'&quot; &quot;
     PS2=&quot;&gt; &quot;
 }
 

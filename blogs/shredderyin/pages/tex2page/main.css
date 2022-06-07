@@ -1,33 +1,34 @@
 /* @import "tex2page.css" */
 
 BODY {
-       /*margin: 2em;*/
-       padding : 1cm 1cm 2cm 1cm;
-       font-size : medium;
-       font-family : Luxi Serif, Lucida Serif, Lucida Sans, tahoma, Verdana, Courier, helvetica, serif, sans-serif, ËÎÌו;
-       background : white;
-  border-style:solid;
-       border-width: 2pt;        /* sets border width on all sides */
-       border-color: orange;
-       padding: 6%; 
-       margin-top: 2em;      
-       margin-left: 8%;
-       margin-right: 8%;
-  
-       }
+  /*margin: 2em;*/
+  padding: 1cm 1cm 2cm 1cm;
+  font-size: medium;
+  font-family: Luxi Serif, Lucida Serif, Lucida Sans, tahoma, Verdana, Courier,
+    helvetica, serif, sans-serif;
+  border-style: solid;
+  border-width: 2pt; /* sets border width on all sides */
+  border-color: orange;
+  padding: 6%;
+  margin-top: 2em;
+  margin-left: 8%;
+  margin-right: 8%;
+  background-color: #26292b;
+  color: #c4c4c4;
+}
 
-BODY.Home{
-           background: Navy;
-           }
+BODY.Home {
+  background: Navy;
+}
 
 body.framed {
-              padding: 10pt;
-              border-style:none;
-              }
+  padding: 10pt;
+  border-style: none;
+}
 
-body.ascii{
-            background-color : Black;
-            }
+body.ascii {
+  background-color: Black;
+}
 
 /*
 P{
@@ -36,187 +37,188 @@ P{
 */
 
 p.toc {
-        text-indent : 0;
-        }
+  text-indent: 0;
+}
 
 p.banner {
-           text-align : center;
-           }
+  text-align: center;
+}
 
-P.mmix{
-        text-indent : 0;
-        font-size : medium;
-        }
+P.mmix {
+  text-indent: 0;
+  font-size: medium;
+}
 
-P.tip{
-       color: blue;
-       }
+P.tip {
+  color: blue;
+}
 
-OL{
-    list-style-type: decimal;
-    padding-bottom : 8px;
-    text-indent : 0;
-    font-size : medium;
-    /*background: gray;*/
-    }
+OL {
+  list-style-type: decimal;
+  padding-bottom: 8px;
+  text-indent: 0;
+  font-size: medium;
+  /*background: gray;*/
+}
 
 OL.arabic {
-            list-style-type: decimal;
-            }
+  list-style-type: decimal;
+}
 OL.cjk {
-         list-style-type: cjk-ideographic;
-         }
+  list-style-type: cjk-ideographic;
+}
 
-OL.roman{
-          list-style-type: lower-roman;
-          }
-
+OL.roman {
+  list-style-type: lower-roman;
+}
 
 H2 {
-     font-size: 20pt;
-     color: navy;
-     text-align : left;
-     }
+  font-size: 20pt;
+  color: navy;
+  text-align: left;
+}
 
-A{
-   color: blue;
-   text-decoration: none;
-   }
+A {
+  text-decoration: none;
+  cursor: crosshair;
+  border-bottom: 1px dashed gray;
+  color: lightblue;
+}
 
-A:Hover {
-          text-decoration: none;
-          background-color: bisque;
-          caption-side : left;
-          }
+A:hover {
+  caption-side: left;
+  background-color: #ff80ff;
+  text-decoration: none;
+}
 
 HR {
-     color: #2E8B57;
-     height: 1pt;
-     }
+  color: #2e8b57;
+  height: 1pt;
+}
 
 UL {
-     list-style-type : circle;
-     }
+  list-style-type: circle;
+}
 
-div{
-     border : 1pt;
-     border-color : white;
-     border-style : solid;
-     padding: 10pt;
-     }
+div {
+  border: 1pt;
+  border-color: white;
+  border-style: solid;
+  padding: 10pt;
+}
 
-IMG{
-     border : 0;
-     margin-left: 2pt;
-     margin-right: 2pt;
-     }
+IMG {
+  border: 0;
+  margin-left: 2pt;
+  margin-right: 2pt;
+}
 
 img.formula {
-              border : thin;
-              border-color: blue;
-              border-style : solid;
-              }
+  border: thin;
+  border-color: blue;
+  border-style: solid;
+}
 
 pre {
-      border: #777777 1px solid;
-      color: darkgreen;
-      padding: 0.5em;
-      margin-left: 1em;
-      margin-right: 2em;
-      white-space: pre;
-      background-color: #e6e6e6;
-      font-family : Luxi Mono, Luxi Serif, Luxi Sans, Verdana, Courier, helvetica, sans-serif, ËÎÌו; 
-     font-size: 90%;
-      }
-
+  border: #777777 1px solid;
+  color: darkgreen;
+  padding: 0.5em;
+  margin-left: 1em;
+  margin-right: 2em;
+  white-space: pre;
+  background-color: #9b9b9b;
+  font-family: Luxi Mono, Luxi Serif, Luxi Sans, Verdana, Courier, helvetica,
+    sans-serif;
+  font-size: 90%;
+}
 
 .verbatim {
-                color: darkgreen;
-                font-family : Luxi Mono, Luxi Serif, Luxi Sans, Verdana, Courier, helvetica, sans-serif, ËÎÌו;
-                }
-
+  color: darkgreen;
+  font-family: Luxi Mono, Luxi Serif, Luxi Sans, Verdana, Courier, helvetica,
+    sans-serif;
+}
 
 pre.syntax {
-             background: lightblue;
-             }
+  background: lightblue;
+}
 
 pre.error {
-            background-color: pink;
-            }
+  background-color: pink;
+}
 
 pre.url {
-          background: bisque;
-          }
+  background: bisque;
+}
 
 em {
-     color: red;
-     text-decoration:none;
-     font-style:normal;
-     }
+  color: red;
+  text-decoration: none;
+  font-style: normal;
+}
 
 em.phrase {
-            color: blue;
-            text-decoration:none;
-            font-style:normal;
-            }
+  color: blue;
+  text-decoration: none;
+  font-style: normal;
+}
 
 h1 {
-     font:  28px;
-     color:#666;
-     border-bottom: 5px solid #000;
-     padding: 2px;
-     margin: 0px;
-     margin-bottom: 8px;
-     }
+  font: 28px;
+  color: #666;
+  border-bottom: 5px solid #000;
+  padding: 2px;
+  margin: 0px;
+  margin-bottom: 8px;
+}
 
-h1.home{
-         color: #102C4A;
-         font-size: 34px;
-         }
+h1.home {
+  color: #102c4a;
+  font-size: 34px;
+}
 
 h2 {
-     color:#666;
-     font-size: 22px;
-     padding: 2px;
-     margin-top: 5px;
-     border-bottom: 2px solid #000000;
-     }
+  color: #666;
+  font-size: 22px;
+  padding: 2px;
+  margin-top: 5px;
+  border-bottom: 2px solid #000000;
+}
 
 h3 {
-     color:#666;
-     font-size: 18px;
-     padding: 2px;
-     margin-top: 5px;
-     border-bottom: 1px dashed #000;
-     }
+  color: #666;
+  font-size: 18px;
+  padding: 2px;
+  margin-top: 5px;
+  border-bottom: 1px dashed #000;
+}
 
 h4 {
-     color:#666;
-     font-size: 14px;
-     padding: 2px;
-     margin-top: 5px;
-     }
+  color: #666;
+  font-size: 14px;
+  padding: 2px;
+  margin-top: 5px;
+}
 
 H5 {
-     color: red;
-     text-align: left;
-     font-size: small;
-     font-size: 12px;
-     }
-
+  color: red;
+  text-align: left;
+  font-size: small;
+  font-size: 12px;
+}
 
 LI {
-     margin-top: 3ex;
-     }
+  margin-top: 3ex;
+}
 
 LI.explained {
-               }
+  color: inherit;
+}
 
-p.adage{
-         background: lightyellow;
-         border: green;
-         border-style: solid;
-         }
+p.adage {
+  background: lightyellow;
+  border: green;
+  border-style: solid;
+}
 
 /*
 #header {
@@ -267,6 +269,6 @@ div.navigation{
                 }
 
 */
-div.history { 
-              background: lightgray
-              }
+div.history {
+  background: lightgray;
+}

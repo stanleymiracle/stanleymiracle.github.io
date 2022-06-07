@@ -66,11 +66,11 @@
 <p>我以前不知道hyperref已经有 CJKbookmarks 选项，所以昨天我想了一晚上，自己想出个方法，就是：
 <p>在 \usepackage{hyperref} 之后加上这样一句：
 <pre>\pdfstringdefDisableCommands{
-\let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="41020b0a011919">[email&#160;protected]</a>\relax
-\let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e4a7aeafa4bcbcbc">[email&#160;protected]</a>\relax
-\let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91d2dbdad1c9c9c9e1">[email&#160;protected]</a>\relax
-\let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c98a83828991919191">[email&#160;protected]</a>\relax
-\let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0a4940414a525252527a">[email&#160;protected]</a>\relax
+\let\CJK@XX\relax
+\let\CJK@XXX\relax
+\let\CJK@XXXp\relax
+\let\CJK@XXXX\relax
+\let\CJK@XXXXp\relax
 }
 </pre>
 <p>完成！直接运行 pdflatex 两次就可以得到有中文bookmark的PDF。嘿嘿！
@@ -83,11 +83,11 @@
 <pre>\PackageWarningNoLine{hyperref}{%
 	CJK characters are disabled in bookmarks}
 \pdfstringdefDisableCommands{%
-      \let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7f3c35343f161811100d1a0c0f1e1c1a0c">[email&#160;protected]</a>\empty%
-      \def\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1c5f56575c7f747d6e">[email&#160;protected]</a>#1{\@gobbletwo}%
-      \let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a1e2ebeae1c2c9c0d3d9">[email&#160;protected]</a>\@gobblefour%
-      \let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aae9e0e1eadadfc4c9dec9c2cbd8">[email&#160;protected]</a>\@gobblefour%
-      \def\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d7e77767d4d485356495e555c4f45">[email&#160;protected]</a>#1{\@gobblefour}%
+      \let\CJK@ignorespaces\empty%
+      \def\CJK@char#1{\@gobbletwo}%
+      \let\CJK@charx\@gobblefour%
+      \let\CJK@punctchar\@gobblefour%
+      \def\CJK@punktcharx#1{\@gobblefour}%
 }
 </pre>
 
@@ -119,26 +119,26 @@
 方法就是：在 \usepackage{hyperref} 之后加上这样一句：
 
 <pre>\pdfstringdefDisableCommands{
-\let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="81c2cbcac1d9d9">[email&#160;protected]</a>\relax
-\let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="34777e7f746c6c6c">[email&#160;protected]</a>\relax
-\let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="15565f5e554d4d4d65">[email&#160;protected]</a>\relax
-\let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="da9990919a82828282">[email&#160;protected]</a>\relax
-\let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="793a3332392121212109">[email&#160;protected]</a>\relax
+\let\CJK@XX\relax
+\let\CJK@XXX\relax
+\let\CJK@XXXp\relax
+\let\CJK@XXXX\relax
+\let\CJK@XXXXp\relax
 }
 </pre>
 
 <p>这样，当生成 bookmark 时，GBK 的汉字被原封不动保留下来放到 .out 文件里。从而可以生成正确的中文 bookmark. 你还可以把
 
-<pre>\let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e3a0a9a8a3bbbb">[email&#160;protected]</a>\relax
-\let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cc8f86878c949494">[email&#160;protected]</a>\relax
-\let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="89cac3c2c9d1d1d1f9">[email&#160;protected]</a>\relax
-\let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="84c7cecfc4dcdcdcdc">[email&#160;protected]</a>\relax
-\let\<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c5868f8e859d9d9d9db5">[email&#160;protected]</a>\relax
+<pre>\let\CJK@XX\relax
+\let\CJK@XXX\relax
+\let\CJK@XXXp\relax
+\let\CJK@XXXX\relax
+\let\CJK@XXXXp\relax
 </pre>
 
 <p>都写到 hyperref.sty 的 \def\pdfstringdef#1#2{....} 里，这样直接用 hyperref 就可以生成中文 pdf bookmark 了！
 
-<p>这种办法比起 hyperref 现在的方法有一个好处。因为汉字首先是通过 \<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1f2fbfaf1e9e9">[email&#160;protected]</a>, \<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="27646d6c677f7f7f">[email&#160;protected]</a>, ...  转化为 CJK 内部代码的。hyperref 现在的方法相当于在输出 .out 文件的时候把 CJK 内部码又转回 GBK 码或者 Unicode。我的办法是直接把 \<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="14575e5f544c4c">[email&#160;protected]</a>, \<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7c3f36373c242424">[email&#160;protected]</a>, ... 设为 \relax 让它们对汉字不起作用。这样汉字编码直接进入了 .out 文件，更加直接快速。
+<p>这种办法比起 hyperref 现在的方法有一个好处。因为汉字首先是通过 \CJK@XX, \CJK@XXX, ...  转化为 CJK 内部代码的。hyperref 现在的方法相当于在输出 .out 文件的时候把 CJK 内部码又转回 GBK 码或者 Unicode。我的办法是直接把 \CJK@XX, \CJK@XXX, ... 设为 \relax 让它们对汉字不起作用。这样汉字编码直接进入了 .out 文件，更加直接快速。
 
 <p>不过如果想要得到 Unicode 的汉字 bookmark, 需要实现更加直接的办法把 GBK 转到 Unic，我还不知道怎么转，编码的东西太烦人 :P 如果你的汉字不是 GBK, Unicode, 而是 HZ, BIG5, GB18030, 还是什么其它语言，... 你知道了这些，在将来的编码扩展中会更加容易解决问题，如果你遇到这种情况就可以在\pdfstringdefDisableCommands里加入你的东西。
 
@@ -162,7 +162,7 @@
 <p>如果有的话，你用 \textbf{粗体} 就会得到一种“穷人的粗体”，它是把宋体汉字平移了三次重合在一起实现的，看看你的 CJK.sty 有如下定义：
 <pre>\DeclareRobustCommand{\CJKsymbols}[2]{
   \char #1\char #2\relax
-  \<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4e27280d04050e2c21222a">[email&#160;protected]</a>@
+  \ifCJK@bold@
     \hbox to \CJKboldshift{\hss\char #1\char #2}
     \hbox to \CJKboldshift{\hss\char #1\char #2}
   \fi}
