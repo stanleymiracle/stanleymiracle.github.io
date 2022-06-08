@@ -109,7 +109,7 @@ if ($lnkPath.IndexOf('#') -gt 0) {
 Invoke-WebRequest -URI "$Path/$fileName" -UseBasicParsing -OutFile $fileName
       Invoke-WebRequest -URI "$Path/$subfileName" -UseBasicParsing -OutFile $subfileName
 
-Invoke-WebRequest -URI "https://docs.huihoo.com/homepage/shredderyin/readline.html" -UseBasicParsing -OutFile readline.html
+Invoke-WebRequest -URI "https://docs.huihoo.com/homepage/shredderyin/emacs-resource.html" -UseBasicParsing -OutFile emacs-resource.html
 
 # convert file encoding
 Get-ChildItem -Path "*.html" -Recurse | Foreach-Object {
