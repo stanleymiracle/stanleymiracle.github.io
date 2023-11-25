@@ -1,4 +1,3 @@
-HB000BUR821GVVB5NBSL77918577
 
 Music:
 ls -recurse -include *.flac | %{.\ffmpeg\bin\ffmpeg.exe -i $_.FullName -acodec alac -vcodec copy ($_.DirectoryName+"\\"+$_.BaseName+'.m4a')}
@@ -148,3 +147,7 @@ regex:
 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="([0-9a-zA-F]+)">\[email&#160;protected\]</a>
 
 this is uncommited changes
+
+rpi:
+https://www.raspberrypi.com/documentation/accessories/display.html
+/boot/firmware/config.txt -> dtoverlay=rpi-ft5406#,touchscreen-swapped-x-y=1,touchscreen-inverted-x=1
