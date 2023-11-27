@@ -1,6 +1,8 @@
 
 Music:
 ls -recurse -include *.flac | %{.\ffmpeg\bin\ffmpeg.exe -i $_.FullName -acodec alac -vcodec copy ($_.DirectoryName+"\\"+$_.BaseName+'.m4a')}
+extract:
+ffmpeg.exe -i 'video.mp4' -q:a 0 -map a sample.mp3
 
 Video:
 .\ffmpeg\bin\ffmpeg.exe -i .\input.mp4 -ss <Start Time> -t <Duration> -acodec copy -vcodec copy .\output.mp4
