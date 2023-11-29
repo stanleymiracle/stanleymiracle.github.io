@@ -47,9 +47,12 @@ function addImageBackgroundToModal(path) {
             document.getElementById('page-modal').style.display = 'block';
         };        
     }
-    document.getElementById('modal-close').onclick = function() {
-        document.getElementById('page-modal').style.display = 'none';
-    };
+    var closeBtn = document.getElementById('modal-close');
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            document.getElementById('page-modal').style.display = 'none';
+        };
+    }
 })();
 
 // document.body.addEventListener('click', function(e) {

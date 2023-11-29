@@ -56,6 +56,15 @@
   -ms-box-sizing:border-box;
 }
 
+.spacer {
+  height: 20px;
+}
+
+.image {
+  border: 1px solid black;
+  max-width: 80%;
+}
+
 .author {
   text-decoration: underline;
 }
