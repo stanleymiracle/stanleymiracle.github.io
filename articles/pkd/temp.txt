@@ -1,88 +1,18 @@
-<p class="source">"The mother had hid it. They say it was three years old. She got the doctor to forge the DCA chit. Old friend of the family."</p>
-                <p class="translate"></p>
-                
-                <p class="source">The salesman had finished his coke. He sat playing idly with his cigarettes, listening to the hum of talk he had set into motion. The high school boy was leaning excitedly toward the girl across from him, impressing her with his fund of knowledge. The lean farmer and the businessman were huddled together, remembering the old days, the last years of the War, before the first Ten-Year Reconstruction Plan. The taxi driver and the two workmen were swapping yarns about their own experiences.</p>
-                <p class="translate"></p>
-                
-                <p class="source">The salesman caught the waitress's attention. "I guess," he said thoughtfully, "that one in Frisco caused quite a stir. Something like that happening so close."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Yeah," the waitress murmured.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"This side of the Bay wasn't really hit," the salesman continued. "You never get any of them over here."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"No." The waitress moved abruptly. "None in this area. Ever." She scooped up dirty dishes from the counter and headed toward the back.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Never?" the salesman asked, surprised. "You've never had any deeves on this side of the Bay?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"No. None." She disappeared into the back, where the fry cook stood by his burners, white apron and tattooed wrists. Her voice was a little too loud, a little too harsh and strained. It made the farmer pause suddenly and glance up.</p>
-                <p class="translate"></p>
-                
-                <p class="source">Silence dropped like a curtain. All sound cut off instantly. They were all gazing down at their food, suddenly tense and ominous.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"None around here," the taxi driver said, loudly and clearly, to no one in particular. "None ever."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Sure," the salesman agreed genially. "I was only —"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Make sure you get that straight," one of the workmen said.</p>
-                <p class="translate"></p>
-                
-                <p class="source">The salesman blinked. "Sure, buddy. Sure." He fumbled nervously in his pocket. A quarter and a dime jangled to the floor and he hurriedly scooped them up. "No offense."</p>
-                <p class="translate"></p>
-                
-                <p class="source">For a moment there was silence. Then the high school boy spoke up, aware for the first time that nobody was saying anything. "I heard something," he began eagerly, voice full of importance. "Somebody said they saw something up by the Johnson farm that looked like it was one of those —"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Shut up," the businessman said, without turning his head.</p>
-                <p class="translate"></p>
-                
-                <p class="source">Scarlet-faced, the boy sagged in his seat. His voice wavered and broke off. He peered hastily down at his hands and swallowed unhappily.</p>
-                <p class="translate"></p>
-                
-                <p class="source">The salesman paid the waitress for his coke. "What's the quickest road to Frisco?" he began. But the waitress had already turned her back.</p>
-                <p class="translate"></p>
-                
-                <p class="source">The people at the counter were immersed in their food. None of them looked up. They ate in frozen silence. Hostile, unfriendly faces, intent on their food.</p>
-                <p class="translate"></p>
-                
-                <p class="source">The salesman picked up his bulging briefcase, pushed open the screen door, and stepped out into the blazing sunlight. He moved toward his battered 1978 Buick, parked a few meters up. A blue-shirted traffic cop was standing in the shade of an awning, talking languidly to a young woman in a yellow silk dress that clung moistly to her slim body.</p>
-                <p class="translate"></p>
-                
-                <p class="source">The salesman paused a moment before he got into his car. He waved his hand and hailed the policeman. "Say, you know this town pretty good?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">The policeman eyed the salesman's rumpled gray suit, bowtie, his sweat-stained shirt. The out-of-state license. "What do you want?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"I'm looking for the Johnson farm," the salesman said. "Here to see him about some litigation." He moved toward the policeman, a small white card between his fingers.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"I'm his attorney — from the New York Guild. Can you tell me how to get out there? I haven't been through here in a couple of years."</p>
-                <p class="translate"></p>
 
-                <div class="spacer"></div>
-                
                 <p class="source">Nat Johnson gazed up at the noonday sun and saw that it was good. He sat sprawled out on the bottom step of the porch, a pipe between his yellowed teeth, a lithe, wiry man in red-checkered shirt and canvas jeans, powerful hands, iron-gray hair that was still thick despite sixty-five years of active life.</p>
-                <p class="translate"></p>
+                <p class="translate">纳特·约翰逊抬头凝视着正午的阳光，发现天气很好。 他四肢摊开地坐在门廊的最下面一级台阶上，发黄的牙齿间叼着一根烟斗，身着红格子衬衫和帆布牛仔裤，身体轻盈，身材魁梧，双手有力，铁灰色的头发依然浓密，尽管已经过了六十五年的积极生活了。</p>
                 
                 <p class="source">He was watching the children play. Jean rushed laughing in front of him, bosom heaving under her sweatshirt, black hair streaming behind her. She was sixteen, bright-eyed, legs strong and straight, slim young body bent slightly forward with the weight of the two horseshoes. After her scampered Dave, fourteen, white teeth and black hair, a handsome boy, a son to be proud of. Dave caught up with his sister, passed her, and reached the far peg. He stood waiting, legs apart, hands on his hips, his two horseshoes gripped easily. Gasping, Jean hurried toward him.</p>
-                <p class="translate"></p>
+                <p class="translate">他正在看孩子们玩耍。 吉恩冲到他面前笑着，运动衫下的胸部起伏着，黑色的头发在她身后飘扬。 她十六岁，眼睛明亮，双腿有力而笔直，苗条年轻的身体因两只马蹄铁的重量而微微前倾。 在她兴奋地跑过戴夫之后，十四岁，洁白的牙齿和黑发，一个英俊的男孩，一个值得骄傲的儿子。 戴夫追上了他的妹妹，超过了她，到达了远处的木桩处。 他站在那里等待，双腿分立，双手放在腰间，轻松地握住了两只马蹄铁。 吉恩喘着粗气，急忙朝他走去。（<span class="text-to-img" data-path="../imgs/dq.png">扔马蹄铁</span>）</p>
                 
                 <p class="source">"Go ahead!" Dave shouted. "You shoot first. I'm waiting for you."</p>
-                <p class="translate"></p>
+                <p class="translate">“你先吧！” 戴夫喊道。 “你先扔，我等你。”</p>
                 
                 <p class="source">"So you can knock them away?"</p>
-                <p class="translate"></p>
+                <p class="translate">“这样你能把他们砸走吗？”</p>
                 
                 <p class="source">"So I can knock them closer."/p>
-                <p class="translate"></p>
+                <p class="translate">“这样我就可以把他们砸得更近。”</p>
                 
                 <p class="source">Jean tossed down one horseshoe and gripped the other with both hands, eyes on the distant peg. Her lithe body bent, one leg slid back, her spine arched. She took careful aim, closed one eye, and then expertly tossed the shoe. With a clang the shoe struck the distant peg, circled briefly around it, then bounced off again and rolled to one side. A cloud of dust rolled up.</p>
                 <p class="translate"></p>
