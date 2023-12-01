@@ -56,6 +56,14 @@
   -ms-box-sizing:border-box;
 }
 
+.toc-list {
+  list-style-type: circle;
+}
+
+.reader-night-mode .toc-list li a {
+  color: #2196f3;
+}
+
 .spacer {
   height: 20px;
 }

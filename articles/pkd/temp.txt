@@ -1,149 +1,3 @@
-
-                <p class="source">Nat Johnson gazed up at the noonday sun and saw that it was good. He sat sprawled out on the bottom step of the porch, a pipe between his yellowed teeth, a lithe, wiry man in red-checkered shirt and canvas jeans, powerful hands, iron-gray hair that was still thick despite sixty-five years of active life.</p>
-                <p class="translate">纳特·约翰逊抬头凝视着正午的阳光，发现天气很好。 他四肢摊开地坐在门廊的最下面一级台阶上，发黄的牙齿间叼着一根烟斗，身着红格子衬衫和帆布牛仔裤，身体轻盈，身材魁梧，双手有力，铁灰色的头发依然浓密，尽管已经过了六十五年的积极生活了。</p>
-                
-                <p class="source">He was watching the children play. Jean rushed laughing in front of him, bosom heaving under her sweatshirt, black hair streaming behind her. She was sixteen, bright-eyed, legs strong and straight, slim young body bent slightly forward with the weight of the two horseshoes. After her scampered Dave, fourteen, white teeth and black hair, a handsome boy, a son to be proud of. Dave caught up with his sister, passed her, and reached the far peg. He stood waiting, legs apart, hands on his hips, his two horseshoes gripped easily. Gasping, Jean hurried toward him.</p>
-                <p class="translate">他正在看孩子们玩耍。 吉恩冲到他面前笑着，运动衫下的胸部起伏着，黑色的头发在她身后飘扬。 她十六岁，眼睛明亮，双腿有力而笔直，苗条年轻的身体因两只马蹄铁的重量而微微前倾。 在她兴奋地跑过戴夫之后，十四岁，洁白的牙齿和黑发，一个英俊的男孩，一个值得骄傲的儿子。 戴夫追上了他的妹妹，超过了她，到达了远处的木桩处。 他站在那里等待，双腿分立，双手放在腰间，轻松地握住了两只马蹄铁。 吉恩喘着粗气，急忙朝他走去。（<span class="text-to-img" data-path="../imgs/dq.png">扔马蹄铁</span>）</p>
-                
-                <p class="source">"Go ahead!" Dave shouted. "You shoot first. I'm waiting for you."</p>
-                <p class="translate">“你先吧！” 戴夫喊道。 “你先扔，我等你。”</p>
-                
-                <p class="source">"So you can knock them away?"</p>
-                <p class="translate">“这样你能把他们砸走吗？”</p>
-                
-                <p class="source">"So I can knock them closer."/p>
-                <p class="translate">“这样我就可以把他们砸得更近。”</p>
-                
-                <p class="source">Jean tossed down one horseshoe and gripped the other with both hands, eyes on the distant peg. Her lithe body bent, one leg slid back, her spine arched. She took careful aim, closed one eye, and then expertly tossed the shoe. With a clang the shoe struck the distant peg, circled briefly around it, then bounced off again and rolled to one side. A cloud of dust rolled up.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Not bad," Nat Johnson admitted, from his step. "Too hard, though. Take it easy." His chest swelled with pride as the girl's glistening body took aim and again threw. Two powerful, handsome children, almost ripe, on the verge of adulthood. Playing together in the hot sun.</p>
-                <p class="translate"></p>
-                
-                <p class="source">And there was Cris.</p>
-                <p class="translate"></p>
-                
-                <p class="source">Cris stood by the porch, arms folded. He wasn't playing. He was watching. He had stood there since Dave and Jean had begun playing, the same half-intent, half-remote expression on his finely-cut face. As if he were seeing past them, beyond the two of them. Beyond the field, the barn, the creek bed, the rows of cedars.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Come on, Cris!" Jean called, as she and Dave moved across the field to collect their horseshoes. "Don't you want to play?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">No, Cris didn't want to play. He never played. He was off in a world of his own, a world into which none of them could come. He never joined in anything, games or chores or family activities. He was by himself always. Remote, detached, aloof. Seeing past everyone and everything — that is, until all at once something clicked and he momentarily rephased, reentered their world briefly.</p>
-                <p class="translate"></p>
-                
-                <p class="source">Nat Johnson reached out and knocked his pipe against the step. He refilled it from his leather tobacco pouch, his eyes on his eldest son. Cris was now moving into life. Heading out onto the field. He walked slowly, arms folded calmly, as if he had, for the moment, descended from his own world into theirs. Jean didn't see him; she had turned her back and was getting ready to pitch.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Hey," Dave said, startled. "Here's Cris."</p>
-                <p class="translate"></p>
-                
-                <p class="source">Cris reached his sister, stopped, and held out his hand. A great dignified figure, calm and impassive. Uncertainly, Jean gave him one of the horseshoes. "You want this? You want to play?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">Cris said nothing. He bent slightly, a supple arc of his incredibly graceful body, then moved his arm in a blur of speed. The shoe sailed, struck the far peg, and dizzily spun around it. Ringer.</p>
-                <p class="translate"></p>
-                
-                <p class="source">The corners of Dave's mouth turned down. "What a lousy darn thing."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Cris," Jean reproved. "You don't play fair."</p>
-                <p class="translate"></p>
-                
-                <p class="source">No, Cris didn't play fair. He had watched half an hour — then come out and thrown once. One perfect toss, one dead ringer.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"He never makes a mistake," Dave complained.</p>
-                <p class="translate"></p>
-                
-                <p class="source">Cris stood, face blank. A golden statue in the mid-day sun. Golden hair, skin, a light down of gold fuzz on his bare arms and legs —</p>
-                <p class="translate"></p>
-                
-                <p class="source">Abruptly he stiffened. Nat sat up, startled. "What is it?" he barked.</p>
-                <p class="translate"></p>
-                
-                <p class="source">Cris turned in a quick circle, magnificent body alert. "Cris!" Jean demanded. "What —"</p>
-                <p class="translate"></p>
-                
-                <p class="source">Cris shot forward. Like a released energy beam he bounded across the field, over the fence, into the barn and out the other side. His flying figure seemed to skim over the dry grass as he descended into the barren creek bed, between the cedars. A momentary flash of gold — and he was gone. Vanished. There was no sound. No motion. He had utterly melted into the scenery.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"What was it this time?" Jean asked wearily. She came over to her father and threw herself down in the shade. Sweat glowed on her smooth neck and upper lip; her sweat shirt was streaked and damp. "What did he see?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"He was after something," Dave stated, coming up.</p>
-                <p class="translate"></p>
-                
-                <p class="source">Nat grunted. "Maybe. There's no telling."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"I guess I better tell Mom not to set a place for him," Jean said. "He probably won't be back."</p>
-                <p class="translate"></p>
-                
-                <p class="source">Anger and futility descended over Nat Johnson. No, he wouldn't be back. Not for dinner and probably not the next day — or the one after that. He'd be gone God only knew how long. Or where. Or why. Off by himself, alone some place. "If I thought there was any use," Nat began, "I'd send you two after him. But there's no —"</p>
-                <p class="translate"></p>
-                
-                <p class="source">He broke off. A car was coming up the dirt road toward the farmhouse. A dusty, battered old Buick. Behind the wheel sat a plump red-faced man in a gray suit, who waved cheerfully at them as the car sputtered to a stop and the motor died into silence.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Afternoon," the man nodded, as he climbed out the car. He tipped his hat pleasantly. He was middle-aged, genial-looking, perspiring freely as he crossed the dry ground toward the porch. "Maybe you folks can help me."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"What do you want?" Nat Johnson demanded hoarsely. He was frightened. He watched the creek bed out of the corner of his eye, praying silently. God, if only he stayed away. Jean was breathing quickly, sharp little gasps. She was terrified. Dave's face was expressionless, but all color had drained from it. "Who are you?" Nat demanded.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Name's Baines. George Baines." The man held out his hand but Johnson ignored it. "Maybe you've heard of me. I own the Pacifica Development Corporation. We built all those little bomb-proof houses just outside town. Those little round ones you see as you come up the main highway from Lafayette."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"What do you want?" Johnson held his hands steady with an effort. He'd never heard of the man, although he'd noticed the housing tract. It couldn't be missed — a great ant-heap of ugly pill-boxes straddling the highway. Baines looked like the kind of man who'd own them. But what did he want here?</p>
-                <p class="translate"></p>
-                
-                <p class="source">"I've bought some land up this way," Baines was explaining. He rattled a sheaf of crisp papers. "This is the deed, but I'll be damned if I can find it." He grinned good-naturedly. "I know it's around this way, someplace, this side of the State road. According to the clerk at the County Recorder's Office, a mile or so this side of that hill over there. But I'm no damn good at reading maps."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"It isn't around here," Dave broke in. "There's only farms around here. Nothing for sale."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"This is a farm, son," Baines said genially. "I bought it for myself and my missus. So we could settle down." He wrinkled his pug nose. "Don't get the wrong idea — I'm not putting up any tracts around here. This is strictly for myself. An old farmhouse, twenty acres, a pump and a few oak trees —"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Let me see the deed." Johnson grabbed the sheaf of papers, and while Baines blinked in astonishment, he leafed rapidly through them. His face hardened and he handed them back. "What are you up to? This deed is for a parcel fifty miles from here."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Fifty miles!" Baines was dumbfounded. "No kidding? But the clerk told me —"</p>
-                <p class="translate"></p>
-                
-                <p class="source">Johnson was on his feet. He towered over the fat man. He was in top-notch physical shape — and he was plenty damn suspicious. "Clerk, hell. You get back into your car and drive out of here. I don't know what you're after, or what you're here for, but I want you off my land."</p>
-                <p class="translate"></p>
-                
-                <p class="source">In Johnson's massive fist something sparkled. A metal tube that gleamed ominously in the mid-day sunlight. Baines saw it — and gulped. "No offense, mister." He backed nervously away. "You folks sure are touchy. Take it easy, will you?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">Johnson said nothing. He gripped the lash-tube tighter and waited for the fat man to leave.</p>
-                <p class="translate"></p>
-                
-                <p class="source">But Baines lingered. "Look, buddy. I've been driving around this furnace five hours, looking for my damn place. Any objection to my using your facilities?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">Johnson eyed him with suspicion. Gradually the suspicion turned to disgust. He shrugged. "Dave, show him where the bathroom is."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Thanks." Baines grinned thankfully. "And if it wouldn't be too much trouble, maybe a glass of water. I'd be glad to pay you for it." He chuckled knowingly. "Never let the city people get away with anything, eh?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Christ." Johnson turned away in revulsion as the fat man lumbered after his son, into the house.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Dad," Jean whispered. As soon as Baines was inside she hurried up onto the porch, eyes wide with fear. "Dad, do you think he —"</p>
-                <p class="translate"></p>
-                
-                <p class="source">Johnson put his arm around her. "Just hold on tight. He'll be gone, soon."</p>
-                <p class="translate"></p>
-                
-                <p class="source">The girl's dark eyes flashed with mute terror. "Every time the man from the water company, or the tax collector, some tramp, children, anybody come around, I get a terrible stab of pain — here." She clutched at her heart, hand against her breasts. "It's been that way thirteen years. How much longer can we keep it going? How long?"</p>
-                <p class="translate"></p>
-
-                <div class="spacer"></div>
                 
                 <p class="source">The man named Baines emerged gratefully from the bathroom. Dave Johnson stood silently by the door, body rigid, youthful face stony.</p>
                 <p class="translate"></p>
@@ -689,26 +543,263 @@
                 
                 <div class="spacer"></div>
 
-                <p class="source"></p>
+                <p class="source">For a long time the great gleaming shape crouched in the darkness. He was in a store room. Boxes and cartons stretched out on all sides, heaped up in orderly rows, all neatly counted and marked. Silent and deserted.</p>
                 <p class="translate"></p>
                 
-                <p class="source"></p>
+                <p class="source">But in a few moments people burst in and searched the room. He could see this. He saw them in all parts of the room, clear and distinct, men with lash-tubes, grim-faced, stalking with murder in their eyes.</p>
                 <p class="translate"></p>
                 
-                <p class="source"></p>
+                <p class="source">The sight was one of many. One of a multitude of clearly-etched scenes lying tangent to his own. And to each was attached a further multitude of interlocking scenes, that finally grew hazier and dwindled away. A progressive vagueness, each syndrome less distinct.</p>
                 <p class="translate"></p>
                 
-                <p class="source"></p>
+                <p class="source">But the immediate one, the scene that lay closest to him, was clearly visible. He could easily make out the sight of the armed men. Therefore it was necessary to be out of the room before they appeared.</p>
                 <p class="translate"></p>
                 
-                <p class="source"></p>
+                <p class="source">The golden figure got calmly to its feet and moved to the door. The corridor was empty; he could see himself already outside, in the vacant, drumming hall of metal and recessed lights. He pushed the door boldly open and stepped out.</p>
                 <p class="translate"></p>
                 
-                <p class="source"></p>
+                <p class="source">A lift blinked across the hall. He walked to the lift and entered it. In five minutes a group of guards would come running along and leap into the lift. By that time he would have left it and sent it back down. Now he pressed a button and rose to the next floor.</p>
                 <p class="translate"></p>
                 
-                <p class="source"></p>
+                <p class="source">He stepped out into a deserted passage. No one was in sight. That didn't surprise him. He couldn't be surprised. The element didn't exist for him. The positions of things, the space relationships of all matter in the immediate future, were as certain for him as his own body. The only thing that was unknown was that which had already passed out of being. In a vague, dim fashion, he had occasionally wondered where things went after he had passed them.</p>
                 <p class="translate"></p>
                 
-                <p class="source"></p>
+                <p class="source">He came to a small supply closet. It had just been searched. It would be a half an hour before anyone opened it again. He had that long; he could see that far ahead. And then —</p>
                 <p class="translate"></p>
+                
+                <p class="source">And then he would be able to see another area, a region farther beyond. He was always moving, advancing into new regions he had never seen before. A constantly unfolding panorama of sights and scenes, frozen landscapes spread out ahead. All objects were fixed. Pieces on a vast chess board through which he moved, arms folded, face calm. A detached observer who saw objects that lay ahead of him as clearly as those under foot.</p>
+                <p class="translate"></p>
+                
+                <p class="source">Right now, as he crouched in the small supply closet, he saw an unusually varied multitude of scenes for the next half hour. Much lay ahead. The half hour was divided into an incredibly complex pattern of separate configurations. He had reached a critical region; he was about to move through worlds of intricate complexity.</p>
+                <p class="translate"></p>
+                
+                <p class="source">He concentrated on a scene ten minutes away. It showed, like a three dimensional still, a heavy gun at the end of the corridor, trained all the way to the far end. Men moved cautiously from door to door, checking each room again, as they had done repeatedly. At the end of the half hour they had reached the supply closet. A scene showed them looking inside. By that time he was gone, of course. He wasn't in that scene. He had passed on to another.</p>
+                <p class="translate"></p>
+                
+                <p class="source">The next scene showed an exit. Guards stood in a solid line. No way out. He was in that scene. Off to one side, in a niche just inside the door. The street outside was visible, stars, lights, outlines of passing cars and people.</p>
+                <p class="translate"></p>
+                
+                <p class="source">In the next tableau he had gone back, away from the exit. There was no way out. In another tableau he saw himself at other exits, a legion of golden figures, duplicated again and again, as he explored regions ahead, one after another. But each exit was covered.</p>
+                <p class="translate"></p>
+                
+                <p class="source">In one dim scene he saw himself lying charred and dead; he had tried to run through the line, out the exit.</p>
+                <p class="translate"></p>
+                
+                <p class="source">But that scene was vague. One wavering, indistinct still out of many. The inflexible path along which he moved would not deviate in that direction. It would not turn him that way. The golden figure in that scene, the miniature doll in that room, was only distantly related to him. It was himself, but a far-away self. A self he would never meet. He forgot it and went on to examine the other tableau.</p>
+                <p class="translate"></p>
+                
+                <p class="source">The myriad of tableaux that surrounded him were an elaborate maze, a web which he now considered bit by bit. He was looking down into a doll's house of infinite rooms, rooms without number, each with its furniture, its dolls, all rigid and unmoving. The same dolls and furniture were repeated in many. He, himself, appeared often. The two men on the platform. The woman. Again and again the same combinations turned up; the play was redone frequently, the same actors and props moved around in all possible ways.</p>
+                <p class="translate"></p>
+                
+                <p class="source">Before it was time to leave the supply closet, Cris Johnson had examined each of the rooms tangent to the one he now occupied. He had consulted each, considered its contents thoroughly.</p>
+                <p class="translate"></p>
+                
+                <p class="source">He pushed the door open and stepped calmly out into the hall. He knew exactly where he was going. And what he had to do. Crouched in the stuffy closet, he had quietly and expertly examined each miniature of himself, observed which clearly-etched configuration lay along his inflexible path, the one room of the doll house, the one set out of legions, toward which he was moving.</p>
+                <p class="translate"></p>
+                
+                <div class="spacer"></div>
+                
+                <p class="source">Anita slipped out of her metal foil dress, hung it over a hanger, then unfastened her shoes and kicked them under the bed. She was just starting to unclip her bra when the door opened.</p>
+                <p class="translate"></p>
+
+                <p class="source">She gasped. Soundlessly, calmly, the great golden shape closed the door and bolted it after him.</p>
+                <p class="translate"></p>
+
+                <p class="source">Anita snatched up her lash-tube from the dressing table. Her hand shook; her whole body was trembling. "What do you want?" she demanded. Her fingers tightened convulsively around the tube. "I'll kill you."</p>
+                <p class="translate"></p>
+
+                <p class="source">The figure regarded her silently, arms folded. It was the first time she had seen Cris Johnson closely. The great dignified face, handsome and impassive. Broad shoulders. The golden mane of hair, golden skin, pelt of radiant fuzz —</p>
+                <p class="translate"></p>
+
+                <p class="source">"Why?" she demanded breathlessly. Her heart was pounding wildly. "What do you want?"</p>
+                <p class="translate"></p>
+
+                <p class="source">She could kill him easily. But the lash-tube wavered. Cris Johnson stood without fear; he wasn't at all afraid. Why not? Didn't he understand what it was? What the small metal tube could do to him?</p>
+                <p class="translate"></p>
+
+                <p class="source">"Of course," she said suddenly, in a choked whisper. "You can see ahead. You know I'm not going to kill you. Or you wouldn't have come here."</p>
+                <p class="translate"></p>
+
+                <p class="source">She flushed, terrified — and embarrassed. He knew exactly what she was going to do; he could see it as easily as she saw the walls of the room, the wall-bed with its covers folded neatly back, her clothes hanging in the closet, her purse and small things on the dressing table.</p>
+                <p class="translate"></p>
+
+                <p class="source">"All right." Anita backed away, then abruptly put the tube down on the dressing table. "I won't kill you. Why should I?" She fumbled in her purse and got out her cigarettes. Shakily, she lit up, her pulse racing. She was scared. And strangely fascinated. "Do you expect to stay here? It won't do any good. They've come through the dorm twice, already. They'll be back."</p>
+                <p class="translate"></p>
+
+                <p class="source">Could he understand her? She saw nothing on his face, only blank dignity. God, he was huge! It wasn't possible he was only eighteen, a boy, a child. He looked more like some great golden god, come down to earth.</p>
+                <p class="translate"></p>
+
+                <p class="source">She shook the thought off savagely. He wasn't a god. He was a beast. The blond beast, come to take the place of man. To drive man from the earth.</p>
+                <p class="translate"></p>
+
+                <p class="source">Anita snatched up the lash-tube. "Get out of here! You're an animal! A big stupid animal! You can't even understand what I'm saying — you don't even have a language. You're not human."</p>
+                <p class="translate"></p>
+
+                <p class="source">Cris Johnson remained silent. As if he were waiting. Waiting for what? He showed no sign of fear or impatience, even though the corridor outside rang with the sound of men searching, metal against metal, guns and energy tubes being dragged around, shouts and dim rumbles as section after section of the building was searched and sealed off.</p>
+                <p class="translate"></p>
+
+                <p class="source">"They'll get you," Anita said. "You'll be trapped here. They'll be searching this wing any moment." She savagely stubbed out her cigarette. "For God's sake, what do you expect me to do?"</p>
+                <p class="translate"></p>
+
+                <p class="source">Cris moved toward her. Anita shrank back. His powerful hands caught hold of her and she gasped in sudden terror. For a moment she struggled blindly, desperately.</p>
+                <p class="translate"></p>
+
+                <p class="source">"Let go!" She broke away and leaped back from him. His face was expressionless. Calmly, he came toward her, an impassive god advancing to take her. "Get away!" She groped for the lash-tube, trying to get up. But the tube slipped from her fingers and rolled onto the floor.</p>
+                <p class="translate"></p>
+
+                <p class="source">Cris bent down and picked it up. He held it out to her, in the open palm of his hand.</p>
+                <p class="translate"></p>
+
+                <p class="source">"Good God," Anita whispered. Shakily, she accepted the tube, gripped it hesitantly, then put it down again on the dressing table.</p>
+                <p class="translate"></p>
+
+                <p class="source">In the half-light of the room, the great golden figure seemed to glow and shimmer, outlined against the darkness. A god — no, not a god. An animal. A great golden beast, without a soul. She was confused. Which was he — or was he both? She shook her head, bewildered. It was late, almost four. She was exhausted and confused.</p>
+                <p class="translate"></p>
+
+                <p class="source">Cris took her in his arms. Gently, kindly, he lifted her face and kissed her. His powerful hands held her tight. She couldn't breathe. Darkness, mixed with the shimmering golden haze, swept around her. Around and around it spiralled, carrying her senses away. She sank down into it gratefully. The darkness covered her and dissolved her in a swelling torrent of sheer force that mounted in intensity each moment, until the roar of it beat against her and at last blotted out everything.</p>
+                <p class="translate"></p>
+
+                <div class="spacer"></div>
+                
+                <p class="source">Anita blinked. She sat up and automatically pushed her hair into place. Cris was standing before the closet. He was reaching up, getting something down.</p>
+                <p class="translate"></p>
+
+                <p class="source">He turned toward her and tossed something on the bed. Her heavy metal foil traveling cape.</p>
+                <p class="translate"></p>
+
+                <p class="source">Anita gazed down at the cape without comprehension. "What do you want?"</p>
+                <p class="translate"></p>
+
+                <p class="source">Cris stood by the bed, waiting.</p>
+                <p class="translate"></p>
+
+                <p class="source">She picked up the cape uncertainly. Cold creepers of fear plucked at her. "You want me to get you out of here," she said softly. "Past the guards and the CP."</p>
+                <p class="translate"></p>
+
+                <p class="source">Cris said nothing.</p>
+                <p class="translate"></p>
+
+                <p class="source">"They'll kill you instantly." She got unsteadily to her feet. "You can't run past them. Good God, don't you do anything but run? There must be a better way. Maybe I can appeal to Wisdom. I'm Class A — Director Class. I can go directly to the Full Directorate. I ought to be able to hold them off, keep back the euth indefinitely. The odds are a billion to one against us if we try to break past —"</p>
+                <p class="translate"></p>
+
+                <p class="source">She broke off.</p>
+                <p class="translate"></p>
+
+                <p class="source">"But you don't gamble," she continued slowly. "You don't go by odds. You know what's coming. You've seen the cards already." She studied his face intently. "No, you can't be cold-decked. It wouldn't be possible."</p>
+                <p class="translate"></p>
+
+                <p class="source">For a moment she stood deep in thought. Then with a quick, decisive motion, she snatched up the cloak and slipped it around her bare shoulders. She fastened the heavy belt, bent down and got her shoes from under the bed, snatched up her purse, and hurried to the door.</p>
+                <p class="translate"></p>
+
+                <p class="source">"Come on," she said. She was breathing quickly, cheeks flushed. "Let's go. While there are still a number of exits to choose from. My car is parked outside, in the lot at the side of the building. We can get to my place in an hour. I have a winter home in Argentina. If worse comes to worst we can fly there. It's in the back country, away from the cities. Jungle and swamps. Cut-off from almost everything." Eagerly she started to open the door.</p>
+                <p class="translate"></p>
+
+                <p class="source">Cris reached out and stopped her. Gently, patiently, he moved in front of her.</p>
+                <p class="translate"></p>
+
+                <p class="source">He waited a long time, body rigid. Then he turned the knob and stepped boldly out into the corridor.</p>
+                <p class="translate"></p>
+
+                <p class="source">The corridor was empty. No one was in sight. Anita caught a faint glimpse, the back of a guard hurrying off. If they had come out a second earlier —</p>
+                <p class="translate"></p>
+
+                <p class="source">Cris started down the corridor. She ran after him. He moved rapidly, effortlessly. The girl had trouble keeping up with him. He seemed to know exactly where to go. Off to the right, down a side hall, a supply passage. Onto an ascent freight-lift. They rose, then abruptly halted.</p>
+                <p class="translate"></p>
+
+                <p class="source">Cris waited again. Presently he slid the door back and moved out of the lift. Anita followed nervously. She could hear sounds: guns and men, very close.</p>
+                <p class="translate"></p>
+
+                <p class="source">They were near an exit. A double line of guards stood directly ahead. Twenty men, a solid wall — and a massive heavy-duty robot gun in the center. The men were alert, faces strained and tense. Watching wide-eyed, guns gripped tight. A Civil Police officer was in charge.</p>
+                <p class="translate"></p>
+
+                <p class="source">"We'll never get past," Anita gasped. "We wouldn't get ten feet." She pulled back. "They'll —"</p>
+                <p class="translate"></p>
+
+                <p class="source">Cris took her by the arm and continued calmly forward. Blind terror leaped inside her. She fought wildly to get away, but his fingers were like steel. She couldn't pry them loose. Quietly, irresistibly, the great golden creature drew her along beside him toward the double line of guards.</p>
+                <p class="translate"></p>
+
+                <p class="source">"There he is!" Guns went up. Men leaped into action. The barrel of the robot cannon swung around. "Get him!"</p>
+                <p class="translate"></p>
+
+                <p class="source">Anita was paralyzed. She sagged against the powerful body beside her, tugged along helplessly by his inflexible grasp. The lines of guards came nearer, a sheer wall of guns. Anita fought to control her terror. She stumbled, half-fell. Cris supported her effortlessly. She scratched, fought at him, struggled to get loose —</p>
+                <p class="translate"></p>
+
+                <p class="source">"Don't shoot!" she screamed.</p>
+                <p class="translate"></p>
+
+                <p class="source">Guns wavered uncertainly. "Who is she?" The guards were moving around, trying to get a sight on Cris without including her. "Who's he got there?"</p>
+                <p class="translate"></p>
+
+                <p class="source">One of them saw the stripe on her sleeve. Red and black. Director Class. Top-level.</p>
+                <p class="translate"></p>
+
+                <p class="source">"She's Class A." Shocked, the guards retreated. "Miss, get out of the way!"</p>
+                <p class="translate"></p>
+
+                <p class="source">Anita found her voice. "Don't shoot. He's — in my custody. You understand? I'm taking him out."</p>
+                <p class="translate"></p>
+
+                <p class="source">The wall of guards moved back nervously. "No one's supposed to pass. Director Wisdom gave orders —"</p>
+                <p class="translate"></p>
+
+                <p class="source">"I'm not subject to Wisdom's authority." She managed to edge her voice with a harsh crispness. "Get out of the way. I'm taking him to the Semantics Agency."</p>
+                <p class="translate"></p>
+
+                <p class="source">For a moment nothing happened. There was no reaction. Then slowly, uncertainly, one guard stepped aside.</p>
+                <p class="translate"></p>
+
+                <p class="source">Cris moved. A blur of speed, away from Anita, past the confused guards, through the breach in the line, out the exit, and onto the street. Bursts of energy flashed wildly after him. Shouting guards milled out. Anita was left behind, forgotten. The guards, the heavy-duty gun, were pouring out into the early morning darkness. Sirens wailed. Patrol cars roared into life.</p>
+                <p class="translate"></p>
+
+                <p class="source">Anita stood dazed, confused, leaning against the wall, trying to get her breath.</p>
+                <p class="translate"></p>
+
+                <p class="source">He was gone. He had left her. Good God — what had she done? She shook her head, bewildered, her face buried in her hands. She had been hypnotized. She had lost her will, her common sense. Her reason! The animal, the great golden beast, had tricked her. Taken advantage of her. And now he was gone, escaped into the night.</p>
+                <p class="translate"></p>
+
+                <p class="source">Miserable, agonized tears trickled through her clenched fingers. She rubbed at them futilely; but they kept on coming.</p>
+                <p class="translate"></p>
+
+                <div class="spacer"></div>
+                
+                <p class="source">"He's gone," Baines said. "We'll never get him, now. He's probably a million miles from here."</p>
+                <p class="translate"></p>
+
+                <p class="source">Anita sat huddled in the corner, her face to the wall. A little bent heap, broken and wretched.</p>
+                <p class="translate"></p>
+
+                <p class="source">Wisdom paced back and forth. "But where can he go? Where can he hide? Nobody'll hide him! Everybody knows the law about deeves!"</p>
+                <p class="translate"></p>
+
+                <p class="source">"He's lived out in the woods most of his life. He'll hunt — that's what he's always done. They wondered what he was up to, off by himself. He was catching game and sleeping under trees." Baines laughed harshly. "And the first woman he meets will be glad to hide him — as she was." He indicated Anita with a jerk of his thumb.</p>
+                <p class="translate"></p>
+
+                <p class="source">"So all that gold, that mane, that god-like stance, was for something. Not just ornament." Wisdom's thick lips twisted. "He doesn't have just one faculty — he has two. One is new, the newest thing in survival method. The other is old as life." He stopped pacing to glare at the huddled shape in the corner. "Plumage. Bright feathers, combs for the rooster, swans, birds, bright scales for the fish. Gleaming pelts and manes for the animals. An animal isn't necessarily bestial. Lions aren't bestial. Or tigers. Or any of the big cats. They're anything but bestial."</p>
+                <p class="translate"></p>
+
+                <p class="source">"He'll never have to worry," Baines said. "He'll get by — as long as human women exist to take care of him. And since he can see ahead, into the future, he already knows he's sexually irresistible to human females."</p>
+                <p class="translate"></p>
+
+                <p class="source">"We'll get him," Wisdom muttered. "I've had the Government declare an emergency. Military and Civil Police will be looking for him. Armies of men — a whole planet of experts, the most advanced machines and equipment. We'll flush him, sooner or later."</p>
+                <p class="translate"></p>
+
+                <p class="source">"By that time it won't make any difference," Baines said. He put his hand on Anita's shoulder and patted her ironically. "You'll have company, sweetheart. You won't be the only one. You're just the first of a long procession."</p>
+                <p class="translate"></p>
+
+                <p class="source">"Thanks," Anita grated.</p>
+                <p class="translate"></p>
+
+                <p class="source">"The oldest survival method and the newest. Combined to form one perfectly adapted animal. How the hell are we going to stop him? We can put you through a sterilization tank — but we can't pick them all up, all the women he meets along the way. And if we miss one we're finished."</p>
+                <p class="translate"></p>
+
+                <p class="source">"We'll have to keep trying," Wisdom said. "Round up as many as we can. Before they can spawn." Faint hope glinted in his tired, sagging face. "Maybe his characteristics are recessive. Maybe ours will cancel his out."</p>
+                <p class="translate"></p>
+
+                <p class="source">"I wouldn't lay any money on that," Baines said. "I think I know already which of the two strains is going to turn up dominant." He grinned wryly. "I mean, I'm making a good guess. It won't be us."</p>
+                <p class="translate"></p>
+
+
+
+
+
+
