@@ -1,99 +1,11 @@
+                    <li><a href="#part-5">Part 5</a></li>
                 
                 
 
                 
                 
-                <p class="source">The chamber was empty, except for the seated figure. Four bare walls, floor and ceiling. A steady glare of white light relentlessly etched every corner of the chamber. Near the top of the far wall ran a narrow slot, the view windows through which the interior of the chamber was scanned.</p>
-                <p class="translate"></p>
                 
-                <p class="source">The seated figure was quiet. He hadn't moved since the chamber locks had slid into place, since the heavy bolts had fallen from outside and the rows of bright-faced technicians had taken their places at the view windows. He gazed down at the floor, bent forward, hands clasped together, face calm, almost expressionless. In four hours he hadn't moved a muscle.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Well?" Baines said. "What have you learned?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">Wisdom grunted sourly. "Not much. If we don't have him doped out in forty-eight hours we'll go ahead with the euth. We can't take any chances."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"You're thinking about the Tunis type," Baines said. He was, too. They had found ten of them, living in the ruins of the abandoned North African town. Their survival method was simple. They killed and absorbed other life forms, then imitated them and took their places. Chameleons, they were called. It had cost sixty lives, before the last one was destroyed. Sixty top-level experts, highly trained DCA men.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Any clues?" Baines asked.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"He's different as hell. This is going to be tough." Wisdom thumbed a pile of tape-spools. "This is the complete report, all the material we got from Johnson and his family. We pumped them with the psych-wash, then let them go home. Eighteen years — and no semantic bridge. Yet, he looks fully developed. Mature at thirteen — a shorter, faster life-cycle than ours. But why the mane? All the gold fuzz? Like a Roman monument that's been gilded."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Has the report come in from the analysis room? You had a wave-shot taken, of course."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"His brain pattern has been fully scanned. But it takes time for them to plot it out. We're all running around like lunatics while he just sits there!" Wisdom poked a stubby finger at the window. "We caught him easily enough. He can't have much, can he? But I'd like to know what it is. Before we euth him."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Maybe we should keep him alive until we know."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Euth in forty-eight hours," Wisdom repeated stubbornly. "Whether we know or not. I don't like him. He gives me the creeps."</p>
-                <p class="translate"></p>
-                
-                <p class="source">Wisdom stood chewing nervously on his cigar, a red-haired, beefy-faced man, thick and heavy-set, with a barrel chest and cold, shrewd eyes deep-set in his hard face. Ed Wisdom was Director of DCA's North American Branch. But right now he was worried. His tiny eyes darted back and forth, alarmed flickers of gray in his brutal, massive face.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"You think," Baines said slowly, "this is it?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"I always think so," Wisdom snapped. "I have to think so."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"I mean —"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"I know what you mean." Wisdom paced back and forth, among the study tables, technicians at their benches, equipment and humming computers. Buzzing tape-slots and research hook-ups. "This thing lived eighteen years with his family and they don't understand it. They don't know what it has. They know what it does, but not how."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"What does it do?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"It knows things."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"What kind of things?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">Wisdom grabbed his lash-tube from his belt and tossed it on a table. "Here."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"What?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Here." Wisdom signaled, and a view window was slid back an inch. "Shoot him."</p>
-                <p class="translate"></p>
-                
-                <p class="source">Baines blinked. "You said forty-eight hours."</p>
-                <p class="translate"></p>
-                
-                <p class="source">With a curse, Wisdom snatched up the tube, aimed it through the window directly at the seated figure's back, and squeezed the trigger.</p>
-                <p class="translate"></p>
-                
-                <p class="source">A blinding flash of pink. A cloud of energy blossomed in the center of the chamber. It sparkled, then died into dark ash.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Good God!" Baines gasped. "You —"</p>
-                <p class="translate"></p>
-                
-                <p class="source">He broke off. The figure was no longer sitting. As Wisdom fired, it had moved in a blur of speed, away from the blast, to the corner of the chamber. Now it was slowly coming back, face blank, still absorbed in thought.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Fifth time," Wisdom said, as he put his tube away. "Last time Jamison and I fired together. Missed. He knew exactly when the bolts would hit. And where."</p>
-                <p class="translate"></p>
-                
-                <p class="source">Baines and Wisdom looked at each other. Both of them were thinking the same thing. "But even reading minds wouldn't tell him where they were going to hit," Baines said. "When, maybe. But not where. Could you have called your own shots?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Not mine," Wisdom answered flatly. "I fired fast, damn near at random." He frowned. "Random. We'll have to make a test of this." He waved a group of technicians over. "Get a construction team up here. On the double." He grabbed paper and pen and began sketching.</p>
-                <p class="translate"></p>
-
-                <div class="spacer"></div>
+                <h2 id="part-5">Part 5</h2>
                 
                 <p class="source">While construction was going on, Baines met his fiancee in the lobby outside the lab, the great central lounge of the DCA Building.</p>
                 <p class="translate"></p>
