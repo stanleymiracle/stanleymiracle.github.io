@@ -1,4 +1,3 @@
-                    <li><a href="#part-5">Part 5</a></li>
                 
                 
 
@@ -6,69 +5,7 @@
                 
                 
                 
-                <h2 id="part-5">Part 5</h2>
                 
-                <p class="source">While construction was going on, Baines met his fiancee in the lobby outside the lab, the great central lounge of the DCA Building.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"How's it coming?" she asked. Anita Ferris was tall and blonde, blue eyes and a mature, carefully cultivated figure. An attractive, competent-looking woman in her late twenties. She wore a metal foil dress and cape with a red and black stripe on the sleeve, the emblem of the A-Class. Anita was Director of the Semantics Agency, a top-level Government Coordinator. "Anything of interest, this time?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Plenty." Baines guided her from the lobby, into the dim recess of the bar. Music played softly in the background, a shifting variety of patterns formed mathematically. Dim shapes moved expertly through the gloom, from table to table. Silent, efficient robot waiters.</p>
-                <p class="translate"></p>
-                
-                <p class="source">As Anita sipped her Tom Collins, Baines outlined what they had found.</p>
-                <p class="translate"></p>
-                
-                <p class="source">"What are the chances," Anita asked slowly, "that he's built up some kind of deflection-cone? There was one kind that warped their environment by direct mental effort. No tools. Direct mind to matter."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Psychokinetics?" Baines drummed restlessly on the table top. "I doubt it. The thing has ability to predict, not to control. He can't stop the beams, but he can sure as hell get out of the way."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Does he jump between the molecules?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">Baines wasn't amused. "This is serious. We've handled these things sixty years — longer than you and I have been around added together. Eighty-seven types of deviants have shown up, real mutants that could reproduce themselves, not mere freaks. This is the eighty-eighth. We've been able to handle each of them in turn. But this —"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Why are you so worried about this one?"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"First, it's eighteen years old. That in itself is incredible. Its family managed to hide it that long."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Those women around Denver were older than that. Those ones with —"</p>
-                <p class="translate"></p>
-                
-                <p class="source">"They were in a Government camp. Somebody high up was toying with the idea of allowing them to breed. Some sort of industrial use. We withheld euth for years. But Cris Johnson stayed alive outside our control. Those things at Denver were under constant scrutiny."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Maybe he's harmless. You always assume a deeve is a menace. He might even be beneficial. Somebody thought those women might work in. Maybe this thing has something that would advance the race."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"Which race? Not the human race. It's the old 'the operation was a success but the patient died' routine. If we introduce a mutant to keep us going it'll be mutants, not us, who'll inherit the earth. It'll be mutants surviving for their own sake. Don't think for a moment we can put padlocks on them and expect them to serve us. If they're really superior to homo sapiens, they'll win out in even competition. To survive, we've got to cold-deck them right from the start."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"In other words, we'll know homo superior when he comes — by definition. He'll be the one we won't be able to euth."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"That's about it," Baines answered. "Assuming there is a homo superior. Maybe there's just homo peculiar. Homo with an improved line."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"The Neanderthal probably thought the Cro-Magnon man had merely an improved line. A little more advanced ability to conjure up symbols and shape flint. From your description, this thing is more radical than a mere improvement."</p>
-                <p class="translate"></p>
-                
-                <p class="source">"This thing," Baines said slowly, "has an ability to predict. So far, it's been able to stay alive. It's been able to cope with situations better than you or I could. How long do you think we'd stay alive in that chamber, with energy beams blazing down at us? In a sense it's got the ultimate survival ability. If it can always be accurate —"</p>
-                <p class="translate"></p>
-                
-                <p class="source">A wall-speaker sounded. "Baines, you're wanted in the lab. Get the hell out of the bar and upramp."</p>
-                <p class="translate"></p>
-                
-                <p class="source">Baines pushed back his chair and got to his feet. "Come along. You may be interested in seeing what Wisdom has got dreamed up."</p>
-                <p class="translate"></p>
-
-                <div class="spacer"></div>
                 
                 <p class="source">A tight group of top-level DCA officials stood around in a circle, middle-aged, gray-haired, listening to a skinny youth in a white shirt and rolled-up sleeves explaining an elaborate cube of metal and plastic that filled the center of the view-platform. From it jutted an ugly array of tube snouts, gleaming muzzles that disappeared into an intricate maze of wiring.</p>
                 <p class="translate"></p>
